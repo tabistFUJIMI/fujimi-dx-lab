@@ -250,19 +250,24 @@ export default function Home() {
                   accentColor="pink"
                   pain={
                     <>
-                      Instagram、TikTok、X、、、
+                      SNSは大切！更新も返信もしっかりやらなくちゃ！
                       <br />
-                      <strong>更新しなきゃとは思ってるけど、なかなか手が回らない。</strong>
+                      わかるんです。<strong>やらなきゃいけないってことは。</strong>
+                      <br />
+                      でもなかなか手が動かない。担当者なんてつけられないし、SNS運用には手が出せない。
                     </>
                   }
                   solution={
                     <>
                       <p>
-                        AIがキャプションを考えてくれるから、写真を選ぶだけ。
-                        <strong>スケジュール投稿</strong>で「思い出した時だけ更新」を卒業。
+                        <strong>だからこそDX。</strong>
+                      </p>
+                      <p className="mt-3">
+                        SocialNaviはX、Facebook、Instagram、Threads、TikTokを<strong>まとめて管理</strong>。
+                        コメント返信や投稿もここからかんたんに！
                       </p>
                       <p className="mt-3 text-gray-500">
-                        Instagram・TikTok・Xをまとめて管理。分析ダッシュボードで「何が反応いいか」もひと目でわかる。
+                        AIの力もつかって自動化も可能。「手が回らない」を卒業できます。
                       </p>
                     </>
                   }
