@@ -4,11 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const NAV_ITEMS = [
-  { label: "課題", href: "#problems" },
-  { label: "サービス", href: "#ecosystem" },
-  { label: "プロダクト", href: "#products" },
-  { label: "導入事例", href: "#case-study" },
-  { label: "会社情報", href: "#company" },
+  { label: "こんな課題", href: "#solutions" },
+  { label: "私たちについて", href: "#company" },
 ];
 
 export default function Header() {

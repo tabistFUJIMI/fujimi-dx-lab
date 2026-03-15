@@ -2,7 +2,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FadeIn from "./components/FadeIn";
 
-/* ─── アイコンSVG ─── */
+/* ─── Icons ─── */
 function IconCalendar({ className }: { className?: string }) {
   return <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>;
 }
@@ -18,28 +18,11 @@ function IconShare({ className }: { className?: string }) {
 function IconChat({ className }: { className?: string }) {
   return <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>;
 }
-function IconShield({ className }: { className?: string }) {
-  return <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>;
-}
 function IconArrowRight({ className }: { className?: string }) {
   return <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>;
 }
 
-/* ─── データ ─── */
-const PRODUCTS = [
-  { name: "Reserve Navi", tagline: "予約管理", description: "LINE Mini App対応。Web+LINEから即予約、自動通知でノーショー削減。", icon: IconCalendar, color: "from-blue-500 to-blue-600", lightBg: "bg-blue-500/10", textColor: "text-blue-500" },
-  { name: "ShiftNavi", tagline: "シフト管理", description: "AIが最適シフトを自動提案。カレンダーUIで直感操作。", icon: IconClock, color: "from-emerald-500 to-emerald-600", lightBg: "bg-emerald-500/10", textColor: "text-emerald-500" },
-  { name: "RuleNavi", tagline: "社内規則AI検索", description: "PDF取込 → AIが自然言語で回答。聞くだけで必要情報に到達。", icon: IconDocument, color: "from-violet-500 to-violet-600", lightBg: "bg-violet-500/10", textColor: "text-violet-500" },
-  { name: "SocialNavi", tagline: "SNS一元管理", description: "IG・TikTok・Xを一括管理。AI投稿文とスケジュール配信。", icon: IconShare, color: "from-pink-500 to-pink-600", lightBg: "bg-pink-500/10", textColor: "text-pink-500" },
-  { name: "AskNavi", tagline: "LINE AI応答", description: "LINE公式にAI FAQ機能を追加。自動応答+セグメント配信。", icon: IconChat, color: "from-amber-500 to-amber-600", lightBg: "bg-amber-500/10", textColor: "text-amber-500" },
-];
-
-const PROBLEMS = [
-  { icon: "📞", title: "電話対応に追われる", description: "予約・問い合わせの電話対応に時間を奪われ、本来の業務に集中できない。" },
-  { icon: "📝", title: "紙・Excel作業が残る", description: "シフト表はExcel、マニュアルは紙。更新・共有に時間がかかり、ミスが生まれる。" },
-  { icon: "🔀", title: "ツールがバラバラ", description: "予約・SNS・シフト…ツールごとにログインが必要で、データも分断されたまま。" },
-];
-
+/* ─── 対象業種 ─── */
 const TARGET_INDUSTRIES = [
   { icon: "🏨", label: "宿泊施設" },
   { icon: "💇", label: "サロン" },
@@ -58,24 +41,27 @@ export default function Home() {
         <section className="noise relative min-h-[100vh] overflow-hidden bg-mesh-hero px-4 pt-32 pb-20 text-white md:pt-44 md:pb-32">
           <div className="relative z-10 mx-auto max-w-6xl">
             <FadeIn>
-              <p className="mb-6 text-sm font-semibold tracking-[0.2em] text-blue-300 uppercase">
-                小さなお店のDXを、現場から。
+              <p className="mb-5 inline-block rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-1.5 text-sm text-blue-300 backdrop-blur-sm">
+                ひとつからはじめられるDX
               </p>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <h1 className="text-gradient text-5xl font-extrabold tracking-tight md:text-7xl lg:text-8xl" style={{ lineHeight: 1.08 }}>
-                あの手作業を、
+              <h1 className="text-gradient text-4xl font-extrabold tracking-tight md:text-6xl lg:text-7xl" style={{ lineHeight: 1.1 }}>
+                「これ、もっと
                 <br />
-                まるごとDXする。
+                ラクにならないかな？」
               </h1>
             </FadeIn>
             <FadeIn delay={0.2}>
               <p className="mt-8 max-w-xl text-lg leading-relaxed text-slate-300 md:text-xl">
-                予約・シフト・マニュアル・SNS・LINE対応——
+                予約の電話、シフト調整、マニュアル探し、SNS更新、LINE対応——
                 <br className="hidden md:block" />
-                小規模事業者に必要な業務を
-                <strong className="text-white"> FUJIMIN PASS </strong>
-                ひとつでカバー。
+                <strong className="text-white">ぜんぶ、ひとつずつ解決できます。</strong>
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.25}>
+              <p className="mt-4 text-base text-slate-400">
+                必要なものだけ、1つから。あなたのペースではじめるDX。
               </p>
             </FadeIn>
             <FadeIn delay={0.3}>
@@ -90,10 +76,10 @@ export default function Home() {
             <FadeIn delay={0.4}>
               <div className="mt-12 flex flex-col gap-4 sm:flex-row">
                 <a
-                  href="#ecosystem"
+                  href="#solutions"
                   className="glow-blue glow-blue-hover inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-base font-bold text-gray-900 transition-all duration-300 hover:scale-105 active:scale-[0.98]"
                 >
-                  サービスを見る
+                  こんな課題、ありませんか？
                 </a>
                 <a
                   href="#contact"
@@ -104,212 +90,253 @@ export default function Home() {
               </div>
             </FadeIn>
           </div>
-
-          {/* Decorative elements */}
           <div className="pointer-events-none absolute top-1/4 right-0 h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-[120px]" />
           <div className="pointer-events-none absolute bottom-0 left-1/4 h-[400px] w-[400px] rounded-full bg-purple-500/10 blur-[120px]" />
         </section>
 
-        {/* ═══ Problems ═══ */}
-        <section id="problems" className="relative overflow-hidden px-4 py-24 md:py-32">
-          <div className="mx-auto max-w-6xl">
+        {/* ═══ Solutions - 各プロダクトのストーリー ═══ */}
+        <section id="solutions" className="px-4 py-24 md:py-32">
+          <div className="mx-auto max-w-4xl">
             <FadeIn>
               <div className="text-center">
-                <p className="text-sm font-semibold tracking-[0.15em] text-primary uppercase">Problems</p>
+                <p className="text-sm font-semibold tracking-[0.15em] text-primary uppercase">Solutions</p>
                 <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
-                  小規模事業者が抱える課題
+                  たとえば、こんな課題ありませんか？
                 </h2>
                 <p className="mx-auto mt-4 max-w-lg text-gray-500">
-                  人手不足の中、アナログ業務とツールの分断が現場の負担を増やし続けています。
-                </p>
-              </div>
-            </FadeIn>
-            <div className="mt-16 grid gap-6 md:grid-cols-3">
-              {PROBLEMS.map((p, i) => (
-                <FadeIn key={p.title} delay={i * 0.1}>
-                  <div className="group h-full rounded-2xl border border-gray-200/60 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl">
-                    <span className="text-4xl">{p.icon}</span>
-                    <h3 className="mt-5 text-lg font-bold">{p.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-gray-500">
-                      {p.description}
-                    </p>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ Ecosystem ═══ */}
-        <section id="ecosystem" className="relative bg-slate-50 px-4 py-24 md:py-32">
-          <div className="mx-auto max-w-6xl">
-            <FadeIn>
-              <div className="text-center">
-                <p className="text-sm font-semibold tracking-[0.15em] text-primary uppercase">Ecosystem</p>
-                <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
-                  <span className="text-gradient-dark">FUJIMIN PASS</span> エコシステム
-                </h2>
-                <p className="mx-auto mt-4 max-w-lg text-gray-500">
-                  1アカウントで、すべてのNaviにアクセス。
+                  FUJIMI DX Labは、現場の「困った」から生まれたツールです。
                   <br />
-                  小規模事業者のための統合DXプラットフォーム。
+                  <strong className="text-gray-700">ひとつからはじめられます。</strong>
                 </p>
               </div>
             </FadeIn>
 
-            <div className="mt-16">
-              {/* FUJIMIN PASS hub */}
+            <div className="mt-16 space-y-20">
+              {/* ── Reserve Navi ── */}
               <FadeIn>
-                <div className="noise relative mx-auto max-w-lg overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 p-8 text-center text-white shadow-2xl">
-                  <IconShield className="mx-auto h-10 w-10 text-blue-400" />
-                  <h3 className="mt-4 text-xl font-bold">FUJIMIN PASS</h3>
-                  <p className="mt-2 text-sm text-slate-400">
-                    統合認証基盤 — 1アカウントで全サービスを利用
+                <SolutionCard
+                  icon={<IconCalendar className="h-7 w-7" />}
+                  name="Reserve Navi"
+                  tagline="予約管理"
+                  accentColor="blue"
+                  pain={
+                    <>
+                      予約システム、、、<strong>高すぎる。</strong>
+                      <br />
+                      こんなに機能いらないのに、、、
+                    </>
+                  }
+                  solution={
+                    <>
+                      <p>
+                        シンプルにLINEから予約。スマホで確認。次回予約もスマホから。
+                      </p>
+                      <p className="mt-3">
+                        とにかく<strong>シンプル</strong>。そして<strong>徹底的に業界対応</strong>。
+                      </p>
+                      <p className="mt-3 text-gray-500">
+                        なぜなら、業界の方の要望から作成している予約システムだから。
+                        業種ごとのフォーマットになっていますが、皆様のお声からさらに今後もアップデート予定！
+                      </p>
+                    </>
+                  }
+                />
+              </FadeIn>
+
+              {/* ── AskNavi ── */}
+              <FadeIn>
+                <SolutionCard
+                  icon={<IconChat className="h-7 w-7" />}
+                  name="AskNavi"
+                  tagline="LINE AI応答"
+                  accentColor="amber"
+                  pain={
+                    <>
+                      公式LINEの運用をしたい！
+                      <br />
+                      可能なら最近予約してくれた人とか、、、
+                      <br />
+                      <strong>3ヶ月いらっしゃっていない方にだけ送れないかな？</strong>
+                    </>
+                  }
+                  solution={
+                    <>
+                      <p>
+                        予約システムと連動した公式LINE運用を、<strong>手軽に、お得に</strong>。
+                      </p>
+                      <p className="mt-3">
+                        自分だけでやってるし、できればAIに考えてもらったりできると助かる！
+                      </p>
+                      <p className="mt-3 text-gray-500">
+                        それにお客様からの問い合わせ電話が接客中や施術中にかかってくると、なかなかゆっくりは対応できない。
+                        だからこそ、<strong className="text-gray-700">私の代わりにAIが公式LINEで答えてくれる！</strong>
+                      </p>
+                    </>
+                  }
+                />
+              </FadeIn>
+
+              {/* ── ShiftNavi ── */}
+              <FadeIn>
+                <SolutionCard
+                  icon={<IconClock className="h-7 w-7" />}
+                  name="ShiftNavi"
+                  tagline="シフト管理"
+                  accentColor="emerald"
+                  pain={
+                    <>
+                      シフト調整って<strong>すごく時間かかる。</strong>
+                      <br />
+                      従業員さんの休み希望も手書きでもらって、転記して、Excelで、、、
+                    </>
+                  }
+                  solution={
+                    <>
+                      <p>
+                        <strong>まるごとデジタルに！</strong>
+                      </p>
+                      <p className="mt-3">
+                        休み希望は従業員さんからスマホで簡単に。
+                        シフトの作成もまずは<strong>AIでワンタッチ作成！</strong>
+                      </p>
+                      <p className="mt-3 text-gray-500">
+                        シフト公開も簡単！もちろんA4で印刷だってできちゃう！
+                      </p>
+                    </>
+                  }
+                />
+              </FadeIn>
+
+              {/* ── RuleNavi ── */}
+              <FadeIn>
+                <SolutionCard
+                  icon={<IconDocument className="h-7 w-7" />}
+                  name="RuleNavi"
+                  tagline="社内規則AI検索"
+                  accentColor="violet"
+                  pain={
+                    <>
+                      就業規則。マニュアル。
+                      <br />
+                      紙やPDFではあるけど、<strong>私だってそんなに完璧に把握しているわけじゃない。</strong>
+                      <br />
+                      毎回聞かれるたびにそれを開いて確認。
+                    </>
+                  }
+                  solution={
+                    <>
+                      <p>
+                        AIがあなたの会社の規則や知識、マニュアルを<strong>わかりやすく答えます</strong>。
+                        自然な会話で教えてくれる。
+                      </p>
+                      <p className="mt-3">
+                        わからないことや微妙なケースは「直接聞いてくださいね」と促してくれます。
+                      </p>
+                      <p className="mt-3 text-gray-500">
+                        さらに、質問されて答えられなかったことは管理者のあなたが確認して知識として簡単に追加できるので、
+                        <strong className="text-gray-700">どんどんなんでも答える、頼れる相棒に</strong>なっていきます。
+                      </p>
+                    </>
+                  }
+                />
+              </FadeIn>
+
+              {/* ── SocialNavi ── */}
+              <FadeIn>
+                <SolutionCard
+                  icon={<IconShare className="h-7 w-7" />}
+                  name="SocialNavi"
+                  tagline="SNS一元管理"
+                  accentColor="pink"
+                  pain={
+                    <>
+                      Instagram、TikTok、X、、、
+                      <br />
+                      <strong>更新しなきゃとは思ってるけど、なかなか手が回らない。</strong>
+                    </>
+                  }
+                  solution={
+                    <>
+                      <p>
+                        AIがキャプションを考えてくれるから、写真を選ぶだけ。
+                        <strong>スケジュール投稿</strong>で「思い出した時だけ更新」を卒業。
+                      </p>
+                      <p className="mt-3 text-gray-500">
+                        Instagram・TikTok・Xをまとめて管理。分析ダッシュボードで「何が反応いいか」もひと目でわかる。
+                      </p>
+                    </>
+                  }
+                />
+              </FadeIn>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ Why FUJIMI DX Lab ═══ */}
+        <section className="bg-slate-50 px-4 py-24 md:py-32">
+          <div className="mx-auto max-w-4xl">
+            <FadeIn>
+              <div className="text-center">
+                <p className="text-sm font-semibold tracking-[0.15em] text-primary uppercase">Why Us</p>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
+                  なんで私たちが作っているの？
+                </h2>
+              </div>
+            </FadeIn>
+
+            <FadeIn>
+              <div className="mx-auto mt-12 max-w-3xl rounded-2xl border border-gray-200/60 bg-white p-8 md:p-10">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-xl">
+                    🏨
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold">Tabist ゆ縁の宿ふじみ</h3>
+                    <p className="mt-1 text-sm text-gray-500">静岡県富士市のビジネスホテル</p>
+                  </div>
+                </div>
+
+                <div className="mt-8 space-y-4 text-[15px] leading-relaxed text-gray-600">
+                  <p>
+                    私たちは静岡県富士市で小さなビジネスホテルを運営しています。
                   </p>
-                  <div className="mt-5 flex flex-wrap justify-center gap-2 text-xs">
-                    {["シングルサインオン", "サブスク管理", "クーポン発行", "KPI分析"].map((tag) => (
-                      <span key={tag} className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  <p>
+                    少人数で回しているからこそ、<strong className="text-gray-800">「もっとラクにならないかな」</strong>の連続でした。
+                    予約の電話対応、Excelのシフト表、紙の就業規則——。
+                  </p>
+                  <p>
+                    既存のDXツールを探しても、大企業向けで高すぎたり、機能が多すぎたり。
+                    <strong className="text-gray-800">「ちょうどいい」がなかった</strong>んです。
+                  </p>
+                  <p>
+                    だから、自分たちで作りました。
+                  </p>
+                  <p>
+                    自分たちが毎日使うから、<strong className="text-gray-800">本当に必要な機能だけ</strong>を、
+                    <strong className="text-gray-800">本当に使いやすい形</strong>で。
+                  </p>
+                  <p className="text-gray-800 font-medium">
+                    同じ悩みを持つお店に、この仕組みを届けたい。
+                    <br />
+                    それがFUJIMI DX Labです。
+                  </p>
                 </div>
-              </FadeIn>
+              </div>
+            </FadeIn>
 
-              {/* Connector */}
-              <div className="mx-auto flex h-12 w-px items-center justify-center bg-gradient-to-b from-slate-300 to-transparent" />
-
-              {/* 5 Navis */}
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-                {PRODUCTS.map((p, i) => (
-                  <FadeIn key={p.name} delay={i * 0.08}>
-                    <div className="group h-full rounded-xl border border-gray-200/60 bg-white p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                      <div className={`mx-auto flex h-11 w-11 items-center justify-center rounded-xl ${p.lightBg}`}>
-                        <p.icon className={`h-5 w-5 ${p.textColor}`} />
-                      </div>
-                      <p className="mt-3 text-sm font-bold">{p.name}</p>
-                      <p className="mt-0.5 text-xs text-gray-400">{p.tagline}</p>
-                    </div>
-                  </FadeIn>
+            <FadeIn>
+              <div className="mx-auto mt-8 grid max-w-3xl gap-4 md:grid-cols-3">
+                {[
+                  { emoji: "🎯", title: "必要なものだけ", description: "1つからはじめてOK。成長に合わせて追加。" },
+                  { emoji: "💬", title: "現場の声から開発", description: "業界の方の要望をもとに機能を作成。" },
+                  { emoji: "🤖", title: "AIがお手伝い", description: "シフト作成、LINE応答、投稿文…AIがサポート。" },
+                ].map((item) => (
+                  <div key={item.title} className="rounded-xl border border-gray-200/60 bg-white p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    <span className="text-3xl">{item.emoji}</span>
+                    <p className="mt-3 text-sm font-bold">{item.title}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-gray-500">{item.description}</p>
+                  </div>
                 ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ Products (Bento Grid) ═══ */}
-        <section id="products" className="px-4 py-24 md:py-32">
-          <div className="mx-auto max-w-6xl">
-            <FadeIn>
-              <div className="text-center">
-                <p className="text-sm font-semibold tracking-[0.15em] text-primary uppercase">Products</p>
-                <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
-                  5つのNaviで業務をカバー
-                </h2>
-                <p className="mx-auto mt-4 max-w-lg text-gray-500">
-                  必要なNaviだけ選んで導入OK。成長に合わせて追加できます。
-                </p>
-              </div>
-            </FadeIn>
-
-            {/* Bento grid */}
-            <div className="mt-16 grid gap-4 md:grid-cols-6 lg:gap-5">
-              {/* Reserve Navi - large */}
-              <FadeIn className="md:col-span-4">
-                <BentoCard product={PRODUCTS[0]} large />
-              </FadeIn>
-              {/* ShiftNavi */}
-              <FadeIn delay={0.1} className="md:col-span-2">
-                <BentoCard product={PRODUCTS[1]} />
-              </FadeIn>
-              {/* RuleNavi */}
-              <FadeIn delay={0.15} className="md:col-span-2">
-                <BentoCard product={PRODUCTS[2]} />
-              </FadeIn>
-              {/* SocialNavi */}
-              <FadeIn delay={0.2} className="md:col-span-2">
-                <BentoCard product={PRODUCTS[3]} />
-              </FadeIn>
-              {/* AskNavi */}
-              <FadeIn delay={0.25} className="md:col-span-2">
-                <BentoCard product={PRODUCTS[4]} />
-              </FadeIn>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ Case Study ═══ */}
-        <section id="case-study" className="bg-slate-50 px-4 py-24 md:py-32">
-          <div className="mx-auto max-w-6xl">
-            <FadeIn>
-              <div className="text-center">
-                <p className="text-sm font-semibold tracking-[0.15em] text-primary uppercase">Case Study</p>
-                <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
-                  導入事例
-                </h2>
-                <p className="mx-auto mt-4 max-w-lg text-gray-500">
-                  自社で運用しながら開発。現場の声がそのまま機能に。
-                </p>
-              </div>
-            </FadeIn>
-
-            <FadeIn>
-              <div className="mx-auto mt-16 max-w-4xl overflow-hidden rounded-2xl border border-gray-200/60 bg-white shadow-sm">
-                {/* Header */}
-                <div className="border-b border-gray-100 bg-slate-50/50 px-8 py-6">
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-xl">
-                      🏨
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold">Tabist ゆ縁の宿ふじみ</h3>
-                      <p className="text-sm text-gray-500">静岡県富士市 / ビジネスホテル / 少人数運営</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Before/After */}
-                <div className="grid gap-0 md:grid-cols-2">
-                  <div className="border-b border-gray-100 p-8 md:border-b-0 md:border-r">
-                    <p className="text-xs font-bold tracking-wider text-red-500 uppercase">Before</p>
-                    <ul className="mt-4 space-y-3 text-sm text-gray-600">
-                      {[
-                        "予約は電話のみ、対応に1件5分以上",
-                        "シフト表はExcelで毎月2時間",
-                        "就業規則は紙ファイル、探すのに10分",
-                        "SNSは思い出した時だけ更新",
-                      ].map((text) => (
-                        <li key={text} className="flex items-start gap-2.5">
-                          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-100 text-xs text-red-500">✕</span>
-                          {text}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="p-8">
-                    <p className="text-xs font-bold tracking-wider text-emerald-500 uppercase">After</p>
-                    <ul className="mt-4 space-y-3 text-sm text-gray-600">
-                      {[
-                        "LINE予約で24時間自動受付・通知",
-                        "AIがシフト案を自動生成、微調整のみ",
-                        "AIに聞くだけで規則・マニュアルを即回答",
-                        "AI投稿文+スケジュール配信で定期発信",
-                      ].map((text) => (
-                        <li key={text} className="flex items-start gap-2.5">
-                          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs text-emerald-600">✓</span>
-                          {text}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Quote */}
-                <div className="border-t border-gray-100 bg-slate-50/50 px-8 py-6">
-                  <blockquote className="text-sm italic leading-relaxed text-gray-500">
-                    &ldquo;既存のDXツールは大手向けばかりで、少人数の現場には合わなかった。だから自分たちで作った。&rdquo;
-                  </blockquote>
-                </div>
               </div>
             </FadeIn>
           </div>
@@ -333,7 +360,7 @@ export default function Home() {
                     ["会社名", "ふじみ企業有限会社"],
                     ["事業部", "FUJIMI DX Lab事業部"],
                     ["所在地", "静岡県富士市"],
-                    ["事業内容", "小規模事業者向けDXプラットフォームの開発・提供"],
+                    ["事業内容", "小規模事業者向けDXツールの開発・提供"],
                     ["運営施設", "Tabist ゆ縁の宿ふじみ（ビジネスホテル）"],
                     ["メール", "support@mail.fujimin-pass.com"],
                   ].map(([dt, dd]) => (
@@ -353,11 +380,14 @@ export default function Home() {
           <div className="relative z-10 mx-auto max-w-3xl text-center">
             <FadeIn>
               <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-                まずはお気軽にご相談ください
+                「うちでも使えるかな？」
+                <br />
+                <span className="text-blue-200">まずは気軽にご相談ください</span>
               </h2>
-              <p className="mx-auto mt-4 max-w-lg text-blue-100/80">
-                「うちの店でも使える？」「まずは1つだけ試したい」——
-                どんなご質問でもお気軽にどうぞ。
+              <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-blue-100/80">
+                「1つだけ試したい」「まずは話を聞きたい」
+                <br />
+                なんでもお気軽にどうぞ。
               </p>
               <div className="mt-10">
                 <a
@@ -381,33 +411,62 @@ export default function Home() {
   );
 }
 
-/* ─── Bento Card ─── */
-function BentoCard({
-  product,
-  large,
-}: {
-  product: (typeof PRODUCTS)[number];
-  large?: boolean;
-}) {
-  return (
-    <div
-      className={`group relative h-full overflow-hidden rounded-2xl border border-gray-200/60 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-        large ? "p-8 md:p-10" : "p-6 md:p-8"
-      }`}
-    >
-      {/* Gradient accent top */}
-      <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${product.color}`} />
+/* ─── Solution Card Component ─── */
+const ACCENT_MAP: Record<string, { border: string; bg: string; text: string; iconBg: string; painBg: string; painBorder: string }> = {
+  blue:    { border: "border-blue-200/60", bg: "bg-blue-500", text: "text-blue-600", iconBg: "bg-blue-500/10", painBg: "bg-orange-50", painBorder: "border-orange-200/60" },
+  amber:   { border: "border-amber-200/60", bg: "bg-amber-500", text: "text-amber-600", iconBg: "bg-amber-500/10", painBg: "bg-orange-50", painBorder: "border-orange-200/60" },
+  emerald: { border: "border-emerald-200/60", bg: "bg-emerald-500", text: "text-emerald-600", iconBg: "bg-emerald-500/10", painBg: "bg-orange-50", painBorder: "border-orange-200/60" },
+  violet:  { border: "border-violet-200/60", bg: "bg-violet-500", text: "text-violet-600", iconBg: "bg-violet-500/10", painBg: "bg-orange-50", painBorder: "border-orange-200/60" },
+  pink:    { border: "border-pink-200/60", bg: "bg-pink-500", text: "text-pink-600", iconBg: "bg-pink-500/10", painBg: "bg-orange-50", painBorder: "border-orange-200/60" },
+};
 
-      <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${product.lightBg}`}>
-        <product.icon className={`h-6 w-6 ${product.textColor}`} />
+function SolutionCard({
+  icon,
+  name,
+  tagline,
+  accentColor,
+  pain,
+  solution,
+}: {
+  icon: React.ReactNode;
+  name: string;
+  tagline: string;
+  accentColor: string;
+  pain: React.ReactNode;
+  solution: React.ReactNode;
+}) {
+  const a = ACCENT_MAP[accentColor] || ACCENT_MAP.blue;
+
+  return (
+    <div className="relative">
+      {/* Product badge */}
+      <div className="mb-6 flex items-center gap-3">
+        <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${a.iconBg} ${a.text}`}>
+          {icon}
+        </div>
+        <div>
+          <p className="text-lg font-bold">{name}</p>
+          <p className="text-sm text-gray-400">{tagline}</p>
+        </div>
       </div>
-      <h3 className={`mt-5 font-bold ${large ? "text-xl" : "text-lg"}`}>
-        {product.name}
-      </h3>
-      <p className="mt-1 text-sm font-medium text-gray-400">{product.tagline}</p>
-      <p className={`mt-3 leading-relaxed text-gray-500 ${large ? "text-base" : "text-sm"}`}>
-        {product.description}
-      </p>
+
+      <div className="grid gap-4 md:grid-cols-2">
+        {/* Pain */}
+        <div className={`rounded-2xl border ${a.painBorder} ${a.painBg} p-6`}>
+          <p className="mb-3 text-xs font-bold tracking-wider text-orange-500 uppercase">こんな悩み、ありませんか？</p>
+          <p className="text-[15px] leading-relaxed text-gray-700">
+            {pain}
+          </p>
+        </div>
+
+        {/* Solution */}
+        <div className={`rounded-2xl border border-gray-200/60 bg-white p-6 shadow-sm`}>
+          <p className={`mb-3 text-xs font-bold tracking-wider uppercase ${a.text}`}>{name}なら</p>
+          <div className="text-[15px] leading-relaxed text-gray-700">
+            {solution}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
