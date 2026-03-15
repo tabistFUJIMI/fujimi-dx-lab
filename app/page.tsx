@@ -143,6 +143,7 @@ export default function Home() {
                   imageSrc="/images/reserve-navi.jpg"
                   imageAlt="Reserve Navi 予約管理イメージ"
                   reverse={false}
+                  detailHref="/products/reserve-navi"
                   pain={
                     <>
                       予約システム、、、<strong>高すぎる。</strong>
@@ -176,6 +177,7 @@ export default function Home() {
                   imageSrc="/images/ask-navi.jpg"
                   imageAlt="AskNavi LINE AI応答イメージ"
                   reverse={true}
+                  detailHref="/products/ask-navi"
                   pain={
                     <>
                       公式LINEの運用をしたい！
@@ -209,6 +211,7 @@ export default function Home() {
                   imageSrc="/images/shift-navi.jpg"
                   imageAlt="ShiftNavi シフト管理イメージ"
                   reverse={false}
+                  detailHref="/products/shift-navi"
                   pain={
                     <>
                       シフト調整って<strong>すごく時間かかる。</strong>
@@ -242,6 +245,7 @@ export default function Home() {
                   imageSrc="/images/rule-navi.jpg"
                   imageAlt="RuleNavi 社内規則AI検索イメージ"
                   reverse={true}
+                  detailHref="/products/rule-navi"
                   pain={
                     <>
                       就業規則。マニュアル。
@@ -276,6 +280,7 @@ export default function Home() {
                   imageSrc="/images/social-navi.jpg"
                   imageAlt="SocialNavi SNS一元管理イメージ"
                   reverse={false}
+                  detailHref="/products/social-navi"
                   pain={
                     <>
                       SNSは大切！更新も返信もしっかりやらなくちゃ！
@@ -452,6 +457,7 @@ function SolutionSection({
   reverse,
   pain,
   solution,
+  detailHref,
 }: {
   icon: React.ReactNode;
   name: string;
@@ -462,6 +468,7 @@ function SolutionSection({
   reverse: boolean;
   pain: React.ReactNode;
   solution: React.ReactNode;
+  detailHref?: string;
 }) {
   const a = ACCENT_MAP[accentColor] || ACCENT_MAP.blue;
 
@@ -504,6 +511,16 @@ function SolutionSection({
           <p className={`mb-2 text-xs font-bold tracking-wider uppercase ${a.text}`}>{name}なら</p>
           <div className="text-[15px] leading-relaxed text-gray-700">{solution}</div>
         </div>
+
+        {/* 詳細ページリンク */}
+        {detailHref && (
+          <a
+            href={detailHref}
+            className={`mt-4 inline-flex items-center gap-1 text-sm font-semibold transition-colors ${a.text} hover:opacity-80`}
+          >
+            {name}の詳細を見る →
+          </a>
+        )}
       </div>
     </div>
   );

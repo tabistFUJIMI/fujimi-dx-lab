@@ -17,9 +17,18 @@ export default function Footer() {
               プロダクト
             </p>
             <ul className="space-y-2 text-sm">
-              {["FUJIMIN PASS", "Reserve Navi", "ShiftNavi", "RuleNavi", "SocialNavi", "AskNavi"].map((name) => (
-                <li key={name} className="text-slate-500 transition-colors hover:text-slate-300">
-                  {name}
+              {[
+                { name: "FUJIMIN PASS", href: "/products/fujimin-pass" },
+                { name: "Reserve Navi", href: "/products/reserve-navi" },
+                { name: "ShiftNavi", href: "/products/shift-navi" },
+                { name: "RuleNavi", href: "/products/rule-navi" },
+                { name: "SocialNavi", href: "/products/social-navi" },
+                { name: "AskNavi", href: "/products/ask-navi" },
+              ].map((item) => (
+                <li key={item.name}>
+                  <a href={item.href} className="text-slate-500 transition-colors hover:text-slate-300">
+                    {item.name}
+                  </a>
                 </li>
               ))}
             </ul>
