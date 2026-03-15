@@ -1,48 +1,48 @@
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-400">
-      <div className="mx-auto max-w-6xl px-4 py-12">
-        <div className="grid gap-8 md:grid-cols-3">
+    <footer className="bg-slate-950 text-slate-400">
+      <div className="mx-auto max-w-6xl px-4 py-14 lg:px-8">
+        <div className="grid gap-10 md:grid-cols-3">
           <div>
             <p className="text-lg font-bold text-white">FUJIMI DX Lab</p>
-            <p className="mt-2 text-sm">
+            <p className="mt-2 text-sm text-slate-500">
               ふじみ企業有限会社 FUJIMI DX Lab事業部
             </p>
-            <p className="mt-1 text-sm">宿泊業のDXを、現場から。</p>
+            <p className="mt-1 text-sm text-slate-500">
+              小さなお店のDXを、現場から。
+            </p>
           </div>
           <div>
-            <p className="mb-3 text-sm font-semibold text-white">
+            <p className="mb-3 text-xs font-semibold tracking-wider text-slate-300 uppercase">
               プロダクト
             </p>
             <ul className="space-y-2 text-sm">
-              <li>FUJIMIN PASS</li>
-              <li>Reserve Navi</li>
-              <li>ShiftNavi</li>
-              <li>RuleNavi</li>
-              <li>SocialNavi</li>
-              <li>AskNavi</li>
+              {["FUJIMIN PASS", "Reserve Navi", "ShiftNavi", "RuleNavi", "SocialNavi", "AskNavi"].map((name) => (
+                <li key={name} className="text-slate-500 transition-colors hover:text-slate-300">
+                  {name}
+                </li>
+              ))}
             </ul>
           </div>
           <div>
-            <p className="mb-3 text-sm font-semibold text-white">
+            <p className="mb-3 text-xs font-semibold tracking-wider text-slate-300 uppercase">
               お問い合わせ
             </p>
             <ul className="space-y-2 text-sm">
               <li>
                 <a
                   href="mailto:support@mail.fujimin-pass.com"
-                  className="transition-colors hover:text-white"
+                  className="text-slate-500 transition-colors hover:text-slate-300"
                 >
                   support@mail.fujimin-pass.com
                 </a>
               </li>
-              <li>平日 10:00〜17:00</li>
+              <li className="text-slate-500">平日 10:00〜17:00</li>
             </ul>
           </div>
         </div>
-        <div className="mt-10 border-t border-gray-800 pt-6 text-center text-xs">
-          &copy; {new Date().getFullYear()} ふじみ企業有限会社 All rights
-          reserved.
+        <div className="mt-12 border-t border-slate-800/50 pt-6 text-center text-xs text-slate-600">
+          &copy; {new Date().getFullYear()} ふじみ企業有限会社 All rights reserved.
         </div>
       </div>
     </footer>

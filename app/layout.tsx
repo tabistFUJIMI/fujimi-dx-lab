@@ -11,22 +11,22 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "FUJIMI DX Lab | 宿泊業のDXを、現場から。",
+  title: "FUJIMI DX Lab | 小さなお店のDXを、現場から。",
   description:
-    "ゆ縁の宿ふじみが自ら開発した宿泊業向けDXプラットフォーム。予約管理・シフト管理・社内規則検索・SNS運用・LINE活用を、FUJIMIN PASSエコシステムでまるごと支援します。",
+    "小規模事業者のための統合DXプラットフォーム「FUJIMIN PASS」。予約管理・シフト管理・社内規則検索・SNS運用・LINE活用を、ひとつのアカウントでまるごとカバーします。",
   openGraph: {
-    title: "FUJIMI DX Lab | 宿泊業のDXを、現場から。",
+    title: "FUJIMI DX Lab | 小さなお店のDXを、現場から。",
     description:
-      "ゆ縁の宿ふじみが自ら開発した宿泊業向けDXプラットフォーム。FUJIMIN PASSエコシステムで業務をまるごとDX。",
+      "小規模事業者のための統合DXプラットフォーム。FUJIMIN PASSエコシステムで業務をまるごとDX。",
     type: "website",
     locale: "ja_JP",
     siteName: "FUJIMI DX Lab",
   },
   twitter: {
     card: "summary_large_image",
-    title: "FUJIMI DX Lab | 宿泊業のDXを、現場から。",
+    title: "FUJIMI DX Lab | 小さなお店のDXを、現場から。",
     description:
-      "ゆ縁の宿ふじみが自ら開発した宿泊業向けDXプラットフォーム。",
+      "小規模事業者のための統合DXプラットフォーム「FUJIMIN PASS」。",
   },
 };
 

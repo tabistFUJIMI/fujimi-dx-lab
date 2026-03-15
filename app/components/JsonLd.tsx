@@ -5,7 +5,7 @@ export default function JsonLd() {
     name: "FUJIMI DX Lab",
     legalName: "ふじみ企業有限会社",
     description:
-      "宿泊業向けDXプラットフォーム「FUJIMIN PASS」の開発・提供",
+      "小規模事業者向けDXプラットフォーム「FUJIMIN PASS」の開発・提供",
     email: "support@mail.fujimin-pass.com",
     address: {
       "@type": "PostalAddress",
