@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FadeIn from "./components/FadeIn";
@@ -38,65 +39,85 @@ export default function Home() {
       <Header />
       <main>
         {/* ═══ Hero ═══ */}
-        <section className="noise relative min-h-[100vh] overflow-hidden bg-mesh-hero px-4 pt-32 pb-20 text-white md:pt-44 md:pb-32">
+        <section className="noise relative min-h-[100vh] overflow-hidden bg-mesh-hero px-4 pt-32 pb-20 text-white md:pt-40 md:pb-28">
           <div className="relative z-10 mx-auto max-w-6xl">
-            <FadeIn>
-              <p className="mb-5 inline-block rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-1.5 text-sm text-blue-300 backdrop-blur-sm">
-                ひとつからはじめられるDX
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <h1 className="text-gradient text-4xl font-extrabold tracking-tight md:text-6xl lg:text-7xl" style={{ lineHeight: 1.1 }}>
-                「これ、もっと
-                <br />
-                ラクにならないかな？」
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="mt-8 max-w-xl text-lg leading-relaxed text-slate-300 md:text-xl">
-                予約の電話、シフト調整、マニュアル探し、SNS更新、LINE対応——
-                <br className="hidden md:block" />
-                <strong className="text-white">ぜんぶ、ひとつずつ解決できます。</strong>
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.25}>
-              <p className="mt-4 text-base text-slate-400">
-                必要なものだけ、1つから。あなたのペースではじめるDX。
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.3}>
-              <div className="mt-8 flex flex-wrap gap-2">
-                {TARGET_INDUSTRIES.map((t) => (
-                  <span key={t.label} className="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm backdrop-blur-sm">
-                    {t.icon} {t.label}
-                  </span>
-                ))}
+            <div className="grid items-center gap-12 lg:grid-cols-2">
+              {/* Left: Copy */}
+              <div>
+                <FadeIn>
+                  <p className="mb-5 inline-block rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-1.5 text-sm text-blue-300 backdrop-blur-sm">
+                    ひとつからはじめられるDX
+                  </p>
+                </FadeIn>
+                <FadeIn delay={0.1}>
+                  <h1 className="text-gradient text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl" style={{ lineHeight: 1.1 }}>
+                    「この時間、もっと
+                    <br />
+                    お客様に使えないかな？」
+                  </h1>
+                </FadeIn>
+                <FadeIn delay={0.2}>
+                  <p className="mt-8 max-w-lg text-lg leading-relaxed text-slate-300">
+                    予約の電話、シフト調整、マニュアル探し、SNS更新——
+                    <br />
+                    <strong className="text-white">ぜんぶ、ひとつずつ解決できます。</strong>
+                  </p>
+                </FadeIn>
+                <FadeIn delay={0.25}>
+                  <p className="mt-3 text-base text-slate-400">
+                    必要なものだけ、1つから。あなたのペースではじめるDX。
+                  </p>
+                </FadeIn>
+                <FadeIn delay={0.3}>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {TARGET_INDUSTRIES.map((t) => (
+                      <span key={t.label} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm backdrop-blur-sm">
+                        {t.icon} {t.label}
+                      </span>
+                    ))}
+                  </div>
+                </FadeIn>
+                <FadeIn delay={0.35}>
+                  <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                    <a
+                      href="#solutions"
+                      className="glow-blue glow-blue-hover inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-base font-bold text-gray-900 transition-all duration-300 hover:scale-105 active:scale-[0.98]"
+                    >
+                      こんな課題、ありませんか？
+                    </a>
+                    <a
+                      href="#contact"
+                      className="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
+                    >
+                      お問い合わせ
+                    </a>
+                  </div>
+                </FadeIn>
               </div>
-            </FadeIn>
-            <FadeIn delay={0.4}>
-              <div className="mt-12 flex flex-col gap-4 sm:flex-row">
-                <a
-                  href="#solutions"
-                  className="glow-blue glow-blue-hover inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-base font-bold text-gray-900 transition-all duration-300 hover:scale-105 active:scale-[0.98]"
-                >
-                  こんな課題、ありませんか？
-                </a>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
-                >
-                  お問い合わせ
-                </a>
-              </div>
-            </FadeIn>
+              {/* Right: Hero illustration */}
+              <FadeIn delay={0.2} className="hidden lg:block">
+                <div className="relative">
+                  <Image
+                    src="/images/hero-illustration.jpg"
+                    alt="小規模事業者のDXイメージ"
+                    width={600}
+                    height={400}
+                    className="rounded-2xl"
+                    priority
+                  />
+                  {/* Glow behind image */}
+                  <div className="absolute inset-0 -z-10 rounded-2xl bg-blue-500/20 blur-3xl" />
+                </div>
+              </FadeIn>
+            </div>
           </div>
           <div className="pointer-events-none absolute top-1/4 right-0 h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-[120px]" />
           <div className="pointer-events-none absolute bottom-0 left-1/4 h-[400px] w-[400px] rounded-full bg-purple-500/10 blur-[120px]" />
         </section>
 
-        {/* ═══ Solutions - 各プロダクトのストーリー ═══ */}
+        {/* ═══ Solutions ═══ */}
         <section id="solutions" className="px-4 py-24 md:py-32">
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-5xl">
             <FadeIn>
               <div className="text-center">
                 <p className="text-sm font-semibold tracking-[0.15em] text-primary uppercase">Solutions</p>
@@ -111,14 +132,17 @@ export default function Home() {
               </div>
             </FadeIn>
 
-            <div className="mt-16 space-y-20">
+            <div className="mt-20 space-y-28">
               {/* ── Reserve Navi ── */}
               <FadeIn>
-                <SolutionCard
+                <SolutionSection
                   icon={<IconCalendar className="h-7 w-7" />}
                   name="Reserve Navi"
                   tagline="予約管理"
                   accentColor="blue"
+                  imageSrc="/images/reserve-navi.jpg"
+                  imageAlt="Reserve Navi 予約管理イメージ"
+                  reverse={false}
                   pain={
                     <>
                       予約システム、、、<strong>高すぎる。</strong>
@@ -134,9 +158,8 @@ export default function Home() {
                       <p className="mt-3">
                         とにかく<strong>シンプル</strong>。そして<strong>徹底的に業界対応</strong>。
                       </p>
-                      <p className="mt-3 text-gray-500">
-                        なぜなら、業界の方の要望から作成している予約システムだから。
-                        業種ごとのフォーマットになっていますが、皆様のお声からさらに今後もアップデート予定！
+                      <p className="mt-3 text-sm text-gray-500">
+                        業界の方の要望から作成しているから、現場にフィット。業種ごとのフォーマットで、さらにアップデート予定！
                       </p>
                     </>
                   }
@@ -145,11 +168,14 @@ export default function Home() {
 
               {/* ── AskNavi ── */}
               <FadeIn>
-                <SolutionCard
+                <SolutionSection
                   icon={<IconChat className="h-7 w-7" />}
                   name="AskNavi"
                   tagline="LINE AI応答"
                   accentColor="amber"
+                  imageSrc="/images/ask-navi.jpg"
+                  imageAlt="AskNavi LINE AI応答イメージ"
+                  reverse={true}
                   pain={
                     <>
                       公式LINEの運用をしたい！
@@ -163,13 +189,10 @@ export default function Home() {
                     <>
                       <p>
                         予約システムと連動した公式LINE運用を、<strong>手軽に、お得に</strong>。
+                        AIに考えてもらうこともできる！
                       </p>
-                      <p className="mt-3">
-                        自分だけでやってるし、できればAIに考えてもらったりできると助かる！
-                      </p>
-                      <p className="mt-3 text-gray-500">
-                        それにお客様からの問い合わせ電話が接客中や施術中にかかってくると、なかなかゆっくりは対応できない。
-                        だからこそ、<strong className="text-gray-700">私の代わりにAIが公式LINEで答えてくれる！</strong>
+                      <p className="mt-3 text-sm text-gray-500">
+                        接客中・施術中のお問い合わせ電話にも、<strong className="text-gray-700">AIが公式LINEで代わりに答えてくれる。</strong>
                       </p>
                     </>
                   }
@@ -178,11 +201,14 @@ export default function Home() {
 
               {/* ── ShiftNavi ── */}
               <FadeIn>
-                <SolutionCard
+                <SolutionSection
                   icon={<IconClock className="h-7 w-7" />}
                   name="ShiftNavi"
                   tagline="シフト管理"
                   accentColor="emerald"
+                  imageSrc="/images/shift-navi.jpg"
+                  imageAlt="ShiftNavi シフト管理イメージ"
+                  reverse={false}
                   pain={
                     <>
                       シフト調整って<strong>すごく時間かかる。</strong>
@@ -193,13 +219,12 @@ export default function Home() {
                   solution={
                     <>
                       <p>
-                        <strong>まるごとデジタルに！</strong>
+                        <strong>まるごとデジタルに！</strong>休み希望は従業員さんからスマホで簡単に。
                       </p>
                       <p className="mt-3">
-                        休み希望は従業員さんからスマホで簡単に。
-                        シフトの作成もまずは<strong>AIでワンタッチ作成！</strong>
+                        シフト作成もまずは<strong>AIでワンタッチ作成！</strong>
                       </p>
-                      <p className="mt-3 text-gray-500">
+                      <p className="mt-3 text-sm text-gray-500">
                         シフト公開も簡単！もちろんA4で印刷だってできちゃう！
                       </p>
                     </>
@@ -209,11 +234,14 @@ export default function Home() {
 
               {/* ── RuleNavi ── */}
               <FadeIn>
-                <SolutionCard
+                <SolutionSection
                   icon={<IconDocument className="h-7 w-7" />}
                   name="RuleNavi"
                   tagline="社内規則AI検索"
                   accentColor="violet"
+                  imageSrc="/images/rule-navi.jpg"
+                  imageAlt="RuleNavi 社内規則AI検索イメージ"
+                  reverse={true}
                   pain={
                     <>
                       就業規則。マニュアル。
@@ -226,15 +254,12 @@ export default function Home() {
                   solution={
                     <>
                       <p>
-                        AIがあなたの会社の規則や知識、マニュアルを<strong>わかりやすく答えます</strong>。
+                        AIがあなたの会社の規則やマニュアルを<strong>わかりやすく答えます</strong>。
                         自然な会話で教えてくれる。
                       </p>
-                      <p className="mt-3">
-                        わからないことや微妙なケースは「直接聞いてくださいね」と促してくれます。
-                      </p>
-                      <p className="mt-3 text-gray-500">
-                        さらに、質問されて答えられなかったことは管理者のあなたが確認して知識として簡単に追加できるので、
-                        <strong className="text-gray-700">どんどんなんでも答える、頼れる相棒に</strong>なっていきます。
+                      <p className="mt-3 text-sm text-gray-500">
+                        答えられなかった質問は管理者が簡単に知識追加。
+                        <strong className="text-gray-700">どんどん頼れる相棒に</strong>なっていきます。
                       </p>
                     </>
                   }
@@ -243,31 +268,31 @@ export default function Home() {
 
               {/* ── SocialNavi ── */}
               <FadeIn>
-                <SolutionCard
+                <SolutionSection
                   icon={<IconShare className="h-7 w-7" />}
                   name="SocialNavi"
                   tagline="SNS一元管理"
                   accentColor="pink"
+                  imageSrc="/images/social-navi.jpg"
+                  imageAlt="SocialNavi SNS一元管理イメージ"
+                  reverse={false}
                   pain={
                     <>
                       SNSは大切！更新も返信もしっかりやらなくちゃ！
                       <br />
                       わかるんです。<strong>やらなきゃいけないってことは。</strong>
                       <br />
-                      でもなかなか手が動かない。担当者なんてつけられないし、SNS運用には手が出せない。
+                      でもなかなか手が動かない。担当者なんてつけられないし。
                     </>
                   }
                   solution={
                     <>
                       <p>
                         <strong>だからこそDX。</strong>
+                        X、Facebook、Instagram、Threads、TikTokを<strong>まとめて管理</strong>。
                       </p>
-                      <p className="mt-3">
-                        SocialNaviはX、Facebook、Instagram、Threads、TikTokを<strong>まとめて管理</strong>。
-                        コメント返信や投稿もここからかんたんに！
-                      </p>
-                      <p className="mt-3 text-gray-500">
-                        AIの力もつかって自動化も可能。「手が回らない」を卒業できます。
+                      <p className="mt-3 text-sm text-gray-500">
+                        コメント返信や投稿もここからかんたんに。AIの力で自動化も可能！
                       </p>
                     </>
                   }
@@ -277,7 +302,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═══ Why FUJIMI DX Lab ═══ */}
+        {/* ═══ Why Us ═══ */}
         <section className="bg-slate-50 px-4 py-24 md:py-32">
           <div className="mx-auto max-w-4xl">
             <FadeIn>
@@ -306,8 +331,7 @@ export default function Home() {
                     私たちは静岡県富士市で小さなビジネスホテルを運営しています。
                   </p>
                   <p>
-                    少人数で回しているからこそ、<strong className="text-gray-800">「もっとラクにならないかな」</strong>の連続でした。
-                    予約の電話対応、Excelのシフト表、紙の就業規則——。
+                    少人数で回しているからこそ、<strong className="text-gray-800">「この時間、もっとお客様に使えないかな」</strong>の連続でした。
                   </p>
                   <p>
                     既存のDXツールを探しても、大企業向けで高すぎたり、機能が多すぎたり。
@@ -316,13 +340,8 @@ export default function Home() {
                   <p>
                     だから、自分たちで作りました。
                   </p>
-                  <p>
-                    自分たちが毎日使うから、<strong className="text-gray-800">本当に必要な機能だけ</strong>を、
-                    <strong className="text-gray-800">本当に使いやすい形</strong>で。
-                  </p>
                   <p className="text-gray-800 font-medium">
                     同じ悩みを持つお店に、この仕組みを届けたい。
-                    <br />
                     それがFUJIMI DX Labです。
                   </p>
                 </div>
@@ -353,9 +372,7 @@ export default function Home() {
             <FadeIn>
               <div className="text-center">
                 <p className="text-sm font-semibold tracking-[0.15em] text-primary uppercase">Company</p>
-                <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
-                  会社情報
-                </h2>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">会社情報</h2>
               </div>
             </FadeIn>
             <FadeIn>
@@ -416,20 +433,23 @@ export default function Home() {
   );
 }
 
-/* ─── Solution Card Component ─── */
-const ACCENT_MAP: Record<string, { border: string; bg: string; text: string; iconBg: string; painBg: string; painBorder: string }> = {
-  blue:    { border: "border-blue-200/60", bg: "bg-blue-500", text: "text-blue-600", iconBg: "bg-blue-500/10", painBg: "bg-orange-50", painBorder: "border-orange-200/60" },
-  amber:   { border: "border-amber-200/60", bg: "bg-amber-500", text: "text-amber-600", iconBg: "bg-amber-500/10", painBg: "bg-orange-50", painBorder: "border-orange-200/60" },
-  emerald: { border: "border-emerald-200/60", bg: "bg-emerald-500", text: "text-emerald-600", iconBg: "bg-emerald-500/10", painBg: "bg-orange-50", painBorder: "border-orange-200/60" },
-  violet:  { border: "border-violet-200/60", bg: "bg-violet-500", text: "text-violet-600", iconBg: "bg-violet-500/10", painBg: "bg-orange-50", painBorder: "border-orange-200/60" },
-  pink:    { border: "border-pink-200/60", bg: "bg-pink-500", text: "text-pink-600", iconBg: "bg-pink-500/10", painBg: "bg-orange-50", painBorder: "border-orange-200/60" },
+/* ─── Solution Section（画像付き左右交互レイアウト） ─── */
+const ACCENT_MAP: Record<string, { text: string; iconBg: string; painBg: string; painBorder: string }> = {
+  blue:    { text: "text-blue-600", iconBg: "bg-blue-500/10", painBg: "bg-orange-50", painBorder: "border-orange-200/60" },
+  amber:   { text: "text-amber-600", iconBg: "bg-amber-500/10", painBg: "bg-orange-50", painBorder: "border-orange-200/60" },
+  emerald: { text: "text-emerald-600", iconBg: "bg-emerald-500/10", painBg: "bg-orange-50", painBorder: "border-orange-200/60" },
+  violet:  { text: "text-violet-600", iconBg: "bg-violet-500/10", painBg: "bg-orange-50", painBorder: "border-orange-200/60" },
+  pink:    { text: "text-pink-600", iconBg: "bg-pink-500/10", painBg: "bg-orange-50", painBorder: "border-orange-200/60" },
 };
 
-function SolutionCard({
+function SolutionSection({
   icon,
   name,
   tagline,
   accentColor,
+  imageSrc,
+  imageAlt,
+  reverse,
   pain,
   solution,
 }: {
@@ -437,39 +457,52 @@ function SolutionCard({
   name: string;
   tagline: string;
   accentColor: string;
+  imageSrc: string;
+  imageAlt: string;
+  reverse: boolean;
   pain: React.ReactNode;
   solution: React.ReactNode;
 }) {
   const a = ACCENT_MAP[accentColor] || ACCENT_MAP.blue;
 
   return (
-    <div className="relative">
-      {/* Product badge */}
-      <div className="mb-6 flex items-center gap-3">
-        <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${a.iconBg} ${a.text}`}>
-          {icon}
-        </div>
-        <div>
-          <p className="text-lg font-bold">{name}</p>
-          <p className="text-sm text-gray-400">{tagline}</p>
+    <div className={`grid items-center gap-10 lg:grid-cols-2 ${reverse ? "lg:direction-rtl" : ""}`}>
+      {/* Image side */}
+      <div className={`${reverse ? "lg:order-2" : ""}`}>
+        <div className="relative overflow-hidden rounded-2xl bg-slate-100">
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            width={560}
+            height={560}
+            className="h-auto w-full"
+          />
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
+      {/* Content side */}
+      <div className={`${reverse ? "lg:order-1" : ""}`}>
+        {/* Product badge */}
+        <div className="mb-5 flex items-center gap-3">
+          <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${a.iconBg} ${a.text}`}>
+            {icon}
+          </div>
+          <div>
+            <p className="text-lg font-bold">{name}</p>
+            <p className="text-sm text-gray-400">{tagline}</p>
+          </div>
+        </div>
+
         {/* Pain */}
-        <div className={`rounded-2xl border ${a.painBorder} ${a.painBg} p-6`}>
-          <p className="mb-3 text-xs font-bold tracking-wider text-orange-500 uppercase">こんな悩み、ありませんか？</p>
-          <p className="text-[15px] leading-relaxed text-gray-700">
-            {pain}
-          </p>
+        <div className={`rounded-2xl border ${a.painBorder} ${a.painBg} p-5 mb-4`}>
+          <p className="mb-2 text-xs font-bold tracking-wider text-orange-500 uppercase">こんな悩み、ありませんか？</p>
+          <p className="text-[15px] leading-relaxed text-gray-700">{pain}</p>
         </div>
 
         {/* Solution */}
-        <div className={`rounded-2xl border border-gray-200/60 bg-white p-6 shadow-sm`}>
-          <p className={`mb-3 text-xs font-bold tracking-wider uppercase ${a.text}`}>{name}なら</p>
-          <div className="text-[15px] leading-relaxed text-gray-700">
-            {solution}
-          </div>
+        <div className="rounded-2xl border border-gray-200/60 bg-white p-5 shadow-sm">
+          <p className={`mb-2 text-xs font-bold tracking-wider uppercase ${a.text}`}>{name}なら</p>
+          <div className="text-[15px] leading-relaxed text-gray-700">{solution}</div>
         </div>
       </div>
     </div>
