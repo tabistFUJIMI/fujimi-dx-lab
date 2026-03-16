@@ -326,7 +326,11 @@ export default function Home() {
                     🏨
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold">Tabist ゆ縁の宿ふじみ</h3>
+                    <h3 className="text-lg font-bold">
+                      <a href="http://fujimi-ryokan.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                        Tabist ゆ縁の宿ふじみ
+                      </a>
+                    </h3>
                     <p className="mt-1 text-sm text-gray-500">静岡県富士市のビジネスホテル</p>
                   </div>
                 </div>
@@ -383,14 +387,14 @@ export default function Home() {
             <FadeIn>
               <div className="mx-auto mt-12 max-w-2xl rounded-2xl border border-gray-200/60 bg-white p-8">
                 <dl className="divide-y divide-gray-100">
-                  {[
+                  {([
                     ["会社名", "ふじみ企業有限会社"],
                     ["事業部", "FUJIMI DX Lab事業部"],
                     ["所在地", "静岡県富士市"],
                     ["事業内容", "小規模事業者向けDXツールの開発・提供"],
-                    ["運営施設", "Tabist ゆ縁の宿ふじみ（ビジネスホテル）"],
-                    ["メール", "support@mail.fujimin-pass.com"],
-                  ].map(([dt, dd]) => (
+                    ["運営施設", <a key="facility" href="http://fujimi-ryokan.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Tabist ゆ縁の宿ふじみ（ビジネスホテル）</a>],
+                    ["メール", <a key="email" href="mailto:support@mail.fujimin-pass.com" className="text-primary hover:underline">support@mail.fujimin-pass.com</a>],
+                  ] as [string, React.ReactNode][]).map(([dt, dd]) => (
                     <div key={dt} className="flex flex-col py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-center sm:gap-4">
                       <dt className="w-28 shrink-0 text-sm font-medium text-gray-400">{dt}</dt>
                       <dd className="text-sm text-gray-800">{dd}</dd>
@@ -426,7 +430,7 @@ export default function Home() {
                 </a>
               </div>
               <p className="mt-8 text-sm text-blue-200/70">
-                support@mail.fujimin-pass.com | 平日 10:00〜17:00
+                support@mail.fujimin-pass.com
               </p>
             </FadeIn>
           </div>

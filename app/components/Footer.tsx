@@ -46,7 +46,6 @@ export default function Footer() {
                   support@mail.fujimin-pass.com
                 </a>
               </li>
-              <li className="text-slate-500">平日 10:00〜17:00</li>
             </ul>
           </div>
         </div>
