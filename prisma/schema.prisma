@@ -1,0 +1,23 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  schemas  = ["fujimi_dx_lab_hp"]
+}
+
+model Contact {
+  id        String   @id @default(cuid())
+  type      String   // お問い合わせ種別
+  name      String
+  email     String
+  company   String?  // 会社名/店舗名
+  message   String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("contacts")
+  @@schema("fujimi_dx_lab_hp")
+}
