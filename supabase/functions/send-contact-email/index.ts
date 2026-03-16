@@ -1,8 +1,6 @@
-import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
-import { SmtpClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
+import nodemailer from "npm:nodemailer@6";
 
-serve(async (req) => {
-  // Database Webhook から呼ばれる
+Deno.serve(async (req) => {
   if (req.method !== "POST") {
     return new Response("Method not allowed", { status: 405 });
   }
@@ -17,26 +15,25 @@ serve(async (req) => {
 
     const { type, name, email, company, message } = record;
 
-    const smtpHost = Deno.env.get("SMTP_HOST")!;
-    const smtpPort = Number(Deno.env.get("SMTP_PORT") || "465");
-    const smtpUser = Deno.env.get("SMTP_USER")!;
-    const smtpPass = Deno.env.get("SMTP_PASS")!;
-
-    const client = new SmtpClient();
-
-    await client.connectTLS({
-      hostname: smtpHost,
-      port: smtpPort,
-      username: smtpUser,
-      password: smtpPass,
+    const transporter = nodemailer.createTransport({
+      host: Deno.env.get("SMTP_HOST"),
+      port: Number(Deno.env.get("SMTP_PORT") || "465"),
+      secure: true,
+      auth: {
+        user: Deno.env.get("SMTP_USER"),
+        pass: Deno.env.get("SMTP_PASS"),
+      },
     });
 
+    const smtpUser = Deno.env.get("SMTP_USER")!;
+
     // 管理者への通知メール
-    await client.send({
-      from: smtpUser,
+    await transporter.sendMail({
+      from: `"FUJIMI DX Lab お問い合わせ" <${smtpUser}>`,
       to: smtpUser,
+      replyTo: email,
       subject: `【お問い合わせ】${type} - ${name}様`,
-      content: [
+      text: [
         `お問い合わせ種別: ${type}`,
         `お名前: ${name}`,
         `メールアドレス: ${email}`,
@@ -48,11 +45,11 @@ serve(async (req) => {
     });
 
     // 送信者への自動返信
-    await client.send({
-      from: smtpUser,
+    await transporter.sendMail({
+      from: `"FUJIMI DX Lab" <${smtpUser}>`,
       to: email,
       subject: "【FUJIMI DX Lab】お問い合わせありがとうございます",
-      content: [
+      text: [
         `${name} 様`,
         "",
         "お問い合わせいただきありがとうございます。",
@@ -72,8 +69,6 @@ serve(async (req) => {
         "support@mail.fujimin-pass.com",
       ].join("\n"),
     });
-
-    await client.close();
 
     return new Response(JSON.stringify({ success: true }), {
       headers: { "Content-Type": "application/json" },
