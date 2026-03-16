@@ -2,6 +2,7 @@ import Image from "next/image";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FadeIn from "./components/FadeIn";
+import ContactForm from "./components/ContactForm";
 
 /* ─── Icons ─── */
 function IconCalendar({ className }: { className?: string }) {
@@ -421,17 +422,8 @@ export default function Home() {
                 なんでもお気軽にどうぞ。
               </p>
               <div className="mt-10">
-                <a
-                  href="mailto:support@mail.fujimin-pass.com"
-                  className="glow-blue inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold text-gray-900 transition-all duration-300 hover:scale-105 active:scale-[0.98]"
-                >
-                  メールで問い合わせ
-                  <IconArrowRight className="h-4 w-4" />
-                </a>
+                <ContactForm />
               </div>
-              <p className="mt-8 text-sm text-blue-200/70">
-                support@mail.fujimin-pass.com
-              </p>
             </FadeIn>
           </div>
           <div className="pointer-events-none absolute top-0 left-0 h-full w-full bg-gradient-to-b from-black/10 to-transparent" />
