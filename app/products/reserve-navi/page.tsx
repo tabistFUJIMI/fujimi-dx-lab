@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
 
 export const metadata: Metadata = {
@@ -344,16 +345,8 @@ export default function ReserveNaviPage() {
                 なんでもお気軽にどうぞ。
               </p>
               <div className="mt-10">
-                <a
-                  href="mailto:support@mail.fujimin-pass.com"
-                  className="glow-blue inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold text-gray-900 transition-all duration-300 hover:scale-105 active:scale-[0.98]"
-                >
-                  メールで問い合わせ →
-                </a>
+                <ContactForm />
               </div>
-              <p className="mt-6 text-sm text-blue-200/70">
-                support@mail.fujimin-pass.com | 平日 10:00〜17:00
-              </p>
             </FadeIn>
           </div>
         </section>
