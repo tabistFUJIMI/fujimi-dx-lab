@@ -61,7 +61,9 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="mx-auto max-w-lg space-y-5">
       {/* Inquiry Type */}
-      <div className="flex flex-wrap gap-2">
+      <div>
+        <p className="mb-2 text-sm text-blue-100/80">お問い合わせ種別を選択してください <span className="text-blue-200">*</span></p>
+        <div className="flex flex-wrap gap-2">
         {INQUIRY_TYPES.map((t) => (
           <button
             key={t}
@@ -76,6 +78,7 @@ export default function ContactForm() {
             {t}
           </button>
         ))}
+        </div>
       </div>
 
       {/* Name & Email */}
