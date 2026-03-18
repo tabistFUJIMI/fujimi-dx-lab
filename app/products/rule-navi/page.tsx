@@ -50,7 +50,7 @@ const PLANS = [
     ],
   },
   {
-    name: "エンタープライズ", price: "¥5,500", period: "/月", description: "大規模組織に", color: "#581c87", bgColor: "#faf5ff",
+    name: "エンタープライズ", price: "¥5,500", period: "/月", description: "AIを社内インフラに", color: "#581c87", bgColor: "#faf5ff",
     features: [
       { label: "ナレッジ（登録情報）", value: "無制限" }, { label: "FUJIMINポイント", value: "月5,000pt（目安 約1,650回分）" }, { label: "AI検索（RAG）", value: "✓" },
       { label: "FAQ自動生成", value: "✓" }, { label: "匿名質問箱", value: "✓" }, { label: "パルスチェック", value: "✓" },

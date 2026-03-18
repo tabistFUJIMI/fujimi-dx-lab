@@ -72,7 +72,7 @@ const PLANS = [
     ],
   },
   {
-    name: "エンタープライズ", price: "¥5,500", period: "/月", description: "大規模運用に",
+    name: "エンタープライズ", price: "¥5,500", period: "/月", description: "複数店舗・多拠点に",
     color: "#134e4a", bgColor: "#f0fdfa",
     features: [
       { label: "ナレッジ（登録情報）", value: "無制限" },
