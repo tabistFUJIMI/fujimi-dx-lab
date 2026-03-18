@@ -8,10 +8,10 @@ import FadeIn from "../../components/FadeIn";
 export const metadata: Metadata = {
   title: "Ask Navi | LINE AI自動応答",
   description:
-    "公式LINEの問い合わせにAIが自動応答。ナレッジを登録するだけで、よくある質問を24時間自動で回答します。月額¥550〜。",
+    "公式LINEやWebサイトの問い合わせにAIが24時間自動応答。サロン・飲食店・クリニック・ジムなど顧客対応のあるお店に。月額¥550〜。Reserve Navi連携で無料付帯も。",
   openGraph: {
     title: "Ask Navi | LINE AI自動応答 - FUJIMI DX Lab",
-    description: "AIが公式LINEやWebサイトで24時間自動応答。月額¥550〜。",
+    description: "顧客対応のあるお店に。AIが公式LINEやWebで24時間自動応答。Reserve Navi連携で無料付帯も。",
     images: [{ url: "/images/ask-navi.jpg", width: 1200, height: 630, alt: "Ask Navi LINE AI自動応答" }],
   },
 };
@@ -117,8 +117,13 @@ export default function AskNaviPage() {
               <FadeIn delay={0.2}>
                 <p className="mt-4 max-w-lg leading-relaxed text-teal-100/80">
                   お店のナレッジを登録するだけで、AIが公式LINEやWebサイトで自動応答。
-                  <br /><span className="font-semibold text-white">月額¥550〜。今日から使えます。</span>
+                  <br /><span className="font-semibold text-white">月額¥550〜。Reserve Naviスタンダード以上なら無料付帯。</span>
                 </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {["サロン", "宿泊施設", "飲食店", "ジム", "ペットサロン", "クリニック", "不動産", "スクール"].map((label) => (
+                    <span key={label} className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs text-teal-100 backdrop-blur-sm">{label}</span>
+                  ))}
+                </div>
               </FadeIn>
               <FadeIn delay={0.25}>
                 <div className="mt-8 flex flex-wrap gap-4">
@@ -144,7 +149,7 @@ export default function AskNaviPage() {
                 <div className="h-full rounded-2xl border border-red-100 bg-red-50/50 p-7">
                   <p className="mb-5 text-sm font-bold tracking-wider text-red-400 uppercase">😥 いまの困りごと</p>
                   <ul className="space-y-3.5 text-[15px] leading-relaxed text-gray-700">
-                    {["同じ質問に何度も手動で返信している", "施術中・接客中にLINEの返信ができない", "営業時間外の問い合わせに対応できない", "HPのFAQを見てもらえず、結局LINEで聞かれる", "スタッフによって回答の質がバラバラ"].map((item, i) => (
+                    {["同じ質問に何度も手動で返信している", "接客中・対応中にLINEの返信ができない", "営業時間外の問い合わせに対応できない", "HPのFAQを見てもらえず、結局LINEで聞かれる", "スタッフによって回答の質がバラバラ"].map((item, i) => (
                       <li key={i} className="flex gap-2.5"><span className="shrink-0 text-red-300">✕</span>{item}</li>
                     ))}
                   </ul>
@@ -214,6 +219,46 @@ export default function AskNaviPage() {
           </div>
         </section>
 
+        {/* Reserve Navi連携 */}
+        <section className="px-4 py-24 md:py-32" style={{ backgroundColor: "#fafaf9" }}>
+          <div className="mx-auto max-w-4xl">
+            <FadeIn>
+              <div className="text-center">
+                <span className="inline-block rounded-full px-4 py-1 text-sm font-semibold" style={{ backgroundColor: "#fff7ed", color: "#f97316" }}>Reserve Navi 連携</span>
+                <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-4xl">
+                  予約管理と組み合わせると、もっと強力に
+                </h2>
+                <p className="mx-auto mt-4 max-w-lg text-gray-500">
+                  Reserve Naviのスタンダードプラン以上なら、Ask Naviのライトプランが無料で付いてきます。
+                </p>
+              </div>
+            </FadeIn>
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              <FadeIn delay={0.05}>
+                <div className="rounded-2xl border bg-white p-6 shadow-sm" style={{ borderColor: "#fed7aa" }}>
+                  <div className="text-2xl mb-3">📅 → 💬</div>
+                  <h3 className="font-bold text-sm">しばらく来ていないお客様にLINE送信</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-500">Reserve Naviの予約データから「最近来ていないお客様」を自動検知。Ask NaviのLINE配信機能でフォローメッセージを送れます。</p>
+                </div>
+              </FadeIn>
+              <FadeIn delay={0.1}>
+                <div className="rounded-2xl border bg-white p-6 shadow-sm" style={{ borderColor: "#fed7aa" }}>
+                  <div className="text-2xl mb-3">🤖</div>
+                  <h3 className="font-bold text-sm">予約の質問もAIが自動応答</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-500">「空いてる日ありますか？」「メニューの違いは？」といった予約前の質問に、AIが自動で回答。予約率アップにつながります。</p>
+                </div>
+              </FadeIn>
+              <FadeIn delay={0.15}>
+                <div className="rounded-2xl border bg-white p-6 shadow-sm" style={{ borderColor: "#fed7aa" }}>
+                  <div className="text-2xl mb-3">🎁</div>
+                  <h3 className="font-bold text-sm">スタンダード以上ならAsk Naviライトが無料</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-500">Reserve Naviのスタンダードプラン（¥3,300/月）以上をご契約いただくと、Ask Naviのライトプラン（¥550/月相当）が無料で付帯します。</p>
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+        </section>
+
         {/* Pricing */}
         <section id="pricing" className="px-4 py-24 md:py-32" style={{ backgroundColor: "#fafaf9" }}>
           <div className="mx-auto max-w-5xl">
@@ -260,13 +305,25 @@ export default function AskNaviPage() {
         {/* Best for */}
         <section className="px-4 py-24 md:py-32">
           <div className="mx-auto max-w-5xl">
-            <FadeIn><div className="text-center"><h2 className="text-3xl font-bold tracking-tight md:text-4xl">こんなお店に選ばれています</h2></div></FadeIn>
-            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <FadeIn>
+              <div className="text-center">
+                <h2 className="text-3xl font-bold tracking-tight md:text-4xl">「お客様対応」があるお店なら、全部使えます</h2>
+                <p className="mx-auto mt-4 max-w-lg text-gray-500">
+                  たとえばメニューの質問、料金の確認、営業時間の問い合わせ、予約前の相談…
+                  お客様とやりとりがあるお店なら、Ask Naviが24時間代わりに対応します。
+                </p>
+              </div>
+            </FadeIn>
+            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {[
-                { icon: "💆", title: "サロン・美容室", description: "メニューや料金の質問にAIが即回答。施術に集中できます。" },
+                { icon: "💆", title: "サロン・美容室", description: "メニューや料金の質問にAIが即回答。接客に集中できます。" },
                 { icon: "🏨", title: "宿泊施設", description: "チェックイン時間やアメニティの質問に24時間自動対応。" },
-                { icon: "🍽️", title: "飲食店・カフェ", description: "営業時間やメニューの問い合わせを自動化。予約もスムーズに。" },
-                { icon: "🏋️", title: "フィットネス・スクール", description: "レッスン内容や料金の質問にAIが対応。入会率アップに。" },
+                { icon: "🍽️", title: "飲食店・カフェ", description: "営業時間やメニューの問い合わせを自動化。" },
+                { icon: "🏋️", title: "ジム・スクール", description: "レッスン内容や入会方法の質問にAIが対応。入会率アップに。" },
+                { icon: "🐕", title: "ペットサロン", description: "メニューや注意事項の質問に自動回答。飼い主さんも安心。" },
+                { icon: "🏥", title: "クリニック・歯科", description: "診療時間、予約方法、持ち物の質問に24時間対応。" },
+                { icon: "🏢", title: "不動産・士業", description: "物件情報や相談の流れをAIが案内。初回問い合わせの対応を自動化。" },
+                { icon: "📸", title: "写真スタジオ", description: "撮影プランや持ち物、衣装の質問に自動応答。" },
               ].map((c, i) => (
                 <FadeIn key={c.title} delay={i * 0.06}>
                   <div className="h-full rounded-2xl bg-white p-6 text-center shadow-sm border border-gray-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
