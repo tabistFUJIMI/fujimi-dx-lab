@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -7,78 +6,17 @@ import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
 
 export const metadata: Metadata = {
-  title: "SocialNavi | SNS一元管理 - FUJIMI DX Lab",
-  description:
-    "X、Instagram、TikTok、Facebookをまとめて管理。AI投稿文生成、予約投稿、コメント返信も一画面で。",
+  title: "Social Navi | SNS一元管理 - FUJIMI DX Lab",
+  description: "X・Instagram・TikTok・Facebookを一元管理。AIが投稿文を自動生成。開発中。",
 };
 
 const FEATURES = [
-  {
-    icon: "📱",
-    title: "マルチSNS一元管理",
-    description:
-      "X（Twitter）、Instagram、TikTok、Facebookをひとつの画面でまとめて管理。",
-  },
-  {
-    icon: "🤖",
-    title: "AI投稿文生成",
-    description:
-      "写真をアップするだけでAIがキャプションを生成。カジュアル・ビジネス・ポップの3トーンから選択。",
-  },
-  {
-    icon: "📅",
-    title: "予約投稿",
-    description:
-      "投稿を事前にスケジュール。「毎週月曜にお知らせ」も設定しておけば自動投稿。",
-  },
-  {
-    icon: "💬",
-    title: "統合受信トレイ",
-    description:
-      "全SNSのコメント・DMを一画面で確認・返信。自動化ルールで定型返信も可能。",
-  },
-  {
-    icon: "📊",
-    title: "AI週次レポート",
-    description:
-      "フォロワー数、エンゲージメント率をAIが分析。週次レポートで改善ポイントを提案。",
-  },
-  {
-    icon: "#️⃣",
-    title: "ハッシュタグ管理",
-    description:
-      "業種別・テーマ別のハッシュタググループを作成。ワンタッチで投稿に追加。",
-  },
-];
-
-const IDEAL_CUSTOMERS = [
-  {
-    icon: "💇",
-    title: "サロン・美容室",
-    description: "ビフォーアフター写真の投稿、スタイル紹介をもっと効率的にしたいお店に。",
-  },
-  {
-    icon: "🍽️",
-    title: "飲食店・カフェ",
-    description: "新メニューや日替わり情報をSNSで発信したいけど手が回らないお店に。",
-  },
-  {
-    icon: "🏨",
-    title: "宿泊施設",
-    description: "客室紹介や周辺観光情報を複数SNSで発信したい施設に。",
-  },
-  {
-    icon: "🏋️",
-    title: "フィットネス・スクール",
-    description: "レッスン風景やイベント告知を効率よく発信したいスタジオに。",
-  },
-];
-
-const SUPPORTED_SNS = [
-  { name: "X (Twitter)", color: "bg-gray-900" },
-  { name: "Instagram", color: "bg-gradient-to-tr from-purple-500 via-pink-500 to-orange-400" },
-  { name: "TikTok", color: "bg-gray-900" },
-  { name: "Facebook", color: "bg-blue-600" },
+  { icon: "📱", title: "マルチSNS一元管理", description: "X・Instagram・TikTok・Facebookをひとつの画面で管理。各SNSにログインする手間がなくなります。" },
+  { icon: "✍️", title: "AI投稿文生成", description: "写真をアップするだけで、AIがキャプションを自動生成。「何を書こう…」の悩みが消えます。" },
+  { icon: "⏰", title: "予約投稿", description: "投稿を事前に予約。最適な時間帯にAIが自動投稿します。" },
+  { icon: "📥", title: "統合受信トレイ", description: "各SNSのコメント・DMをひとつの受信トレイで確認。返信漏れを防ぎます。" },
+  { icon: "📊", title: "AI週次レポート", description: "フォロワー推移・エンゲージメントをAIが分析。改善ポイントを自動で提案。" },
+  { icon: "#️⃣", title: "ハッシュタグ管理", description: "業種や投稿内容に合わせて、効果的なハッシュタグをAIが提案します。" },
 ];
 
 export default function SocialNaviPage() {
@@ -86,299 +24,49 @@ export default function SocialNaviPage() {
     <>
       <Header />
       <main>
-        {/* ═══ Hero ═══ */}
-        <section className="noise relative min-h-[70vh] overflow-hidden bg-mesh-pink px-4 pt-32 pb-20 text-white md:pt-40 md:pb-28">
-          <div className="relative z-10 mx-auto max-w-6xl">
-            <div className="grid items-center gap-12 lg:grid-cols-2">
-              <div>
-                <FadeIn>
-                  <Link
-                    href="/"
-                    className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-sm text-pink-200 backdrop-blur-sm transition-colors hover:bg-white/10"
-                  >
-                    ← FUJIMI DX Lab トップ
-                  </Link>
-                </FadeIn>
-                <FadeIn delay={0.05}>
-                  <div className="mb-4 flex items-center gap-3">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-pink-500/20 text-2xl">
-                      📣
-                    </span>
-                    <span className="rounded-full bg-pink-500/20 px-3 py-1 text-xs font-semibold tracking-wider text-pink-200 uppercase">
-                      SNS一元管理
-                    </span>
-                  </div>
-                </FadeIn>
-                <FadeIn delay={0.1}>
-                  <h1
-                    className="text-gradient text-4xl font-extrabold tracking-tight md:text-5xl"
-                    style={{ lineHeight: 1.15 }}
-                  >
-                    SocialNavi
-                  </h1>
-                </FadeIn>
-                <FadeIn delay={0.15}>
-                  <p className="mt-6 text-xl font-medium text-pink-100">
-                    SNSは大切！更新も返信もしっかりやらなくちゃ！
-                    <br />
-                    <strong>やらなきゃいけないってことはわかるんです。</strong>
-                    <br />
-                    でもなかなか手が動かない。
-                  </p>
-                </FadeIn>
-                <FadeIn delay={0.2}>
-                  <p className="mt-4 max-w-lg leading-relaxed text-slate-300">
-                    だからこそDX。
-                    X、Instagram、TikTok、Facebookをまとめて管理。
-                    <br />
-                    AIの力で投稿も返信もかんたんに。
-                  </p>
-                </FadeIn>
-                <FadeIn delay={0.25}>
-                  <div className="mt-8">
-                    <a
-                      href="#contact"
-                      className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold text-gray-900 shadow-[0_0_20px_rgba(236,72,153,0.3),0_0_60px_rgba(236,72,153,0.1)] transition-all duration-300 hover:scale-105 active:scale-[0.98]"
-                    >
-                      導入のご相談はこちら
-                    </a>
-                  </div>
-                </FadeIn>
-              </div>
-              <FadeIn delay={0.15} className="hidden lg:block">
-                <div className="relative">
-                  <Image
-                    src="/images/social-navi.jpg"
-                    alt="SocialNavi SNS一元管理イメージ"
-                    width={560}
-                    height={560}
-                    className="rounded-2xl"
-                    priority
-                  />
-                  <div className="absolute inset-0 -z-10 rounded-2xl bg-pink-500/20 blur-3xl" />
-                </div>
-              </FadeIn>
-            </div>
-          </div>
-          <div className="pointer-events-none absolute top-1/4 right-0 h-[400px] w-[400px] rounded-full bg-pink-500/10 blur-[120px]" />
+        <section className="relative min-h-[70vh] overflow-hidden px-4 pt-32 pb-20 text-white md:pt-40 md:pb-28" style={{ background: "linear-gradient(135deg, #f43f5e 0%, #e11d48 50%, #be123c 100%)" }}>
+          <div className="relative z-10 mx-auto max-w-6xl"><div className="max-w-2xl">
+            <FadeIn><Link href="/" className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm text-rose-100 backdrop-blur-sm transition-colors hover:bg-white/20">← FUJIMI DX Lab トップ</Link></FadeIn>
+            <FadeIn delay={0.05}><div className="mb-4 flex items-center gap-3"><span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/20 text-2xl">📣</span><span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold tracking-wider text-rose-100 uppercase">SNS一元管理</span><span className="rounded-full px-3 py-1 text-xs font-bold text-white" style={{backgroundColor:"rgba(255,255,255,0.3)"}}>開発中</span></div></FadeIn>
+            <FadeIn delay={0.1}><h1 className="text-4xl font-extrabold tracking-tight md:text-5xl" style={{ lineHeight: 1.15 }}>Social Navi</h1></FadeIn>
+            <FadeIn delay={0.15}><p className="mt-6 text-xl font-medium text-rose-100">SNS投稿、やらなきゃいけないのは分かってる。<br />でも、手が回らない…</p></FadeIn>
+            <FadeIn delay={0.2}><p className="mt-4 max-w-lg leading-relaxed text-rose-100/80">写真をアップするだけで、AIが投稿文を自動作成。<br />X・Instagram・TikTok・Facebookをまとめて管理。<br /><span className="font-semibold text-white">現在開発中です。リリースをお楽しみに。</span></p></FadeIn>
+            <FadeIn delay={0.25}><div className="mt-8"><a href="#contact" className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold shadow-lg transition-all duration-300 hover:scale-105" style={{ color: "#e11d48" }}>リリースのお知らせを受け取る</a></div></FadeIn>
+          </div></div>
         </section>
 
-        {/* ═══ 対応SNS ═══ */}
-        <section className="px-4 py-16">
-          <div className="mx-auto max-w-3xl">
-            <FadeIn>
-              <div className="flex flex-wrap items-center justify-center gap-4">
-                {SUPPORTED_SNS.map((sns) => (
-                  <span
-                    key={sns.name}
-                    className={`${sns.color} rounded-full px-6 py-2.5 text-sm font-semibold text-white shadow-md`}
-                  >
-                    {sns.name}
-                  </span>
-                ))}
-              </div>
-            </FadeIn>
+        {/* 対応SNS */}
+        <section className="px-4 py-16"><div className="mx-auto max-w-3xl">
+          <FadeIn><div className="flex flex-wrap justify-center gap-4">{[{name:"X (Twitter)",color:"#000"},{name:"Instagram",color:"#E1306C"},{name:"TikTok",color:"#000"},{name:"Facebook",color:"#1877F2"}].map((sns)=>(<span key={sns.name} className="rounded-full px-5 py-2 text-sm font-semibold text-white" style={{backgroundColor:sns.color}}>{sns.name}</span>))}</div></FadeIn>
+        </div></section>
+
+        <section className="px-4 py-24 md:py-32"><div className="mx-auto max-w-4xl">
+          <FadeIn><div className="text-center"><h2 className="text-3xl font-bold tracking-tight md:text-4xl">こんなお悩み、ありませんか？</h2><p className="mx-auto mt-4 max-w-md text-gray-500">Social Naviなら、ぜんぶ解決します。</p></div></FadeIn>
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
+            <FadeIn><div className="h-full rounded-2xl border border-red-100 bg-red-50/50 p-7"><p className="mb-5 text-sm font-bold tracking-wider text-red-400 uppercase">😥 いまの困りごと</p><ul className="space-y-3.5 text-[15px] leading-relaxed text-gray-700">{["各SNSに別々にログインして投稿している","投稿文が思いつかず、結局やらない","コメントやDMの返信が追いつかない","効果が数字で見えず、やる意味があるのか分からない","SNS担当者を置く余裕がない"].map((item,i)=>(<li key={i} className="flex gap-2.5"><span className="shrink-0 text-red-300">✕</span>{item}</li>))}</ul></div></FadeIn>
+            <FadeIn delay={0.1}><div className="h-full rounded-2xl border p-7" style={{borderColor:"#fecdd3",backgroundColor:"#fff1f2"}}><p className="mb-5 text-sm font-bold tracking-wider uppercase" style={{color:"#f43f5e"}}>😊 Social Naviなら</p><ul className="space-y-3.5 text-[15px] leading-relaxed text-gray-700">{["ひとつの画面から全SNSに同時投稿","写真をアップするだけ。AIがキャプションを生成","全SNSのコメント・DMを統合受信トレイで管理","AIが週次レポートで効果を可視化・改善提案","1日5分で運用可能。専任担当不要"].map((item,i)=>(<li key={i} className="flex gap-2.5"><span className="shrink-0" style={{color:"#f43f5e"}}>◎</span>{item}</li>))}</ul></div></FadeIn>
           </div>
-        </section>
+        </div></section>
 
-        {/* ═══ Pain → Solution ═══ */}
-        <section className="px-4 py-24 md:py-32">
-          <div className="mx-auto max-w-4xl">
-            <FadeIn>
-              <div className="text-center">
-                <p className="text-sm font-semibold tracking-[0.15em] text-pink-600 uppercase">
-                  Before → After
-                </p>
-                <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
-                  SocialNaviで、こう変わる
-                </h2>
-              </div>
-            </FadeIn>
+        <section className="px-4 py-24 md:py-32" style={{backgroundColor:"#fff1f2"}}><div className="mx-auto max-w-4xl">
+          <FadeIn><div className="text-center"><h2 className="text-3xl font-bold tracking-tight md:text-4xl">投稿は、たった4ステップ</h2></div></FadeIn>
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">{[{emoji:"📸",step:"1",title:"写真をアップ",desc:"お料理、施術、お店の雰囲気…撮った写真をアップ"},{emoji:"✍️",step:"2",title:"AIがキャプション生成",desc:"写真に合ったキャプションをAIが自動作成"},{emoji:"📱",step:"3",title:"SNSを選ぶ",desc:"投稿先のSNSをチェック。複数同時OK"},{emoji:"🚀",step:"4",title:"投稿 or 予約",desc:"今すぐ投稿、または最適な時間に予約投稿"}].map((s,i)=>(<FadeIn key={s.step} delay={i*0.08}><div className="text-center rounded-2xl bg-white p-6 shadow-sm"><div className="text-4xl mb-2">{s.emoji}</div><div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-white" style={{backgroundColor:"#f43f5e"}}>{s.step}</div><h3 className="mt-3 text-base font-bold">{s.title}</h3><p className="mt-1 text-sm text-gray-500">{s.desc}</p></div></FadeIn>))}</div>
+        </div></section>
 
-            <div className="mt-14 grid gap-6 md:grid-cols-2">
-              <FadeIn>
-                <div className="h-full rounded-2xl border border-orange-200/60 bg-orange-50 p-7">
-                  <p className="mb-4 text-xs font-bold tracking-wider text-orange-500 uppercase">
-                    Before — いまの困りごと
-                  </p>
-                  <ul className="space-y-3 text-[15px] leading-relaxed text-gray-700">
-                    <li className="flex gap-2">
-                      <span className="shrink-0 text-orange-400">✕</span>
-                      各SNSを個別にログインして投稿している
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="shrink-0 text-orange-400">✕</span>
-                      投稿の文章を考えるのに時間がかかる
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="shrink-0 text-orange-400">✕</span>
-                      コメントやDMの返信が追いつかない
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="shrink-0 text-orange-400">✕</span>
-                      SNS担当者を専任で置く余裕がない
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="shrink-0 text-orange-400">✕</span>
-                      効果がわからないから続かない
-                    </li>
-                  </ul>
-                </div>
-              </FadeIn>
+        <section className="px-4 py-24 md:py-32"><div className="mx-auto max-w-5xl">
+          <FadeIn><div className="text-center"><h2 className="text-3xl font-bold tracking-tight md:text-4xl">SNS運用を、もっとラクに</h2><p className="mx-auto mt-4 max-w-md text-gray-500">投稿作成から分析まで、これひとつ。</p></div></FadeIn>
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{FEATURES.map((f,i)=>(<FadeIn key={f.title} delay={i*0.05}><div className="h-full rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"><span className="text-3xl">{f.icon}</span><h3 className="mt-4 text-base font-bold">{f.title}</h3><p className="mt-2 text-sm leading-relaxed text-gray-500">{f.description}</p></div></FadeIn>))}</div>
+        </div></section>
 
-              <FadeIn delay={0.1}>
-                <div className="h-full rounded-2xl border border-pink-200/60 bg-pink-50 p-7">
-                  <p className="mb-4 text-xs font-bold tracking-wider text-pink-600 uppercase">
-                    After — SocialNaviなら
-                  </p>
-                  <ul className="space-y-3 text-[15px] leading-relaxed text-gray-700">
-                    <li className="flex gap-2">
-                      <span className="shrink-0 text-pink-500">◎</span>
-                      ひとつの画面から全SNSに一括投稿
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="shrink-0 text-pink-500">◎</span>
-                      AIが写真からキャプションを自動生成
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="shrink-0 text-pink-500">◎</span>
-                      全SNSのコメント・DMを統合受信トレイで一元管理
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="shrink-0 text-pink-500">◎</span>
-                      予約投稿で「空いた時間にまとめて作成」が可能
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="shrink-0 text-pink-500">◎</span>
-                      AI週次レポートで効果を見える化
-                    </li>
-                  </ul>
-                </div>
-              </FadeIn>
-            </div>
-          </div>
-        </section>
+        <section className="px-4 py-24 md:py-32" style={{backgroundColor:"#fff1f2"}}><div className="mx-auto max-w-5xl">
+          <FadeIn><div className="text-center"><h2 className="text-3xl font-bold tracking-tight md:text-4xl">こんなお店に最適です</h2></div></FadeIn>
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">{[{icon:"💇",title:"サロン・美容室",description:"ビフォーアフター写真をAIが魅力的に紹介。"},{icon:"🍽️",title:"飲食店・カフェ",description:"料理写真にぴったりのキャプションを自動生成。"},{icon:"🏨",title:"宿泊施設",description:"客室や景色の魅力をAIが発信。多言語にも対応予定。"},{icon:"🏋️",title:"フィットネス・スクール",description:"レッスン風景や生徒の声をAIが投稿に。"}].map((c,i)=>(<FadeIn key={c.title} delay={i*0.06}><div className="h-full rounded-2xl bg-white p-6 text-center shadow-sm border border-gray-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-md"><span className="text-4xl">{c.icon}</span><h3 className="mt-4 text-base font-bold">{c.title}</h3><p className="mt-2 text-sm leading-relaxed text-gray-500">{c.description}</p></div></FadeIn>))}</div>
+        </div></section>
 
-        {/* ═══ Features ═══ */}
-        <section className="bg-slate-50 px-4 py-24 md:py-32">
-          <div className="mx-auto max-w-5xl">
-            <FadeIn>
-              <div className="text-center">
-                <p className="text-sm font-semibold tracking-[0.15em] text-pink-600 uppercase">
-                  Features
-                </p>
-                <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
-                  主な機能
-                </h2>
-              </div>
-            </FadeIn>
-
-            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {FEATURES.map((f, i) => (
-                <FadeIn key={f.title} delay={i * 0.05}>
-                  <div className="h-full rounded-2xl border border-gray-200/60 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                    <span className="text-3xl">{f.icon}</span>
-                    <h3 className="mt-4 text-base font-bold">{f.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-gray-500">
-                      {f.description}
-                    </p>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ AI投稿ワークフロー ═══ */}
-        <section className="px-4 py-24 md:py-32">
-          <div className="mx-auto max-w-4xl">
-            <FadeIn>
-              <div className="text-center">
-                <p className="text-sm font-semibold tracking-[0.15em] text-pink-600 uppercase">
-                  How it works
-                </p>
-                <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
-                  写真を撮ったら、あとはAIにおまかせ
-                </h2>
-              </div>
-            </FadeIn>
-
-            <FadeIn>
-              <div className="mt-14 rounded-2xl border border-gray-200/60 bg-white p-8">
-                <div className="grid gap-8 md:grid-cols-4">
-                  {[
-                    { step: "1", title: "写真をアップ", desc: "スマホで撮った写真をそのままアップロード" },
-                    { step: "2", title: "AIがキャプション生成", desc: "3つのトーンから好みを選ぶだけ" },
-                    { step: "3", title: "SNSを選択", desc: "投稿先のSNSをチェックボックスで選択" },
-                    { step: "4", title: "投稿 or 予約", desc: "すぐ投稿 or スケジュール設定" },
-                  ].map((s) => (
-                    <div key={s.step} className="text-center">
-                      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-pink-500 text-lg font-bold text-white">
-                        {s.step}
-                      </div>
-                      <h3 className="mt-4 text-base font-bold">{s.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-gray-500">
-                        {s.desc}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-        </section>
-
-        {/* ═══ Ideal Customers ═══ */}
-        <section className="bg-slate-50 px-4 py-24 md:py-32">
-          <div className="mx-auto max-w-5xl">
-            <FadeIn>
-              <div className="text-center">
-                <p className="text-sm font-semibold tracking-[0.15em] text-pink-600 uppercase">
-                  Best for
-                </p>
-                <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
-                  こんなお店に最適です
-                </h2>
-              </div>
-            </FadeIn>
-
-            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {IDEAL_CUSTOMERS.map((c, i) => (
-                <FadeIn key={c.title} delay={i * 0.06}>
-                  <div className="h-full rounded-2xl border border-gray-200/60 bg-white p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                    <span className="text-4xl">{c.icon}</span>
-                    <h3 className="mt-4 text-base font-bold">{c.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-gray-500">
-                      {c.description}
-                    </p>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ CTA ═══ */}
-        <section
-          id="contact"
-          className="noise relative overflow-hidden bg-mesh-pink px-4 py-24 text-white md:py-32"
-        >
-          <div className="relative z-10 mx-auto max-w-3xl text-center">
-            <FadeIn>
-              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-                まずは気軽にご相談ください
-              </h2>
-              <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-pink-100/80">
-                「うちのSNSも任せられる？」「どのSNSから始めたらいい？」
-                <br />
-                なんでもお気軽にどうぞ。
-              </p>
-              <div className="mt-10">
-                <ContactForm />
-              </div>
-            </FadeIn>
-          </div>
-        </section>
+        <section id="contact" className="relative overflow-hidden px-4 py-24 text-white md:py-32" style={{background:"linear-gradient(135deg, #f43f5e 0%, #e11d48 50%, #be123c 100%)"}}><div className="relative z-10 mx-auto max-w-3xl text-center"><FadeIn>
+          <div className="mb-4"><span className="rounded-full bg-white/20 px-4 py-1.5 text-sm font-bold">🚧 開発中</span></div>
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">リリース時にお知らせします</h2><p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-rose-100/80">Social Naviは現在開発中です。<br />リリース時のお知らせをご希望の方は、以下からご登録ください。</p><div className="mt-10"><ContactForm /></div>
+        </FadeIn></div></section>
       </main>
       <Footer />
     </>
