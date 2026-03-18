@@ -42,7 +42,7 @@ const PLANS = [
     ],
   },
   {
-    name: "スタンダード", price: "¥1,100", period: "/月", description: "しっかり活用",
+    name: "スタンダード", price: "¥1,100", period: "/月", description: "問い合わせ少なめのお店に",
     color: "#0d9488", bgColor: "#f0fdfa",
     features: [
       { label: "ナレッジ（登録情報）", value: "無制限" },
@@ -57,7 +57,7 @@ const PLANS = [
     ],
   },
   {
-    name: "プロ", price: "¥2,200", period: "/月", description: "複数店舗に",
+    name: "プロ", price: "¥2,200", period: "/月", description: "しっかり活用",
     recommended: true, color: "#0f766e", bgColor: "#f0fdfa",
     features: [
       { label: "ナレッジ（登録情報）", value: "無制限" },
