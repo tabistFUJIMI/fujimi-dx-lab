@@ -1,0 +1,68 @@
+# FUJIMI DX Lab
+
+> 小さなお店のDXを、現場から。
+
+FUJIMI DX Labは、ふじみ企業有限会社が運営する小規模事業者向けDXプラットフォームです。
+静岡県富士市でビジネスホテル「Tabist ゆ縁の宿ふじみ」を運営する中で生まれた、現場発のDXツール群を提供しています。
+
+## サービス一覧
+
+### FUJIMIN PASS（統合DXプラットフォーム）
+お店のDXをひとつのアカウントでまるごとカバー。以下の5つのNaviツールを統合管理します。
+
+### Reserve Navi（LINE予約管理）
+- LINEミニアプリから4ステップで予約完了
+- 無料プランあり（月50件まで）
+- 料金: 無料 / ライト ¥1,980/月 / スタンダード ¥3,300/月 / プロ ¥5,500/月
+- 対象: マッサージ・整体・鍼灸、サロン・美容室、ネイル・エステ、パーソナルジム・ヨガ、ペットサロン・トリミング、音楽教室・個別指導、写真スタジオ、占い・カウンセリング
+- 主な機能: LINE通知・リマインド、カルテ管理、顧客管理、AI機能（スタンダード以上）
+
+### Ask Navi（LINE AI自動応答）
+- 公式LINEやWebサイトの問い合わせにAIが24時間自動応答
+- ナレッジ（PDF、CSV、HP URL）を登録するだけ
+- 料金: ライト ¥550/月 / スタンダード ¥1,100/月 / プロ ¥2,200/月 / エンタープライズ ¥5,500/月
+- 対象: サロン、宿泊施設、飲食店、フィットネス
+- 主な機能: AI自動応答、Webウィジェット、LINE連携、多言語対応（プロ以上）
+
+### Rule Navi（社内規則AI検索）
+- 就業規則・マニュアルのPDFをアップするだけでAIが検索可能に
+- スタッフはチャットで質問、AIが該当箇所を即回答
+- 料金: ライト ¥550/月 / スタンダード ¥1,100/月 / プロ ¥2,200/月 / エンタープライズ ¥5,500/月
+- 対象: 宿泊施設、クリニック、中小企業、フランチャイズ
+- 主な機能: AI検索（RAG）、FAQ自動生成、匿名質問箱、パルスチェック
+
+### Shift Navi（AIシフト管理）
+- AIがシフトをワンタッチで自動作成
+- スタッフの休み希望をスマホで自動収集
+- 料金: お問い合わせ
+- 対象: 宿泊施設、飲食店、サロン、クリニック
+- 主な機能: AIシフト自動生成、ドラッグ&ドロップ編集、A4印刷
+
+### Social Navi（SNS一元管理）※開発中
+- X・Instagram・TikTok・Facebookを一元管理
+- AIが投稿文を自動生成
+- 料金: 未定
+
+## FUJIMINポイント
+全アプリ共通のAI利用ポイント。プランに含まれるポイントで足りない場合は追加購入可能。
+- パックS: 100pt / ¥550
+- パックM: 500pt / ¥1,650
+- パックL: 1,500pt / ¥3,850
+- 購入ポイントは1年間有効
+
+## 会社情報
+- 会社名: ふじみ企業有限会社
+- 事業部: FUJIMI DX Lab事業部
+- 所在地: 静岡県富士市
+- メール: support@mail.fujimin-pass.com
+- 運営施設: Tabist ゆ縁の宿ふじみ（ビジネスホテル）
+- ウェブサイト: https://fujimi-dx-lab.com
+
+## 全ページ一覧
+- トップ: https://fujimi-dx-lab.com
+- FUJIMIN PASS: https://fujimi-dx-lab.com/products/fujimin-pass
+- Reserve Navi: https://fujimi-dx-lab.com/products/reserve-navi
+- Ask Navi: https://fujimi-dx-lab.com/products/ask-navi
+- Rule Navi: https://fujimi-dx-lab.com/products/rule-navi
+- Shift Navi: https://fujimi-dx-lab.com/products/shift-navi
+- Social Navi: https://fujimi-dx-lab.com/products/social-navi

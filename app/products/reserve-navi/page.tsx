@@ -9,10 +9,10 @@ import FadeIn from "../../components/FadeIn";
 export const metadata: Metadata = {
   title: "Reserve Navi | LINE予約管理",
   description:
-    "LINEから簡単予約。シンプルで低コスト、業種別テンプレートで現場にフィットする予約管理システム。無料プランあり。月額¥1,980〜。",
+    "LINEから簡単予約。サロン・パーソナルジム・ペットサロン・音楽教室など、予約制のお店にぴったり。無料プランあり。月額¥1,980〜。",
   openGraph: {
     title: "Reserve Navi | LINE予約管理 - FUJIMI DX Lab",
-    description: "LINEから簡単予約。無料プランあり。月額¥1,980〜で始められる予約管理システム。",
+    description: "サロン・ジム・ペットサロン・教室など予約制のお店に。LINEから簡単予約。無料プランあり。",
     images: [{ url: "/images/reserve-navi.jpg", width: 1200, height: 630, alt: "Reserve Navi LINE予約管理" }],
   },
 };
@@ -59,7 +59,7 @@ const FEATURES = [
 const PAIN_POINTS = {
   before: [
     "電話で予約を受けて、紙のノートに書いている",
-    "施術中に電話が鳴って出られない…",
+    "接客中・レッスン中に電話が鳴って出られない…",
     "ダブルブッキングしたことがある",
     "予約システムは月額が高くて手が出せない",
     "無断キャンセルに悩んでいる",
@@ -67,7 +67,7 @@ const PAIN_POINTS = {
   ],
   after: [
     "LINEで24時間いつでも予約を受付",
-    "施術に集中できる。予約はLINEにお任せ",
+    "目の前のお客様に集中できる。予約はLINEにお任せ",
     "リアルタイム空き状況でダブルブッキングゼロ",
     "無料プランあり。月額¥1,980〜で始められる",
     "自動リマインダーで無断キャンセルが激減",
@@ -77,16 +77,20 @@ const PAIN_POINTS = {
 
 const STEPS = [
   { step: "1", title: "LINEを開く", desc: "お店の公式LINEからポチッと起動", emoji: "📲" },
-  { step: "2", title: "メニューを選ぶ", desc: "やりたいメニューをタップ", emoji: "🏷️" },
+  { step: "2", title: "メニューを選ぶ", desc: "受けたいメニューやコースをタップ", emoji: "🏷️" },
   { step: "3", title: "日時を選ぶ", desc: "空いてる日時がひと目で分かる", emoji: "🗓️" },
   { step: "4", title: "予約完了！", desc: "LINEに確認メッセージが届く", emoji: "✅" },
 ];
 
 const IDEAL_CUSTOMERS = [
-  { icon: "💆", title: "マッサージ・整体", description: "施術メニューごとの予約枠管理に。1人運営でもラクラク。" },
+  { icon: "💆", title: "マッサージ・整体・鍼灸", description: "メニューごとの予約枠管理に。1人運営でもラクラク。" },
   { icon: "💇", title: "サロン・美容室", description: "スタイリスト指名、メニュー別の時間設定もバッチリ。" },
-  { icon: "💅", title: "ネイル・まつエク", description: "施術時間が違うメニューも柔軟に対応。写真付きメニュー表示も。" },
-  { icon: "🍽️", title: "カフェ・飲食店", description: "席数管理、コース予約。少人数〜団体まで。" },
+  { icon: "💅", title: "ネイル・まつエク・エステ", description: "メニューごとに違う所要時間も柔軟に対応。" },
+  { icon: "🏋️", title: "パーソナルジム・ヨガ", description: "トレーナー指名+時間枠。レッスン予約にぴったり。" },
+  { icon: "🐕", title: "ペットサロン・トリミング", description: "メニュー×時間管理、リピーター管理が重要なお店に。" },
+  { icon: "🎹", title: "音楽教室・個別指導", description: "先生の指名+レッスン枠管理。生徒・保護者とのLINE連絡に。" },
+  { icon: "📸", title: "写真スタジオ", description: "撮影プラン別の枠管理。七五三、成人式など季節メニューにも。" },
+  { icon: "🔮", title: "占い・カウンセリング", description: "1対1の時間枠予約。LINEとの相性が抜群。" },
 ];
 
 const PLANS = [
@@ -170,7 +174,7 @@ const PLANS = [
 ];
 
 const AI_FEATURES = [
-  { icon: "📋", title: "AIカルテ", desc: "施術メモをAIが構造化・要約。次回の接客がスムーズに。" },
+  { icon: "📋", title: "AIカルテ", desc: "接客メモをAIが構造化・要約。次回のご来店がスムーズに。" },
   { icon: "🔍", title: "来店前ブリーフィング", desc: "予約のお客様の過去情報をAIが事前にまとめてくれます。" },
   { icon: "💡", title: "次回予約の提案", desc: "お客様の来店パターンから、次の予約タイミングをAIが提案。" },
   { icon: "⚠️", title: "リピート離脱アラート", desc: "来店が途切れたお客様をAIが検知。フォローのタイミングを逃しません。" },
@@ -224,6 +228,13 @@ export default function ReserveNaviPage() {
                     <br />
                     <span className="font-semibold text-white">無料プランあり。今日から使えます。</span>
                   </p>
+                </FadeIn>
+                <FadeIn delay={0.22}>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {["サロン", "整体・鍼灸", "ネイル・エステ", "パーソナルジム", "ペットサロン", "音楽教室", "写真スタジオ", "占い"].map((label) => (
+                      <span key={label} className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs text-orange-100 backdrop-blur-sm">{label}</span>
+                    ))}
+                  </div>
                 </FadeIn>
                 <FadeIn delay={0.25}>
                   <div className="mt-8 flex flex-wrap gap-4">
@@ -498,12 +509,17 @@ export default function ReserveNaviPage() {
             <FadeIn>
               <div className="text-center">
                 <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-                  こんなお店に選ばれています
+                  「予約制」のお店に、ぴったりです
                 </h2>
+                <p className="mx-auto mt-4 max-w-lg text-gray-500">
+                  たとえばこんなお店。
+                  マッサージの予約も、トレーニングの予約も、トリミングの予約も、レッスンの予約も。
+                  「時間を決めてお客様をお迎えする」お店なら、Reserve Naviが活躍します。
+                </p>
               </div>
             </FadeIn>
 
-            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {IDEAL_CUSTOMERS.map((c, i) => (
                 <FadeIn key={c.title} delay={i * 0.06}>
                   <div className="h-full rounded-2xl bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
@@ -533,6 +549,7 @@ export default function ReserveNaviPage() {
             <div className="mt-14 space-y-6">
               {[
                 { q: "本当に無料で使えますか？", a: "はい。無料プランは月50件まで、ずっと無料です。クレジットカードの登録も不要です。" },
+                { q: "どんな業種で使えますか？", a: "「予約制」のお店なら幅広く対応しています。サロン・整体はもちろん、パーソナルジム、ペットサロン、音楽教室、写真スタジオ、占い・カウンセリングなど、さまざまなお店でご利用いただいています。" },
                 { q: "LINEの公式アカウントが必要ですか？", a: "はい。LINE公式アカウント（無料で作成可能）が必要です。設定方法はサポートがお手伝いします。" },
                 { q: "途中でプランを変更できますか？", a: "はい。いつでもアップグレード・ダウングレードできます。日割り計算で差額を調整します。" },
                 { q: "スタッフが機械に詳しくなくても大丈夫？", a: "大丈夫です。画面はとてもシンプルに作られています。初期設定もサポートがお手伝いします。" },
