@@ -34,7 +34,7 @@ const PLANS = [
     ],
   },
   {
-    name: "スタンダード", price: "¥1,100", period: "/月", description: "しっかり活用", recommended: true, color: "#a855f7", bgColor: "#faf5ff",
+    name: "スタンダード", price: "¥1,100", period: "/月", description: "しっかり活用", color: "#a855f7", bgColor: "#faf5ff",
     features: [
       { label: "ナレッジ（登録情報）", value: "無制限" }, { label: "FUJIMINポイント", value: "月500pt（目安 約165回分）" }, { label: "AI検索", value: "✓" },
       { label: "FAQ自動生成", value: "✓" }, { label: "匿名質問箱", value: "✓" }, { label: "パルスチェック", value: "✓" },
@@ -42,7 +42,7 @@ const PLANS = [
     ],
   },
   {
-    name: "プロ", price: "¥2,200", period: "/月", description: "大きなチームに", color: "#7e22ce", bgColor: "#faf5ff",
+    name: "プロ", price: "¥2,200", period: "/月", description: "大きなチームに", recommended: true, color: "#7e22ce", bgColor: "#faf5ff",
     features: [
       { label: "ナレッジ（登録情報）", value: "無制限" }, { label: "FUJIMINポイント", value: "月1,500pt（目安 約500回分）" }, { label: "AI検索", value: "✓" },
       { label: "FAQ自動生成", value: "✓" }, { label: "匿名質問箱", value: "✓" }, { label: "パルスチェック", value: "✓" },

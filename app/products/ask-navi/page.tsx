@@ -43,7 +43,7 @@ const PLANS = [
   },
   {
     name: "スタンダード", price: "¥1,100", period: "/月", description: "しっかり活用",
-    recommended: true, color: "#14b8a6", bgColor: "#f0fdfa",
+    color: "#0d9488", bgColor: "#f0fdfa",
     features: [
       { label: "ナレッジ（登録情報）", value: "無制限" },
       { label: "FUJIMINポイント", value: "月500pt（目安 約165回分）" },
@@ -58,7 +58,7 @@ const PLANS = [
   },
   {
     name: "プロ", price: "¥2,200", period: "/月", description: "複数店舗に",
-    color: "#0f766e", bgColor: "#f0fdfa",
+    recommended: true, color: "#0f766e", bgColor: "#f0fdfa",
     features: [
       { label: "ナレッジ（登録情報）", value: "無制限" },
       { label: "FUJIMINポイント", value: "月1,500pt（目安 約500回分）" },
