@@ -28,7 +28,7 @@ const PLANS = [
   {
     name: "ライト", price: "¥550", period: "/月", description: "小規模チームに", color: "#9333ea", bgColor: "#faf5ff",
     features: [
-      { label: "ナレッジ件数", value: "100件" }, { label: "FUJIMINポイント", value: "月200pt" }, { label: "AI検索（RAG）", value: "✓" },
+      { label: "ナレッジ（登録情報）", value: "100件" }, { label: "FUJIMINポイント", value: "月200pt（目安 約65回分）" }, { label: "AI検索", value: "✓" },
       { label: "FAQ自動生成", value: "✓" }, { label: "匿名質問箱", value: "✓" }, { label: "パルスチェック", value: "✓" },
       { label: "会話ログ", value: "未回答のみ・1ヶ月" }, { label: "CSVエクスポート", value: "—" }, { label: "利用人数目安", value: "〜10名" },
     ],
@@ -36,7 +36,7 @@ const PLANS = [
   {
     name: "スタンダード", price: "¥1,100", period: "/月", description: "しっかり活用", recommended: true, color: "#a855f7", bgColor: "#faf5ff",
     features: [
-      { label: "ナレッジ件数", value: "無制限" }, { label: "FUJIMINポイント", value: "月500pt" }, { label: "AI検索（RAG）", value: "✓" },
+      { label: "ナレッジ（登録情報）", value: "無制限" }, { label: "FUJIMINポイント", value: "月500pt（目安 約165回分）" }, { label: "AI検索", value: "✓" },
       { label: "FAQ自動生成", value: "✓" }, { label: "匿名質問箱", value: "✓" }, { label: "パルスチェック", value: "✓" },
       { label: "会話ログ", value: "全履歴・無制限" }, { label: "CSVエクスポート", value: "✓" }, { label: "利用人数目安", value: "〜50名" },
     ],
@@ -44,7 +44,7 @@ const PLANS = [
   {
     name: "プロ", price: "¥2,200", period: "/月", description: "大きなチームに", color: "#7e22ce", bgColor: "#faf5ff",
     features: [
-      { label: "ナレッジ件数", value: "無制限" }, { label: "FUJIMINポイント", value: "月1,500pt" }, { label: "AI検索（RAG）", value: "✓" },
+      { label: "ナレッジ（登録情報）", value: "無制限" }, { label: "FUJIMINポイント", value: "月1,500pt（目安 約500回分）" }, { label: "AI検索", value: "✓" },
       { label: "FAQ自動生成", value: "✓" }, { label: "匿名質問箱", value: "✓" }, { label: "パルスチェック", value: "✓" },
       { label: "会話ログ", value: "全履歴・無制限" }, { label: "CSVエクスポート", value: "✓" }, { label: "利用人数目安", value: "〜150名" },
     ],
@@ -52,7 +52,7 @@ const PLANS = [
   {
     name: "エンタープライズ", price: "¥5,500", period: "/月", description: "大規模組織に", color: "#581c87", bgColor: "#faf5ff",
     features: [
-      { label: "ナレッジ件数", value: "無制限" }, { label: "FUJIMINポイント", value: "月5,000pt" }, { label: "AI検索（RAG）", value: "✓" },
+      { label: "ナレッジ（登録情報）", value: "無制限" }, { label: "FUJIMINポイント", value: "月5,000pt（目安 約1,650回分）" }, { label: "AI検索（RAG）", value: "✓" },
       { label: "FAQ自動生成", value: "✓" }, { label: "匿名質問箱", value: "✓" }, { label: "パルスチェック", value: "✓" },
       { label: "会話ログ", value: "全履歴・無制限" }, { label: "CSVエクスポート", value: "✓" }, { label: "利用人数目安", value: "〜300名" },
     ],
@@ -96,7 +96,7 @@ export default function RuleNaviPage() {
         <section id="pricing" className="px-4 py-24 md:py-32" style={{backgroundColor:"#fafaf9"}}><div className="mx-auto max-w-5xl">
           <FadeIn><div className="text-center"><h2 className="text-3xl font-bold tracking-tight md:text-4xl">料金プラン</h2><p className="mx-auto mt-4 max-w-md text-gray-500">月額¥550から。チームの人数に合わせて選べます。<br />すべて税込価格です。</p></div></FadeIn>
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{PLANS.map((plan,i)=>(<FadeIn key={plan.name} delay={i*0.06}><div className={`relative h-full rounded-2xl border-2 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${plan.recommended?"shadow-md":""}`} style={{borderColor:plan.recommended?plan.color:"#e5e7eb",backgroundColor:plan.bgColor}}>{plan.recommended&&(<span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold text-white" style={{backgroundColor:plan.color}}>おすすめ</span>)}<div className="text-center"><p className="text-sm font-semibold" style={{color:plan.color}}>{plan.name}</p><p className="mt-2 text-3xl font-extrabold text-gray-900">{plan.price}<span className="text-base font-normal text-gray-500">{plan.period}</span></p><p className="mt-1 text-xs text-gray-500">{plan.description}</p></div><div className="mt-6 space-y-2.5">{plan.features.map((f)=>(<div key={f.label} className="flex items-center justify-between text-sm"><span className="text-gray-500">{f.label}</span><span className="font-medium text-gray-900">{f.value}</span></div>))}</div><div className="mt-6"><a href="#contact" className="block w-full rounded-lg py-2.5 text-center text-sm font-semibold transition-colors" style={plan.recommended?{backgroundColor:plan.color,color:"#fff"}:{backgroundColor:"#f3f4f6",color:"#374151"}}>お問い合わせ</a></div></div></FadeIn>))}</div>
-          <FadeIn delay={0.3}><div className="mt-10 rounded-2xl border border-gray-100 bg-gray-50 p-6 text-center"><p className="text-sm text-gray-600"><span className="font-semibold">FUJIMINポイントとは？</span>　AI機能を使うためのポイントです。プランに含まれるポイントで足りない場合は追加購入できます。</p><p className="mt-2 text-xs text-gray-400">追加購入: 100pt / ¥550 ・ 500pt / ¥1,650 ・ 1,500pt / ¥3,850（購入から1年間有効）</p></div></FadeIn>
+          <FadeIn delay={0.3}><div className="mt-10 rounded-2xl border border-gray-100 bg-gray-50 p-6 text-center"><p className="text-sm text-gray-600"><span className="font-semibold">FUJIMINポイントとは？</span>　AIが回答するたびに消費されるポイントです。プランに含まれるポイントで足りない場合は追加購入できます。</p><p className="mt-2 text-xs text-gray-400">追加購入: 100pt / ¥550 ・ 500pt / ¥1,650 ・ 1,500pt / ¥3,850（購入から1年間有効）</p><p className="mt-1 text-xs text-gray-400">※ 回数目安はAI応答1回あたり約3ptで計算。質問の長さや登録情報の量により変動します。</p></div></FadeIn>
         </div></section>
 
         <section className="px-4 py-24 md:py-32"><div className="mx-auto max-w-5xl">

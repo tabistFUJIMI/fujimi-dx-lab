@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 const FEATURES = [
   { icon: "🤖", title: "AI自動応答", description: "お客様からの質問にAIが即座に回答。営業時間外でも24時間対応できます。" },
-  { icon: "📚", title: "かんたんナレッジ管理", description: "PDFやCSV、HPのURLを登録するだけ。AIが自動で整理・分類してくれます。" },
+  { icon: "📚", title: "かんたんナレッジ登録", description: "ナレッジとは「AIに覚えさせたい情報」のこと。メニュー表、料金表、よくある質問などをPDFやCSV、HPのURLで登録するだけ。AIが自動で整理します。" },
   { icon: "🌐", title: "Webウィジェット", description: "ホームページにチャットウィジェットを設置。サイト訪問者の疑問をその場で解決。" },
   { icon: "💬", title: "LINE連携", description: "公式LINEのトーク画面でそのまま使えます。お客様は普段通りLINEするだけ。" },
   { icon: "📊", title: "会話履歴・分析", description: "どんな質問が多いか一目で分かる。未回答の質問も自動で検知してお知らせ。" },
@@ -30,8 +30,8 @@ const PLANS = [
     name: "ライト", price: "¥550", period: "/月", description: "まずはお試し",
     color: "#0d9488", bgColor: "#f0fdfa",
     features: [
-      { label: "ナレッジ件数", value: "100件" },
-      { label: "FUJIMINポイント", value: "月200pt" },
+      { label: "ナレッジ（登録情報）", value: "100件" },
+      { label: "FUJIMINポイント", value: "月200pt（目安 約65回分）" },
       { label: "AI応答", value: "✓" },
       { label: "Webウィジェット", value: "✓" },
       { label: "LINE連携", value: "✓" },
@@ -45,8 +45,8 @@ const PLANS = [
     name: "スタンダード", price: "¥1,100", period: "/月", description: "しっかり活用",
     recommended: true, color: "#14b8a6", bgColor: "#f0fdfa",
     features: [
-      { label: "ナレッジ件数", value: "無制限" },
-      { label: "FUJIMINポイント", value: "月500pt" },
+      { label: "ナレッジ（登録情報）", value: "無制限" },
+      { label: "FUJIMINポイント", value: "月500pt（目安 約165回分）" },
       { label: "AI応答", value: "✓" },
       { label: "Webウィジェット", value: "✓" },
       { label: "LINE連携", value: "✓" },
@@ -60,8 +60,8 @@ const PLANS = [
     name: "プロ", price: "¥2,200", period: "/月", description: "複数店舗に",
     color: "#0f766e", bgColor: "#f0fdfa",
     features: [
-      { label: "ナレッジ件数", value: "無制限" },
-      { label: "FUJIMINポイント", value: "月1,500pt" },
+      { label: "ナレッジ（登録情報）", value: "無制限" },
+      { label: "FUJIMINポイント", value: "月1,500pt（目安 約500回分）" },
       { label: "AI応答", value: "✓" },
       { label: "Webウィジェット", value: "✓" },
       { label: "LINE連携", value: "✓" },
@@ -75,8 +75,8 @@ const PLANS = [
     name: "エンタープライズ", price: "¥5,500", period: "/月", description: "大規模運用に",
     color: "#134e4a", bgColor: "#f0fdfa",
     features: [
-      { label: "ナレッジ件数", value: "無制限" },
-      { label: "FUJIMINポイント", value: "月5,000pt" },
+      { label: "ナレッジ（登録情報）", value: "無制限" },
+      { label: "FUJIMINポイント", value: "月5,000pt（目安 約1,650回分）" },
       { label: "AI応答", value: "✓" },
       { label: "Webウィジェット", value: "✓" },
       { label: "LINE連携", value: "✓" },
@@ -295,8 +295,9 @@ export default function AskNaviPage() {
             </div>
             <FadeIn delay={0.3}>
               <div className="mt-10 rounded-2xl border border-gray-100 bg-gray-50 p-6 text-center">
-                <p className="text-sm text-gray-600"><span className="font-semibold">FUJIMINポイントとは？</span>　AI機能を使うためのポイントです。プランに含まれるポイントで足りない場合は追加購入できます。</p>
+                <p className="text-sm text-gray-600"><span className="font-semibold">FUJIMINポイントとは？</span>　AIが回答するたびに消費されるポイントです。プランに含まれるポイントで足りない場合は追加購入できます。</p>
                 <p className="mt-2 text-xs text-gray-400">追加購入: 100pt / ¥550 ・ 500pt / ¥1,650 ・ 1,500pt / ¥3,850（購入から1年間有効）</p>
+                <p className="mt-1 text-xs text-gray-400">※ 回数目安はAI応答1回あたり約3ptで計算。質問の長さや登録情報の量により変動します。</p>
               </div>
             </FadeIn>
           </div>
