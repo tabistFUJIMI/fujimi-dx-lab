@@ -6,8 +6,13 @@ import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
 
 export const metadata: Metadata = {
-  title: "Rule Navi | 社内規則AI検索 - FUJIMI DX Lab",
-  description: "就業規則・マニュアルをAIが検索。PDFをアップロードするだけで、スタッフがチャットで質問できます。",
+  title: "Rule Navi | 社内規則AI検索",
+  description: "就業規則・マニュアルをAIが検索。PDFをアップロードするだけで、スタッフがチャットで質問できます。月額¥550〜。",
+  openGraph: {
+    title: "Rule Navi | 社内規則AI検索 - FUJIMI DX Lab",
+    description: "PDFをアップするだけ。AIが就業規則・マニュアルから回答。月額¥550〜。",
+    images: [{ url: "/images/rule-navi.jpg", width: 1200, height: 630, alt: "Rule Navi 社内規則AI検索" }],
+  },
 };
 
 const FEATURES = [

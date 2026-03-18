@@ -1,0 +1,16 @@
+{
+  "name": "FUJIMI DX Lab",
+  "short_name": "FUJIMI DX",
+  "description": "小さなお店のDXを、現場から。",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#1e293b",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

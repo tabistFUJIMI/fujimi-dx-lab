@@ -6,9 +6,14 @@ import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
 
 export const metadata: Metadata = {
-  title: "Ask Navi | LINE AI自動応答 - FUJIMI DX Lab",
+  title: "Ask Navi | LINE AI自動応答",
   description:
-    "公式LINEの問い合わせにAIが自動応答。ナレッジを登録するだけで、よくある質問を24時間自動で回答します。",
+    "公式LINEの問い合わせにAIが自動応答。ナレッジを登録するだけで、よくある質問を24時間自動で回答します。月額¥550〜。",
+  openGraph: {
+    title: "Ask Navi | LINE AI自動応答 - FUJIMI DX Lab",
+    description: "AIが公式LINEやWebサイトで24時間自動応答。月額¥550〜。",
+    images: [{ url: "/images/ask-navi.jpg", width: 1200, height: 630, alt: "Ask Navi LINE AI自動応答" }],
+  },
 };
 
 const FEATURES = [

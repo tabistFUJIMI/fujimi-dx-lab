@@ -6,8 +6,13 @@ import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
 
 export const metadata: Metadata = {
-  title: "Social Navi | SNS一元管理 - FUJIMI DX Lab",
+  title: "Social Navi | SNS一元管理",
   description: "X・Instagram・TikTok・Facebookを一元管理。AIが投稿文を自動生成。開発中。",
+  openGraph: {
+    title: "Social Navi | SNS一元管理 - FUJIMI DX Lab",
+    description: "X・Instagram・TikTok・Facebookをまとめて管理。AIが投稿文を自動生成。",
+    images: [{ url: "/images/social-navi.jpg", width: 1200, height: 630, alt: "Social Navi SNS一元管理" }],
+  },
 };
 
 const FEATURES = [

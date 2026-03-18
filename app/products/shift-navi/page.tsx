@@ -6,8 +6,13 @@ import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
 
 export const metadata: Metadata = {
-  title: "Shift Navi | AIシフト管理 - FUJIMI DX Lab",
+  title: "Shift Navi | AIシフト管理",
   description: "AIがシフトをワンタッチで自動作成。スタッフの休み希望をスマホで収集、複雑な条件もAIにおまかせ。",
+  openGraph: {
+    title: "Shift Navi | AIシフト管理 - FUJIMI DX Lab",
+    description: "AIがシフトをワンタッチで自動作成。休み希望もスマホで自動収集。",
+    images: [{ url: "/images/shift-navi.jpg", width: 1200, height: 630, alt: "Shift Navi AIシフト管理" }],
+  },
 };
 
 const FEATURES = [

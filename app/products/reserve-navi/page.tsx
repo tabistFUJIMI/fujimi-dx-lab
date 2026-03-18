@@ -7,9 +7,14 @@ import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
 
 export const metadata: Metadata = {
-  title: "Reserve Navi | LINE予約管理 - FUJIMI DX Lab",
+  title: "Reserve Navi | LINE予約管理",
   description:
-    "LINEから簡単予約。シンプルで低コスト、業種別テンプレートで現場にフィットする予約管理システム。無料プランあり。",
+    "LINEから簡単予約。シンプルで低コスト、業種別テンプレートで現場にフィットする予約管理システム。無料プランあり。月額¥1,980〜。",
+  openGraph: {
+    title: "Reserve Navi | LINE予約管理 - FUJIMI DX Lab",
+    description: "LINEから簡単予約。無料プランあり。月額¥1,980〜で始められる予約管理システム。",
+    images: [{ url: "/images/reserve-navi.jpg", width: 1200, height: 630, alt: "Reserve Navi LINE予約管理" }],
+  },
 };
 
 const FEATURES = [

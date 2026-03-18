@@ -6,8 +6,13 @@ import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
 
 export const metadata: Metadata = {
-  title: "FUJIMIN PASS | 統合DXプラットフォーム - FUJIMI DX Lab",
+  title: "FUJIMIN PASS | 統合DXプラットフォーム",
   description: "お店のDXをひとつのアカウントでまるごとカバー。予約管理、AI応答、シフト管理、社内規則検索を統合。",
+  openGraph: {
+    title: "FUJIMIN PASS | 統合DXプラットフォーム - FUJIMI DX Lab",
+    description: "予約管理・AI応答・シフト管理・社内規則検索をひとつのアカウントで。",
+    images: [{ url: "/images/ogp.jpg", width: 1200, height: 630, alt: "FUJIMIN PASS 統合DXプラットフォーム" }],
+  },
 };
 
 const NAVI_TOOLS = [
