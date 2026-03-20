@@ -358,118 +358,108 @@ export default function MassageLPPage() {
 
         {/* Pricing */}
         <section id="pricing" className="px-4 py-24 md:py-32">
-          <div className="mx-auto max-w-3xl">
+          <div className="mx-auto max-w-4xl">
             <FadeIn>
               <div className="text-center">
                 <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
                   まずは無料ではじめる
                 </h2>
                 <p className="mx-auto mt-4 max-w-md text-gray-500">
-                  1人運営のお店なら、無料プランで十分。
+                  まずは無料プランでお試しもOK。
                   <br />
-                  月50件まで予約を受けられます。
+                  <strong className="text-gray-700">契約期間の縛りなし。いつでも解約できます。</strong>
                 </p>
               </div>
             </FadeIn>
+
+            {/* プランカード */}
             <FadeIn delay={0.1}>
               <div className="mt-14 grid gap-6 md:grid-cols-2">
                 {/* 無料プラン */}
                 <div className="rounded-2xl border-2 border-gray-200 bg-white p-8">
                   <div className="text-center">
-                    <p className="text-sm font-semibold text-gray-500">
-                      無料プラン
-                    </p>
-                    <p className="mt-2 text-4xl font-extrabold text-gray-900">
-                      ¥0
-                    </p>
-                    <p className="mt-1 text-xs text-gray-500">ずっと無料</p>
-                  </div>
-                  <div className="mt-6 space-y-3 text-sm">
-                    {[
-                      "LINE予約受付（月50件まで）",
-                      "予約カレンダー管理",
-                      "自動リマインド",
-                      "LINE通知",
-                    ].map((f) => (
-                      <div key={f} className="flex items-center gap-2">
-                        <span className="text-green-500">✓</span>
-                        <span className="text-gray-700">{f}</span>
-                      </div>
-                    ))}
+                    <p className="text-sm font-semibold text-gray-500">無料プラン</p>
+                    <p className="mt-2 text-4xl font-extrabold text-gray-900">¥0</p>
+                    <p className="mt-1 text-xs text-gray-500">ずっと無料・クレカ登録不要</p>
                   </div>
                   <div className="mt-6">
-                    <a
-                      href="#contact"
-                      className="block w-full rounded-lg bg-gray-100 py-3 text-center text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-200"
-                    >
+                    <a href="#contact" className="block w-full rounded-lg bg-gray-100 py-3 text-center text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-200">
                       無料プランについて相談する
                     </a>
                   </div>
                 </div>
                 {/* おすすめプラン */}
-                <div
-                  className="relative rounded-2xl border-2 p-8 shadow-md"
-                  style={{ borderColor: "#f97316", backgroundColor: "#fff7ed" }}
-                >
-                  <span
-                    className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold text-white"
-                    style={{ backgroundColor: "#f97316" }}
-                  >
-                    おすすめ
-                  </span>
+                <div className="relative rounded-2xl border-2 p-8 shadow-md" style={{ borderColor: "#f97316", backgroundColor: "#fff7ed" }}>
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold text-white" style={{ backgroundColor: "#f97316" }}>おすすめ</span>
                   <div className="text-center">
-                    <p
-                      className="text-sm font-semibold"
-                      style={{ color: "#f97316" }}
-                    >
-                      スタンダードプラン
-                    </p>
-                    <p className="mt-2 text-4xl font-extrabold text-gray-900">
-                      ¥3,300
-                      <span className="text-base font-normal text-gray-500">
-                        /月
-                      </span>
-                    </p>
-                    <p className="mt-1 text-xs text-gray-500">
-                      LINE予約 + AI応答がセット
-                    </p>
-                  </div>
-                  <div className="mt-6 space-y-3 text-sm">
-                    {[
-                      "LINE予約受付（無制限）",
-                      "AIが質問に自動応答（Ask Navi付帯）",
-                      "顧客カルテ・来店履歴",
-                      "リピート離脱アラート",
-                      "売上レポート",
-                      "チャット・メールサポート",
-                    ].map((f) => (
-                      <div key={f} className="flex items-center gap-2">
-                        <span style={{ color: "#f97316" }}>✓</span>
-                        <span className="text-gray-700">{f}</span>
-                      </div>
-                    ))}
+                    <p className="text-sm font-semibold" style={{ color: "#f97316" }}>スタンダードプラン</p>
+                    <p className="mt-2 text-4xl font-extrabold text-gray-900">¥3,300<span className="text-base font-normal text-gray-500">/月</span></p>
+                    <p className="mt-1 text-xs text-gray-500">LINE予約 + AI応答がセット</p>
                   </div>
                   <div className="mt-6">
-                    <a
-                      href="#contact"
-                      className="block w-full rounded-lg py-3 text-center text-sm font-semibold text-white transition-colors hover:opacity-90"
-                      style={{ backgroundColor: "#f97316" }}
-                    >
+                    <a href="#contact" className="block w-full rounded-lg py-3 text-center text-sm font-semibold text-white transition-colors hover:opacity-90" style={{ backgroundColor: "#f97316" }}>
                       スタンダードプランについて相談する
                     </a>
                   </div>
                 </div>
               </div>
             </FadeIn>
+
+            {/* 機能比較テーブル */}
+            <FadeIn delay={0.15}>
+              <div className="mt-12 overflow-x-auto rounded-2xl border border-gray-100 bg-white shadow-sm">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-gray-100">
+                      <th className="px-5 py-4 text-left font-semibold text-gray-700">機能</th>
+                      <th className="px-5 py-4 text-center font-semibold text-gray-500">無料</th>
+                      <th className="px-5 py-4 text-center font-semibold text-gray-500">ライト<br /><span className="text-xs font-normal">¥1,980/月</span></th>
+                      <th className="px-5 py-4 text-center font-semibold" style={{ color: "#f97316" }}>スタンダード<br /><span className="text-xs font-normal">¥3,300/月</span></th>
+                      <th className="px-5 py-4 text-center font-semibold text-gray-500">プロ<br /><span className="text-xs font-normal">¥5,500/月</span></th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-50">
+                    {[
+                      { feature: "LINE予約受付", free: "月50件", lite: "無制限", std: "無制限", pro: "無制限" },
+                      { feature: "予約カレンダー", free: "✓", lite: "✓", std: "✓", pro: "✓" },
+                      { feature: "自動リマインド", free: "✓", lite: "✓", std: "✓", pro: "✓" },
+                      { feature: "LINE通知", free: "✓", lite: "✓", std: "✓", pro: "✓" },
+                      { feature: "予約履歴", free: "1ヶ月", lite: "12ヶ月", std: "無制限", pro: "無制限" },
+                      { feature: "スタッフ数", free: "1名", lite: "1名", std: "無制限", pro: "無制限" },
+                      { feature: "店舗数", free: "1", lite: "1", std: "1", pro: "最大3" },
+                      { feature: "顧客カルテ", free: "—", lite: "手入力", std: "AI自動要約", pro: "AI自動要約" },
+                      { feature: "AI自動応答（Ask Navi）", free: "—", lite: "—", std: "ライト付帯", pro: "ライト付帯" },
+                      { feature: "リピート離脱アラート", free: "—", lite: "—", std: "✓", pro: "✓" },
+                      { feature: "売上レポート", free: "—", lite: "—", std: "✓", pro: "✓" },
+                      { feature: "サポート", free: "—", lite: "チャット・メール", std: "チャット・メール", pro: "優先サポート" },
+                    ].map((row) => (
+                      <tr key={row.feature} className="hover:bg-gray-50/50">
+                        <td className="px-5 py-3 font-medium text-gray-700">{row.feature}</td>
+                        <td className="px-5 py-3 text-center text-gray-500">{row.free}</td>
+                        <td className="px-5 py-3 text-center text-gray-500">{row.lite}</td>
+                        <td className="px-5 py-3 text-center font-medium text-gray-900">{row.std}</td>
+                        <td className="px-5 py-3 text-center text-gray-500">{row.pro}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </FadeIn>
+
+            {/* 安心ポイント */}
             <FadeIn delay={0.2}>
-              <p className="mt-8 text-center text-xs text-gray-400">
-                すべて税込価格です。他のプラン（ライト ¥1,980/月、プロ
-                ¥5,500/月）もございます。
-                <Link
-                  href="/products/reserve-navi"
-                  className="ml-1 underline hover:text-gray-600"
-                >
-                  全プランを見る →
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500">
+                <span className="flex items-center gap-1.5"><span className="text-green-500">✓</span> 契約期間の縛りなし</span>
+                <span className="flex items-center gap-1.5"><span className="text-green-500">✓</span> いつでも解約OK</span>
+                <span className="flex items-center gap-1.5"><span className="text-green-500">✓</span> プラン変更も自由</span>
+                <span className="flex items-center gap-1.5"><span className="text-green-500">✓</span> すべて税込価格</span>
+              </div>
+            </FadeIn>
+
+            <FadeIn delay={0.25}>
+              <p className="mt-6 text-center text-xs text-gray-400">
+                <Link href="/products/reserve-navi" className="underline hover:text-gray-600">
+                  全プランの詳細を見る →
                 </Link>
               </p>
             </FadeIn>
