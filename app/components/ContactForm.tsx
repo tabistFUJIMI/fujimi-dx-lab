@@ -46,7 +46,7 @@ export default function ContactForm() {
       <div className="mx-auto max-w-lg rounded-2xl bg-white/10 p-8 text-center backdrop-blur-sm">
         <p className="text-2xl font-bold">送信完了しました！</p>
         <p className="mt-3 text-blue-100/80">
-          確認メールをお送りしました。担当者より折り返しご連絡いたします。
+          お問い合わせを受け付けました。内容を確認のうえ、担当者よりご連絡いたします。
         </p>
         <button
           onClick={() => setStatus("idle")}
@@ -83,42 +83,58 @@ export default function ContactForm() {
 
       {/* Name & Email */}
       <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label htmlFor="contact-name" className="mb-1 block text-sm text-blue-100/80">お名前 <span className="text-blue-200">*</span></label>
+          <input
+            id="contact-name"
+            type="text"
+            required
+            maxLength={100}
+            value={form.name}
+            onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+            className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder-blue-200/50 backdrop-blur-sm outline-none focus:border-white/50 focus:ring-1 focus:ring-white/30"
+          />
+        </div>
+        <div>
+          <label htmlFor="contact-email" className="mb-1 block text-sm text-blue-100/80">メールアドレス <span className="text-blue-200">*</span></label>
+          <input
+            id="contact-email"
+            type="email"
+            required
+            maxLength={254}
+            value={form.email}
+            onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+            className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder-blue-200/50 backdrop-blur-sm outline-none focus:border-white/50 focus:ring-1 focus:ring-white/30"
+          />
+        </div>
+      </div>
+
+      {/* Company */}
+      <div>
+        <label htmlFor="contact-company" className="mb-1 block text-sm text-blue-100/80">会社名 / 店舗名</label>
         <input
+          id="contact-company"
           type="text"
-          placeholder="お名前 *"
-          required
-          value={form.name}
-          onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-          className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder-blue-200/50 backdrop-blur-sm outline-none focus:border-white/50 focus:ring-1 focus:ring-white/30"
-        />
-        <input
-          type="email"
-          placeholder="メールアドレス *"
-          required
-          value={form.email}
-          onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+          maxLength={200}
+          value={form.company}
+          onChange={(e) => setForm((f) => ({ ...f, company: e.target.value }))}
           className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder-blue-200/50 backdrop-blur-sm outline-none focus:border-white/50 focus:ring-1 focus:ring-white/30"
         />
       </div>
 
-      {/* Company */}
-      <input
-        type="text"
-        placeholder="会社名 / 店舗名（任意）"
-        value={form.company}
-        onChange={(e) => setForm((f) => ({ ...f, company: e.target.value }))}
-        className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder-blue-200/50 backdrop-blur-sm outline-none focus:border-white/50 focus:ring-1 focus:ring-white/30"
-      />
-
       {/* Message */}
-      <textarea
-        placeholder="お問い合わせ内容 *"
-        required
-        rows={4}
-        value={form.message}
-        onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
-        className="w-full resize-none rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder-blue-200/50 backdrop-blur-sm outline-none focus:border-white/50 focus:ring-1 focus:ring-white/30"
-      />
+      <div>
+        <label htmlFor="contact-message" className="mb-1 block text-sm text-blue-100/80">お問い合わせ内容 <span className="text-blue-200">*</span></label>
+        <textarea
+          id="contact-message"
+          required
+          rows={4}
+          maxLength={5000}
+          value={form.message}
+          onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
+          className="w-full resize-none rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder-blue-200/50 backdrop-blur-sm outline-none focus:border-white/50 focus:ring-1 focus:ring-white/30"
+        />
+      </div>
 
       {/* Submit */}
       <button

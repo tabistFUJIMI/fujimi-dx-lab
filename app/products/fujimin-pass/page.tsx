@@ -4,13 +4,14 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
+import RelatedProducts from "../../components/RelatedProducts";
 
 export const metadata: Metadata = {
   title: "FUJIMIN PASS | 統合DXプラットフォーム",
-  description: "お店のDXをひとつのアカウントでまるごとカバー。予約管理、AI応答、シフト管理、社内規則検索を統合。",
+  description: "小規模事業者向け統合DXプラットフォーム FUJIMIN PASS。予約管理・AI応答・シフト管理・社内規則検索を1アカウントで。月額550円から、必要なツールだけ選べる。FUJIMI DX Lab",
   openGraph: {
     title: "FUJIMIN PASS | 統合DXプラットフォーム - FUJIMI DX Lab",
-    description: "予約管理・AI応答・シフト管理・社内規則検索をひとつのアカウントで。",
+    description: "小規模事業者向け統合DXプラットフォーム FUJIMIN PASS。予約管理・AI応答・シフト管理・社内規則検索を1アカウントで。月額550円から、必要なツールだけ選べる。FUJIMI DX Lab",
     images: [{ url: "/images/ogp.jpg", width: 1200, height: 630, alt: "FUJIMIN PASS 統合DXプラットフォーム" }],
   },
 };
@@ -35,13 +36,43 @@ const BENEFITS = [
 export default function FujiminPassPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "FUJIMIN PASS",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        description: "小規模事業者向け統合DXプラットフォーム",
+        url: "https://fujimi-dx-lab.com/products/fujimin-pass",
+        offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "5500", priceCurrency: "JPY" },
+        provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          { "@type": "Question", name: "FUJIMIN PASSだけの契約は必要ですか？", acceptedAnswer: { "@type": "Answer", text: "いいえ。FUJIMIN PASSはプラットフォームなので、個別のNaviツールを契約すれば自動でアカウントが発行されます。" } },
+          { "@type": "Question", name: "1つのツールだけでも使えますか？", acceptedAnswer: { "@type": "Answer", text: "はい。必要なツールだけ選んで始められます。後から追加するのも簡単です。" } },
+          { "@type": "Question", name: "データは安全ですか？", acceptedAnswer: { "@type": "Answer", text: "テナント完全分離・データ暗号化・アクセスログ監視を実施しています。セキュリティは最優先事項です。" } },
+          { "@type": "Question", name: "解約したらデータはどうなりますか？", acceptedAnswer: { "@type": "Answer", text: "解約後30日間はデータを保持します。その間にエクスポートも可能です。" } },
+          { "@type": "Question", name: "導入のサポートはありますか？", acceptedAnswer: { "@type": "Answer", text: "はい。初期設定から運用まで、無料でサポートいたします。" } },
+        ],
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "ホーム", item: "https://fujimi-dx-lab.com" },
+          { "@type": "ListItem", position: 2, name: "FUJIMIN PASS", item: "https://fujimi-dx-lab.com/products/fujimin-pass" },
+        ],
+      }) }} />
       <Header />
       <main>
         <section className="relative min-h-[70vh] overflow-hidden px-4 pt-32 pb-20 text-white md:pt-40 md:pb-28" style={{ background: "linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #4338ca 100%)" }}>
           <div className="relative z-10 mx-auto max-w-6xl"><div className="max-w-2xl">
             <FadeIn><Link href="/" className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm text-indigo-100 backdrop-blur-sm transition-colors hover:bg-white/20">← FUJIMI DX Lab トップ</Link></FadeIn>
             <FadeIn delay={0.05}><div className="mb-4 flex items-center gap-3"><span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/20 text-2xl">🔑</span><span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold tracking-wider text-indigo-100 uppercase">統合DXプラットフォーム</span></div></FadeIn>
-            <FadeIn delay={0.1}><h1 className="text-4xl font-extrabold tracking-tight md:text-5xl" style={{ lineHeight: 1.15 }}>FUJIMIN PASS</h1></FadeIn>
+            <FadeIn delay={0.1}><h1 className="text-4xl font-extrabold tracking-tight md:text-5xl" style={{ lineHeight: 1.15 }}>FUJIMIN PASS<span className="mt-2 block text-lg font-medium text-indigo-100 md:text-xl">統合DXプラットフォーム</span></h1></FadeIn>
             <FadeIn delay={0.15}><p className="mt-6 text-xl font-medium text-indigo-100">お店のDX、ひとつのアカウントでまるごとカバー。</p></FadeIn>
             <FadeIn delay={0.2}><p className="mt-4 max-w-lg leading-relaxed text-indigo-100/80">予約管理、AI応答、シフト管理、社内規則検索…<br />バラバラのツールをFUJIMIN PASSでひとつに。<br /><span className="font-semibold text-white">必要なものだけ選んで、今日から始められます。</span></p></FadeIn>
             <FadeIn delay={0.25}><div className="mt-8"><a href="#contact" className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold shadow-lg transition-all duration-300 hover:scale-105" style={{ color: "#4f46e5" }}>無料で相談する</a></div></FadeIn>
@@ -50,7 +81,10 @@ export default function FujiminPassPage() {
 
         {/* Ecosystem */}
         <section className="px-4 py-24 md:py-32"><div className="mx-auto max-w-5xl">
-          <FadeIn><div className="text-center"><h2 className="text-3xl font-bold tracking-tight md:text-4xl">5つのNaviツール</h2><p className="mx-auto mt-4 max-w-lg text-gray-500">お店に必要なツールだけ選んでスタート。<br />後から追加・連携することで、もっと便利に。</p></div></FadeIn>
+          <FadeIn><div className="text-center"><h2 className="text-3xl font-bold tracking-tight md:text-4xl">5つのNaviツール</h2><p className="mx-auto mt-4 max-w-lg text-gray-500">お店に必要なツールだけ選んでスタート。<br />後から追加・連携することで、もっと便利に。</p>
+            <p className="mx-auto mt-2 text-sm font-semibold" style={{ color: "#4f46e5" }}>
+              FUJIMIN PASSのプラットフォーム利用料は無料です。各Naviツールの月額料金だけでご利用いただけます。
+            </p></div></FadeIn>
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {NAVI_TOOLS.map((tool, i) => (
               <FadeIn key={tool.slug} delay={i * 0.06}>
@@ -103,6 +137,8 @@ export default function FujiminPassPage() {
           <FadeIn><div className="text-center"><h2 className="text-3xl font-bold tracking-tight md:text-4xl">よくある質問</h2></div></FadeIn>
           <div className="mt-14 space-y-6">{[{q:"FUJIMIN PASSだけの契約は必要ですか？",a:"いいえ。FUJIMIN PASSはプラットフォームなので、個別のNaviツールを契約すれば自動でアカウントが発行されます。"},{q:"1つのツールだけでも使えますか？",a:"はい。必要なツールだけ選んで始められます。後から追加するのも簡単です。"},{q:"データは安全ですか？",a:"テナント完全分離・データ暗号化・アクセスログ監視を実施しています。セキュリティは最優先事項です。"},{q:"解約したらデータはどうなりますか？",a:"解約後30日間はデータを保持します。その間にエクスポートも可能です。"},{q:"導入のサポートはありますか？",a:"はい。初期設定から運用まで、無料でサポートいたします。"}].map((faq,i)=>(<FadeIn key={i} delay={i*0.05}><div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm"><h3 className="font-bold text-gray-900">Q. {faq.q}</h3><p className="mt-2 text-sm leading-relaxed text-gray-500">A. {faq.a}</p></div></FadeIn>))}</div>
         </div></section>
+
+        <RelatedProducts currentSlug="fujimin-pass" />
 
         <section id="contact" className="relative overflow-hidden px-4 py-24 text-white md:py-32" style={{background:"linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #4338ca 100%)"}}><div className="relative z-10 mx-auto max-w-3xl text-center"><FadeIn><h2 className="text-3xl font-bold tracking-tight md:text-4xl">うちでも使えるかな？<br />まずはご相談ください</h2><p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-indigo-100/80">「どのツールから始めればいい？」「うちの業種に合う？」<br />なんでもお気軽にどうぞ。無料でご相談いただけます。</p><div className="mt-10"><ContactForm /></div></FadeIn></div></section>
       </main>

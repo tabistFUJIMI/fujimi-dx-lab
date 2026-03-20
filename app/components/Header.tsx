@@ -5,7 +5,6 @@ import Link from "next/link";
 
 const NAV_ITEMS = [
   { label: "こんな課題", href: "/#solutions" },
-  { label: "プロダクト", href: "/#solutions" },
   { label: "私たちについて", href: "/#company" },
 ];
 

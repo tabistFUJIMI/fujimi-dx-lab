@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s - FUJIMI DX Lab",
   },
   description:
-    "小規模事業者のための統合DXプラットフォーム「FUJIMIN PASS」。予約管理・シフト管理・社内規則検索・SNS運用・LINE活用を、ひとつのアカウントでまるごとカバーします。",
+    "宿泊施設・サロン・飲食店向けDXツール。LINE予約管理・AI自動応答・シフト管理を月額550円から。無料プランあり。FUJIMI DX Lab",
   keywords: [
     "DX", "小規模事業者", "予約管理", "シフト管理", "LINE予約",
     "AI", "社内規則", "SNS管理", "FUJIMIN PASS", "FUJIMI DX Lab",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "FUJIMI DX Lab | 小さなお店のDXを、現場から。",
     description:
-      "小規模事業者のための統合DXプラットフォーム。予約管理・AI応答・シフト管理・社内規則検索をひとつに。",
+      "宿泊施設・サロン・飲食店向けDXツール。LINE予約管理・AI自動応答・シフト管理を月額550円から。無料プランあり。FUJIMI DX Lab",
     type: "website",
     locale: "ja_JP",
     siteName: "FUJIMI DX Lab",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "FUJIMI DX Lab | 小さなお店のDXを、現場から。",
-    description: "小規模事業者のための統合DXプラットフォーム「FUJIMIN PASS」。",
+    description: "宿泊施設・サロン・飲食店向けDXツール。LINE予約管理・AI自動応答・シフト管理を月額550円から。無料プランあり。FUJIMI DX Lab",
     images: ["/images/ogp.jpg"],
   },
   icons: {

@@ -59,6 +59,7 @@ export default function Home() {
       <main>
         {/* Hero */}
         <section className="relative min-h-[100vh] overflow-hidden px-4 pt-32 pb-20 text-white md:pt-40 md:pb-28" style={{ background: "linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #020617 100%)" }}>
+          <h1 className="sr-only">FUJIMI DX Lab — 小規模事業者のためのDXツール</h1>
           <div className="relative z-10 mx-auto max-w-6xl">
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div>
@@ -68,11 +69,11 @@ export default function Home() {
                   </p>
                 </FadeIn>
                 <FadeIn delay={0.1}>
-                  <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl" style={{ lineHeight: 1.1 }}>
+                  <p className="text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl" style={{ lineHeight: 1.1 }}>
                     「この時間、もっと
                     <br />
                     お客様に使えないかな？」
-                  </h1>
+                  </p>
                 </FadeIn>
                 <FadeIn delay={0.2}>
                   <p className="mt-8 max-w-lg text-lg leading-relaxed text-slate-300">
@@ -106,12 +107,95 @@ export default function Home() {
                   </div>
                 </FadeIn>
               </div>
-              <FadeIn delay={0.2} className="hidden lg:block">
+              <FadeIn delay={0.2} className="mt-8 w-full max-w-md mx-auto lg:mt-0 lg:max-w-none">
                 <div className="relative">
                   <Image src="/images/hero-illustration.jpg" alt="小規模事業者のDXイメージ" width={600} height={400} className="rounded-2xl" priority />
                 </div>
               </FadeIn>
             </div>
+          </div>
+        </section>
+
+        {/* FUJIMI DX Labとは */}
+        <section className="bg-white px-4 py-24 md:py-32">
+          <div className="mx-auto max-w-3xl">
+            <FadeIn>
+              <div className="text-center">
+                <h2 className="text-3xl font-bold tracking-tight md:text-4xl">FUJIMI DX Labとは</h2>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <p className="mt-8 text-[15px] leading-relaxed text-gray-600">
+                FUJIMI DX Labは、小さなお店の&quot;困った&quot;をAIで解決するDXツール群です。予約管理・AI応答・シフト管理・社内規則検索・SNS管理を、ひとつのアカウントで必要なものだけ選んで使えます。
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <div className="mt-8 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
+                <p className="text-[15px] leading-relaxed text-gray-600">
+                  これらのツールはすべて、統合プラットフォーム「<strong className="text-gray-800">FUJIMIN PASS</strong>」で管理。ひとつのログインで、あなたのお店に必要なツールだけ、1つから始められます。
+                </p>
+                <div className="mt-6 text-center">
+                  <a href="https://fujimin-pass.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-xl px-8 py-3 text-base font-bold text-white shadow-lg transition-all duration-300 hover:scale-105" style={{ backgroundColor: "#4f46e5" }}>
+                    FUJIMIN PASSを見る
+                  </a>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+
+        {/* 導入実績 */}
+        <section style={{ backgroundColor: "#f8fafc" }} className="px-4 py-24 md:py-32">
+          <div className="mx-auto max-w-5xl">
+            <FadeIn>
+              <div className="text-center">
+                <h2 className="text-3xl font-bold tracking-tight md:text-4xl">開発者自身が、毎日使っています</h2>
+                <div className="mx-auto mt-6 flex items-center justify-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-lg" style={{ backgroundColor: "#eef2ff" }}>🏨</div>
+                  <div className="text-left">
+                    <p className="text-sm font-bold text-gray-800">Tabist ゆ縁の宿ふじみ</p>
+                    <p className="text-xs text-gray-500">静岡県富士市のビジネスホテル</p>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              {[
+                {
+                  icon: "💬",
+                  name: "Ask Navi",
+                  color: "#14b8a6",
+                  text: "お客様からの問い合わせにAIが24時間対応。スタッフは接客に集中できるようになりました",
+                },
+                {
+                  icon: "📊",
+                  name: "Shift Navi",
+                  color: "#3b82f6",
+                  text: "Excel作業が大幅に短縮。AIがシフトを自動作成し、スタッフの休み希望もスマホで収集",
+                },
+                {
+                  icon: "📖",
+                  name: "Rule Navi",
+                  color: "#a855f7",
+                  text: "就業規則やマニュアルをAIが検索。新人からベテランまで、いつでも即座に確認できます",
+                },
+              ].map((item, i) => (
+                <FadeIn key={item.name} delay={i * 0.1}>
+                  <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className="text-2xl">{item.icon}</span>
+                      <h3 className="font-bold" style={{ color: item.color }}>{item.name}</h3>
+                    </div>
+                    <p className="text-sm leading-relaxed text-gray-600">{item.text}</p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+            <FadeIn delay={0.3}>
+              <p className="mt-12 text-center text-[15px] font-medium text-gray-800">
+                同じ悩みを持つお店に、この仕組みを届けたい。それがFUJIMI DX Labの原点です。
+              </p>
+            </FadeIn>
           </div>
         </section>
 
@@ -218,7 +302,7 @@ export default function Home() {
                     ["事業部", "FUJIMI DX Lab事業部"],
                     ["所在地", "静岡県富士市"],
                     ["事業内容", "小規模事業者向けDXツールの開発・提供"],
-                    ["運営施設", <a key="f" href="http://fujimi-ryokan.com" target="_blank" rel="noopener noreferrer" className="hover:underline" style={{ color: "#4f46e5" }}>Tabist ゆ縁の宿ふじみ（ビジネスホテル）</a>],
+                    ["運営施設", <a key="f" href="https://fujimi-ryokan.com" target="_blank" rel="noopener noreferrer" className="hover:underline" style={{ color: "#4f46e5" }}>Tabist ゆ縁の宿ふじみ（ビジネスホテル）</a>],
                     ["メール", <a key="e" href="mailto:support@mail.fujimin-pass.com" className="hover:underline" style={{ color: "#4f46e5" }}>support@mail.fujimin-pass.com</a>],
                   ] as [string, React.ReactNode][]).map(([dt, dd]) => (
                     <div key={dt} className="flex flex-col py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-center sm:gap-4">

@@ -20,10 +20,10 @@ export default function Footer() {
               {[
                 { name: "FUJIMIN PASS", href: "/products/fujimin-pass" },
                 { name: "Reserve Navi", href: "/products/reserve-navi" },
-                { name: "ShiftNavi", href: "/products/shift-navi" },
-                { name: "RuleNavi", href: "/products/rule-navi" },
-                { name: "SocialNavi", href: "/products/social-navi" },
-                { name: "AskNavi", href: "/products/ask-navi" },
+                { name: "Shift Navi", href: "/products/shift-navi" },
+                { name: "Rule Navi", href: "/products/rule-navi" },
+                { name: "Social Navi", href: "/products/social-navi" },
+                { name: "Ask Navi", href: "/products/ask-navi" },
               ].map((item) => (
                 <li key={item.name}>
                   <a href={item.href} className="text-slate-500 transition-colors hover:text-slate-300">
@@ -44,6 +44,11 @@ export default function Footer() {
                   className="text-slate-500 transition-colors hover:text-slate-300"
                 >
                   support@mail.fujimin-pass.com
+                </a>
+              </li>
+              <li>
+                <a href="/privacy" className="text-slate-500 transition-colors hover:text-slate-300">
+                  プライバシーポリシー
                 </a>
               </li>
             </ul>

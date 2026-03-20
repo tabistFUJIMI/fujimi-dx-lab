@@ -5,14 +5,15 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
+import RelatedProducts from "../../components/RelatedProducts";
 
 export const metadata: Metadata = {
   title: "Reserve Navi | LINE予約管理",
   description:
-    "LINEから簡単予約。サロン・パーソナルジム・ペットサロン・音楽教室など、予約制のお店にぴったり。無料プランあり。月額¥1,980〜。",
+    "LINE予約管理システム Reserve Navi。サロン・整体・ジム・ペットサロン向け。無料プランあり、月額1,980円から。LINEミニアプリで24時間予約受付。FUJIMI DX Lab",
   openGraph: {
     title: "Reserve Navi | LINE予約管理 - FUJIMI DX Lab",
-    description: "サロン・ジム・ペットサロン・教室など予約制のお店に。LINEから簡単予約。無料プランあり。",
+    description: "LINE予約管理システム Reserve Navi。サロン・整体・ジム・ペットサロン向け。無料プランあり、月額1,980円から。LINEミニアプリで24時間予約受付。FUJIMI DX Lab",
     images: [{ url: "/images/reserve-navi.jpg", width: 1200, height: 630, alt: "Reserve Navi LINE予約管理" }],
   },
 };
@@ -185,6 +186,36 @@ const AI_FEATURES = [
 export default function ReserveNaviPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "Reserve Navi",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        description: "LINEから簡単予約。小規模店舗向け予約管理システム",
+        url: "https://fujimi-dx-lab.com/products/reserve-navi",
+        offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "5500", priceCurrency: "JPY" },
+        provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          { "@type": "Question", name: "本当に無料で使えますか？", acceptedAnswer: { "@type": "Answer", text: "はい。無料プランは月50件まで、ずっと無料です。クレジットカードの登録も不要です。" } },
+          { "@type": "Question", name: "どんな業種で使えますか？", acceptedAnswer: { "@type": "Answer", text: "「予約制」のお店なら幅広く対応しています。サロン・整体はもちろん、パーソナルジム、ペットサロン、音楽教室、写真スタジオ、占い・カウンセリングなど、さまざまなお店でご利用いただいています。" } },
+          { "@type": "Question", name: "LINEの公式アカウントが必要ですか？", acceptedAnswer: { "@type": "Answer", text: "はい。LINE公式アカウント（無料で作成可能）が必要です。設定方法はサポートがお手伝いします。" } },
+          { "@type": "Question", name: "スタッフが機械に詳しくなくても大丈夫？", acceptedAnswer: { "@type": "Answer", text: "大丈夫です。画面はとてもシンプルに作られています。初期設定もサポートがお手伝いします。" } },
+          { "@type": "Question", name: "お客様側にアプリのダウンロードは必要ですか？", acceptedAnswer: { "@type": "Answer", text: "不要です。LINEさえあれば予約できます。" } },
+        ],
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "ホーム", item: "https://fujimi-dx-lab.com" },
+          { "@type": "ListItem", position: 2, name: "Reserve Navi", item: "https://fujimi-dx-lab.com/products/reserve-navi" },
+        ],
+      }) }} />
       <Header />
       <main>
         {/* ═══ Hero ═══ */}
@@ -213,6 +244,7 @@ export default function ReserveNaviPage() {
                 <FadeIn delay={0.1}>
                   <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl" style={{ lineHeight: 1.15 }}>
                     Reserve Navi
+                    <span className="mt-2 block text-lg font-medium text-orange-100 md:text-xl">LINE予約管理システム</span>
                   </h1>
                 </FadeIn>
                 <FadeIn delay={0.15}>
@@ -431,11 +463,11 @@ export default function ReserveNaviPage() {
               </div>
             </FadeIn>
 
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-14 flex gap-5 overflow-x-auto pb-4 snap-x lg:grid lg:grid-cols-4 lg:overflow-visible">
               {PLANS.map((plan, i) => (
                 <FadeIn key={plan.name} delay={i * 0.06}>
                   <div
-                    className={`relative h-full rounded-2xl border-2 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
+                    className={`relative h-full min-w-[260px] flex-shrink-0 lg:min-w-0 lg:flex-shrink rounded-2xl border-2 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
                       plan.recommended ? "shadow-md" : ""
                     }`}
                     style={{
@@ -481,7 +513,7 @@ export default function ReserveNaviPage() {
                             : { backgroundColor: "#f3f4f6", color: "#374151" }
                         }
                       >
-                        {plan.price === "¥0" ? "無料で始める" : "お問い合わせ"}
+                        {plan.price === "¥0" ? "無料プランについて相談する" : "お問い合わせ"}
                       </a>
                     </div>
                   </div>
@@ -565,6 +597,8 @@ export default function ReserveNaviPage() {
             </div>
           </div>
         </section>
+
+        <RelatedProducts currentSlug="reserve-navi" />
 
         {/* ═══ CTA ═══ */}
         <section

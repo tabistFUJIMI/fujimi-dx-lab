@@ -4,14 +4,15 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
+import RelatedProducts from "../../components/RelatedProducts";
 
 export const metadata: Metadata = {
   title: "Ask Navi | LINE AI自動応答",
   description:
-    "公式LINEやWebサイトの問い合わせにAIが24時間自動応答。サロン・飲食店・クリニック・ジムなど顧客対応のあるお店に。月額¥550〜。Reserve Navi連携で無料付帯も。",
+    "LINE AI自動応答 Ask Navi。公式LINEやWebサイトの問い合わせにAIが24時間自動応答。サロン・飲食店・宿泊施設向け。月額550円から。FUJIMI DX Lab",
   openGraph: {
     title: "Ask Navi | LINE AI自動応答 - FUJIMI DX Lab",
-    description: "顧客対応のあるお店に。AIが公式LINEやWebで24時間自動応答。Reserve Navi連携で無料付帯も。",
+    description: "LINE AI自動応答 Ask Navi。公式LINEやWebサイトの問い合わせにAIが24時間自動応答。サロン・飲食店・宿泊施設向け。月額550円から。FUJIMI DX Lab",
     images: [{ url: "/images/ask-navi.jpg", width: 1200, height: 630, alt: "Ask Navi LINE AI自動応答" }],
   },
 };
@@ -91,6 +92,35 @@ const PLANS = [
 export default function AskNaviPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "Ask Navi",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        description: "公式LINEの問い合わせにAIが自動応答",
+        url: "https://fujimi-dx-lab.com/products/ask-navi",
+        offers: { "@type": "AggregateOffer", lowPrice: "550", highPrice: "5500", priceCurrency: "JPY" },
+        provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          { "@type": "Question", name: "ナレッジの登録はむずかしいですか？", acceptedAnswer: { "@type": "Answer", text: "PDFやCSVをアップロードするだけです。HPのURLを入力すれば、AIが自動でページ内容を取り込みます。" } },
+          { "@type": "Question", name: "AIが答えられない質問はどうなりますか？", acceptedAnswer: { "@type": "Answer", text: "「未回答」として記録され、管理画面に通知されます。回答を追加すれば、次回から自動応答できます。" } },
+          { "@type": "Question", name: "LINEの公式アカウントが必要ですか？", acceptedAnswer: { "@type": "Answer", text: "LINE連携を使う場合は必要です。Webウィジェットだけなら、公式LINEなしでも使えます。" } },
+          { "@type": "Question", name: "多言語対応はどのプランから？", acceptedAnswer: { "@type": "Answer", text: "プロプラン以上で多言語対応が可能です。英語・中国語・韓国語などに対応しています。" } },
+        ],
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "ホーム", item: "https://fujimi-dx-lab.com" },
+          { "@type": "ListItem", position: 2, name: "Ask Navi", item: "https://fujimi-dx-lab.com/products/ask-navi" },
+        ],
+      }) }} />
       <Header />
       <main>
         {/* Hero */}
@@ -109,7 +139,7 @@ export default function AskNaviPage() {
                 </div>
               </FadeIn>
               <FadeIn delay={0.1}>
-                <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl" style={{ lineHeight: 1.15 }}>Ask Navi</h1>
+                <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl" style={{ lineHeight: 1.15 }}>Ask Navi<span className="mt-2 block text-lg font-medium text-teal-100 md:text-xl">LINE AI自動応答</span></h1>
               </FadeIn>
               <FadeIn delay={0.15}>
                 <p className="mt-6 text-xl font-medium text-teal-100">よくある質問、まだ手動で返してますか？</p>
@@ -268,10 +298,10 @@ export default function AskNaviPage() {
                 <p className="mx-auto mt-4 max-w-md text-gray-500">月額¥550から。お店の規模に合わせて選べます。<br />すべて税込価格です。</p>
               </div>
             </FadeIn>
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-14 flex gap-5 overflow-x-auto pb-4 snap-x lg:grid lg:grid-cols-4 lg:overflow-visible">
               {PLANS.map((plan, i) => (
                 <FadeIn key={plan.name} delay={i * 0.06}>
-                  <div className={`relative h-full rounded-2xl border-2 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${plan.recommended ? "shadow-md" : ""}`} style={{ borderColor: plan.recommended ? plan.color : "#e5e7eb", backgroundColor: plan.bgColor }}>
+                  <div className={`relative h-full min-w-[260px] flex-shrink-0 lg:min-w-0 lg:flex-shrink rounded-2xl border-2 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${plan.recommended ? "shadow-md" : ""}`} style={{ borderColor: plan.recommended ? plan.color : "#e5e7eb", backgroundColor: plan.bgColor }}>
                     {plan.recommended && (<span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold text-white" style={{ backgroundColor: plan.color }}>おすすめ</span>)}
                     <div className="text-center">
                       <p className="text-sm font-semibold" style={{ color: plan.color }}>{plan.name}</p>
@@ -360,6 +390,8 @@ export default function AskNaviPage() {
             </div>
           </div>
         </section>
+
+        <RelatedProducts currentSlug="ask-navi" />
 
         {/* CTA */}
         <section id="contact" className="relative overflow-hidden px-4 py-24 text-white md:py-32" style={{ background: "linear-gradient(135deg, #14b8a6 0%, #0d9488 50%, #0f766e 100%)" }}>
