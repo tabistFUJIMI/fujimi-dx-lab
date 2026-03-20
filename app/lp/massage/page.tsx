@@ -356,6 +356,62 @@ export default function MassageLPPage() {
           </div>
         </section>
 
+        {/* Story */}
+        <section className="px-4 py-24 md:py-32">
+          <div className="mx-auto max-w-3xl">
+            <FadeIn>
+              <div className="text-center">
+                <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+                  なぜ私たちが作っているのか
+                </h2>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <div className="mt-12 rounded-2xl border border-gray-100 bg-white p-8 md:p-10 shadow-sm">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-xl" style={{ backgroundColor: "#eef2ff" }}>🏨</div>
+                  <div>
+                    <h3 className="text-lg font-bold">Tabist ゆ縁の宿ふじみ</h3>
+                    <p className="mt-1 text-sm text-gray-500">静岡県富士市のビジネスホテル</p>
+                  </div>
+                </div>
+                <div className="mt-8 space-y-4 text-[15px] leading-relaxed text-gray-600">
+                  <p>
+                    私たちは静岡県富士市で小さなビジネスホテルを運営しています。
+                    <strong className="text-gray-800">宿泊業も「予約」が命。</strong>
+                    電話が鳴っても接客中で出られない、同じ質問に何度も答える——マッサージ・整体院のオーナー様と、まったく同じ課題を抱えていました。
+                  </p>
+                  <p>
+                    既存の予約システムを探しましたが、大企業向けで高すぎたり、機能が多すぎて使いこなせなかったり。
+                    <strong className="text-gray-800">「ちょうどいい」がなかった</strong>んです。
+                  </p>
+                  <p>
+                    だから、自分たちで作りました。
+                  </p>
+                  <p className="text-gray-800 font-medium">
+                    同じ悩みを持つお店に、この仕組みを届けたい。それが Reserve Navi の原点です。
+                  </p>
+                </div>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <div className="mx-auto mt-8 grid max-w-3xl gap-4 md:grid-cols-3">
+                {[
+                  { emoji: "🎯", title: "ちょうどいい機能", description: "大手のような機能過多ではなく、小さなお店に本当に必要な機能だけ。" },
+                  { emoji: "🔧", title: "細やかな修正対応", description: "お店ごとに業務は違います。ご要望に応じて、きめ細かくカスタマイズ・修正します。" },
+                  { emoji: "💬", title: "現場を知る開発者", description: "自分たちも現場で毎日使っているから、困りごとがすぐ分かります。" },
+                ].map((item) => (
+                  <div key={item.title} className="rounded-xl border border-gray-100 bg-white p-6 text-center shadow-sm">
+                    <span className="text-3xl">{item.emoji}</span>
+                    <p className="mt-3 text-sm font-bold">{item.title}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-gray-500">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+
         {/* Pricing */}
         <section id="pricing" className="px-4 py-24 md:py-32">
           <div className="mx-auto max-w-4xl">
