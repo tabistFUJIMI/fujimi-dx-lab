@@ -126,17 +126,26 @@ export default function Home() {
             </FadeIn>
             <FadeIn delay={0.1}>
               <p className="mt-8 text-[15px] leading-relaxed text-gray-600">
-                FUJIMI DX Labは、小さなお店の&quot;困った&quot;をAIで解決するDXツール群です。予約管理・AI応答・シフト管理・社内規則検索・SNS管理を、ひとつのアカウントで必要なものだけ選んで使えます。
+                FUJIMI DX Labは、ふじみ企業有限会社が運営するDX事業部です。静岡県富士市でビジネスホテルを運営する中で生まれた、小さなお店のための業務改善ツールを開発・提供しています。
               </p>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <div className="mt-8 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
+              <div className="mt-8 rounded-2xl border-2 p-8 shadow-sm" style={{ borderColor: "#e0e7ff", backgroundColor: "#eef2ff" }}>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl text-lg" style={{ backgroundColor: "#4f46e5" }}>
+                    <span className="text-white">🔑</span>
+                  </span>
+                  <h3 className="text-lg font-bold" style={{ color: "#4f46e5" }}>FUJIMIN PASS</h3>
+                </div>
                 <p className="text-[15px] leading-relaxed text-gray-600">
-                  これらのツールはすべて、統合プラットフォーム「<strong className="text-gray-800">FUJIMIN PASS</strong>」で管理。ひとつのログインで、あなたのお店に必要なツールだけ、1つから始められます。
+                  私たちが提供する統合DXサービスです。予約管理・AI応答・シフト管理・社内規則検索・SNS管理を、<strong className="text-gray-800">ひとつのアカウントで必要なものだけ選んで</strong>使えます。
                 </p>
-                <div className="mt-6 text-center">
-                  <a href="https://fujimin-pass.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-xl px-8 py-3 text-base font-bold text-white shadow-lg transition-all duration-300 hover:scale-105" style={{ backgroundColor: "#4f46e5" }}>
-                    FUJIMIN PASSを見る
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
+                  <a href="/products/fujimin-pass" className="inline-flex items-center justify-center rounded-xl px-8 py-3 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:scale-105" style={{ backgroundColor: "#4f46e5" }}>
+                    FUJIMIN PASSとは →
+                  </a>
+                  <a href="https://fujimin-pass.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-xl border-2 px-8 py-3 text-sm font-bold transition-all duration-300 hover:bg-indigo-50" style={{ borderColor: "#4f46e5", color: "#4f46e5" }}>
+                    ログイン / 新規登録
                   </a>
                 </div>
               </div>
