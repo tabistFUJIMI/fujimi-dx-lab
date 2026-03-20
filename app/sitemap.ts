@@ -12,5 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/products/shift-navi`, lastModified: new Date("2026-03-18"), changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/products/social-navi`, lastModified: new Date("2026-03-18"), changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/privacy`, lastModified: new Date("2026-03-20"), changeFrequency: "yearly" as const, priority: 0.3 },
+    { url: `${BASE_URL}/lp/massage`, lastModified: new Date("2026-03-20"), changeFrequency: "monthly", priority: 0.8 },
   ];
 }
