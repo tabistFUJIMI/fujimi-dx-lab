@@ -6,14 +6,16 @@ import Footer from "../../components/Footer";
 import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
 import RelatedProducts from "../../components/RelatedProducts";
+import { ProductBreadcrumb } from "../../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Reserve Navi | LINE予約管理",
   description:
-    "LINE予約管理システム Reserve Navi。サロン・整体・ジム・ペットサロン向け。無料プランあり、月額1,980円から。LINEミニアプリで24時間予約受付。FUJIMI DX Lab",
+    "LINE予約管理システム Reserve Navi。サロン・整体・ジム・ペットサロン向け。無料プランあり、月額980円から。LINEミニアプリで24時間予約受付。FUJIMI DX Lab",
+  alternates: { canonical: "https://fujimi-dx-lab.com/products/reserve-navi" },
   openGraph: {
     title: "Reserve Navi | LINE予約管理 - FUJIMI DX Lab",
-    description: "LINE予約管理システム Reserve Navi。サロン・整体・ジム・ペットサロン向け。無料プランあり、月額1,980円から。LINEミニアプリで24時間予約受付。FUJIMI DX Lab",
+    description: "LINE予約管理システム Reserve Navi。サロン・整体・ジム・ペットサロン向け。無料プランあり、月額980円から。LINEミニアプリで24時間予約受付。FUJIMI DX Lab",
     images: [{ url: "/images/reserve-navi.jpg", width: 1200, height: 630, alt: "Reserve Navi LINE予約管理" }],
   },
 };
@@ -23,37 +25,37 @@ const FEATURES = [
     icon: "📱",
     title: "LINEでかんたん予約",
     description:
-      "お客様はLINEミニアプリから4ステップで予約完了。アプリのダウンロード不要です。",
+      "お客様はLINEから4ステップで予約完了。アプリのダウンロード不要。予約後の通知もLINE内で届くので離脱を防ぎます。",
   },
   {
     icon: "🔔",
-    title: "自動リマインダー",
+    title: "自動リマインダー＆フォロー",
     description:
-      "予約確認・前日リマインドをLINEで自動送信。無断キャンセルがぐっと減ります。",
+      "予約確認・前日リマインドに加え、施術翌日のお礼やN日後のフォローメッセージまで自動生成。",
   },
   {
     icon: "📅",
-    title: "見やすいカレンダー",
+    title: "リソース別カレンダー",
     description:
-      "日・週・月のカレンダービューで予約をパッと確認。スマホでもPCでもOK。",
+      "施術者・ベッドごとのタイムグリッド表示。未割当予約のアラートやブロック管理もラクラク。",
   },
   {
     icon: "👥",
-    title: "お客様をしっかり記録",
+    title: "顧客管理＆自動タグ付け",
     description:
-      "予約履歴・来店回数を自動で記録。「あのお客様、前回何のコースだっけ？」がすぐ分かります。",
+      "来店履歴・カルテを自動記録。来店頻度や利用メニューでタグを自動分類し、セグメント配信にも活用。",
   },
   {
-    icon: "🤖",
-    title: "AIがお手伝い",
+    icon: "🏷️",
+    title: "9業種テンプレート対応",
     description:
-      "顧客カルテの自動要約、来店前ブリーフィング、次回予約の提案まで。AIが接客をサポートします。",
+      "マッサージ・美容室・ネイル・ジム・ペットサロン・写真スタジオなど、業種別のカルテラベルやメニューを自動設定。",
   },
   {
     icon: "💰",
     title: "無料からスタート",
     description:
-      "まずは無料プランでお試し。月50件まで使えるので、小さなお店ならこれで十分です。",
+      "限定100社様まで無料プランをご提供。月100件まで使えるので、小さなお店ならこれで十分です。",
   },
 ];
 
@@ -70,7 +72,7 @@ const PAIN_POINTS = {
     "LINEで24時間いつでも予約を受付",
     "目の前のお客様に集中できる。予約はLINEにお任せ",
     "リアルタイム空き状況でダブルブッキングゼロ",
-    "無料プランあり。月額¥1,980〜で始められる",
+    "無料プランあり。月額¥980〜で始められる",
     "自動リマインダーで無断キャンセルが激減",
     "来店履歴・カルテが自動で蓄積される",
   ],
@@ -84,14 +86,15 @@ const STEPS = [
 ];
 
 const IDEAL_CUSTOMERS = [
-  { icon: "💆", title: "マッサージ・整体・鍼灸", description: "メニューごとの予約枠管理に。1人運営でもラクラク。" },
-  { icon: "💇", title: "サロン・美容室", description: "スタイリスト指名、メニュー別の時間設定もバッチリ。" },
-  { icon: "💅", title: "ネイル・まつエク・エステ", description: "メニューごとに違う所要時間も柔軟に対応。" },
-  { icon: "🏋️", title: "パーソナルジム・ヨガ", description: "トレーナー指名+時間枠。レッスン予約にぴったり。" },
-  { icon: "🐕", title: "ペットサロン・トリミング", description: "メニュー×時間管理、リピーター管理が重要なお店に。" },
-  { icon: "🎹", title: "音楽教室・個別指導", description: "先生の指名+レッスン枠管理。生徒・保護者とのLINE連絡に。" },
-  { icon: "📸", title: "写真スタジオ", description: "撮影プラン別の枠管理。七五三、成人式など季節メニューにも。" },
-  { icon: "🔮", title: "占い・カウンセリング", description: "1対1の時間枠予約。LINEとの相性が抜群。" },
+  { icon: "💆", title: "マッサージ・整体・鍼灸", description: "承認制予約＆カルテ管理。1人運営でもAIがサポート。" },
+  { icon: "💇", title: "美容室・ヘアサロン", description: "スタイリスト指名＆指名料設定。カテゴリ別メニューに対応。" },
+  { icon: "💅", title: "ネイル・エステ", description: "業種別カルテラベル付き。メニューごとの所要時間も柔軟に。" },
+  { icon: "🏋️", title: "パーソナルジム", description: "トレーナー指名＋時間枠。体験セッションの予約にも対応。" },
+  { icon: "🐕", title: "ペットサロン・トリミング", description: "ペット情報のカスタムフィールド対応。リピーター管理も万全。" },
+  { icon: "🧘", title: "ヨガ教室・スクール", description: "レッスン枠の管理に。生徒・保護者とのLINE連絡にも。" },
+  { icon: "📸", title: "写真スタジオ", description: "利用人数・撮影種類の選択に対応。季節メニューの管理も。" },
+  { icon: "🔮", title: "カウンセリング・相談", description: "承認制予約＆オンライン対応。1対1の時間枠予約に最適。" },
+  { icon: "🏢", title: "貸出品・設備予約", description: "会議室・レンタルスペースなど、容量制限付きの時間枠管理に。" },
 ];
 
 const PLANS = [
@@ -99,58 +102,49 @@ const PLANS = [
     name: "無料",
     price: "¥0",
     period: "",
-    description: "まずはお試し",
+    description: "限定100社様まで",
     color: "#6b7280",
     bgColor: "#f9fafb",
     features: [
-      { label: "店舗数", value: "1店舗" },
+      { label: "予約件数", value: "月100件" },
       { label: "スタッフ", value: "1名" },
-      { label: "予約件数", value: "月50件" },
-      { label: "予約履歴", value: "1ヶ月" },
-      { label: "LINE通知", value: true },
-      { label: "カルテ", value: "手入力" },
-      { label: "AI機能", value: false },
-      { label: "FUJIMINポイント", value: "—" },
-      { label: "サポート", value: "—" },
+      { label: "予約履歴", value: "3ヶ月" },
+      { label: "FUJIMINポイント", value: "初回500pt（AI体験用）" },
+      { label: "LINE通知・リマインド", value: true },
     ],
   },
   {
     name: "ライト",
-    price: "¥1,980",
+    price: "¥980",
     period: "/月",
     description: "1人運営のお店に",
     color: "#0284c7",
     bgColor: "#f0f9ff",
     features: [
-      { label: "店舗数", value: "1店舗" },
-      { label: "スタッフ", value: "1名" },
       { label: "予約件数", value: "無制限" },
-      { label: "予約履歴", value: "12ヶ月" },
-      { label: "LINE通知", value: true },
-      { label: "カルテ", value: "手入力" },
-      { label: "AI機能", value: false },
-      { label: "FUJIMINポイント", value: "—" },
-      { label: "サポート", value: "チャット・メール" },
+      { label: "スタッフ", value: "1名" },
+      { label: "予約履歴", value: "無制限" },
+      { label: "FUJIMINポイント", value: "月150pt（AI全機能）" },
+      { label: "CSV入出力", value: true },
+      { label: "顧客タグ", value: true },
+      { label: "週次・月次レポート", value: true },
     ],
   },
   {
     name: "スタンダード",
-    price: "¥3,300",
+    price: "¥2,980",
     period: "/月",
     description: "AI機能で接客力アップ",
     recommended: true,
     color: "#f97316",
     bgColor: "#fff7ed",
     features: [
-      { label: "店舗数", value: "1店舗" },
+      { label: "ライトの全機能", value: true },
       { label: "スタッフ", value: "無制限" },
-      { label: "予約件数", value: "無制限" },
-      { label: "予約履歴", value: "無制限" },
-      { label: "LINE通知", value: true },
-      { label: "カルテ", value: "AI自動要約" },
-      { label: "AI機能", value: "フル搭載" },
       { label: "FUJIMINポイント", value: "月700pt" },
-      { label: "サポート", value: "チャット・メール" },
+      { label: "リピート促進LINE拡張", value: true },
+      { label: "離脱検知・自動フォロー", value: true },
+      { label: "セグメント配信", value: true },
     ],
   },
   {
@@ -161,31 +155,29 @@ const PLANS = [
     color: "#7c3aed",
     bgColor: "#f5f3ff",
     features: [
+      { label: "スタンダードの全機能", value: true },
       { label: "店舗数", value: "最大3店舗" },
-      { label: "スタッフ", value: "無制限" },
-      { label: "予約件数", value: "無制限" },
-      { label: "予約履歴", value: "無制限" },
-      { label: "LINE通知", value: true },
-      { label: "カルテ", value: "AI自動要約" },
-      { label: "AI機能", value: "フル搭載" },
       { label: "FUJIMINポイント", value: "月2,500pt" },
-      { label: "サポート", value: "優先サポート" },
+      { label: "優先サポート", value: true },
     ],
   },
 ];
 
 const AI_FEATURES = [
-  { icon: "📋", title: "AIカルテ", desc: "接客メモをAIが構造化・要約。次回のご来店がスムーズに。" },
-  { icon: "🔍", title: "来店前ブリーフィング", desc: "予約のお客様の過去情報をAIが事前にまとめてくれます。" },
-  { icon: "💡", title: "次回予約の提案", desc: "お客様の来店パターンから、次の予約タイミングをAIが提案。" },
-  { icon: "⚠️", title: "リピート離脱アラート", desc: "来店が途切れたお客様をAIが検知。フォローのタイミングを逃しません。" },
-  { icon: "📊", title: "売上レポート", desc: "日次・月次の売上サマリーと翌日の予約通知を自動でお届け。" },
-  { icon: "🕳️", title: "空き枠スマート埋め", desc: "空いている枠をAIが分析。効率的な予約の入れ方を提案します。" },
+  { icon: "📋", title: "AIカルテ分析", desc: "接客メモをAIが構造化・要約。アレルギーや注意事項も自動検出します。" },
+  { icon: "🔍", title: "来店前ブリーフィング", desc: "予約のお客様の過去情報をダッシュボードに自動表示。誕生日検知にも対応。" },
+  { icon: "💡", title: "次回予約の提案", desc: "来店パターンを分析し、メニュー・日時の候補を3つ提案します。" },
+  { icon: "⚠️", title: "リピート離脱アラート", desc: "平均来店間隔の1.5倍を超えたら自動検知。フォローメッセージ案も生成。" },
+  { icon: "📊", title: "日次・月次レポート", desc: "日次の売上サマリーに加え、月次のセグメント分析・トレンド分析を自動生成。" },
+  { icon: "📤", title: "LINE配信＆AI下書き", desc: "顧客セグメントを絞って配信。AIがカルテを参照して下書きを自動生成します。" },
+  { icon: "📄", title: "ペーパーレス移行", desc: "手書きカルテやスキャン文書をAIが読み取り。データ移行の手間を大幅削減。" },
+  { icon: "💌", title: "施術後自動フォロー", desc: "施術翌日のお礼＆N日後のフォローメッセージをカルテ参照で自動生成。" },
 ];
 
 export default function ReserveNaviPage() {
   return (
     <>
+      <ProductBreadcrumb name="Reserve Navi" slug="reserve-navi" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
@@ -201,7 +193,7 @@ export default function ReserveNaviPage() {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         mainEntity: [
-          { "@type": "Question", name: "本当に無料で使えますか？", acceptedAnswer: { "@type": "Answer", text: "はい。無料プランは月50件まで、ずっと無料です。クレジットカードの登録も不要です。" } },
+          { "@type": "Question", name: "本当に無料で使えますか？", acceptedAnswer: { "@type": "Answer", text: "はい。無料プランは月100件まで、ずっと無料です。クレジットカードの登録も不要です。限定100社様までのご提供となります。" } },
           { "@type": "Question", name: "どんな業種で使えますか？", acceptedAnswer: { "@type": "Answer", text: "「予約制」のお店なら幅広く対応しています。サロン・整体はもちろん、パーソナルジム、ペットサロン、音楽教室、写真スタジオ、占い・カウンセリングなど、さまざまなお店でご利用いただいています。" } },
           { "@type": "Question", name: "LINEの公式アカウントが必要ですか？", acceptedAnswer: { "@type": "Answer", text: "はい。LINE公式アカウント（無料で作成可能）が必要です。設定方法はサポートがお手伝いします。" } },
           { "@type": "Question", name: "スタッフが機械に詳しくなくても大丈夫？", acceptedAnswer: { "@type": "Answer", text: "大丈夫です。画面はとてもシンプルに作られています。初期設定もサポートがお手伝いします。" } },
@@ -263,7 +255,7 @@ export default function ReserveNaviPage() {
                 </FadeIn>
                 <FadeIn delay={0.22}>
                   <div className="mt-5 flex flex-wrap gap-2">
-                    {["サロン", "整体・鍼灸", "ネイル・エステ", "パーソナルジム", "ペットサロン", "音楽教室", "写真スタジオ", "占い"].map((label) => (
+                    {["マッサージ・整体", "美容室", "ネイル・エステ", "パーソナルジム", "ペットサロン", "ヨガ教室", "写真スタジオ", "カウンセリング", "設備予約"].map((label) => (
                       <span key={label} className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs text-orange-100 backdrop-blur-sm">{label}</span>
                     ))}
                   </div>
@@ -431,7 +423,7 @@ export default function ReserveNaviPage() {
               </div>
             </FadeIn>
 
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {AI_FEATURES.map((f, i) => (
                 <FadeIn key={f.title} delay={i * 0.05}>
                   <div className="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm">
@@ -456,7 +448,7 @@ export default function ReserveNaviPage() {
                   料金プラン
                 </h2>
                 <p className="mx-auto mt-4 max-w-md text-gray-500">
-                  無料プランからスタート。お店の成長に合わせてアップグレード。
+                  無料プランは限定100社様まで。お店の成長に合わせてアップグレード。
                   <br />
                   すべて税込価格です。
                 </p>
@@ -551,7 +543,7 @@ export default function ReserveNaviPage() {
               </div>
             </FadeIn>
 
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {IDEAL_CUSTOMERS.map((c, i) => (
                 <FadeIn key={c.title} delay={i * 0.06}>
                   <div className="h-full rounded-2xl bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
@@ -580,7 +572,7 @@ export default function ReserveNaviPage() {
 
             <div className="mt-14 space-y-6">
               {[
-                { q: "本当に無料で使えますか？", a: "はい。無料プランは月50件まで、ずっと無料です。クレジットカードの登録も不要です。" },
+                { q: "本当に無料で使えますか？", a: "はい。無料プランは月100件まで、ずっと無料です。クレジットカードの登録も不要です。※限定100社様までのご提供となります。" },
                 { q: "どんな業種で使えますか？", a: "「予約制」のお店なら幅広く対応しています。サロン・整体はもちろん、パーソナルジム、ペットサロン、音楽教室、写真スタジオ、占い・カウンセリングなど、さまざまなお店でご利用いただいています。" },
                 { q: "LINEの公式アカウントが必要ですか？", a: "はい。LINE公式アカウント（無料で作成可能）が必要です。設定方法はサポートがお手伝いします。" },
 
