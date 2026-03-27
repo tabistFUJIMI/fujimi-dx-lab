@@ -43,13 +43,16 @@ export default function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="mx-auto max-w-lg rounded-2xl bg-white/10 p-8 text-center backdrop-blur-sm">
+      <div className="mx-auto max-w-lg rounded-2xl bg-white/10 p-8 text-center backdrop-blur-sm" role="status" aria-live="polite">
         <p className="text-2xl font-bold">送信完了しました！</p>
         <p className="mt-3 text-blue-100/80">
           お問い合わせを受け付けました。内容を確認のうえ、担当者よりご連絡いたします。
         </p>
         <button
-          onClick={() => setStatus("idle")}
+          onClick={() => {
+            setStatus("idle");
+            setTimeout(() => document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" }), 100);
+          }}
           className="mt-6 text-sm text-blue-200 underline hover:text-white"
         >
           別のお問い合わせをする
@@ -59,15 +62,17 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mx-auto max-w-lg space-y-5">
+    <form id="contact-form" onSubmit={handleSubmit} className="mx-auto max-w-lg space-y-5">
       {/* Inquiry Type */}
       <div>
         <p className="mb-2 text-sm text-blue-100/80">お問い合わせ種別を選択してください <span className="text-blue-200">*</span></p>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="お問い合わせ種別">
         {INQUIRY_TYPES.map((t) => (
           <button
             key={t}
             type="button"
+            role="radio"
+            aria-checked={form.type === t}
             onClick={() => setForm((f) => ({ ...f, type: t }))}
             className={`rounded-full border px-4 py-2 text-sm font-medium transition-all ${
               form.type === t
@@ -111,7 +116,7 @@ export default function ContactForm() {
 
       {/* Company */}
       <div>
-        <label htmlFor="contact-company" className="mb-1 block text-sm text-blue-100/80">会社名 / 店舗名</label>
+        <label htmlFor="contact-company" className="mb-1 block text-sm text-blue-100/80">会社名 / 店舗名 <span className="text-slate-400">(任意)</span></label>
         <input
           id="contact-company"
           type="text"
@@ -146,7 +151,7 @@ export default function ContactForm() {
       </button>
 
       {status === "error" && (
-        <p className="text-center text-sm text-red-300">
+        <p className="text-center text-base font-medium text-red-300" role="alert">
           送信に失敗しました。しばらくしてからお試しください。
         </p>
       )}

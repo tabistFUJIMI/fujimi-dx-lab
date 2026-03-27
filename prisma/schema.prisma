@@ -16,8 +16,41 @@ model Contact {
   email     String
   company   String?  // 会社名/店舗名
   message   String
+  status    String   @default("new") // new | replied | closed
   createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("contacts")
+  @@schema("fujimi_dx_lab_hp")
+}
+
+model Announcement {
+  id          String    @id @default(cuid())
+  title       String
+  content     String
+  excerpt     String?   // 未設定時は本文先頭100文字
+  category    String    @default("info") // info | event | important | campaign
+  eventDate   DateTime? @map("event_date")
+  isPublished Boolean   @default(false) @map("is_published")
+  publishedAt DateTime? @map("published_at")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  @@index([isPublished, publishedAt])
+  @@index([category])
+  @@index([eventDate])
+  @@map("announcements")
+  @@schema("fujimi_dx_lab_hp")
+}
+
+model GaToken {
+  id           String   @id @default("ga_oauth")
+  accessToken  String   @map("access_token")
+  refreshToken String   @map("refresh_token")
+  expiresAt    DateTime @map("expires_at")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@map("ga_tokens")
   @@schema("fujimi_dx_lab_hp")
 }

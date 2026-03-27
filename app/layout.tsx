@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
+import Script from "next/script";
 import JsonLd from "./components/JsonLd";
 import "./globals.css";
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "";
 
 const notoSansJP = Noto_Sans_JP({
   variable: "--font-noto-sans-jp",
@@ -48,6 +51,9 @@ export const metadata: Metadata = {
     description: "宿泊施設・サロン・飲食店向けDXツール。LINE予約管理・AI自動応答・シフト管理を月額550円から。無料プランあり。FUJIMI DX Lab",
     images: ["/images/ogp.jpg"],
   },
+  alternates: {
+    canonical: "https://fujimi-dx-lab.com",
+  },
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
@@ -66,6 +72,24 @@ export default function RootLayout({
         <JsonLd />
       </head>
       <body className={`${notoSansJP.variable} font-sans antialiased`}>
+        {GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                if (!/^\\/(admin|login|api)/.test(window.location.pathname)) {
+                  gtag('config', '${GA_ID}');
+                }
+              `}
+            </Script>
+          </>
+        )}
         {children}
       </body>
     </html>

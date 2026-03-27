@@ -5,10 +5,12 @@ import Footer from "../../components/Footer";
 import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
 import RelatedProducts from "../../components/RelatedProducts";
+import { ProductBreadcrumb } from "../../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Shift Navi | AIシフト管理",
   description: "AIシフト自動作成 Shift Navi。スタッフの休み希望をスマホで収集、AIがワンタッチでシフト生成。宿泊施設・飲食店・サロン向け。FUJIMI DX Lab",
+  alternates: { canonical: "https://fujimi-dx-lab.com/products/shift-navi" },
   openGraph: {
     title: "Shift Navi | AIシフト管理 - FUJIMI DX Lab",
     description: "AIシフト自動作成 Shift Navi。スタッフの休み希望をスマホで収集、AIがワンタッチでシフト生成。宿泊施設・飲食店・サロン向け。FUJIMI DX Lab",
@@ -28,6 +30,7 @@ const FEATURES = [
 export default function ShiftNaviPage() {
   return (
     <>
+      <ProductBreadcrumb name="Shift Navi" slug="shift-navi" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",

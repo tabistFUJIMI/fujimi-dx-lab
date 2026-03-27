@@ -5,10 +5,12 @@ import Footer from "../../components/Footer";
 import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
 import RelatedProducts from "../../components/RelatedProducts";
+import { ProductBreadcrumb } from "../../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Rule Navi | 社内規則AI検索",
   description: "社内規則AI検索 Rule Navi。就業規則・マニュアルのPDFをアップするだけでAIが検索可能に。宿泊施設・クリニック・中小企業向け。月額550円から。FUJIMI DX Lab",
+  alternates: { canonical: "https://fujimi-dx-lab.com/products/rule-navi" },
   openGraph: {
     title: "Rule Navi | 社内規則AI検索 - FUJIMI DX Lab",
     description: "社内規則AI検索 Rule Navi。就業規則・マニュアルのPDFをアップするだけでAIが検索可能に。宿泊施設・クリニック・中小企業向け。月額550円から。FUJIMI DX Lab",
@@ -63,6 +65,7 @@ const PLANS = [
 export default function RuleNaviPage() {
   return (
     <>
+      <ProductBreadcrumb name="Rule Navi" slug="rule-navi" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",

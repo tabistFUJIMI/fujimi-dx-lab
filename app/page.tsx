@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FadeIn from "./components/FadeIn";
 import ContactForm from "./components/ContactForm";
+import LatestNews from "./components/LatestNews";
 
 const TARGET_INDUSTRIES = [
   { icon: "🏨", label: "宿泊施設" },
@@ -18,8 +19,9 @@ const SOLUTIONS = [
     name: "Reserve Navi", tagline: "LINE予約管理", icon: "📅", color: "#f97316",
     href: "/products/reserve-navi", imageSrc: "/images/reserve-navi.jpg",
     pain: "予約の電話に出られない。紙のノートでダブルブッキング。予約システムは高すぎる…",
-    solution: "LINEからかんたん予約。無料プランあり。月額¥1,980〜で始められます。",
+    solution: "LINEからかんたん予約。無料プランあり。月額¥980〜で始められます。",
     price: "無料〜¥5,500/月",
+    badge: "まずはここから",
   },
   {
     name: "Ask Navi", tagline: "LINE AI自動応答", icon: "💬", color: "#14b8a6",
@@ -98,11 +100,11 @@ export default function Home() {
                 </FadeIn>
                 <FadeIn delay={0.35}>
                   <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-                    <a href="#solutions" className="inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-base font-bold text-gray-900 shadow-lg transition-all duration-300 hover:scale-105">
-                      こんな課題、ありませんか？
+                    <a href="/lp/reserve-navi" className="inline-flex items-center justify-center rounded-xl bg-orange-500 px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-orange-600">
+                      📅 まずは予約管理から始める
                     </a>
-                    <a href="#contact" className="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10">
-                      お問い合わせ
+                    <a href="#solutions" className="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10">
+                      すべてのツールを見る
                     </a>
                   </div>
                 </FadeIn>
@@ -342,6 +344,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <LatestNews />
       <Footer />
     </>
   );

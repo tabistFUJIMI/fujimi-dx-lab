@@ -1,3 +1,15 @@
+export function ProductBreadcrumb({ name, slug }: { name: string; slug: string }) {
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ホーム", item: "https://fujimi-dx-lab.com" },
+      { "@type": "ListItem", position: 2, name, item: `https://fujimi-dx-lab.com/products/${slug}` },
+    ],
+  };
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />;
+}
+
 export default function JsonLd() {
   const organization = {
     "@context": "https://schema.org",
@@ -9,8 +21,10 @@ export default function JsonLd() {
     email: "support@mail.fujimin-pass.com",
     address: {
       "@type": "PostalAddress",
-      addressRegion: "静岡県",
+      postalCode: "416-0909",
+      streetAddress: "中里2586-16",
       addressLocality: "富士市",
+      addressRegion: "静岡県",
       addressCountry: "JP",
     },
     hasOfferCatalog: {
@@ -81,8 +95,10 @@ export default function JsonLd() {
     description: "静岡県富士市のビジネスホテル運営・DXツール開発",
     address: {
       "@type": "PostalAddress",
-      addressRegion: "静岡県",
+      postalCode: "416-0909",
+      streetAddress: "中里2586-16",
       addressLocality: "富士市",
+      addressRegion: "静岡県",
       addressCountry: "JP",
     },
     email: "support@mail.fujimin-pass.com",

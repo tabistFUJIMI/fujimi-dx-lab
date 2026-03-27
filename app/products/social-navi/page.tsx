@@ -5,10 +5,12 @@ import Footer from "../../components/Footer";
 import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
 import RelatedProducts from "../../components/RelatedProducts";
+import { ProductBreadcrumb } from "../../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Social Navi | SNS一元管理",
   description: "SNS一元管理ツール Social Navi。X・Instagram・TikTok・Facebookを一括管理。AIが投稿文を自動生成。FUJIMI DX Lab",
+  alternates: { canonical: "https://fujimi-dx-lab.com/products/social-navi" },
   openGraph: {
     title: "Social Navi | SNS一元管理 - FUJIMI DX Lab",
     description: "SNS一元管理ツール Social Navi。X・Instagram・TikTok・Facebookを一括管理。AIが投稿文を自動生成。FUJIMI DX Lab",
@@ -28,6 +30,7 @@ const FEATURES = [
 export default function SocialNaviPage() {
   return (
     <>
+      <ProductBreadcrumb name="Social Navi" slug="social-navi" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",

@@ -5,10 +5,12 @@ import Footer from "../../components/Footer";
 import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
 import RelatedProducts from "../../components/RelatedProducts";
+import { ProductBreadcrumb } from "../../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "FUJIMIN PASS | 統合DXプラットフォーム",
   description: "小規模事業者向け統合DXプラットフォーム FUJIMIN PASS。予約管理・AI応答・シフト管理・社内規則検索を1アカウントで。月額550円から、必要なツールだけ選べる。FUJIMI DX Lab",
+  alternates: { canonical: "https://fujimi-dx-lab.com/products/fujimin-pass" },
   openGraph: {
     title: "FUJIMIN PASS | 統合DXプラットフォーム - FUJIMI DX Lab",
     description: "小規模事業者向け統合DXプラットフォーム FUJIMIN PASS。予約管理・AI応答・シフト管理・社内規則検索を1アカウントで。月額550円から、必要なツールだけ選べる。FUJIMI DX Lab",
@@ -36,6 +38,7 @@ const BENEFITS = [
 export default function FujiminPassPage() {
   return (
     <>
+      <ProductBreadcrumb name="FUJIMIN PASS" slug="fujimin-pass" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",

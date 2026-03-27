@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/"],
+        disallow: ["/api/", "/admin/", "/login"],
       },
     ],
     sitemap: "https://fujimi-dx-lab.com/sitemap.xml",

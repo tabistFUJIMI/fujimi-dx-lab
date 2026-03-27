@@ -5,11 +5,13 @@ import Footer from "../../components/Footer";
 import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
 import RelatedProducts from "../../components/RelatedProducts";
+import { ProductBreadcrumb } from "../../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Ask Navi | LINE AI自動応答",
   description:
     "LINE AI自動応答 Ask Navi。公式LINEやWebサイトの問い合わせにAIが24時間自動応答。サロン・飲食店・宿泊施設向け。月額550円から。FUJIMI DX Lab",
+  alternates: { canonical: "https://fujimi-dx-lab.com/products/ask-navi" },
   openGraph: {
     title: "Ask Navi | LINE AI自動応答 - FUJIMI DX Lab",
     description: "LINE AI自動応答 Ask Navi。公式LINEやWebサイトの問い合わせにAIが24時間自動応答。サロン・飲食店・宿泊施設向け。月額550円から。FUJIMI DX Lab",
@@ -92,6 +94,7 @@ const PLANS = [
 export default function AskNaviPage() {
   return (
     <>
+      <ProductBreadcrumb name="Ask Navi" slug="ask-navi" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
@@ -147,7 +150,7 @@ export default function AskNaviPage() {
               <FadeIn delay={0.2}>
                 <p className="mt-4 max-w-lg leading-relaxed text-teal-100/80">
                   お店のナレッジを登録するだけで、AIが公式LINEやWebサイトで自動応答。
-                  <br /><span className="font-semibold text-white">月額¥550〜。Reserve Naviスタンダード以上なら無料付帯。</span>
+                  <br /><span className="font-semibold text-white">月額¥550〜。お店の規模に合わせて選べます。</span>
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {["サロン", "宿泊施設", "飲食店", "ジム", "ペットサロン", "クリニック", "不動産", "スクール"].map((label) => (
@@ -259,7 +262,7 @@ export default function AskNaviPage() {
                   予約管理と組み合わせると、もっと強力に
                 </h2>
                 <p className="mx-auto mt-4 max-w-lg text-gray-500">
-                  Reserve Naviのスタンダードプラン以上なら、Ask Naviのライトプランが無料で付いてきます。
+                  Reserve Naviと一緒に使うと、予約管理と問い合わせ対応の両方を効率化できます。
                 </p>
               </div>
             </FadeIn>
@@ -280,9 +283,9 @@ export default function AskNaviPage() {
               </FadeIn>
               <FadeIn delay={0.15}>
                 <div className="rounded-2xl border bg-white p-6 shadow-sm" style={{ borderColor: "#fed7aa" }}>
-                  <div className="text-2xl mb-3">🎁</div>
-                  <h3 className="font-bold text-sm">スタンダード以上ならAsk Naviライトが無料</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-gray-500">Reserve Naviのスタンダードプラン（¥3,300/月）以上をご契約いただくと、Ask Naviのライトプラン（¥550/月相当）が無料で付帯します。</p>
+                  <div className="text-2xl mb-3">📊</div>
+                  <h3 className="font-bold text-sm">ナレッジを自動で最新に</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-500">Reserve Naviのメニュー・営業時間・店舗情報が変わると、Ask Naviのナレッジにも自動反映。常に正確な情報でAIが応答します。</p>
                 </div>
               </FadeIn>
             </div>
