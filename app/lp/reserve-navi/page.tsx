@@ -161,7 +161,7 @@ export default function ReserveNaviLP() {
             </FadeIn>
             <FadeIn delay={0.35}>
               <p className="mt-6 text-sm text-orange-200/70">
-                無料プランあり ・ クレジットカード不要 ・ 最短即日スタート
+                無料プランあり ・ クレジットカード不要 ・ 2025年4月上旬サービス開始予定
               </p>
             </FadeIn>
           </div>
@@ -283,7 +283,7 @@ export default function ReserveNaviLP() {
                         className="block w-full rounded-lg py-2.5 text-center text-sm font-semibold transition-colors"
                         style={plan.recommended ? { backgroundColor: plan.color, color: "#fff" } : { backgroundColor: "#f3f4f6", color: "#374151" }}
                       >
-                        {plan.price === "¥0" ? "無料で始める" : "お問い合わせ"}
+                        {plan.price === "¥0" ? "無料プランについて相談する" : "お問い合わせ"}
                       </a>
                     </div>
                   </div>

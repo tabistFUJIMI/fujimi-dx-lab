@@ -150,7 +150,10 @@ export default function MassageLPPage() {
                 </FadeIn>
                 <FadeIn delay={0.25}>
                   <p className="mt-3 text-sm text-slate-400">
-                    無料プランあり。1人運営のお店でも今日から始められます。
+                    無料プランあり。1人運営のお店でもすぐに始められます。
+                  </p>
+                <p className="mt-2 inline-block rounded-full border border-orange-400/30 bg-orange-500/10 px-4 py-1.5 text-sm font-semibold text-orange-300">
+                    2025年4月上旬 サービス開始予定｜事前相談受付中
                   </p>
                 </FadeIn>
                 <FadeIn delay={0.3}>

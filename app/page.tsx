@@ -88,6 +88,9 @@ export default function Home() {
                   <p className="mt-3 text-base text-slate-400">
                     必要なものだけ、1つから。あなたのペースではじめるDX。
                   </p>
+                <p className="mt-2 inline-block rounded-full border border-orange-400/30 bg-orange-500/10 px-4 py-1.5 text-sm font-semibold text-orange-300">
+                    2025年4月上旬 サービス開始予定｜事前相談受付中
+                  </p>
                 </FadeIn>
                 <FadeIn delay={0.3}>
                   <div className="mt-6 flex flex-wrap gap-2">
@@ -100,8 +103,8 @@ export default function Home() {
                 </FadeIn>
                 <FadeIn delay={0.35}>
                   <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-                    <a href="/lp/reserve-navi" className="inline-flex items-center justify-center rounded-xl bg-orange-500 px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-orange-600">
-                      📅 まずは予約管理から始める
+                    <a href="#contact" className="inline-flex items-center justify-center rounded-xl bg-orange-500 px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-orange-600">
+                      📅 まずは気軽に相談する
                     </a>
                     <a href="#solutions" className="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10">
                       すべてのツールを見る
@@ -146,9 +149,9 @@ export default function Home() {
                   <a href="/products/fujimin-pass" className="inline-flex items-center justify-center rounded-xl px-8 py-3 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:scale-105" style={{ backgroundColor: "#4f46e5" }}>
                     FUJIMIN PASSとは →
                   </a>
-                  <a href="https://fujimin-pass.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-xl border-2 px-8 py-3 text-sm font-bold transition-all duration-300 hover:bg-indigo-50" style={{ borderColor: "#4f46e5", color: "#4f46e5" }}>
-                    ログイン / 新規登録
-                  </a>
+                  <span className="inline-flex items-center justify-center rounded-xl border-2 px-8 py-3 text-sm font-bold" style={{ borderColor: "#4f46e5", color: "#4f46e5", backgroundColor: "#eef2ff" }}>
+                    4月上旬サービス開始予定
+                  </span>
                 </div>
               </div>
             </FadeIn>
