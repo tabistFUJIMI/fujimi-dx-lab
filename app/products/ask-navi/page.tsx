@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
 import RelatedProducts from "../../components/RelatedProducts";
+import AskNaviWidget from "../../components/AskNaviWidget";
 import { ProductBreadcrumb } from "../../components/JsonLd";
 
 export const metadata: Metadata = {
@@ -393,6 +394,39 @@ export default function AskNaviPage() {
             </div>
           </div>
         </section>
+
+        {/* Widget Demo */}
+        <section className="px-4 py-24 md:py-32">
+          <div className="mx-auto max-w-4xl">
+            <FadeIn>
+              <div className="text-center">
+                <span className="inline-block rounded-full px-4 py-1 text-sm font-semibold" style={{ backgroundColor: "#f0fdfa", color: "#0d9488" }}>実際に体験</span>
+                <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-4xl">Webウィジェットを試してみる</h2>
+                <p className="mx-auto mt-4 max-w-lg text-gray-500">
+                  右下のチャットアイコンをクリックして、AIに質問してみてください。
+                  <br />このページに埋め込まれたデモ用ウィジェットです。
+                </p>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <div className="mt-10 rounded-2xl border border-teal-100 bg-teal-50/30 p-8 text-center">
+                <p className="text-sm text-gray-600">
+                  <span className="font-semibold">埋め込みコード（たった1行）</span>
+                </p>
+                <div className="mt-4 overflow-x-auto rounded-lg bg-gray-900 p-4 text-left">
+                  <code className="text-sm text-green-400 whitespace-nowrap">
+                    {'<script src="https://ask-navi.fujimin-pass.com/widget.js" data-store-slug="your-store"></script>'}
+                  </code>
+                </div>
+                <p className="mt-4 text-xs text-gray-400">
+                  HTMLの{'</body>'}の前にこの1行を貼るだけ。CMS・WordPress・Wixなど、どんなサイトでも使えます。
+                </p>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+
+        <AskNaviWidget storeSlug="demo-store" />
 
         <RelatedProducts currentSlug="ask-navi" />
 

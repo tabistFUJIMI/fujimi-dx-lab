@@ -14,11 +14,12 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
+              "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://ask-navi.fujimin-pass.com",
               "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
               "img-src 'self' data: blob: https://www.googletagmanager.com https://www.google-analytics.com",
               "font-src 'self' fonts.googleapis.com fonts.gstatic.com",
               "connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://analytics.google.com https://*.googletagmanager.com",
+              "frame-src https://ask-navi.fujimin-pass.com",
               "frame-ancestors 'none'",
             ].join("; "),
           },
