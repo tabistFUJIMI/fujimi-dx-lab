@@ -103,6 +103,7 @@ export default function JsonLd() {
     },
     email: "support@mail.fujimin-pass.com",
     url: "https://fujimi-dx-lab.com",
+    areaServed: { "@type": "Country", name: "Japan" },
   };
 
   const faqPage = {

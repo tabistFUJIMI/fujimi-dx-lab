@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer className="bg-slate-950 text-slate-400">
       <div className="mx-auto max-w-6xl px-4 py-14 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-10">
           <div>
             <p className="text-lg font-bold text-white">FUJIMI DX Lab</p>
             <p className="mt-2 text-sm text-slate-500">
@@ -78,6 +78,16 @@ export default function Footer() {
                   className="text-slate-500 transition-colors hover:text-slate-300"
                 >
                   support@mail.fujimin-pass.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://lin.ee/ocefT7H"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-500 transition-colors hover:text-slate-300"
+                >
+                  LINEで気軽に相談
                 </a>
               </li>
               <li>

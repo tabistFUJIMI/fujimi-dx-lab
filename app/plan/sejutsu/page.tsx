@@ -1,0 +1,34 @@
+import type { Metadata } from "next";
+import SejutsuPageClient from "./SejutsuPageClient";
+
+export const metadata: Metadata = {
+  title:
+    "整体・マッサージ院の予約管理+AI応答+シフト管理｜施術プラン | FUJIMI DX Lab",
+  description:
+    "施術の手を止めるたび、お客様は離れていく。LINE予約受付・AI自動応答・シフト管理をひとまとめに。ShiftNavi無料。月額550円〜。",
+  openGraph: {
+    title:
+      "整体・マッサージ院の予約管理+AI応答+シフト管理｜施術プラン | FUJIMI DX Lab",
+    description:
+      "LINE予約受付・AI自動応答・シフト管理をひとまとめに。ShiftNavi無料。月額550円〜。",
+    images: [
+      {
+        url: "/images/plan/sejutsu-hero.png",
+        width: 1200,
+        height: 630,
+        alt: "施術プラン - FUJIMI DX Lab",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "施術プラン | FUJIMI DX Lab",
+    description:
+      "LINE予約受付・AI自動応答・シフト管理をひとまとめに。ShiftNavi無料。月額550円〜。",
+    images: ["/images/plan/sejutsu-hero.png"],
+  },
+};
+
+export default function SejutsuPlanPage() {
+  return <SejutsuPageClient />;
+}

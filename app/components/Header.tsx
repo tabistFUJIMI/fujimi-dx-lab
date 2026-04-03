@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const NAV_ITEMS = [
-  { label: "プロダクト", href: "/#solutions" },
-  { label: "導入実績", href: "/#company" },
-  { label: "プライバシーポリシー", href: "/privacy" },
+  { label: "業種で選ぶ", href: "/#industry" },
+  { label: "サービス", href: "/#solutions" },
+  { label: "料金", href: "/pricing" },
+  { label: "お知らせ", href: "/news" },
 ];
 
 export default function Header() {
@@ -84,8 +85,11 @@ export default function Header() {
       </div>
 
       {/* Mobile menu */}
-      {open && (
-        <nav className="border-t border-gray-100 bg-white/95 px-4 pb-4 backdrop-blur-xl md:hidden">
+      <nav
+        className={`border-t border-gray-100 bg-white/95 px-4 pb-4 backdrop-blur-xl md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0 border-t-0 pb-0"
+        }`}
+      >
           {NAV_ITEMS.map((item) => (
             <a
               key={item.href}
@@ -104,7 +108,6 @@ export default function Header() {
             お問い合わせ
           </a>
         </nav>
-      )}
     </header>
   );
 }

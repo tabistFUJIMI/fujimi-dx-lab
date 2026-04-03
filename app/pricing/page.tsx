@@ -11,6 +11,19 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://fujimi-dx-lab.com/pricing",
   },
+  openGraph: {
+    title: "料金プラン | FUJIMI DX Lab",
+    description: "ShiftNavi無料、ReserveNavi月額¥980〜。1ツールから始められる小規模事業者向けDXプラットフォーム。",
+    url: "https://fujimi-dx-lab.com/pricing",
+    siteName: "FUJIMI DX Lab",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "料金プラン | FUJIMI DX Lab",
+    description: "ShiftNavi無料、ReserveNavi月額¥980〜。1ツールから始められるDXプラットフォーム。",
+  },
 };
 
 /* ------------------------------------------------------------------ */
@@ -248,6 +261,9 @@ export default function PricingPage() {
               <h2 className="text-center text-3xl font-extrabold text-gray-900 md:text-4xl">
                 ShiftNavi — ずっと無料
               </h2>
+              <p className="mx-auto mt-4 max-w-xl text-center text-gray-600">
+                ShiftNaviは、AIがシフト表をワンタッチで自動作成するシフト管理ツールです。基本機能は無料。AI自動作成機能のご利用にはFUJIMINポイントが必要です。
+              </p>
             </FadeIn>
             <FadeIn delay={0.1}>
               <div className="mx-auto mt-10 max-w-lg rounded-2xl border-2 border-orange-300 bg-white p-8 shadow-xl md:p-10">
@@ -290,7 +306,7 @@ export default function PricingPage() {
                 ReserveNavi
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-center text-gray-500">
-                LINE予約管理。無料プランから始められます。
+                ReserveNaviは、LINEから24時間予約を受け付けられる小規模店舗向け予約管理システムです。無料プランから始められます。
               </p>
             </FadeIn>
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -407,7 +423,7 @@ export default function PricingPage() {
                 AskNavi・RuleNavi 共通プラン
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-center text-gray-500">
-                AI自動応答（AskNavi）と社内規則AI検索（RuleNavi）は同じ料金体系です。
+                AskNaviは公式LINEの問い合わせにAIが自動応答するツール、RuleNaviは就業規則やマニュアルをAIで検索できるツールです。両サービスは同じ料金体系でご利用いただけます。
               </p>
             </FadeIn>
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -562,6 +578,9 @@ export default function PricingPage() {
                 AI機能の従量課金に使えるポイント。必要な分だけチャージできます。
                 <br />
                 <span className="text-xs text-gray-400">有効期限なし・1pt = 1円相当</span>
+              </p>
+              <p className="mx-auto mt-2 max-w-lg text-center text-xs text-gray-400">
+                利用例: 100ptでAI応答 約25回分（標準モデル利用時）。SlideNaviの資料作成は1回あたり約10〜30pt消費。
               </p>
             </FadeIn>
             <div className="mx-auto mt-12 grid max-w-3xl gap-6 sm:grid-cols-3">
