@@ -1,8 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../../../lib/prisma";
 import { getOAuth2Client } from "../../../../../lib/ga-auth";
+import { requireAdmin } from "../../../../../lib/admin-auth";
 
 export async function GET(req: NextRequest) {
+  const authError = await requireAdmin();
+  if (authError) return authError;
+
   const code = req.nextUrl.searchParams.get("code");
   if (!code) {
     return NextResponse.redirect(new URL("/admin/analytics?error=no_code", req.url));

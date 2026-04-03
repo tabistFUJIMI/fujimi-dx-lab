@@ -53,7 +53,10 @@ export default async function NewsPage() {
 
           <div className="mt-10 space-y-4">
             {items.length === 0 ? (
-              <p className="py-12 text-center text-gray-400">お知らせはまだありません</p>
+              <div className="py-12 text-center">
+                <p className="text-gray-400">お知らせはまだありません</p>
+                <p className="mt-4 text-sm text-gray-400">サービスについてのご質問は<a href="/#contact" className="text-blue-600 underline hover:text-blue-800">お問い合わせフォーム</a>からお気軽にどうぞ。</p>
+              </div>
             ) : (
               items.map((item, i) => {
                 const cat = CATEGORY_LABELS[item.category] || CATEGORY_LABELS.info;

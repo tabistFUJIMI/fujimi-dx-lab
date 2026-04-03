@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     description: "施術中の電話対応から解放。LINE予約+AI自動応答。無料プランあり。",
     images: ["/images/lp/massage-ogp.jpg"],
   },
+  alternates: {
+    canonical: "https://fujimi-dx-lab.com/lp/massage",
+  },
 };
 
 const PAIN_POINTS = [
@@ -153,7 +156,7 @@ export default function MassageLPPage() {
                     無料プランあり。1人運営のお店でもすぐに始められます。
                   </p>
                 <p className="mt-2 inline-block rounded-full border border-orange-400/30 bg-orange-500/10 px-4 py-1.5 text-sm font-semibold text-orange-300">
-                    2025年4月上旬 サービス開始予定｜事前相談受付中
+                    2026年4月中旬 サービス開始｜事前相談受付中
                   </p>
                 </FadeIn>
                 <FadeIn delay={0.3}>
@@ -452,7 +455,7 @@ export default function MassageLPPage() {
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold text-white" style={{ backgroundColor: "#f97316" }}>おすすめ</span>
                   <div className="text-center">
                     <p className="text-sm font-semibold" style={{ color: "#f97316" }}>スタンダードプラン</p>
-                    <p className="mt-2 text-4xl font-extrabold text-gray-900">¥3,300<span className="text-base font-normal text-gray-500">/月</span></p>
+                    <p className="mt-2 text-4xl font-extrabold text-gray-900">¥2,980<span className="text-base font-normal text-gray-500">/月</span></p>
                     <p className="mt-1 text-xs text-gray-500">LINE予約 + AI応答がセット</p>
                   </div>
                   <div className="mt-6">
@@ -472,14 +475,14 @@ export default function MassageLPPage() {
                     <tr className="border-b border-gray-100">
                       <th className="px-5 py-4 text-left font-semibold text-gray-700">機能</th>
                       <th className="px-5 py-4 text-center font-semibold text-gray-500">無料</th>
-                      <th className="px-5 py-4 text-center font-semibold text-gray-500">ライト<br /><span className="text-xs font-normal">¥1,980/月</span></th>
-                      <th className="px-5 py-4 text-center font-semibold" style={{ color: "#f97316" }}>スタンダード<br /><span className="text-xs font-normal">¥3,300/月</span></th>
+                      <th className="px-5 py-4 text-center font-semibold text-gray-500">ライト<br /><span className="text-xs font-normal">¥980/月</span></th>
+                      <th className="px-5 py-4 text-center font-semibold" style={{ color: "#f97316" }}>スタンダード<br /><span className="text-xs font-normal">¥2,980/月</span></th>
                       <th className="px-5 py-4 text-center font-semibold text-gray-500">プロ<br /><span className="text-xs font-normal">¥5,500/月</span></th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-50">
                     {[
-                      { feature: "LINE予約受付", free: "月50件", lite: "無制限", std: "無制限", pro: "無制限" },
+                      { feature: "LINE予約受付", free: "月100件", lite: "無制限", std: "無制限", pro: "無制限" },
                       { feature: "予約カレンダー", free: "✓", lite: "✓", std: "✓", pro: "✓" },
                       { feature: "自動リマインド", free: "✓", lite: "✓", std: "✓", pro: "✓" },
                       { feature: "LINE通知", free: "✓", lite: "✓", std: "✓", pro: "✓" },
@@ -581,7 +584,7 @@ export default function MassageLPPage() {
         {/* CTA */}
         <section
           id="contact"
-          className="relative overflow-hidden px-4 py-24 text-white md:py-32"
+          className="relative overflow-hidden px-4 py-24 pb-36 text-white md:py-32 md:pb-32"
           style={{
             background:
               "linear-gradient(135deg, #f97316 0%, #ea580c 50%, #c2410c 100%)",
@@ -635,7 +638,7 @@ export default function MassageLPPage() {
                   name: "無料で使えますか？",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "はい。無料プランは月50件まで、ずっと無料です。クレジットカードの登録も不要です。",
+                    text: "はい。無料プランは月100件まで、ずっと無料です。クレジットカードの登録も不要です。",
                   },
                 },
               ],
@@ -662,6 +665,39 @@ export default function MassageLPPage() {
                   item: "https://fujimi-dx-lab.com/lp/massage",
                 },
               ],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "Reserve Navi",
+              applicationCategory: "BusinessApplication",
+              description: "マッサージ・整体院向けLINE予約管理+AI自動応答システム",
+              url: "https://fujimi-dx-lab.com/lp/massage",
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "JPY",
+                description: "無料プランあり。月額¥980〜",
+              },
+              provider: {
+                "@type": "Organization",
+                name: "FUJIMI DX Lab",
+                legalName: "ふじみ企業有限会社",
+                url: "https://fujimi-dx-lab.com",
+                address: {
+                  "@type": "PostalAddress",
+                  postalCode: "417-0043",
+                  streetAddress: "新田島町3-20",
+                  addressLocality: "富士市",
+                  addressRegion: "静岡県",
+                  addressCountry: "JP",
+                },
+              },
             }),
           }}
         />

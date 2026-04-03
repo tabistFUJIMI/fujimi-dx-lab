@@ -21,8 +21,8 @@ export default function JsonLd() {
     email: "support@mail.fujimin-pass.com",
     address: {
       "@type": "PostalAddress",
-      postalCode: "416-0909",
-      streetAddress: "中里2586-16",
+      postalCode: "417-0043",
+      streetAddress: "新田島町3-20",
       addressLocality: "富士市",
       addressRegion: "静岡県",
       addressCountry: "JP",
@@ -95,8 +95,8 @@ export default function JsonLd() {
     description: "静岡県富士市のビジネスホテル運営・DXツール開発",
     address: {
       "@type": "PostalAddress",
-      postalCode: "416-0909",
-      streetAddress: "中里2586-16",
+      postalCode: "417-0043",
+      streetAddress: "新田島町3-20",
       addressLocality: "富士市",
       addressRegion: "静岡県",
       addressCountry: "JP",

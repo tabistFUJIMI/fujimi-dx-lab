@@ -15,7 +15,8 @@ export async function GET(req: NextRequest) {
   }
 
   const { searchParams } = req.nextUrl;
-  const period = searchParams.get("period") || "7"; // 日数
+  const periodRaw = parseInt(searchParams.get("period") || "7", 10);
+  const period = String(Number.isFinite(periodRaw) && periodRaw >= 1 && periodRaw <= 365 ? periodRaw : 7);
 
   try {
     const analyticsData = google.analyticsdata({ version: "v1beta", auth });

@@ -149,6 +149,9 @@ export default function ContactForm() {
       >
         {status === "sending" ? "送信中..." : "送信する"}
       </button>
+      <p className="text-center text-xs text-blue-100/60">
+        通常1〜2営業日以内にメールでご返信いたします
+      </p>
 
       {status === "error" && (
         <p className="text-center text-base font-medium text-red-300" role="alert">

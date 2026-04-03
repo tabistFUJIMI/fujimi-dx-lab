@@ -18,9 +18,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const item = await getAnnouncement(id);
   if (!item) return { title: "お知らせが見つかりません" };
+  const description = item.excerpt || item.content.slice(0, 120);
   return {
     title: item.title,
-    description: item.excerpt || item.content.slice(0, 120),
+    description,
+    alternates: {
+      canonical: `https://fujimi-dx-lab.com/news/${id}`,
+    },
+    openGraph: {
+      title: item.title,
+      description,
+      type: "article",
+      url: `https://fujimi-dx-lab.com/news/${id}`,
+      siteName: "FUJIMI DX Lab",
+      locale: "ja_JP",
+      publishedTime: (item.publishedAt || item.createdAt).toISOString(),
+      modifiedTime: item.updatedAt.toISOString(),
+    },
+    twitter: {
+      card: "summary",
+      title: item.title,
+      description,
+    },
   };
 }
 
@@ -38,8 +57,31 @@ export default async function NewsDetailPage({ params }: Props) {
 
   const cat = CATEGORY_LABELS[item.category] || CATEGORY_LABELS.info;
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: item.title,
+    datePublished: (item.publishedAt || item.createdAt).toISOString(),
+    dateModified: item.updatedAt.toISOString(),
+    author: { "@type": "Organization", name: "FUJIMI DX Lab" },
+    publisher: { "@type": "Organization", name: "FUJIMI DX Lab", url: "https://fujimi-dx-lab.com" },
+    mainEntityOfPage: `https://fujimi-dx-lab.com/news/${id}`,
+  };
+
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ホーム", item: "https://fujimi-dx-lab.com" },
+      { "@type": "ListItem", position: 2, name: "お知らせ", item: "https://fujimi-dx-lab.com/news" },
+      { "@type": "ListItem", position: 3, name: item.title, item: `https://fujimi-dx-lab.com/news/${id}` },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       <Header />
       <main className="min-h-screen px-4 pt-32 pb-20">
         <div className="mx-auto max-w-3xl">
