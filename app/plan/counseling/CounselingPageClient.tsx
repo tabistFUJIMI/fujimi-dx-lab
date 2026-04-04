@@ -79,7 +79,7 @@ const STEPS = [
 const FAQS = [
   {
     q: "本当に無料で使えますか？",
-    a: "ShiftNaviは完全無料です。ReserveNaviにも無料プランがあります。まずは無料でお試しいただけます。",
+    a: "ShiftNaviはフリープラン（¥0・スタッフ5名まで）があります。ReserveNaviにも無料プラン（月50件）があります。まずは無料でお試しいただけます。",
   },
   {
     q: "初期費用はかかりますか？",
@@ -102,8 +102,8 @@ const FAQS = [
     a: "不要です。LINEだけで完結します。お客様に新しいアプリを入れてもらう必要はありません。",
   },
   {
-    q: "ShiftNaviが無料なのはなぜ？",
-    a: "シフト管理は全店舗の基本機能だと考えています。まず使っていただき、価値を実感していただくために無料で提供しています。",
+    q: "ShiftNaviにフリープランがあるのはなぜ？",
+    a: "シフト管理は全店舗の基本機能だと考えています。まず使っていただき、価値を実感していただくためにフリープラン（スタッフ5名まで）を提供しています。AI機能はスタンダード（¥550/月）からご利用いただけます。",
   },
   {
     q: "支払い方法は？",
@@ -114,38 +114,38 @@ const FAQS = [
 const PRICING_PLANS = [
   {
     name: "ライトパッケージ",
-    price: "1,530",
+    price: "2,080",
     bonus: "100",
     bonusValue: "330",
     recommended: false,
     services: [
       "ReserveNavi ライト（¥980/月）",
       "AskNavi ライト（¥550/月）",
-      "ShiftNavi（完全無料）",
+      "ShiftNavi スタンダード（¥550/月）",
     ],
   },
   {
     name: "スタンダードパッケージ",
-    price: "4,080",
+    price: "4,630",
     bonus: "200",
     bonusValue: "660",
     recommended: true,
     services: [
       "ReserveNavi スタンダード（¥2,980/月）",
       "AskNavi スタンダード（¥1,100/月）",
-      "ShiftNavi（完全無料）",
+      "ShiftNavi スタンダード（¥550/月）",
     ],
   },
   {
     name: "プロパッケージ",
-    price: "7,700",
+    price: "7,730",
     bonus: "500",
     bonusValue: "1,650",
     recommended: false,
     services: [
-      "ReserveNavi プロ（¥5,500/月）",
+      "ReserveNavi プロ（¥4,980/月）",
       "AskNavi プロ（¥2,200/月）",
-      "ShiftNavi（完全無料）",
+      "ShiftNavi スタンダード（¥550/月）",
     ],
   },
 ];
@@ -157,7 +157,7 @@ const SINGLE_PRICES = [
       { name: "無料", price: "¥0" },
       { name: "ライト", price: "¥980/月" },
       { name: "スタンダード", price: "¥2,980/月" },
-      { name: "プロ", price: "¥5,500/月" },
+      { name: "プロ", price: "¥4,980/月" },
     ],
   },
   {
@@ -171,7 +171,7 @@ const SINGLE_PRICES = [
   },
   {
     name: "ShiftNavi",
-    plans: [{ name: "全機能", price: "¥0（完全無料）" }],
+    plans: [{ name: "フリー", price: "¥0" }, { name: "スタンダード", price: "¥550/月" }],
   },
 ];
 
@@ -625,7 +625,7 @@ export default function CounselingPageClient() {
               <FadeIn delay={0.1}>
                 <div className="group relative h-full rounded-3xl border border-cyan-100 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                   <span className="absolute -top-3 right-4 rounded-full bg-green-500 px-4 py-1 text-xs font-bold text-white shadow-sm">
-                    完全無料
+                    フリー¥0〜
                   </span>
                   <p className="text-xs font-bold tracking-widest uppercase text-cyan-600">
                     ShiftNavi
@@ -901,14 +901,14 @@ export default function CounselingPageClient() {
                     {[
                       {
                         feature: "予約管理",
-                        price: "ReserveNavi ¥0〜¥5,500",
+                        price: "ReserveNavi ¥0〜¥4,980",
                       },
                       { feature: "LINE対応", price: "標準搭載" },
                       {
                         feature: "AI問い合わせ対応",
                         price: "AskNavi +¥550/月〜",
                       },
-                      { feature: "シフト管理", price: "ShiftNavi ¥0（無料）" },
+                      { feature: "シフト管理", price: "ShiftNavi ¥0〜¥550" },
                     ].map((row) => (
                       <div
                         key={row.feature}

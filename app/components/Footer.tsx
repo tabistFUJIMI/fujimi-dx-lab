@@ -91,6 +91,11 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <a href="/security" className="text-slate-500 transition-colors hover:text-slate-300">
+                  セキュリティ
+                </a>
+              </li>
+              <li>
                 <a href="/privacy" className="text-slate-500 transition-colors hover:text-slate-300">
                   プライバシーポリシー
                 </a>

@@ -65,7 +65,7 @@ const SERVICES = [
     href: "/products/reserve-navi",
     image: "/images/services/reserve-navi.png",
     features: "LINE予約受付・顧客管理・AI分析",
-    price: "無料〜¥5,500/月",
+    price: "無料〜¥4,980/月",
     badge: "まずはここから",
     cta: "無料で予約管理を始める",
   },
@@ -86,9 +86,9 @@ const SERVICES = [
     href: "/products/shift-navi",
     image: "/images/services/shift-navi.png",
     features: "AIシフト自動作成・休み希望スマホ収集",
-    price: "完全無料",
-    badge: "無料",
-    cta: "無料でシフト管理を始める",
+    price: "フリー¥0 / スタンダード¥550",
+    badge: "フリー¥0〜",
+    cta: "シフト管理を始める",
   },
 ];
 
@@ -363,10 +363,10 @@ export default function Home() {
                   </p>
                   <div className="mt-6 space-y-4">
                     {[
-                      ["予約管理（ReserveNavi）", "¥0〜¥5,500"],
+                      ["予約管理（ReserveNavi）", "¥0〜¥4,980"],
                       ["AI自動応答（AskNavi）", "¥550〜"],
                       ["AI問い合わせ対応", "標準搭載"],
-                      ["シフト管理（ShiftNavi）", "¥0（無料）"],
+                      ["シフト管理（ShiftNavi）", "¥0〜¥550"],
                     ].map(([label, price]) => (
                       <div key={label} className="flex items-center justify-between border-b border-orange-200 pb-3 last:border-0">
                         <span className="text-sm text-gray-700">{label}</span>
@@ -474,7 +474,7 @@ export default function Home() {
                   emoji: "💰",
                   title: "請求書を見て5秒で理解できる料金",
                   description:
-                    "複雑な従量課金や隠れたオプション料金はありません。選んだツールの月額だけ。ShiftNaviは完全無料。",
+                    "複雑な従量課金や隠れたオプション料金はありません。選んだツールの月額だけ。ShiftNaviはフリープラン¥0から。",
                 },
               ].map((item, i) => (
                 <FadeIn key={item.num} delay={i * 0.1}>
@@ -513,9 +513,9 @@ export default function Home() {
                   </thead>
                   <tbody>
                     {[
-                      { name: "ReserveNavi（予約管理）", price: "無料〜¥5,500", color: "#f97316" },
+                      { name: "ReserveNavi（予約管理）", price: "無料〜¥4,980", color: "#f97316" },
                       { name: "AskNavi（AI自動応答）", price: "¥550〜¥5,500", color: "#14b8a6" },
-                      { name: "ShiftNavi（シフト管理）", price: "¥0（完全無料）", color: "#3b82f6" },
+                      { name: "ShiftNavi（シフト管理）", price: "フリー¥0 / スタンダード¥550", color: "#3b82f6" },
                     ].map((row) => (
                       <tr key={row.name} className="border-b border-gray-50 last:border-0">
                         <td className="px-6 py-4">

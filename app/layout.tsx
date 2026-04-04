@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     url: "https://fujimi-dx-lab.com",
     images: [
       {
-        url: "/images/ogp.jpg",
+        url: "/images/ogp-main.png",
         width: 1200,
         height: 630,
         alt: "FUJIMI DX Lab — 小さなお店のDXを、現場から。",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "FUJIMI DX Lab | 小さなお店のDXを、現場から。",
     description: "宿泊施設・サロン・飲食店向けDXツール。LINE予約管理・AI自動応答・シフト管理を月額550円から。無料プランあり。FUJIMI DX Lab",
-    images: ["/images/ogp.jpg"],
+    images: ["/images/ogp-main.png"],
   },
   alternates: {
     canonical: "https://fujimi-dx-lab.com",

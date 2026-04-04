@@ -33,7 +33,7 @@ const PLANS = [
     features: [
       { label: "ナレッジ（登録情報）", value: "100件" }, { label: "FUJIMINポイント", value: "月200pt（目安 約65回分）" }, { label: "AI検索", value: "✓" },
       { label: "FAQ自動生成", value: "✓" }, { label: "匿名質問箱", value: "✓" }, { label: "パルスチェック", value: "✓" },
-      { label: "会話ログ", value: "未回答のみ・1ヶ月" }, { label: "CSVエクスポート", value: "—" }, { label: "利用人数目安", value: "〜10名" },
+      { label: "会話ログ", value: "未回答のみ・1ヶ月" }, { label: "CSVエクスポート", value: "—" }, { label: "AIインサイト", value: "—" }, { label: "利用人数目安", value: "〜10名" },
     ],
   },
   {
@@ -41,7 +41,7 @@ const PLANS = [
     features: [
       { label: "ナレッジ（登録情報）", value: "無制限" }, { label: "FUJIMINポイント", value: "月500pt（目安 約165回分）" }, { label: "AI検索", value: "✓" },
       { label: "FAQ自動生成", value: "✓" }, { label: "匿名質問箱", value: "✓" }, { label: "パルスチェック", value: "✓" },
-      { label: "会話ログ", value: "全履歴・無制限" }, { label: "CSVエクスポート", value: "✓" }, { label: "利用人数目安", value: "〜50名" },
+      { label: "会話ログ", value: "全履歴・無制限" }, { label: "CSVエクスポート", value: "✓" }, { label: "AIインサイト", value: "✓" }, { label: "利用人数目安", value: "〜50名" },
     ],
   },
   {
@@ -49,15 +49,15 @@ const PLANS = [
     features: [
       { label: "ナレッジ（登録情報）", value: "無制限" }, { label: "FUJIMINポイント", value: "月1,500pt（目安 約500回分）" }, { label: "AI検索", value: "✓" },
       { label: "FAQ自動生成", value: "✓" }, { label: "匿名質問箱", value: "✓" }, { label: "パルスチェック", value: "✓" },
-      { label: "会話ログ", value: "全履歴・無制限" }, { label: "CSVエクスポート", value: "✓" }, { label: "利用人数目安", value: "〜150名" },
+      { label: "会話ログ", value: "全履歴・無制限" }, { label: "CSVエクスポート", value: "✓" }, { label: "AIインサイト", value: "✓" }, { label: "利用人数目安", value: "〜150名" },
     ],
   },
   {
     name: "エンタープライズ", price: "¥5,500", period: "/月", description: "AIを社内インフラに", color: "#581c87", bgColor: "#faf5ff",
     features: [
-      { label: "ナレッジ（登録情報）", value: "無制限" }, { label: "FUJIMINポイント", value: "月5,000pt（目安 約1,650回分）" }, { label: "AI検索（RAG）", value: "✓" },
+      { label: "ナレッジ（登録情報）", value: "無制限" }, { label: "FUJIMINポイント", value: "月5,000pt（目安 約1,650回分）" }, { label: "AI検索", value: "✓" },
       { label: "FAQ自動生成", value: "✓" }, { label: "匿名質問箱", value: "✓" }, { label: "パルスチェック", value: "✓" },
-      { label: "会話ログ", value: "全履歴・無制限" }, { label: "CSVエクスポート", value: "✓" }, { label: "利用人数目安", value: "〜300名" },
+      { label: "会話ログ", value: "全履歴・無制限" }, { label: "CSVエクスポート", value: "✓" }, { label: "AIインサイト", value: "✓" }, { label: "利用人数目安", value: "〜300名" },
     ],
   },
 ];

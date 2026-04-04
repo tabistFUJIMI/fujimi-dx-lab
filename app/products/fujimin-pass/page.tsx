@@ -22,7 +22,7 @@ const NAVI_TOOLS = [
   { slug: "reserve-navi", name: "Reserve Navi", desc: "LINE予約管理", icon: "📅", color: "#f97316", price: "無料〜¥5,500/月" },
   { slug: "ask-navi", name: "Ask Navi", desc: "LINE AI自動応答", icon: "💬", color: "#14b8a6", price: "¥550〜¥5,500/月" },
   { slug: "rule-navi", name: "Rule Navi", desc: "社内規則AI検索", icon: "📖", color: "#a855f7", price: "¥550〜¥5,500/月" },
-  { slug: "shift-navi", name: "Shift Navi", desc: "AIシフト管理", icon: "📊", color: "#3b82f6", price: "お問い合わせ" },
+  { slug: "shift-navi", name: "Shift Navi", desc: "AIシフト管理", icon: "📊", color: "#3b82f6", price: "完全無料" },
   { slug: "social-navi", name: "Social Navi", desc: "SNS一元管理", icon: "📣", color: "#f43f5e", price: "開発中", badge: "Coming Soon" },
 ];
 
@@ -77,7 +77,7 @@ export default function FujiminPassPage() {
             <FadeIn delay={0.05}><div className="mb-4 flex items-center gap-3"><span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/20 text-2xl">🔑</span><span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold tracking-wider text-indigo-100 uppercase">統合DXプラットフォーム</span></div></FadeIn>
             <FadeIn delay={0.1}><h1 className="text-4xl font-extrabold tracking-tight md:text-5xl" style={{ lineHeight: 1.15 }}>FUJIMIN PASS<span className="mt-2 block text-lg font-medium text-indigo-100 md:text-xl">統合DXプラットフォーム</span></h1></FadeIn>
             <FadeIn delay={0.15}><p className="mt-6 text-xl font-medium text-indigo-100">お店のDX、ひとつのアカウントでまるごとカバー。</p></FadeIn>
-            <FadeIn delay={0.2}><p className="mt-4 max-w-lg leading-relaxed text-indigo-100/80">予約管理、AI応答、シフト管理、社内規則検索…<br />バラバラのツールをFUJIMIN PASSでひとつに。<br /><span className="font-semibold text-white">必要なものだけ選んで始められます。</span></p><p className="mt-3 inline-block rounded-full border border-indigo-300/30 bg-indigo-400/10 px-4 py-1.5 text-sm font-semibold text-indigo-200">2025年4月上旬 サービス開始予定｜事前相談受付中</p></FadeIn>
+            <FadeIn delay={0.2}><p className="mt-4 max-w-lg leading-relaxed text-indigo-100/80">予約管理、AI応答、シフト管理、社内規則検索…<br />バラバラのツールをFUJIMIN PASSでひとつに。<br /><span className="font-semibold text-white">必要なものだけ選んで始められます。</span></p><p className="mt-3 inline-block rounded-full border border-indigo-300/30 bg-indigo-400/10 px-4 py-1.5 text-sm font-semibold text-indigo-200">2026年4月 サービス開始予定｜事前相談受付中</p></FadeIn>
             <FadeIn delay={0.25}><div className="mt-8"><a href="#contact" className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold shadow-lg transition-all duration-300 hover:scale-105" style={{ color: "#4f46e5" }}>無料で相談する</a></div></FadeIn>
           </div></div>
         </section>

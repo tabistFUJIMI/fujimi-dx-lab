@@ -55,7 +55,7 @@ const FEATURES = [
     icon: "💰",
     title: "無料からスタート",
     description:
-      "限定100社様まで無料プランをご提供。月100件まで使えるので、小さなお店ならこれで十分です。",
+      "無料プランをご提供。月50件まで使えるので、小さなお店ならこれで十分です。",
   },
 ];
 
@@ -72,7 +72,7 @@ const PAIN_POINTS = {
     "LINEで24時間いつでも予約を受付",
     "目の前のお客様に集中できる。予約はLINEにお任せ",
     "リアルタイム空き状況でダブルブッキングゼロ",
-    "無料プランあり。月額¥980〜で始められる",
+    "無料プラン（月50件）あり。月額¥980〜で始められる",
     "自動リマインダーで無断キャンセルが激減",
     "来店履歴・カルテが自動で蓄積される",
   ],
@@ -102,14 +102,14 @@ const PLANS = [
     name: "無料",
     price: "¥0",
     period: "",
-    description: "限定100社様まで",
+    description: "まずはお試し",
     color: "#6b7280",
     bgColor: "#f9fafb",
     features: [
-      { label: "予約件数", value: "月100件" },
       { label: "スタッフ", value: "1名" },
+      { label: "予約件数", value: "月50件" },
       { label: "予約履歴", value: "3ヶ月" },
-      { label: "FUJIMINポイント", value: "初回500pt（AI体験用）" },
+      { label: "AI機能", value: "なし" },
       { label: "LINE通知・リマインド", value: true },
     ],
   },
@@ -121,13 +121,11 @@ const PLANS = [
     color: "#0284c7",
     bgColor: "#f0f9ff",
     features: [
-      { label: "予約件数", value: "無制限" },
       { label: "スタッフ", value: "1名" },
+      { label: "予約件数", value: "無制限" },
       { label: "予約履歴", value: "無制限" },
-      { label: "FUJIMINポイント", value: "月150pt（AI全機能）" },
-      { label: "CSV入出力", value: true },
-      { label: "顧客タグ", value: true },
-      { label: "週次・月次レポート", value: true },
+      { label: "AI機能", value: "あり（購入ptで）" },
+      { label: "LINE拡張", value: true },
     ],
   },
   {
@@ -139,25 +137,26 @@ const PLANS = [
     color: "#f97316",
     bgColor: "#fff7ed",
     features: [
-      { label: "ライトの全機能", value: true },
       { label: "スタッフ", value: "無制限" },
+      { label: "予約件数", value: "無制限" },
       { label: "FUJIMINポイント", value: "月700pt" },
-      { label: "リピート促進LINE拡張", value: true },
+      { label: "LINE拡張", value: true },
       { label: "離脱検知・自動フォロー", value: true },
       { label: "セグメント配信", value: true },
     ],
   },
   {
     name: "プロ",
-    price: "¥5,500",
+    price: "¥4,980",
     period: "/月",
-    description: "複数店舗のオーナーに",
+    description: "しっかり活用したいオーナーに",
     color: "#7c3aed",
     bgColor: "#f5f3ff",
     features: [
-      { label: "スタンダードの全機能", value: true },
-      { label: "店舗数", value: "最大3店舗" },
-      { label: "FUJIMINポイント", value: "月2,500pt" },
+      { label: "スタッフ", value: "無制限" },
+      { label: "予約件数", value: "無制限" },
+      { label: "FUJIMINポイント", value: "月1,500pt" },
+      { label: "LINE拡張", value: true },
       { label: "優先サポート", value: true },
     ],
   },
@@ -186,14 +185,14 @@ export default function ReserveNaviPage() {
         operatingSystem: "Web",
         description: "LINEから簡単予約。小規模店舗向け予約管理システム",
         url: "https://fujimi-dx-lab.com/products/reserve-navi",
-        offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "5500", priceCurrency: "JPY" },
+        offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "4980", priceCurrency: "JPY" },
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "FAQPage",
         mainEntity: [
-          { "@type": "Question", name: "本当に無料で使えますか？", acceptedAnswer: { "@type": "Answer", text: "はい。無料プランは月100件まで、ずっと無料です。クレジットカードの登録も不要です。限定100社様までのご提供となります。" } },
+          { "@type": "Question", name: "本当に無料で使えますか？", acceptedAnswer: { "@type": "Answer", text: "はい。無料プランは月50件まで、ずっと無料です。クレジットカードの登録も不要です。" } },
           { "@type": "Question", name: "どんな業種で使えますか？", acceptedAnswer: { "@type": "Answer", text: "「予約制」のお店なら幅広く対応しています。サロン・整体はもちろん、パーソナルジム、ペットサロン、音楽教室、写真スタジオ、占い・カウンセリングなど、さまざまなお店でご利用いただいています。" } },
           { "@type": "Question", name: "LINEの公式アカウントが必要ですか？", acceptedAnswer: { "@type": "Answer", text: "はい。LINE公式アカウント（無料で作成可能）が必要です。設定方法はサポートがお手伝いします。" } },
           { "@type": "Question", name: "スタッフが機械に詳しくなくても大丈夫？", acceptedAnswer: { "@type": "Answer", text: "大丈夫です。画面はとてもシンプルに作られています。初期設定もサポートがお手伝いします。" } },
@@ -448,7 +447,7 @@ export default function ReserveNaviPage() {
                   料金プラン
                 </h2>
                 <p className="mx-auto mt-4 max-w-md text-gray-500">
-                  無料プランは限定100社様まで。お店の成長に合わせてアップグレード。
+                  無料プランあり。お店の成長に合わせてアップグレード。
                   <br />
                   すべて税込価格です。
                 </p>
@@ -572,7 +571,7 @@ export default function ReserveNaviPage() {
 
             <div className="mt-14 space-y-6">
               {[
-                { q: "本当に無料で使えますか？", a: "はい。無料プランは月100件まで、ずっと無料です。クレジットカードの登録も不要です。※限定100社様までのご提供となります。" },
+                { q: "本当に無料で使えますか？", a: "はい。無料プランは月50件まで、ずっと無料です。クレジットカードの登録も不要です。" },
                 { q: "どんな業種で使えますか？", a: "「予約制」のお店なら幅広く対応しています。サロン・整体はもちろん、パーソナルジム、ペットサロン、音楽教室、写真スタジオ、占い・カウンセリングなど、さまざまなお店でご利用いただいています。" },
                 { q: "LINEの公式アカウントが必要ですか？", a: "はい。LINE公式アカウント（無料で作成可能）が必要です。設定方法はサポートがお手伝いします。" },
 

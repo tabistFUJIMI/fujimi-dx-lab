@@ -7,13 +7,13 @@ import ContactForm from "../components/ContactForm";
 export const metadata: Metadata = {
   title: "料金プラン | FUJIMI DX Lab",
   description:
-    "ReserveNavi・AskNavi・ShiftNaviの料金プラン一覧。ShiftNaviは完全無料。1つから始められます。業種別パッケージならさらにお得。",
+    "ReserveNavi・AskNavi・ShiftNavi・RuleNaviの料金プラン一覧。1つから始められます。業種別パッケージならさらにお得。",
   alternates: {
     canonical: "https://fujimi-dx-lab.com/pricing",
   },
   openGraph: {
     title: "料金プラン | FUJIMI DX Lab",
-    description: "ShiftNavi無料、ReserveNavi月額¥980〜。1ツールから始められる小規模事業者向けDXプラットフォーム。",
+    description: "ShiftNaviフリー¥0〜、ReserveNavi月額¥980〜。1ツールから始められる小規模事業者向けDXプラットフォーム。",
     url: "https://fujimi-dx-lab.com/pricing",
     siteName: "FUJIMI DX Lab",
     locale: "ja_JP",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "料金プラン | FUJIMI DX Lab",
-    description: "ShiftNavi無料、ReserveNavi月額¥980〜。1ツールから始められるDXプラットフォーム。",
+    description: "ShiftNaviフリー¥0〜、ReserveNavi月額¥980〜。1ツールから始められるDXプラットフォーム。",
   },
 };
 
@@ -32,48 +32,46 @@ export const metadata: Metadata = {
 
 const RESERVE_PLANS = [
   {
-    name: "フリー",
+    name: "無料",
     price: "¥0",
     period: "/月",
-    features: ["月100件まで予約受付", "LINE通知", "基本カレンダー表示", "メールサポート"],
+    features: ["スタッフ1名", "月50件まで予約受付", "予約履歴3ヶ月", "AI機能なし"],
     recommended: false,
   },
   {
     name: "ライト",
     price: "¥980",
     period: "/月",
-    features: ["月100件まで予約受付", "リマインド通知", "Googleカレンダー連携", "メールサポート"],
+    features: ["スタッフ1名", "予約件数無制限", "予約履歴無制限", "AI機能あり（購入ptで）", "LINE拡張あり"],
     recommended: false,
   },
   {
     name: "スタンダード",
     price: "¥2,980",
     period: "/月",
-    features: ["予約件数無制限", "スタッフ指名予約", "自動リマインド", "チャットサポート"],
+    features: ["スタッフ無制限", "予約件数無制限", "700pt付き", "LINE拡張あり"],
     recommended: true,
   },
   {
     name: "プロ",
-    price: "¥5,500",
+    price: "¥4,980",
     period: "/月",
-    features: ["予約件数無制限", "複数店舗対応", "売上レポート", "優先サポート"],
+    features: ["スタッフ無制限", "予約件数無制限", "1,500pt付き", "優先サポート"],
     recommended: false,
   },
 ];
 
 /* ReserveNavi 機能比較表 */
 const RESERVE_COMPARISON = {
-  headers: ["機能", "フリー", "ライト", "スタンダード", "プロ"],
+  headers: ["機能", "無料", "ライト", "スタンダード", "プロ"],
   rows: [
-    ["月間予約件数", "100件", "100件", "無制限", "無制限"],
-    ["LINE通知", true, true, true, true],
-    ["リマインド通知", false, true, true, true],
-    ["自動リマインド", false, false, true, true],
-    ["Googleカレンダー連携", false, true, true, true],
-    ["スタッフ指名予約", false, false, true, true],
-    ["複数店舗対応", false, false, false, true],
-    ["売上レポート", false, false, false, true],
-    ["サポート", "メール", "メール", "チャット", "優先"],
+    ["月間予約件数", "50件", "無制限", "無制限", "無制限"],
+    ["スタッフ数", "1名", "1名", "無制限", "無制限"],
+    ["予約履歴", "3ヶ月", "無制限", "無制限", "無制限"],
+    ["AI機能", false, "購入ptで", true, true],
+    ["FUJIMINポイント", false, false, "700pt", "1,500pt"],
+    ["LINE拡張", false, true, true, true],
+    ["優先サポート", false, false, false, true],
   ],
 };
 
@@ -81,11 +79,11 @@ const RESERVE_COMPARISON = {
 const AI_COMPARISON = {
   headers: ["機能", "ライト", "スタンダード", "プロ", "エンタープライズ"],
   rows: [
-    ["月間応答数", "100回", "500回", "2,000回", "無制限"],
-    ["ナレッジ登録数", "100件", "200件", "無制限", "無制限"],
-    ["チャンネル数", "1", "2", "5", "無制限"],
-    ["7日間無料トライアル", true, true, true, true],
-    ["サポート", "メール", "チャット", "優先", "専任"],
+    ["ナレッジ登録数", "100件", "無制限", "無制限", "無制限"],
+    ["FUJIMINポイント", "200pt", "500pt", "1,500pt", "5,000pt"],
+    ["会話履歴", "未回答のみ・1ヶ月", "全履歴・無制限", "全履歴・無制限", "全履歴・無制限"],
+    ["CSVエクスポート", false, true, true, true],
+    ["多言語対応", true, true, true, true],
   ],
 };
 
@@ -94,37 +92,47 @@ const AI_PLANS = [
     name: "ライト",
     price: "¥550",
     period: "/月",
-    features: ["月100回まで応答", "ナレッジ100件", "1チャンネル", "メールサポート"],
+    features: ["ナレッジ100件", "200pt付き", "会話履歴（未回答のみ・1ヶ月）", "多言語対応"],
     recommended: false,
   },
   {
     name: "スタンダード",
     price: "¥1,100",
     period: "/月",
-    features: ["月500回まで応答", "ナレッジ200件", "2チャンネル", "チャットサポート"],
+    features: ["ナレッジ無制限", "500pt付き", "全履歴・無制限", "CSVエクスポート", "多言語対応"],
     recommended: true,
   },
   {
     name: "プロ",
     price: "¥2,200",
     period: "/月",
-    features: ["月2,000回まで応答", "ナレッジ無制限", "5チャンネル", "優先サポート"],
+    features: ["ナレッジ無制限", "1,500pt付き", "全履歴・無制限", "CSVエクスポート", "多言語対応"],
     recommended: false,
   },
   {
     name: "エンタープライズ",
     price: "¥5,500",
     period: "/月",
-    features: ["応答数無制限", "ナレッジ無制限", "チャンネル無制限", "専任サポート"],
+    features: ["ナレッジ無制限", "5,000pt付き", "全履歴・無制限", "CSVエクスポート", "多言語対応"],
     recommended: false,
   },
 ];
 
-const SHIFT_FEATURES = [
-  "休み希望のスマホ収集",
-  "AIシフト自動作成",
-  "シフト共有・通知",
-  "3店舗まで利用可能",
+const SHIFT_PLANS = [
+  {
+    name: "フリー",
+    price: "¥0",
+    period: "/月",
+    features: ["スタッフ5名まで", "休み希望のスマホ収集", "シフト共有・通知", "AI機能なし"],
+    recommended: false,
+  },
+  {
+    name: "スタンダード",
+    price: "¥550",
+    period: "/月",
+    features: ["スタッフ15名まで", "100pt付き", "AIシフト自動作成", "休み希望のスマホ収集", "シフト共有・通知"],
+    recommended: true,
+  },
 ];
 
 const INDUSTRY_PACKAGES = [
@@ -158,7 +166,7 @@ const FAQS = [
   },
   {
     q: "無料トライアルはありますか？",
-    a: "ShiftNaviは完全無料です。ReserveNaviはフリープラン（月100件）をご用意しています。AskNavi・RuleNaviは7日間の無料トライアルがあります。",
+    a: "ShiftNaviはフリープラン（スタッフ5名まで）、ReserveNaviは無料プラン（月50件）をご用意しています。AskNavi・RuleNaviは7日間の無料トライアルがあります。",
   },
   {
     q: "FUJIMINポイントとは何ですか？",
@@ -251,47 +259,65 @@ export default function PricingPage() {
           </div>
         </nav>
 
-        {/* ========== 1. ShiftNavi — 無料 ========== */}
+        {/* ========== 1. ShiftNavi ========== */}
         <section id="shift-navi" className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 px-4 py-20 md:py-28">
           <div className="mx-auto max-w-6xl">
             <FadeIn>
               <p className="mb-2 text-center text-sm font-semibold tracking-widest text-orange-500 uppercase">
-                Free
+                Shift Management
               </p>
               <h2 className="text-center text-3xl font-extrabold text-gray-900 md:text-4xl">
-                ShiftNavi — ずっと無料
+                ShiftNavi
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-center text-gray-600">
-                ShiftNaviは、AIがシフト表をワンタッチで自動作成するシフト管理ツールです。基本機能は無料。AI自動作成機能のご利用にはFUJIMINポイントが必要です。
+                ShiftNaviは、AIがシフト表をワンタッチで自動作成するシフト管理ツールです。フリープランは無料。AI自動作成機能にはスタンダードプランが必要です。
               </p>
             </FadeIn>
-            <FadeIn delay={0.1}>
-              <div className="mx-auto mt-10 max-w-lg rounded-2xl border-2 border-orange-300 bg-white p-8 shadow-xl md:p-10">
-                <div className="text-center">
-                  <p className="text-5xl font-extrabold text-orange-600 md:text-6xl">¥0</p>
-                  <p className="mt-1 text-sm text-gray-500">永年無料・クレジットカード不要</p>
-                </div>
-                <ul className="mt-8 space-y-3">
-                  {SHIFT_FEATURES.map((f) => (
-                    <li key={f} className="flex items-start gap-3 text-gray-700">
-                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-orange-100 text-xs text-orange-600">
-                        &#10003;
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 mx-auto max-w-2xl">
+              {SHIFT_PLANS.map((plan, i) => (
+                <FadeIn key={plan.name} delay={i * 0.08}>
+                  <div
+                    className={`relative flex h-full flex-col rounded-2xl border bg-white p-6 transition-shadow ${
+                      plan.recommended
+                        ? "border-2 border-orange-400 shadow-xl"
+                        : "border-gray-200 shadow-sm hover:shadow-md"
+                    }`}
+                  >
+                    {plan.recommended && (
+                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-orange-500 px-4 py-1 text-xs font-bold text-white">
+                        おすすめ
                       </span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href="/products/shift-navi"
-                  className="mt-8 block w-full rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-3.5 text-center text-sm font-bold text-white shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl"
-                >
-                  今すぐ無料で始める
-                </a>
-                <p className="mt-3 text-center text-xs text-gray-400">
-                  FUJIMIN PASSアカウントだけで即利用開始 / クレジットカード不要
-                </p>
-              </div>
-            </FadeIn>
+                    )}
+                    <p className="text-sm font-semibold text-gray-500">{plan.name}</p>
+                    <p className="mt-2 text-3xl font-extrabold text-gray-900">
+                      {plan.price}
+                      <span className="text-base font-medium text-gray-400">{plan.period}</span>
+                    </p>
+                    <ul className="mt-6 flex-1 space-y-2.5">
+                      {plan.features.map((f) => (
+                        <li key={f} className="flex items-start gap-2 text-sm text-gray-600">
+                          <span className="mt-0.5 text-xs text-orange-500">&#10003;</span>
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                    <a
+                      href="/products/shift-navi"
+                      className={`mt-6 block rounded-xl px-4 py-3 text-center text-sm font-bold transition-all hover:scale-[1.02] ${
+                        plan.recommended
+                          ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg"
+                          : "border border-gray-200 text-gray-700 hover:border-gray-300"
+                      }`}
+                    >
+                      {plan.price === "¥0" ? "無料で始める" : "このプランで始める"}
+                    </a>
+                    <p className="mt-2 text-center text-xs text-gray-400">
+                      {plan.price === "¥0" ? "クレジットカード不要" : "縛りなし・いつでも解約OK"}
+                    </p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
           </div>
         </section>
 

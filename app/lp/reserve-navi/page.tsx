@@ -161,7 +161,7 @@ export default function ReserveNaviLP() {
             </FadeIn>
             <FadeIn delay={0.35}>
               <p className="mt-6 text-sm text-orange-200/70">
-                無料プランあり ・ クレジットカード不要 ・ 2025年4月上旬サービス開始予定
+                無料プランあり ・ クレジットカード不要 ・ 2026年4月サービス開始予定
               </p>
             </FadeIn>
           </div>

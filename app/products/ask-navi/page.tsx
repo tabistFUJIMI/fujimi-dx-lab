@@ -39,10 +39,9 @@ const PLANS = [
       { label: "AI応答", value: "✓" },
       { label: "Webウィジェット", value: "✓" },
       { label: "LINE連携", value: "✓" },
+      { label: "多言語対応", value: "✓" },
       { label: "会話履歴", value: "未回答のみ・1ヶ月" },
       { label: "CSVエクスポート", value: "—" },
-      { label: "多言語対応", value: "—" },
-      { label: "店舗数", value: "1" },
     ],
   },
   {
@@ -54,10 +53,9 @@ const PLANS = [
       { label: "AI応答", value: "✓" },
       { label: "Webウィジェット", value: "✓" },
       { label: "LINE連携", value: "✓" },
+      { label: "多言語対応", value: "✓" },
       { label: "会話履歴", value: "全履歴・無制限" },
       { label: "CSVエクスポート", value: "✓" },
-      { label: "多言語対応", value: "—" },
-      { label: "店舗数", value: "1" },
     ],
   },
   {
@@ -69,14 +67,13 @@ const PLANS = [
       { label: "AI応答", value: "✓" },
       { label: "Webウィジェット", value: "✓" },
       { label: "LINE連携", value: "✓" },
+      { label: "多言語対応", value: "✓" },
       { label: "会話履歴", value: "全履歴・無制限" },
       { label: "CSVエクスポート", value: "✓" },
-      { label: "多言語対応", value: "✓" },
-      { label: "店舗数", value: "3" },
     ],
   },
   {
-    name: "エンタープライズ", price: "¥5,500", period: "/月", description: "複数店舗・多拠点に",
+    name: "エンタープライズ", price: "¥5,500", period: "/月", description: "大量ポイントで安心",
     color: "#134e4a", bgColor: "#f0fdfa",
     features: [
       { label: "ナレッジ（登録情報）", value: "無制限" },
@@ -84,10 +81,9 @@ const PLANS = [
       { label: "AI応答", value: "✓" },
       { label: "Webウィジェット", value: "✓" },
       { label: "LINE連携", value: "✓" },
+      { label: "多言語対応", value: "✓" },
       { label: "会話履歴", value: "全履歴・無制限" },
       { label: "CSVエクスポート", value: "✓" },
-      { label: "多言語対応", value: "✓" },
-      { label: "店舗数", value: "無制限" },
     ],
   },
 ];
@@ -114,7 +110,7 @@ export default function AskNaviPage() {
           { "@type": "Question", name: "ナレッジの登録はむずかしいですか？", acceptedAnswer: { "@type": "Answer", text: "PDFやCSVをアップロードするだけです。HPのURLを入力すれば、AIが自動でページ内容を取り込みます。" } },
           { "@type": "Question", name: "AIが答えられない質問はどうなりますか？", acceptedAnswer: { "@type": "Answer", text: "「未回答」として記録され、管理画面に通知されます。回答を追加すれば、次回から自動応答できます。" } },
           { "@type": "Question", name: "LINEの公式アカウントが必要ですか？", acceptedAnswer: { "@type": "Answer", text: "LINE連携を使う場合は必要です。Webウィジェットだけなら、公式LINEなしでも使えます。" } },
-          { "@type": "Question", name: "多言語対応はどのプランから？", acceptedAnswer: { "@type": "Answer", text: "プロプラン以上で多言語対応が可能です。英語・中国語・韓国語などに対応しています。" } },
+          { "@type": "Question", name: "多言語対応はどのプランから？", acceptedAnswer: { "@type": "Answer", text: "全プランで多言語対応が可能です。英語・中国語・韓国語などに対応しています。" } },
         ],
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -382,7 +378,7 @@ export default function AskNaviPage() {
                 { q: "AIが答えられない質問はどうなりますか？", a: "「未回答」として記録され、管理画面に通知されます。回答を追加すれば、次回から自動応答できます。" },
                 { q: "LINEの公式アカウントが必要ですか？", a: "LINE連携を使う場合は必要です。Webウィジェットだけなら、公式LINEなしでも使えます。" },
 
-                { q: "多言語対応はどのプランから？", a: "プロプラン以上で多言語対応が可能です。英語・中国語・韓国語などに対応しています。" },
+                { q: "多言語対応はどのプランから？", a: "全プランで多言語対応が可能です。英語・中国語・韓国語などに対応しています。" },
               ].map((faq, i) => (
                 <FadeIn key={i} delay={i * 0.05}>
                   <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
