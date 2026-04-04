@@ -382,7 +382,7 @@ export default function SalonPageClient() {
                 </FadeIn>
                 <FadeIn delay={0.35}>
                   <p className="mt-6 inline-block rounded-full border border-rose-200 bg-rose-50 px-4 py-1.5 text-sm font-semibold text-rose-600">
-                    2026年4月上旬 サービス開始予定｜事前相談受付中
+                    2026年4月中旬 サービス開始予定｜事前相談受付中
                   </p>
                 </FadeIn>
               </div>

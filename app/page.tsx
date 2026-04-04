@@ -139,7 +139,7 @@ export default function Home() {
                     あなたの業種を選んでください。最適なプランをご提案します。
                   </p>
                   <p className="mt-2 inline-block rounded-full border border-orange-400/30 bg-orange-500/10 px-4 py-1.5 text-sm font-semibold text-orange-300">
-                    2026年4月 サービス開始予定｜事前相談受付中
+                    2026年4月中旬 サービス開始予定｜事前相談受付中
                   </p>
                 </FadeIn>
                 <FadeIn delay={0.3}>

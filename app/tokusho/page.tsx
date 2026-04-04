@@ -40,15 +40,15 @@ export default function TokushoPage() {
                       <>
                         メール:{" "}
                         <a
-                          href="mailto:contact@fujimi-dx-lab.com"
+                          href="mailto:support@mail.fujimin-pass.com"
                           className="text-blue-600 underline hover:text-blue-800"
                         >
-                          contact@fujimi-dx-lab.com
+                          support@mail.fujimin-pass.com
                         </a>
                       </>
                     }
                   />
-                  <Row label="販売URL" value="https://fujimin-pass.com" />
+                  <Row label="販売URL" value={<><a href="https://fujimi-dx-lab.com" className="text-blue-600 underline hover:text-blue-800">https://fujimi-dx-lab.com</a>（説明・申込）<br /><a href="https://fujimin-pass.com" className="text-blue-600 underline hover:text-blue-800">https://fujimin-pass.com</a>（ログイン・管理画面）</>} />
                   <Row
                     label="販売価格"
                     value={
@@ -58,7 +58,7 @@ export default function TokushoPage() {
                         </p>
                         <div className="space-y-1.5">
                           <p className="font-medium text-slate-800">Reserve Navi（予約管理）</p>
-                          <p>フリー: ¥0 / ライト: ¥980 / スタンダード: ¥2,980 / プロ: ¥5,500</p>
+                          <p>フリー: ¥0 / ライト: ¥980 / スタンダード: ¥2,980 / プロ: ¥4,980</p>
                         </div>
                         <div className="space-y-1.5">
                           <p className="font-medium text-slate-800">Ask Navi（AI応答）/ Rule Navi（社内規則AI）</p>

@@ -39,7 +39,7 @@ export default function JsonLd() {
             applicationCategory: "BusinessApplication",
             description: "LINEから簡単予約。小規模店舗向け予約管理システム",
             url: "https://fujimi-dx-lab.com/products/reserve-navi",
-            offers: { "@type": "Offer", price: "0", priceCurrency: "JPY", description: "無料プランあり。月額¥1,980〜" },
+            offers: { "@type": "Offer", price: "0", priceCurrency: "JPY", description: "無料プランあり。月額¥980〜" },
           },
         },
         {
@@ -139,7 +139,7 @@ export default function JsonLd() {
         name: "料金はいくらですか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Reserve Naviは無料プランあり（月額¥1,980〜）、Ask NaviとRule Naviは月額¥550〜です。すべて税込価格です。",
+          text: "Reserve Naviは無料プランあり（月額¥980〜）、Ask NaviとRule Naviは月額¥550〜です。すべて税込価格です。",
         },
       },
       {

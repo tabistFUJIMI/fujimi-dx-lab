@@ -440,7 +440,7 @@ export default function SejutsuPageClient() {
                 </FadeIn>
                 <FadeIn delay={0.35}>
                   <p className="mt-6 inline-block rounded-full border border-orange-400/30 bg-orange-500/10 px-4 py-1.5 text-sm font-semibold text-orange-300">
-                    2026年4月上旬 サービス開始予定｜事前相談受付中
+                    2026年4月中旬 サービス開始予定｜事前相談受付中
                   </p>
                 </FadeIn>
               </div>
