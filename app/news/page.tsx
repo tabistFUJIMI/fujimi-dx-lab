@@ -74,7 +74,7 @@ export default async function NewsPage() {
                           {new Date(item.publishedAt).toLocaleDateString("ja-JP")}
                         </span>
                       </div>
-                      <h2 className="text-base font-bold text-gray-900">{item.title}</h2>
+                      <h2 className="text-lg font-bold text-gray-900">{item.title}</h2>
                       {item.excerpt && (
                         <p className="mt-1 text-sm leading-relaxed text-gray-500">{item.excerpt}</p>
                       )}

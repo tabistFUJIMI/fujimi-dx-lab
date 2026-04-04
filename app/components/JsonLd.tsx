@@ -1,3 +1,85 @@
+type PlanServiceJsonLdProps = {
+  slug: string;
+  name: string;
+  description: string;
+  serviceType: string;
+};
+
+export function PlanServiceJsonLd({ slug, name, description, serviceType }: PlanServiceJsonLdProps) {
+  const service = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name,
+    description,
+    serviceType,
+    url: `https://fujimi-dx-lab.com/plan/${slug}`,
+    provider: {
+      "@type": "Organization",
+      name: "FUJIMI DX Lab",
+      legalName: "ふじみ企業有限会社",
+      url: "https://fujimi-dx-lab.com",
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "Japan",
+    },
+    offers: [
+      {
+        "@type": "Offer",
+        name: "ShiftNavi（シフト管理）",
+        price: "0",
+        priceCurrency: "JPY",
+        description: "無料",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "0",
+          priceCurrency: "JPY",
+          unitText: "月額",
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "Ask Navi（AI自動応答）",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "550",
+          priceCurrency: "JPY",
+          unitText: "月額",
+          description: "月額550円〜（税込）",
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "Reserve Navi（LINE予約管理）",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "980",
+          priceCurrency: "JPY",
+          unitText: "月額",
+          description: "無料プランあり。月額980円〜（税込）",
+        },
+      },
+    ],
+  };
+
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ホーム", item: "https://fujimi-dx-lab.com" },
+      { "@type": "ListItem", position: 2, name: "業種別プラン", item: "https://fujimi-dx-lab.com/plan" },
+      { "@type": "ListItem", position: 3, name, item: `https://fujimi-dx-lab.com/plan/${slug}` },
+    ],
+  };
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(service) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+    </>
+  );
+}
+
 export function ProductBreadcrumb({ name, slug }: { name: string; slug: string }) {
   const breadcrumb = {
     "@context": "https://schema.org",

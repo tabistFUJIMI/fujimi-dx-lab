@@ -224,7 +224,7 @@ function ReserveNaviMockSection() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 ${
+                  className={`flex items-center gap-1.5 rounded-full px-5 py-2.5 min-h-[44px] text-sm font-semibold transition-all duration-300 ${
                     activeTab === tab.id
                       ? "bg-violet-600 text-white shadow-md"
                       : "text-gray-500 hover:text-gray-700"

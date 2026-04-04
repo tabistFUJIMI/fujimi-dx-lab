@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PlanServiceJsonLd } from "@/app/components/JsonLd";
 import PetPageClient from "./PetPageClient";
 
 export const metadata: Metadata = {
@@ -30,5 +31,15 @@ export const metadata: Metadata = {
 };
 
 export default function PetPlanPage() {
-  return <PetPageClient />;
+  return (
+    <>
+      <PlanServiceJsonLd
+        slug="pet"
+        name="ペットサロン・トリミング向けDXツール導入支援"
+        description="トリミング・シャンプーの予約をLINEで自動管理。ペット情報の事前収集にも対応。AI応答で飼い主様の問い合わせを自動化。"
+        serviceType="DXツール導入支援"
+      />
+      <PetPageClient />
+    </>
+  );
 }

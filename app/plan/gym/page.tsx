@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PlanServiceJsonLd } from "@/app/components/JsonLd";
 import GymPageClient from "./GymPageClient";
 
 export const metadata: Metadata = {
@@ -33,5 +34,15 @@ export const metadata: Metadata = {
 };
 
 export default function GymPlanPage() {
-  return <GymPageClient />;
+  return (
+    <>
+      <PlanServiceJsonLd
+        slug="gym"
+        name="パーソナルジム向けDXツール導入支援"
+        description="トレーニングセッション予約をLINEで自動管理。トレーナー指名・体験予約にも対応。AI応答で問い合わせ自動化。ShiftNavi無料。"
+        serviceType="DXツール導入支援"
+      />
+      <GymPageClient />
+    </>
+  );
 }

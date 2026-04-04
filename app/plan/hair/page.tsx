@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PlanServiceJsonLd } from "@/app/components/JsonLd";
 import HairPageClient from "./HairPageClient";
 
 export const metadata: Metadata = {
@@ -33,5 +34,15 @@ export const metadata: Metadata = {
 };
 
 export default function HairPlanPage() {
-  return <HairPageClient />;
+  return (
+    <>
+      <PlanServiceJsonLd
+        slug="hair"
+        name="美容室・ヘアサロン向けDXツール導入支援"
+        description="カット・カラー・パーマの予約をLINEで自動管理。スタイリスト指名予約にも対応。AI応答でDM対応を自動化。ShiftNavi無料。"
+        serviceType="DXツール導入支援"
+      />
+      <HairPageClient />
+    </>
+  );
 }

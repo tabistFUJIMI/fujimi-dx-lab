@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PlanServiceJsonLd } from "@/app/components/JsonLd";
 import SalonPageClient from "./SalonPageClient";
 
 export const metadata: Metadata = {
@@ -33,5 +34,15 @@ export const metadata: Metadata = {
 };
 
 export default function SalonPlanPage() {
-  return <SalonPageClient />;
+  return (
+    <>
+      <PlanServiceJsonLd
+        slug="salon"
+        name="ネイル・エステサロン向けDXツール導入支援"
+        description="ジェルネイル・まつエク・フェイシャルの予約をLINEで自動管理。AI応答で問い合わせ対応も自動化。ShiftNavi無料。月額550円〜。"
+        serviceType="DXツール導入支援"
+      />
+      <SalonPageClient />
+    </>
+  );
 }

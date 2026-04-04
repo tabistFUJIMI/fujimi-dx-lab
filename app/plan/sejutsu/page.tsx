@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PlanServiceJsonLd } from "@/app/components/JsonLd";
 import SejutsuPageClient from "./SejutsuPageClient";
 
 export const metadata: Metadata = {
@@ -30,5 +31,15 @@ export const metadata: Metadata = {
 };
 
 export default function SejutsuPlanPage() {
-  return <SejutsuPageClient />;
+  return (
+    <>
+      <PlanServiceJsonLd
+        slug="sejutsu"
+        name="施術プラン（整体・マッサージ院向けDXツール導入支援）"
+        description="整体・マッサージ院向けのLINE予約受付・AI自動応答・シフト管理をひとまとめに導入。ShiftNavi無料。月額550円〜。"
+        serviceType="DXツール導入支援"
+      />
+      <SejutsuPageClient />
+    </>
+  );
 }

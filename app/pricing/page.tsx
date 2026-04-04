@@ -251,7 +251,7 @@ export default function PricingPage() {
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                className="shrink-0 rounded-full px-3 py-1.5 transition-colors hover:bg-gray-100 hover:text-gray-900"
+                className="shrink-0 rounded-full px-3 py-2.5 min-h-[44px] flex items-center transition-colors hover:bg-gray-100 hover:text-gray-900"
               >
                 {item.label}
               </a>

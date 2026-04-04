@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PlanServiceJsonLd } from "@/app/components/JsonLd";
 import PhotoPageClient from "./PhotoPageClient";
 
 export const metadata: Metadata = {
@@ -30,5 +31,15 @@ export const metadata: Metadata = {
 };
 
 export default function PhotoPlanPage() {
-  return <PhotoPageClient />;
+  return (
+    <>
+      <PlanServiceJsonLd
+        slug="photo"
+        name="写真スタジオ向けDXツール導入支援"
+        description="スタジオ撮影の予約をLINEで自動管理。撮影種類・人数の事前収集にも対応。AI応答で問い合わせ自動化。"
+        serviceType="DXツール導入支援"
+      />
+      <PhotoPageClient />
+    </>
+  );
 }

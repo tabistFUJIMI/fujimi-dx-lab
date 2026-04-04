@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PlanServiceJsonLd } from "@/app/components/JsonLd";
 import CounselingPageClient from "./CounselingPageClient";
 
 export const metadata: Metadata = {
@@ -30,5 +31,15 @@ export const metadata: Metadata = {
 };
 
 export default function CounselingPlanPage() {
-  return <CounselingPageClient />;
+  return (
+    <>
+      <PlanServiceJsonLd
+        slug="counseling"
+        name="カウンセリング・相談向けDXツール導入支援"
+        description="初回相談・継続セッションの予約をLINEで自動管理。承認制予約でダブルブッキング防止。AI応答で問い合わせ自動化。"
+        serviceType="DXツール導入支援"
+      />
+      <CounselingPageClient />
+    </>
+  );
 }

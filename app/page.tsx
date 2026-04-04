@@ -147,6 +147,9 @@ export default function Home() {
                     <a href="#industry" className="inline-flex items-center justify-center rounded-xl bg-orange-500 px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-orange-600">
                       業種を選んで始める ↓
                     </a>
+                    <a href="/pricing" className="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10">
+                      料金を見る
+                    </a>
                     <a href="#contact" className="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10">
                       無料で相談する
                     </a>
@@ -534,7 +537,7 @@ export default function Home() {
               <div className="mt-8 text-center">
                 <a
                   href="/pricing"
-                  className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-6 py-3 text-sm font-bold text-gray-700 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+                  className="inline-flex items-center gap-2 rounded-xl bg-amber-500 px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-amber-600"
                 >
                   料金の詳細を見る →
                 </a>
