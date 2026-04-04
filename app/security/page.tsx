@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { readFileSync } from "fs";
+import { join } from "path";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FadeIn from "../components/FadeIn";
@@ -9,7 +11,19 @@ export const metadata: Metadata = {
     "FUJIMIN PASSのセキュリティ対策について。お客様のデータを守るための7つの取り組みをご紹介します。",
 };
 
+function getAuditInfo(): { lastAuditDate: string; summary: string } {
+  try {
+    const raw = readFileSync(join(process.cwd(), "public", "security-audit.json"), "utf-8");
+    return JSON.parse(raw);
+  } catch {
+    return { lastAuditDate: "2026-04-04", summary: "全5アプリ横断セキュリティ監査実施済み" };
+  }
+}
+
+export const dynamic = "force-dynamic";
+
 export default function SecurityPage() {
+  const audit = getAuditInfo();
   return (
     <>
       <Header />
@@ -193,12 +207,12 @@ export default function SecurityPage() {
                       <Row label="通信" value="TLS 1.3 / HSTS（max-age=31536000）" />
                       <Row label="セキュリティヘッダー" value="CSP / X-Frame-Options: DENY / X-Content-Type-Options / Referrer-Policy / Permissions-Policy" />
                       <Row label="ORM" value="Prisma（パラメータ化クエリによるSQLインジェクション対策）" />
-                      <Row label="レートリミット" value="認証API: 5回/分、チャットAPI: 10回/分（IP単位）" />
+                      <Row label="レートリミット" value="認証・チャット等の重要APIにIP単位の制限を適用" />
                       <Row label="決済" value="Stripe（PCI DSS Level 1）/ Webhook署名検証（HMAC-SHA256）" />
                       <Row label="LINE Token" value="AES-256-GCM暗号化保存" />
                       <Row label="監視" value="Sentry（エラートラッキング）/ 監査ログ（AnalyticsAuditLog）" />
                       <Row label="ホスティング" value="Vercel（SOC 2 Type II準拠）/ Supabase PostgreSQL（AWS上、SSL強制）" />
-                      <Row label="最終監査日" value="2026年4月4日（全5アプリ横断セキュリティ監査実施済み）" />
+                      <Row label="最終監査日" value={`${audit.lastAuditDate.replace(/-/g, "年").replace(/年(\d+)$/, "月$1日")}（${audit.summary}）`} />
                     </tbody>
                   </table>
                 </div>
@@ -233,7 +247,7 @@ export default function SecurityPage() {
             </div>
 
             <p className="mt-12 text-right text-xs text-slate-500">
-              最終更新: 2026年4月4日
+              最終監査: {audit.lastAuditDate}
             </p>
           </div>
         </FadeIn>
