@@ -92,6 +92,19 @@ const SERVICES = [
   },
 ];
 
+const STANDALONE_PRODUCTS = [
+  {
+    name: "ForProject",
+    tagline: "AIプロジェクト管理",
+    description: "イベント企画・懇親会・結婚式準備をスマホで完結管理。AIアシスタントが幹事業務をサポート。",
+    href: "/products/forproject",
+    externalUrl: "https://forproject.fujimin-pass.com",
+    price: "基本無料・AI機能500円〜",
+    icon: "🎯",
+    color: "#FF6B4A",
+  },
+];
+
 const COMING_SOON = [
   { name: "SocialNavi", tagline: "SNS一元管理", icon: "📣" },
   { name: "SlideNavi", tagline: "AI資料作成", icon: "📑" },
@@ -297,6 +310,31 @@ export default function Home() {
                 </FadeIn>
               ))}
             </div>
+
+            {/* Standalone Products */}
+            {STANDALONE_PRODUCTS.map((product) => (
+              <FadeIn key={product.name} delay={0.2}>
+                <div className="mt-10 rounded-2xl border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50 p-6">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <div>
+                      <span className="text-2xl">{product.icon}</span>
+                      <h3 className="text-xl font-extrabold text-slate-900 mt-1">{product.name}</h3>
+                      <p className="text-sm text-orange-700 font-medium">{product.tagline}</p>
+                      <p className="mt-2 text-sm text-slate-600 max-w-md">{product.description}</p>
+                      <p className="mt-1 text-xs text-slate-500">{product.price}</p>
+                    </div>
+                    <div className="flex gap-3">
+                      <Link href={product.href} className="inline-flex items-center rounded-xl border-2 border-orange-300 bg-white px-5 py-2.5 text-sm font-bold text-orange-700 hover:bg-orange-50 transition-colors">
+                        詳しく見る
+                      </Link>
+                      <a href={product.externalUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-xl bg-orange-500 px-5 py-2.5 text-sm font-bold text-white hover:bg-orange-600 transition-colors">
+                        無料で始める →
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
 
             {/* Coming Soon */}
             <FadeIn delay={0.3}>

@@ -26,6 +26,7 @@ export default function Footer() {
                 { name: "ShiftNavi（無料）", href: "/products/shift-navi" },
                 { name: "RuleNavi", href: "/products/rule-navi" },
                 { name: "SocialNavi", href: "/products/social-navi" },
+                { name: "ForProject", href: "/products/forproject" },
               ].map((item) => (
                 <li key={item.name}>
                   <a href={item.href} className="text-slate-500 transition-colors hover:text-slate-300">
