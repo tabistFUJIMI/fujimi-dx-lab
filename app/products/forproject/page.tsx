@@ -66,13 +66,7 @@ const PACKS = [
 export default function ForProjectPage() {
   return (
     <>
-      <ProductBreadcrumb
-        items={[
-          { name: "FUJIMI DX Lab", url: "https://fujimi-dx-lab.com" },
-          { name: "プロダクト", url: "https://fujimi-dx-lab.com/products/fujimin-pass" },
-          { name: "ForProject", url: "https://fujimi-dx-lab.com/products/forproject" },
-        ]}
-      />
+      <ProductBreadcrumb name="ForProject" slug="forproject" />
       <Header />
 
       <main className="bg-white">
