@@ -161,11 +161,11 @@ export default function AICheckerPage() {
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#b4c5ff] blur-[120px] rounded-full" />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto">
-          <p className="text-sm font-semibold text-[#004ac6] tracking-widest mb-4 uppercase">FUJIMI DX Lab Free Tool</p>
+          <p className="text-sm font-semibold text-[#004ac6] tracking-widest mb-4 uppercase">FUJIMI DX Lab 無料ツール</p>
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-[#191b23] mb-6">AI対策チェッカー</h1>
           <p className="text-xl md:text-2xl text-[#434655] mb-12 max-w-2xl mx-auto leading-relaxed">
-            あなたのサイトはAI検索に引用される？<br className="hidden md:block" />
-            URLを入力するだけでSEO・GEO/LLMOスコアを<strong className="text-[#004ac6]">無料診断</strong>
+            あなたのサイトは、SEOの基本ができていますか？<br className="hidden md:block" />
+            良いSEOはAI検索対策の土台になります。<strong className="text-[#004ac6]">無料で診断</strong>
           </p>
           <div className="flex flex-col md:flex-row items-center gap-3 w-full max-w-2xl mx-auto bg-white p-2 rounded-3xl shadow-xl shadow-[#191b23]/5">
             <div className="relative flex-1 w-full">
@@ -295,13 +295,13 @@ export default function AICheckerPage() {
         <article className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-[#191b23] mb-4">AI対策チェッカーとは？</h2>
           <p className="text-[#434655] text-center mb-12 max-w-2xl mx-auto leading-relaxed">
-            AI対策チェッカーは、WebサイトのURLを入力するだけでSEOとGEO/LLMO（AI検索最適化）のスコアを診断する無料ツールです。
-            ChatGPT、Gemini、Perplexity、ClaudeなどのAI検索エンジンにあなたのサイトが引用されるかを評価し、具体的な改善提案を提示します。
+            AI対策チェッカーは、WebサイトのSEOの基本ができているかを診断し、その上でAI検索にも対応できる構造になっているかを確認する無料ツールです。
+            業界の専門家が一致する「良いSEO = AI対策の土台」という考え方に基づいています。
           </p>
           <div className="grid md:grid-cols-3 gap-6">
-            <FeatureCard icon={<IconChart className="w-8 h-8 text-[#004ac6]" />} title="SEO診断" desc="title、構造化データ、サイトマップ解析、ブログの有無、更新頻度など20項目以上をチェック" />
-            <FeatureCard icon={<IconBeaker className="w-8 h-8 text-[#06b6d4]" />} title="GEO/LLMO診断" desc="AIがコンテンツを分析し、各AI検索エンジンでの引用されやすさを100点満点で評価" />
-            <FeatureCard icon={<IconLightbulb className="w-8 h-8 text-[#d97706]" />} title="改善提案" desc="ChatGPT・Gemini・Perplexity・Claude別の具体的な対策を優先度順に提案" />
+            <FeatureCard icon={<IconChart className="w-8 h-8 text-[#004ac6]" />} title="SEO診断" desc="title、構造化データ、サイトマップ、ブログの有無、更新頻度など20項目以上をチェック。良いSEOがすべての土台です" />
+            <FeatureCard icon={<IconBeaker className="w-8 h-8 text-[#06b6d4]" />} title="AI対応構造チェック" desc="AIがコンテンツを見つけやすい構造になっているかを分析。ただしAI検索は発展途上であり、結果は目安です" />
+            <FeatureCard icon={<IconLightbulb className="w-8 h-8 text-[#d97706]" />} title="改善のヒント" desc="構造的に足りないものをやさしい言葉でお伝えします。エビデンスの確度も併せて表示します" />
           </div>
         </article>
       </section>
@@ -309,29 +309,34 @@ export default function AICheckerPage() {
       {/* ===== GEO EDUCATION ===== */}
       <section className="px-6 py-20">
         <article className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-[#191b23] mb-12">GEO/LLMOとは？なぜ今必要なのか</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-[#191b23] mb-12">AI検索時代のSEOについて、正直にお伝えします</h2>
           <section className="mb-10">
-            <h3 className="text-xl font-bold text-[#191b23] mb-3">GEO（Generative Engine Optimization）とは？</h3>
-            <p className="text-[#434655] leading-relaxed">GEOとは、ChatGPTやGeminiなどのAI検索エンジンの回答内で自社サイトが引用・推薦されるよう最適化する手法です。SEOがGoogleの検索結果で上位表示を目指すのに対し、GEOは「AIの回答に自社の情報が含まれるか」を目指します。Yext社が17.2百万件のAI引用を分析した調査によると、ディレクトリ（リスティング情報）が全引用の54.53%を占めています。</p>
+            <h3 className="text-xl font-bold text-[#191b23] mb-3">AI検索のトラフィックは、まだごくわずかです</h3>
+            <p className="text-[#434655] leading-relaxed">Ahrefs社の75,000サイト分析（2026年4月）によると、AI検索からのトラフィックは全体の約0.26%。日本のミエルカ社の実測でも0.1%程度です。GoogleのAI Modeでは75%のセッションが外部サイトを訪問せずに終了しています。AI検索で劇的にトラフィックが増えるという期待は、現時点では現実的ではありません。</p>
           </section>
           <section className="mb-10">
-            <h3 className="text-xl font-bold text-[#191b23] mb-3">なぜ従来のSEOだけでは不十分なのか？</h3>
-            <p className="text-[#434655] leading-relaxed">AI Overviewsの普及により、オーガニック検索のクリック率が最大61%減少するケースが報告されています。SEOでの上位表示とAIでの引用は必ずしも連動しません。AI検索が一般化する今、GEO/LLMO対策は企業にとって必須の施策になりつつあります。</p>
+            <h3 className="text-xl font-bold text-[#191b23] mb-3">でも、良いSEOはAI対策の土台になります</h3>
+            <p className="text-[#434655] leading-relaxed">業界の専門家はほぼ一致して「良いSEO対策がそのままAI検索対策の土台になる」と言っています。SEO専門家のLily Ray氏（フォロワー11.5万人）は「AI searchで効くものを調べると、結局"良いSEO"に帰結する」と述べています。Googleも公式に「基本的なSEOベストプラクティスがAI機能にも適用できる」と確認しています。</p>
+          </section>
+          <section className="mb-10">
+            <h3 className="text-xl font-bold text-[#191b23] mb-3">AI検索は発展途上。仕組みは急速に変わります</h3>
+            <p className="text-[#434655] leading-relaxed">各AI検索エンジンの引用ロジックは非公開で、数ヶ月単位で大きく変わります。2026年3月のChatGPT 5.3アップデートでは外部リンクが大幅に減少しました。「これをやれば確実にAIに引用される」という手法は存在しません。ただし、AIにブランドを認知してもらうこと（社名の言及）が、指名検索につながる間接効果は期待できます。</p>
           </section>
           <section>
-            <h3 className="text-xl font-bold text-[#191b23] mb-4">各AI検索エンジンはどのように引用元を選んでいるのか？</h3>
+            <h3 className="text-xl font-bold text-[#191b23] mb-4">各AI検索エンジンの引用傾向（参考データ）</h3>
+            <p className="text-sm text-[#737686] mb-3">※ 以下は傾向データであり、各社の公式発表ではありません。ロジックは予告なく変わる可能性があります。</p>
             <div className="overflow-x-auto rounded-3xl border border-[#c3c6d7]/30">
               <table className="w-full text-sm">
-                <thead><tr className="bg-[#f3f3fe]"><th className="px-5 py-3 text-left font-semibold text-[#191b23]">AI検索</th><th className="px-5 py-3 text-left font-semibold text-[#191b23]">引用の特徴</th><th className="px-5 py-3 text-left font-semibold text-[#191b23]">重視するもの</th></tr></thead>
+                <thead><tr className="bg-[#f3f3fe]"><th className="px-5 py-3 text-left font-semibold text-[#191b23]">AI検索</th><th className="px-5 py-3 text-left font-semibold text-[#191b23]">観察されている傾向</th><th className="px-5 py-3 text-left font-semibold text-[#191b23]">重視していそうなもの</th></tr></thead>
                 <tbody className="divide-y divide-[#e1e2ed]">
-                  <tr><td className="px-5 py-3 font-medium">ChatGPT</td><td className="px-5 py-3 text-[#434655]">業界ごとに異なる外部検索に依存。ホテル業界では公式サイトを38%引用</td><td className="px-5 py-3 text-[#434655]">公式サイト、業界別ディレクトリ</td></tr>
-                  <tr className="bg-[#faf8ff]"><td className="px-5 py-3 font-medium">Gemini</td><td className="px-5 py-3 text-[#434655]">Google検索インデックスがベース</td><td className="px-5 py-3 text-[#434655]">構造化データ、GBP、権威性</td></tr>
-                  <tr><td className="px-5 py-3 font-medium">Perplexity</td><td className="px-5 py-3 text-[#434655]">業界横断で安定した引用パターン</td><td className="px-5 py-3 text-[#434655]">公式サイト＋ディレクトリの混合</td></tr>
-                  <tr className="bg-[#faf8ff]"><td className="px-5 py-3 font-medium">Claude</td><td className="px-5 py-3 text-[#434655]">他モデルの2〜4倍のUGC（口コミ等）を引用</td><td className="px-5 py-3 text-[#434655]">レビュー、評判シグナル</td></tr>
+                  <tr><td className="px-5 py-3 font-medium">ChatGPT</td><td className="px-5 py-3 text-[#434655]">業界により異なる。ホテル業界では公式サイトの引用率が比較的高い</td><td className="px-5 py-3 text-[#434655]">公式サイト、ディレクトリ</td></tr>
+                  <tr className="bg-[#faf8ff]"><td className="px-5 py-3 font-medium">Gemini</td><td className="px-5 py-3 text-[#434655]">Google検索の結果をベースに回答を生成</td><td className="px-5 py-3 text-[#434655]">Google検索での評価（SEO）</td></tr>
+                  <tr><td className="px-5 py-3 font-medium">Perplexity</td><td className="px-5 py-3 text-[#434655]">業界を問わず比較的安定した引用パターン</td><td className="px-5 py-3 text-[#434655]">公式サイト＋ディレクトリ</td></tr>
+                  <tr className="bg-[#faf8ff]"><td className="px-5 py-3 font-medium">Claude</td><td className="px-5 py-3 text-[#434655]">口コミやレビューの参照が他より多い傾向</td><td className="px-5 py-3 text-[#434655]">評判シグナル</td></tr>
                 </tbody>
               </table>
             </div>
-            <p className="text-xs text-[#737686] mt-2">出典: Yext社 17.2百万件AI引用分析（2026年）</p>
+            <p className="text-xs text-[#737686] mt-2">参考: Yext社分析データ（2026年）。傾向の観察であり、各社の公式な仕様ではありません</p>
           </section>
         </article>
       </section>
@@ -369,7 +374,7 @@ export default function AICheckerPage() {
           <div className="absolute bottom-10 right-20 w-64 h-64 bg-[#4cd7f6] blur-[100px] rounded-full" />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">AI時代のSEO、今すぐ始めましょう。</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">まずはSEOの土台を確認しましょう</h2>
           <p className="text-white/70 mb-8 text-lg">URLを入力するだけ。登録不要・完全無料です。</p>
           <button onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); setTimeout(() => document.querySelector<HTMLInputElement>("input[type='url']")?.focus(), 500); }}
             className="bg-white text-[#004ac6] px-10 py-4 rounded-2xl font-bold text-lg hover:bg-[#f3f3fe] transition-all shadow-lg">
@@ -425,6 +430,8 @@ function Accordion({ title, score, max, bg, accent, open, onToggle, children }: 
 function CheckList({ items }: { items: SeoCheckItem[] }) {
   const dl = { 1: "自分でできる", 2: "制作会社に依頼", 3: "専門家が必要" } as const;
   const dc = { 1: "bg-emerald-100 text-emerald-700", 2: "bg-amber-100 text-amber-700", 3: "bg-[#ffdad6] text-[#ba1a1a]" } as const;
+  const el = { confirmed: "確認済み", observed: "効果が観察されている", experimental: "実験的" } as const;
+  const ec = { confirmed: "bg-emerald-50 text-emerald-600 border-emerald-200", observed: "bg-blue-50 text-blue-600 border-blue-200", experimental: "bg-gray-100 text-[#737686] border-gray-200" } as const;
   return (
     <div className="space-y-1.5">
       {items.map((it, i) => (
@@ -434,7 +441,11 @@ function CheckList({ items }: { items: SeoCheckItem[] }) {
               {it.status === "good" ? <IconCheck className="w-5 h-5 text-emerald-500" /> : it.status === "warning" ? <IconWarn className="w-5 h-5 text-amber-500" /> : <IconX className="w-5 h-5 text-[#ba1a1a]" />}
             </div>
             <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2"><span className="font-semibold text-sm text-[#191b23]">{it.name}</span><span className="text-xs text-[#737686]">{it.score}/{it.maxScore}</span></div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="font-semibold text-sm text-[#191b23]">{it.name}</span>
+                <span className="text-xs text-[#737686]">{it.score}/{it.maxScore}</span>
+                {it.evidence && <span className={`text-[10px] px-1.5 py-0.5 rounded border ${ec[it.evidence]}`}>{el[it.evidence]}</span>}
+              </div>
               <p className="text-sm text-[#434655]">{it.message}</p>
               {it.detail && <p className="text-xs text-[#737686] mt-0.5 truncate">{it.detail}</p>}
             </div>

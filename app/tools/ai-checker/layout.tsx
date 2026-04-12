@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI対策チェッカー - SEO・GEO/LLMO無料診断ツール",
+  title: "AI対策チェッカー - SEOの基本とAI検索対応を無料診断",
   description:
-    "URLを入力するだけでSEOスコアとGEO/LLMOスコアを無料診断。ChatGPT・Gemini・Perplexity・ClaudeなどのAI検索エンジンにあなたのサイトが引用されるか、具体的な改善提案付きでチェックできます。",
+    "URLを入力するだけでSEOの基本ができているかを無料診断。良いSEOはAI検索対策の土台になります。構造的に足りないものをやさしい言葉でお伝えします。完全無料・登録不要。",
   openGraph: {
-    title: "AI対策チェッカー | あなたのサイトはAI検索に引用される？",
+    title: "AI対策チェッカー | SEOの基本とAI検索対応を無料診断",
     description:
-      "URLを入力するだけでSEO・GEO/LLMOを無料診断。AI検索エンジンでの引用されやすさをスコア化し、改善提案を提示します。",
+      "良いSEO=AI対策の土台。URLを入力するだけで、サイトの構造に足りないものを無料で確認できます。",
     type: "website",
     url: "/tools/ai-checker",
   },

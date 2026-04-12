@@ -6,6 +6,7 @@ export interface SeoCheckItem {
   status: "good" | "warning" | "bad";
   message: string;
   detail?: string;
+  evidence?: "confirmed" | "observed" | "experimental"; // エビデンスレベル
   action?: {
     what: string;       // 何をすればいいか（素人向け）
     difficulty: 1 | 2 | 3; // 難易度 1=自分でできる 2=制作会社に依頼 3=専門家必要

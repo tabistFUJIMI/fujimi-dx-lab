@@ -492,7 +492,11 @@ export function runSeoChecks(
   }
 
   // === GEO Elements (40 points) ===
-  // Each item includes an actionable guide for non-technical users
+  // Each item includes an actionable guide + evidence level for non-technical users
+  // Evidence levels:
+  //   "confirmed"    = Google公式発表 or 大規模データで確定
+  //   "observed"     = 効果が観察されているが公式未確認
+  //   "experimental" = 実務者の経験則。効果未確認
 
   // JSON-LD structured data (10 points)
   const jsonLdTypes = page.jsonLd.map((j) => j.type);
@@ -611,6 +615,20 @@ export function runSeoChecks(
       impact: "AIは薄いページより、具体的で詳細な情報があるページを優先的に引用します",
     } : undefined,
   });
+
+  // Assign evidence levels to GEO items
+  const evidenceMap: Record<string, "confirmed" | "observed" | "experimental"> = {
+    "構造化データ": "observed",
+    "質問形式の見出し": "observed",
+    "よくある質問（FAQ）": "observed",
+    "llms.txt（AI向け案内）": "experimental",
+    "AIクローラーの許可": "confirmed",
+    "自己紹介文": "observed",
+    "コンテンツの充実度": "confirmed",
+  };
+  for (const g of geoSeo) {
+    g.evidence = evidenceMap[g.name] || "observed";
+  }
 
   const allItems = [...pageSeo, ...siteSeo, ...geoSeo];
   const totalScore = allItems.reduce((sum, i) => sum + i.score, 0);
