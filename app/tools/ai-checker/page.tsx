@@ -193,11 +193,17 @@ export default function AICheckerPage() {
         <section className="px-6 py-16 bg-white">
           <div className="max-w-4xl mx-auto">
             <p className="text-center text-sm text-[#434655] mb-1">診断結果</p>
-            <p className="text-center mb-10">
+            <p className="text-center mb-6">
               <a href={seoResult.url} target="_blank" rel="noopener noreferrer" className="text-[#004ac6] hover:underline text-sm inline-flex items-center gap-1">
                 {seoResult.url} <IconExternal className="w-3.5 h-3.5" />
               </a>
             </p>
+
+            {/* Disclaimer */}
+            <div className="mb-10 p-4 bg-[#f3f3fe] rounded-2xl border border-[#e1e2ed] text-sm text-[#434655] leading-relaxed">
+              <p className="font-semibold text-[#191b23] mb-1">この診断結果について</p>
+              <p>AI検索（ChatGPT・Gemini・Perplexity・Claude等）はまだ発展途上の技術です。各AIの引用ロジックは非公開で、数ヶ月単位で大きく変わります。「これをやれば確実にAIに引用される」という確定的な手法は現時点では存在しません。ただし、<strong className="text-[#191b23]">良いSEO対策がそのままAI検索対策の土台になる</strong>という点は業界の専門家がほぼ一致しています。このチェッカーは「現時点で効果が期待できる構造」の目安を提示するものです。</p>
+            </div>
 
             {/* Score Gauges */}
             {geoResult ? (
