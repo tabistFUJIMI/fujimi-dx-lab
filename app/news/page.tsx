@@ -4,6 +4,8 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FadeIn from "../components/FadeIn";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "お知らせ",
   description: "FUJIMI DX Labからのお知らせ・イベント情報。",

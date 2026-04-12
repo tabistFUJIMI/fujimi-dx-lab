@@ -585,6 +585,38 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ─── 無料ツール ─── */}
+        <section className="px-4 py-20 bg-gradient-to-br from-[#eef4ff] via-white to-[#e8fffe]">
+          <div className="mx-auto max-w-4xl text-center">
+            <FadeIn>
+              <p className="text-xs font-bold uppercase tracking-widest text-[#004ac6]">FREE TOOL</p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">
+                AI対策チェッカー
+              </h2>
+              <p className="mx-auto mt-4 max-w-lg text-base text-gray-600 leading-relaxed">
+                あなたのサイトはAI検索に引用される？<br />
+                URLを入力するだけでSEO・GEO/LLMOスコアを<strong className="text-[#004ac6]">無料診断</strong>
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/tools/ai-checker"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#004ac6] px-8 py-4 text-lg font-bold text-white shadow-lg shadow-blue-200 hover:bg-[#003ea8] transition-all"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3" /></svg>
+                  今すぐ診断する
+                </Link>
+                <Link
+                  href="/column"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-[#004ac6] px-8 py-4 text-lg font-bold text-[#004ac6] hover:bg-[#004ac6] hover:text-white transition-all"
+                >
+                  GEO/LLMOコラムを読む
+                </Link>
+              </div>
+              <p className="mt-4 text-xs text-gray-400">登録不要・完全無料。1日3回まで</p>
+            </FadeIn>
+          </div>
+        </section>
+
         {/* ─── お知らせ ─── */}
         <LatestNews />
 

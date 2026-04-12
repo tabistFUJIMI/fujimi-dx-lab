@@ -43,6 +43,27 @@ model Announcement {
   @@schema("fujimi_dx_lab_hp")
 }
 
+model Column {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  title       String
+  content     String    // Markdown or HTML
+  excerpt     String?   // 未設定時は本文先頭120文字
+  category    String    @default("basics") // basics | ai-strategy | practice | case-study
+  tags        String[]  @default([])
+  ogImage     String?   @map("og_image")
+  isPublished Boolean   @default(false) @map("is_published")
+  publishedAt DateTime? @map("published_at")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  @@index([isPublished, publishedAt])
+  @@index([category])
+  @@index([slug])
+  @@map("columns")
+  @@schema("fujimi_dx_lab_hp")
+}
+
 model GaToken {
   id           String   @id @default("ga_oauth")
   accessToken  String   @map("access_token")
