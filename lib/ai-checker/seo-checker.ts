@@ -435,10 +435,13 @@ export function runSeoChecks(
     hasTwitter ? "Twitter Card設定あり" : "Twitter Cardが未設定"));
 
   // Heading structure (5 points)
+  // Note: SPA sites may render H1 via JavaScript — our HTML-only check can miss it
   const h1Count = page.headings.filter((h) => h.level === 1).length;
+  const jsHeavyPage = page.textContent.length < 200;
   let headingScore = 5;
   const headingMessages: string[] = [];
-  if (h1Count === 0) { headingScore -= 3; headingMessages.push("H1タグがありません"); }
+  if (h1Count === 0 && jsHeavyPage) { headingScore -= 1; headingMessages.push("H1タグが見つかりませんでした（JavaScript生成の可能性あり）"); }
+  else if (h1Count === 0) { headingScore -= 2; headingMessages.push("H1タグが見つかりませんでした"); }
   else if (h1Count > 1) { headingScore -= 1; headingMessages.push(`H1タグが${h1Count}個あります（推奨: 1個）`); }
   let prevLevel = 0;
   let skipFound = false;
@@ -461,13 +464,14 @@ export function runSeoChecks(
   pageSeo.push(item("robots meta", robotsOk ? 2 : 0, 2, robotsOk ? "good" : "bad",
     robotsOk ? "インデックス可能" : "noindex設定あり"));
 
-  // Image alt (4 points)
+  // Image alt (4 points) — alt="" (intentionally empty for decorative images) counts as valid
   const totalImages = page.images.length;
-  const imagesWithAlt = page.images.filter((img) => img.alt && img.alt.trim().length > 0).length;
+  const imagesWithAlt = page.images.filter((img) => img.alt !== null).length; // alt="" is OK, only null (missing) is bad
   const altRatio = totalImages > 0 ? imagesWithAlt / totalImages : 1;
   pageSeo.push(item("画像alt属性", Math.round(altRatio * 4), 4,
     altRatio >= 0.8 ? "good" : altRatio >= 0.5 ? "warning" : "bad",
-    totalImages > 0 ? `${imagesWithAlt}/${totalImages}の画像にalt属性あり（${Math.round(altRatio * 100)}%）` : "画像なし"));
+    totalImages > 0 ? `${imagesWithAlt}/${totalImages}の画像にalt属性あり（${Math.round(altRatio * 100)}%）` : "画像なし",
+    altRatio < 0.8 && totalImages > 0 ? "装飾画像のalt=\"\"（空）は正しい実装です。alt属性自体がない画像が対象です" : undefined));
 
   // Viewport (2 points)
   pageSeo.push(item("モバイル対応", page.hasViewport ? 2 : 0, 2, page.hasViewport ? "good" : "bad",
@@ -602,18 +606,30 @@ export function runSeoChecks(
   });
 
   // FAQ/Q&A section (5 points)
+  // Detect FAQ in multiple ways: JSON-LD, <details>, or Q&A-like content in HTML
   const hasFaqSchema = jsonLdTypes.includes("FAQPage");
   const hasDetails = page.semanticElements.details > 0;
-  const faqScore = (hasFaqSchema ? 3 : 0) + (hasDetails ? 2 : 0);
+  const hasQaContent = page.questionHeadings.length >= 2 ||
+    /[QＱ][\.．\s:：]/i.test(page.textContent) ||
+    page.headings.some((h) => /FAQ|よくある質問|Q&A/i.test(h.text));
+  let faqScore = 0;
+  if (hasFaqSchema) faqScore += 3;
+  if (hasDetails) faqScore += 1;
+  if (hasQaContent) faqScore += 1;
+  faqScore = Math.min(5, faqScore);
+  const faqMessages: string[] = [];
+  if (hasFaqSchema) faqMessages.push("FAQPage JSON-LDあり");
+  if (hasDetails) faqMessages.push(`<details>タグあり`);
+  if (hasQaContent && !hasFaqSchema && !hasDetails) faqMessages.push("Q&A形式のコンテンツを検出");
+  if (faqMessages.length === 0) faqMessages.push("FAQ/Q&Aセクションが見つかりませんでした");
   geoSeo.push({
     ...item("よくある質問（FAQ）", faqScore, 5,
       faqScore >= 3 ? "good" : faqScore >= 1 ? "warning" : "bad",
-      faqScore >= 3 ? "FAQセクションが適切に設置されています"
-        : "よくある質問のセクションがないか、AIが認識できる形式になっていません"),
+      faqMessages.join("、")),
     action: faqScore < 3 ? {
-      what: "お客様からよく聞かれる質問と回答をまとめた「よくある質問」セクションをページに追加してください。5〜10問程度が目安です。開閉式（アコーディオン）にするとさらに効果的です。制作会社には「FAQセクションをJSON-LD付きで追加してほしい」と伝えてください。",
+      what: "お客様からよく聞かれる質問と回答をまとめた「よくある質問」セクションをページに追加してください。5〜10問程度が目安です。開閉式（アコーディオン）にするとさらに効果的です。",
       difficulty: 1,
-      impact: "AIが質問に対する回答としてあなたのサイトを引用する確率が大幅に上がります",
+      impact: "多様なクエリに対応するコンテンツの「器」として機能し、AIに見つけてもらいやすくなる可能性があります",
     } : undefined,
   });
 
@@ -664,19 +680,25 @@ export function runSeoChecks(
   });
 
   // Content depth indicator (4 points)
+  // Note: SPA sites may have low word count because content is JS-rendered
   const wordCount = page.textContent.split(/\s+/).length;
+  const isLikelySpa = wordCount < 200 && page.html.includes("__next") || page.html.includes("__nuxt") || page.html.includes("ng-app") || page.html.includes("data-reactroot");
   let depthScore = 0;
-  if (wordCount >= 1000) depthScore = 4;
+  if (isLikelySpa) {
+    depthScore = 3; // Don't penalize SPAs — content exists but is JS-rendered
+  } else if (wordCount >= 1000) depthScore = 4;
   else if (wordCount >= 500) depthScore = 3;
   else if (wordCount >= 200) depthScore = 2;
   else if (wordCount >= 100) depthScore = 1;
   geoSeo.push({
     ...item("コンテンツの充実度", depthScore, 4,
       depthScore >= 3 ? "good" : depthScore >= 2 ? "warning" : "bad",
-      depthScore >= 3
-        ? `十分な情報量があります（約${wordCount}語）`
-        : `情報量が少なめです（約${wordCount}語）`),
-    action: depthScore < 3 ? {
+      isLikelySpa
+        ? `JavaScriptで描画されるサイトのため、テキスト量の正確な測定ができません`
+        : depthScore >= 3
+          ? `十分な情報量があります（約${wordCount}語）`
+          : `情報量が少なめです（約${wordCount}語）`),
+    action: !isLikelySpa && depthScore < 3 ? {
       what: "ページの文章量を増やしてください。サービスの詳細、料金、特徴、お客様の声、アクセス方法など、具体的な情報を追加しましょう。数字やデータ（「駅から徒歩5分」「満足度95%」等）があるとAIに引用されやすくなります。",
       difficulty: 1,
       impact: "AIは薄いページより、具体的で詳細な情報があるページを優先的に引用します",
