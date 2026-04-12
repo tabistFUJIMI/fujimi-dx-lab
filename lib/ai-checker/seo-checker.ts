@@ -386,23 +386,36 @@ export function runSeoChecks(
 
   // === Page SEO (40 points) ===
 
-  // Title (5 points)
+  // Title (5 points) — shorter titles are acceptable for top/brand pages
+  const isTopPage = new URL(page.url).pathname.replace(/\/$/, "").split("/").filter(Boolean).length <= 1;
   if (!page.title) {
     pageSeo.push(item("title", 0, 5, "bad", "titleタグがありません"));
-  } else if (page.title.length < 30 || page.title.length > 60) {
+  } else if (page.title.length > 60) {
     pageSeo.push(
-      item("title", 3, 5, "warning", `titleの文字数: ${page.title.length}文字（推奨: 30〜60文字）`, page.title)
+      item("title", 3, 5, "warning", `titleが長めです（${page.title.length}文字、推奨: 60文字以内）`, page.title)
+    );
+  } else if (page.title.length < 10) {
+    pageSeo.push(
+      item("title", 2, 5, "warning", `titleが短すぎます（${page.title.length}文字）`, page.title)
+    );
+  } else if (page.title.length < 30 && !isTopPage) {
+    pageSeo.push(
+      item("title", 4, 5, "warning", `titleがやや短めです（${page.title.length}文字）。下層ページでは30〜60文字が推奨です`, page.title)
     );
   } else {
     pageSeo.push(item("title", 5, 5, "good", `title: ${page.title.length}文字`, page.title));
   }
 
-  // Meta description (5 points)
+  // Meta description (5 points) — shorter is acceptable for top pages
   if (!page.metaDescription) {
     pageSeo.push(item("meta description", 0, 5, "bad", "meta descriptionがありません"));
-  } else if (page.metaDescription.length < 70 || page.metaDescription.length > 160) {
+  } else if (page.metaDescription.length > 160) {
     pageSeo.push(
-      item("meta description", 3, 5, "warning", `meta descriptionの文字数: ${page.metaDescription.length}文字（推奨: 70〜160文字）`)
+      item("meta description", 3, 5, "warning", `meta descriptionが長めです（${page.metaDescription.length}文字、推奨: 160文字以内）`)
+    );
+  } else if (page.metaDescription.length < 50) {
+    pageSeo.push(
+      item("meta description", 3, 5, "warning", `meta descriptionが短めです（${page.metaDescription.length}文字）`)
     );
   } else {
     pageSeo.push(item("meta description", 5, 5, "good", `meta description: ${page.metaDescription.length}文字`));
