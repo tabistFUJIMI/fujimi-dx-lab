@@ -41,6 +41,22 @@ export interface GeoImprovement {
   target?: "chatgpt" | "gemini" | "perplexity" | "claude" | "all";
 }
 
+// Site-wide analysis (AI perspective)
+export interface SitePageScore {
+  url: string;
+  title: string;
+  score: number;
+  pageScore: number;  // pageSeo only
+  geoScore: number;   // geoSeo only
+}
+
+export interface SiteAnalysis {
+  pagesAnalyzed: number;
+  bestPage: SitePageScore | null;
+  pages: SitePageScore[];
+  averageScore: number;
+}
+
 // Full analysis result
 export interface AnalysisResult {
   url: string;

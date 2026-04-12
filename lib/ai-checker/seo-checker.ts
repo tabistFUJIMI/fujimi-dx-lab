@@ -151,6 +151,60 @@ export function extractPageData(url: string, html: string): PageData {
   };
 }
 
+// Extract navigation links from a page (for site-wide analysis)
+export function extractNavLinks(html: string, baseUrl: string): string[] {
+  const $ = cheerio.load(html);
+  const origin = new URL(baseUrl).origin;
+  const links = new Set<string>();
+
+  // Get links from <nav> elements first
+  $("nav a[href]").each((_, el) => {
+    const href = $(el).attr("href");
+    if (href) addLink(href, origin, links);
+  });
+
+  // If nav has too few links, also get header/footer links
+  if (links.size < 3) {
+    $("header a[href], footer a[href]").each((_, el) => {
+      const href = $(el).attr("href");
+      if (href) addLink(href, origin, links);
+    });
+  }
+
+  // Remove the current page itself
+  links.delete(baseUrl);
+  links.delete(baseUrl.replace(/\/$/, ""));
+
+  return [...links].slice(0, 10); // max 10 candidates
+}
+
+function addLink(href: string, origin: string, links: Set<string>) {
+  if (href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:") || href.startsWith("javascript:")) return;
+  try {
+    const url = new URL(href, origin);
+    // Same origin only, no hash, no query params for simplicity
+    if (url.origin === origin && !url.hash) {
+      links.add(url.origin + url.pathname);
+    }
+  } catch {
+    // ignore invalid URLs
+  }
+}
+
+// Quick SEO score for a page (lightweight version for multi-page analysis)
+export function quickSeoScore(html: string, url: string): { score: number; pageScore: number; geoScore: number; title: string } {
+  const page = extractPageData(url, html);
+  // Simplified scoring without external checks
+  const dummyExternal: ExternalChecks = {
+    sitemapExists: true, robotsTxtExists: true, llmsTxtExists: false,
+    aiCrawlersBlocked: [], sitemap: null,
+  };
+  const result = runSeoChecks(page, dummyExternal);
+  const pageScore = result.pageSeo.reduce((s, i) => s + i.score, 0);
+  const geoScore = result.geoSeo.reduce((s, i) => s + i.score, 0);
+  return { score: result.score, pageScore, geoScore, title: page.title };
+}
+
 // Parse sitemap.xml and analyze site structure
 async function parseSitemap(origin: string): Promise<SitemapAnalysis | null> {
   try {

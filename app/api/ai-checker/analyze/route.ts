@@ -1,10 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
   extractPageData,
+  extractNavLinks,
   checkExternalResources,
   runSeoChecks,
+  quickSeoScore,
 } from "@/lib/ai-checker/seo-checker";
 import { summarizeJsonLd } from "@/lib/ai-checker/geo-checker";
+import type { SitePageScore, SiteAnalysis } from "@/lib/ai-checker/types";
+
+export const maxDuration = 60;
 
 const PRIVATE_IP_PATTERNS = [
   /^127\./, /^10\./, /^172\.(1[6-9]|2\d|3[01])\./,
@@ -22,6 +27,25 @@ function validateUrl(input: string): URL | null {
     if (url.protocol !== "https:" && url.protocol !== "http:") return null;
     if (isPrivateHost(url.hostname)) return null;
     return url;
+  } catch {
+    return null;
+  }
+}
+
+async function fetchPage(pageUrl: string): Promise<string | null> {
+  try {
+    const res = await fetch(pageUrl, {
+      headers: {
+        "User-Agent": "AITaisakuChecker/1.0 (FUJIMI DX Lab)",
+        Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "ja,en;q=0.9",
+      },
+      redirect: "follow",
+      signal: AbortSignal.timeout(8_000),
+    });
+    if (!res.ok) return null;
+    const html = await res.text();
+    return html.length > 5_000_000 ? html.slice(0, 5_000_000) : html;
   } catch {
     return null;
   }
@@ -46,44 +70,64 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "有効なURLを入力してください" }, { status: 400 });
     }
 
-    let html: string;
-    try {
-      const response = await fetch(url.href, {
-        headers: {
-          "User-Agent": "AITaisakuChecker/1.0 (FUJIMI DX Lab)",
-          Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-          "Accept-Language": "ja,en;q=0.9",
-        },
-        redirect: "follow",
-        signal: AbortSignal.timeout(10_000),
-      });
-
-      if (!response.ok) {
-        return NextResponse.json({ error: `ページの取得に失敗しました（HTTP ${response.status}）` }, { status: 400 });
-      }
-
-      const contentLength = response.headers.get("content-length");
-      if (contentLength && parseInt(contentLength) > 5_000_000) {
-        return NextResponse.json({ error: "ページサイズが大きすぎます（5MB上限）" }, { status: 400 });
-      }
-
-      html = await response.text();
-      if (html.length > 5_000_000) html = html.slice(0, 5_000_000);
-    } catch (error) {
-      const message = error instanceof Error && error.name === "TimeoutError"
-        ? "ページの取得がタイムアウトしました（10秒）" : "ページの取得に失敗しました";
-      return NextResponse.json({ error: message }, { status: 400 });
+    // Step 1: Fetch the input page
+    const html = await fetchPage(url.href);
+    if (!html) {
+      return NextResponse.json({ error: "ページの取得に失敗しました" }, { status: 400 });
     }
 
+    // Step 2: Analyze the input page (full analysis)
     const pageData = extractPageData(url.href, html);
     const jsonLdSummary = summarizeJsonLd(pageData.jsonLd);
     const externalChecks = await checkExternalResources(url.href);
     const seoResult = runSeoChecks(pageData, externalChecks);
 
+    // Step 3: Extract nav links for site-wide analysis
+    const navLinks = extractNavLinks(html, url.href);
+
+    // Step 4: Fetch & score up to 4 additional pages in parallel
+    const pagesToCheck = navLinks.slice(0, 4);
+    const sitePages: SitePageScore[] = [{
+      url: url.href,
+      title: pageData.title || url.href,
+      score: seoResult.score,
+      pageScore: seoResult.pageSeo.reduce((s, i) => s + i.score, 0),
+      geoScore: seoResult.geoSeo.reduce((s, i) => s + i.score, 0),
+    }];
+
+    if (pagesToCheck.length > 0) {
+      const results = await Promise.allSettled(
+        pagesToCheck.map(async (pageUrl) => {
+          const pageHtml = await fetchPage(pageUrl);
+          if (!pageHtml) return null;
+          const { score, pageScore, geoScore, title } = quickSeoScore(pageHtml, pageUrl);
+          return { url: pageUrl, title: title || pageUrl, score, pageScore, geoScore } as SitePageScore;
+        })
+      );
+
+      for (const r of results) {
+        if (r.status === "fulfilled" && r.value) {
+          sitePages.push(r.value);
+        }
+      }
+    }
+
+    // Step 5: Build site analysis
+    const bestPage = sitePages.reduce((best, p) => p.score > best.score ? p : best, sitePages[0]);
+    const averageScore = Math.round(sitePages.reduce((s, p) => s + p.score, 0) / sitePages.length);
+
+    const siteAnalysis: SiteAnalysis = {
+      pagesAnalyzed: sitePages.length,
+      bestPage: bestPage.url !== url.href ? bestPage : null, // only show if different from input
+      pages: sitePages,
+      averageScore,
+    };
+
     return NextResponse.json({
       url: url.href,
       analyzedAt: new Date().toISOString(),
       seo: seoResult,
+      siteAnalysis,
       _pageData: {
         textContent: pageData.textContent,
         title: pageData.title,

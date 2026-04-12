@@ -6,6 +6,7 @@ import type {
   GeoResult,
   SeoCheckItem,
   GeoImprovement,
+  SiteAnalysis,
 } from "@/lib/ai-checker/types";
 import Link from "next/link";
 
@@ -119,7 +120,7 @@ const webAppJsonLd = {
 export default function AICheckerPage() {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
-  const [seoResult, setSeoResult] = useState<{ url: string; analyzedAt: string; seo: SeoResult; _pageData: Record<string, unknown> } | null>(null);
+  const [seoResult, setSeoResult] = useState<{ url: string; analyzedAt: string; seo: SeoResult; siteAnalysis?: SiteAnalysis; _pageData: Record<string, unknown> } | null>(null);
   const [geoResult, setGeoResult] = useState<GeoResult | null>(null);
   const [geoLoading, setGeoLoading] = useState(false);
   const [error, setError] = useState("");
@@ -204,6 +205,28 @@ export default function AICheckerPage() {
               <p className="font-semibold text-[#191b23] mb-1">この診断結果について</p>
               <p>AI検索（ChatGPT・Gemini・Perplexity・Claude等）はまだ発展途上の技術です。各AIの引用ロジックは非公開で、数ヶ月単位で大きく変わります。「これをやれば確実にAIに引用される」という確定的な手法は現時点では存在しません。ただし、<strong className="text-[#191b23]">良いSEO対策がそのままAI検索対策の土台になる</strong>という点は業界の専門家がほぼ一致しています。このチェッカーは「現時点で効果が期待できる構造」の目安を提示するものです。</p>
             </div>
+
+            {/* Site-wide analysis */}
+            {seoResult.siteAnalysis && seoResult.siteAnalysis.pagesAnalyzed > 1 && (
+              <div className="mb-10 p-5 bg-white rounded-2xl border border-[#c3c6d7]/30">
+                <p className="text-sm font-semibold text-[#191b23] mb-3">AIと同じ目線: サイト内{seoResult.siteAnalysis.pagesAnalyzed}ページを分析しました</p>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-3">
+                  {seoResult.siteAnalysis.pages.map((p, i) => (
+                    <div key={i} className={`p-3 rounded-xl text-sm ${p.url === seoResult.url ? "bg-[#dbe1ff]/30 border border-[#004ac6]/20" : "bg-[#f3f3fe]"}`}>
+                      <p className="font-medium text-[#191b23] truncate text-xs">{p.title || new URL(p.url).pathname}</p>
+                      <p className={`text-lg font-bold mt-1 ${p.score >= 80 ? "text-emerald-600" : p.score >= 50 ? "text-amber-600" : "text-[#ba1a1a]"}`}>{p.score}<span className="text-xs text-[#737686] font-normal">/100</span></p>
+                      {p.url === seoResult.url && <p className="text-[10px] text-[#004ac6]">入力ページ</p>}
+                    </div>
+                  ))}
+                </div>
+                {seoResult.siteAnalysis.bestPage && (
+                  <p className="text-sm text-[#434655]">
+                    AIに最も見つけてもらいやすいページ: <strong className="text-[#191b23]">{seoResult.siteAnalysis.bestPage.title}</strong>（スコア: {seoResult.siteAnalysis.bestPage.score}/100）
+                  </p>
+                )}
+                <p className="text-xs text-[#737686] mt-2">サイト平均: {seoResult.siteAnalysis.averageScore}/100 ・ AIは検索時にサイト内の複数ページを確認し、最も適切なページを引用します</p>
+              </div>
+            )}
 
             {/* Score Gauges */}
             {geoResult ? (
