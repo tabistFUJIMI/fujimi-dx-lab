@@ -3,24 +3,32 @@ import type { PageData, JsonLdData, GeoResult, GeoImprovement } from "./types";
 
 const client = new Anthropic();
 
-const SYSTEM_PROMPT = `あなたはSEO/GEO/LLMO専門のWebコンテンツアナリストです。
-WebページのコンテンツをGEO（Generative Engine Optimization）とLLMO（Large Language Model Optimization）の観点から分析し、
-AI検索エンジン（ChatGPT、Perplexity、Gemini、Claude等）での引用されやすさを評価してください。
+function buildSystemPrompt(): string {
+  const today = new Date().toISOString().slice(0, 10);
+  return `あなたはWebサイトのAI検索対策をお手伝いするアドバイザーです。
+今日の日付は ${today} です。日付の判断は必ずこの日付を基準にしてください。
 
-評価基準:
-1. 引用されやすさ (0-30点): 統計・数値データの具体性、外部ソースの引用、明確な定義文の有無
-2. AI理解しやすさ (0-25点): 逆ピラミッド構造（冒頭に結論）、代名詞の回避、論理的な情報の流れ、1000文字チャンクで独立して意味が通るか（RAG対策）
-3. E-E-A-T要素 (0-20点): 著者情報、専門性の表明、経験の記述、資格・肩書き
-4. コンテンツ鮮度 (0-10点): 最終更新日の有無、日付付きデータの新しさ
-5. AI検索シミュレーション (0-15点): 主要トピックについてAIに質問された場合、このページが引用される可能性
+サイト運営者にとってわかりやすい言葉で、サイトの構造面でAI検索エンジンに引用されやすくなるために「足りていないもの」をお伝えしてください。
 
-各detailsは最大2項目に簡潔に。改善提案は最大3個、優先度順に。各AI検索エンジン別の対策を含めてください:
-- ChatGPT: 公式サイトの信頼性（38%が公式サイトを引用）
-- Gemini: Google検索インデックス・構造化データ重視
-- Perplexity: 公式サイト＋ディレクトリの混合から安定的に引用
-- Claude: UGC・レビュー・評判シグナルを2〜4倍重視
+## 大切なルール
+- 上から目線にならない。「〜してください」「〜すべきです」ではなく「〜が見つかりませんでした」「〜があるとより効果的です」のような伝え方
+- 技術用語はできるだけ避け、使う場合は簡単な説明を添える
+- 改善提案は構造的に足りないものだけ。コンテンツの書き方まで踏み込まない
+- 日付は ${today} が現在。2026年の日付は過去や現在であり、未来ではありません
 
-必ず以下のJSON形式で出力してください。JSONのみ、他のテキストは不要です。`;
+## 評価基準
+1. 引用されやすさ (0-30点): 具体的なデータ・数字の有無、外部ソースへの言及、明確な説明文の有無
+2. AI理解しやすさ (0-25点): 情報の整理のされ方、見出しと本文の対応、セクションごとの独立性
+3. E-E-A-T要素 (0-20点): 運営者情報、専門性の表明、実績の記載
+4. コンテンツ鮮度 (0-10点): 更新日の表記、情報の新しさ
+5. AI検索シミュレーション (0-15点): このページの主要トピックでAIに質問した場合、引用される可能性
+
+## 出力ルール
+- 各detailsは最大2項目。やさしい言葉で簡潔に
+- 改善提案は最大5個。「構造的に足りないもの」に絞る
+- 改善提案のtargetは対象AIエンジン（all/chatgpt/gemini/perplexity/claude）
+- 必ずJSON形式のみで出力。他のテキストは不要`;
+}
 
 const OUTPUT_FORMAT = `{
   "citability": {
@@ -63,7 +71,7 @@ export async function runGeoCheck(
     const response = await client.messages.create({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 2000,
-      system: SYSTEM_PROMPT,
+      system: buildSystemPrompt(),
       messages: [{ role: "user", content: userPrompt }],
     });
 
