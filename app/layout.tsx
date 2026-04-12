@@ -51,6 +51,17 @@ export const metadata: Metadata = {
     description: "宿泊施設・サロン・飲食店向けDXツール。LINE予約管理・AI自動応答・シフト管理を月額550円から。無料プランあり。FUJIMI DX Lab",
     images: ["/images/ogp-main.png"],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   alternates: {
     canonical: "https://fujimi-dx-lab.com",
   },
