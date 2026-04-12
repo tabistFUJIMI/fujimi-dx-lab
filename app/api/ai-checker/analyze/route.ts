@@ -82,46 +82,49 @@ export async function POST(request: NextRequest) {
     const externalChecks = await checkExternalResources(url.href);
     const seoResult = runSeoChecks(pageData, externalChecks);
 
-    // Step 3: Extract nav links for site-wide analysis
-    const navLinks = extractNavLinks(html, url.href);
+    // Step 3-5: Site-wide analysis (wrapped in try-catch — never blocks main result)
+    let siteAnalysis: SiteAnalysis | undefined;
+    try {
+      const navLinks = extractNavLinks(html, url.href);
+      const pagesToCheck = navLinks.slice(0, 4);
+      const sitePages: SitePageScore[] = [{
+        url: url.href,
+        title: pageData.title || url.href,
+        score: seoResult.score,
+        pageScore: seoResult.pageSeo.reduce((s, i) => s + i.score, 0),
+        geoScore: seoResult.geoSeo.reduce((s, i) => s + i.score, 0),
+      }];
 
-    // Step 4: Fetch & score up to 4 additional pages in parallel
-    const pagesToCheck = navLinks.slice(0, 4);
-    const sitePages: SitePageScore[] = [{
-      url: url.href,
-      title: pageData.title || url.href,
-      score: seoResult.score,
-      pageScore: seoResult.pageSeo.reduce((s, i) => s + i.score, 0),
-      geoScore: seoResult.geoSeo.reduce((s, i) => s + i.score, 0),
-    }];
+      if (pagesToCheck.length > 0) {
+        const results = await Promise.allSettled(
+          pagesToCheck.map(async (pageUrl) => {
+            const pageHtml = await fetchPage(pageUrl);
+            if (!pageHtml) return null;
+            const { score, pageScore, geoScore, title } = quickSeoScore(pageHtml, pageUrl);
+            return { url: pageUrl, title: title || pageUrl, score, pageScore, geoScore } as SitePageScore;
+          })
+        );
 
-    if (pagesToCheck.length > 0) {
-      const results = await Promise.allSettled(
-        pagesToCheck.map(async (pageUrl) => {
-          const pageHtml = await fetchPage(pageUrl);
-          if (!pageHtml) return null;
-          const { score, pageScore, geoScore, title } = quickSeoScore(pageHtml, pageUrl);
-          return { url: pageUrl, title: title || pageUrl, score, pageScore, geoScore } as SitePageScore;
-        })
-      );
-
-      for (const r of results) {
-        if (r.status === "fulfilled" && r.value) {
-          sitePages.push(r.value);
+        for (const r of results) {
+          if (r.status === "fulfilled" && r.value) {
+            sitePages.push(r.value);
+          }
         }
       }
+
+      const bestPage = sitePages.reduce((best, p) => p.score > best.score ? p : best, sitePages[0]);
+      const averageScore = Math.round(sitePages.reduce((s, p) => s + p.score, 0) / sitePages.length);
+
+      siteAnalysis = {
+        pagesAnalyzed: sitePages.length,
+        bestPage: bestPage.url !== url.href ? bestPage : null,
+        pages: sitePages,
+        averageScore,
+      };
+    } catch (e) {
+      console.error("Site analysis failed (non-blocking):", e);
+      // Continue without site analysis — main page result is still returned
     }
-
-    // Step 5: Build site analysis
-    const bestPage = sitePages.reduce((best, p) => p.score > best.score ? p : best, sitePages[0]);
-    const averageScore = Math.round(sitePages.reduce((s, p) => s + p.score, 0) / sitePages.length);
-
-    const siteAnalysis: SiteAnalysis = {
-      pagesAnalyzed: sitePages.length,
-      bestPage: bestPage.url !== url.href ? bestPage : null, // only show if different from input
-      pages: sitePages,
-      averageScore,
-    };
 
     return NextResponse.json({
       url: url.href,
