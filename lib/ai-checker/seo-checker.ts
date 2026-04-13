@@ -606,26 +606,26 @@ export function runSeoChecks(
       jsonLdScore >= 8 ? "good" : jsonLdScore >= 4 ? "warning" : "bad",
       foundTypes.length > 0
         ? `検出: ${foundTypes.join(", ")}${hasTripleStack ? "（トリプルスタッキング!）" : ""}`
-        : "AIがサイトの内容を正しく理解するためのデータがありません"),
+        : "構造化データは未設置です（SEOとしては必須ではありませんが、設置するとGoogleのリッチリザルトやAI検索で差別化につながる可能性があります）"),
     action: jsonLdScore < 8 ? {
-      what: "サイトの種類（会社情報・記事・FAQ）をAIに伝えるための「構造化データ」をページに追加してください。Web制作会社に「JSON-LDの構造化データを入れてほしい」と伝えればOKです。",
+      what: "構造化データはまだ多くのサイトで未設置です。設置するとGoogleの検索結果でリッチスニペット（星評価、FAQ展開等）が表示され、AI検索でも一定の効果が観察されています。Web制作会社に「JSON-LDの構造化データを入れてほしい」と伝えればOKです。",
       difficulty: 2,
-      impact: "Geminiが特に重視。AIがサイトの情報を正確に理解・引用できるようになります",
+      impact: "Google検索でのリッチリザルト表示（確定）+ AI検索での引用向上（効果が観察されている）",
     } : undefined,
   });
 
-  // Question-style headings (6 points)
+  // Question-style headings (3 points — reduced from 6, not essential for all site types)
   const qhCount = page.questionHeadings.length;
-  const qhScore = Math.min(6, qhCount * 2);
+  const qhScore = Math.min(3, qhCount);
   geoSeo.push({
-    ...item("質問形式の見出し", qhScore, 6,
-      qhScore >= 4 ? "good" : qhScore >= 2 ? "warning" : "bad",
-      qhCount > 0 ? `${qhCount}個の質問形式見出し検出` : "お客様が検索しそうな質問形式の見出しがありません",
+    ...item("質問形式の見出し", qhScore, 3,
+      qhScore >= 2 ? "good" : qhScore >= 1 ? "warning" : "bad",
+      qhCount > 0 ? `${qhCount}個の質問形式見出し検出` : "質問形式の見出しはありませんでした（サイトの種類によっては不要です）",
       qhCount > 0 ? page.questionHeadings.slice(0, 3).join(" / ") : undefined),
-    action: qhScore < 4 ? {
-      what: "ページの見出しを「〜とは？」「〜の方法」「〜の料金は？」のような質問形式に変えてください。例：「客室紹介」→「どんな客室がありますか？」。AIはユーザーの質問に答える形で情報を探すため、質問形式の見出しがあるとそのまま引用されやすくなります。",
+    action: qhScore < 2 ? {
+      what: "ブログやFAQページでは「〜とは？」「〜の方法」のような質問形式の見出しが、AI検索で引用されやすい傾向があります。ただしコーポレートサイトやECでは無理に変える必要はありません。",
       difficulty: 1,
-      impact: "自分でできる最も効果的な対策の一つ。全AI検索エンジンに効果あり",
+      impact: "ブログ・FAQ向けの施策。コーポレートサイトでは優先度は低い",
     } : undefined,
   });
 
@@ -647,15 +647,16 @@ export function runSeoChecks(
   if (hasFaqSchema) faqMessages.push("FAQPage JSON-LDあり");
   if (hasDetails) faqMessages.push(`<details>タグあり`);
   if (hasQaContent && !hasFaqSchema && !hasDetails) faqMessages.push("Q&A形式のコンテンツを検出");
-  if (faqMessages.length === 0) faqMessages.push("FAQ/Q&Aセクションが見つかりませんでした");
+  if (faqMessages.length === 0) faqMessages.push("FAQセクションはありませんでした（サイトの種類によっては不要です）");
+  faqScore = Math.min(3, faqScore); // Reduced from 5 to 3 — not essential for all sites
   geoSeo.push({
-    ...item("よくある質問（FAQ）", faqScore, 5,
-      faqScore >= 3 ? "good" : faqScore >= 1 ? "warning" : "bad",
+    ...item("よくある質問（FAQ）", faqScore, 3,
+      faqScore >= 2 ? "good" : faqScore >= 1 ? "warning" : "bad",
       faqMessages.join("、")),
-    action: faqScore < 3 ? {
-      what: "お客様からよく聞かれる質問と回答をまとめた「よくある質問」セクションをページに追加してください。5〜10問程度が目安です。開閉式（アコーディオン）にするとさらに効果的です。",
+    action: faqScore < 2 ? {
+      what: "FAQセクションはサービスサイトやブログではAI検索で効果が観察されていますが、すべてのサイトに必須ではありません。お客様からよく聞かれる質問がある場合は追加を検討してください。",
       difficulty: 1,
-      impact: "多様なクエリに対応するコンテンツの「器」として機能し、AIに見つけてもらいやすくなる可能性があります",
+      impact: "サービスサイト向けの施策。効果が観察されているが必須ではない",
     } : undefined,
   });
 
@@ -673,11 +674,11 @@ export function runSeoChecks(
     } : undefined,
   });
 
-  // AI crawlers not blocked (5 points)
+  // AI crawlers not blocked (7 points — confirmed important: blocking = invisible to AI)
   const blocked = external.aiCrawlersBlocked;
-  const aiCrawlerScore = blocked.length === 0 ? 5 : Math.max(0, 5 - blocked.length);
+  const aiCrawlerScore = blocked.length === 0 ? 7 : Math.max(0, 7 - blocked.length * 2);
   geoSeo.push({
-    ...item("AIクローラーの許可", aiCrawlerScore, 5,
+    ...item("AIクローラーの許可", aiCrawlerScore, 7,
       blocked.length === 0 ? "good" : blocked.length <= 2 ? "warning" : "bad",
       blocked.length === 0
         ? "ChatGPT・Gemini・Claude等のAIがサイトを読み取れる状態です"
@@ -689,10 +690,10 @@ export function runSeoChecks(
     } : undefined,
   });
 
-  // Entity definition (5 points)
-  const entityScore = Math.min(5, page.entityDefinitions.length * 2);
+  // Entity definition (6 points)
+  const entityScore = Math.min(6, page.entityDefinitions.length * 2);
   geoSeo.push({
-    ...item("自己紹介文", entityScore, 5,
+    ...item("自己紹介文", entityScore, 6,
       entityScore >= 4 ? "good" : entityScore >= 2 ? "warning" : "bad",
       page.entityDefinitions.length > 0
         ? `AIが理解できる自己紹介が${page.entityDefinitions.length}か所あります`
@@ -711,13 +712,14 @@ export function runSeoChecks(
   const isLikelySpa = wordCount < 200 && (page.html.includes("__nuxt") || page.html.includes("ng-app") || page.html.includes("data-reactroot") || page.html.includes("__vue"));
   let depthScore = 0;
   if (isLikelySpa) {
-    depthScore = 3; // Don't penalize SPAs — content exists but is JS-rendered
-  } else if (wordCount >= 1000) depthScore = 4;
-  else if (wordCount >= 500) depthScore = 3;
-  else if (wordCount >= 200) depthScore = 2;
+    depthScore = 5; // Don't penalize SPAs — content exists but is JS-rendered
+  } else if (wordCount >= 1500) depthScore = 8;
+  else if (wordCount >= 1000) depthScore = 7;
+  else if (wordCount >= 500) depthScore = 5;
+  else if (wordCount >= 200) depthScore = 3;
   else if (wordCount >= 100) depthScore = 1;
   geoSeo.push({
-    ...item("コンテンツの充実度", depthScore, 4,
+    ...item("コンテンツの充実度", depthScore, 8,
       depthScore >= 3 ? "good" : depthScore >= 2 ? "warning" : "bad",
       isLikelySpa
         ? `JavaScriptで描画されるサイトのため、テキスト量の正確な測定ができません`
