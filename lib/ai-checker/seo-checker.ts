@@ -535,10 +535,11 @@ export function runSeoChecks(
 
   // Update freshness (4 points)
   if (sm && sm.lastModified) {
+    // Score by both percentage AND absolute count (large sites shouldn't be penalized)
     let freshnessScore = 0;
-    if (sm.freshnessPct >= 50) freshnessScore = 4;
-    else if (sm.freshnessPct >= 30) freshnessScore = 3;
-    else if (sm.freshnessPct >= 10) freshnessScore = 2;
+    if (sm.freshnessPct >= 50 || sm.recentlyUpdated >= 20) freshnessScore = 4;
+    else if (sm.freshnessPct >= 30 || sm.recentlyUpdated >= 10) freshnessScore = 3;
+    else if (sm.freshnessPct >= 10 || sm.recentlyUpdated >= 5) freshnessScore = 2;
     else if (sm.recentlyUpdated > 0) freshnessScore = 1;
 
     const lastDate = sm.lastModified.slice(0, 10);
