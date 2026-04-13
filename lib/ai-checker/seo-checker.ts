@@ -522,13 +522,18 @@ export function runSeoChecks(
     siteSeo.push(item("サイト規模", 0, 4, "warning", "通信タイムアウトのため確認できませんでした（サイト側の問題ではありません）（ページ数不明）"));
   }
 
-  // Blog/Content section (4 points) — check sitemap AND page links
+  // Blog/Content section (4 points) — check sitemap, page links, WordPress, and page count
   const blogFromSitemap = sm?.hasBlog ?? false;
   const blogFromLinks = BLOG_PATTERNS.some((p) => p.test(page.html));
-  const hasBlog = blogFromSitemap || blogFromLinks;
+  const isWordPress = page.html.includes("wp-content") || page.html.includes("wp-json");
+  const hasLargeContent = (sm?.totalPages ?? 0) >= 30; // 30+ pages = likely content site
+  const hasBlog = blogFromSitemap || blogFromLinks || isWordPress || hasLargeContent;
   if (hasBlog) {
-    siteSeo.push(item("ブログ/コンテンツ", 4, 4, "good",
-      sm?.hasBlog ? `ブログ/コンテンツセクション検出（${sm.blogPageCount}ページ）` : "ブログ/コンテンツへのリンクを検出"));
+    const blogMsg = sm?.hasBlog ? `ブログ/コンテンツセクション検出（${sm.blogPageCount}ページ）`
+      : isWordPress ? "WordPressで構築されたコンテンツサイトを検出"
+      : hasLargeContent ? `${sm?.totalPages}ページの大規模コンテンツサイトを検出`
+      : "ブログ/コンテンツへのリンクを検出";
+    siteSeo.push(item("ブログ/コンテンツ", 4, 4, "good", blogMsg));
   } else if (!sm) {
     siteSeo.push(item("ブログ/コンテンツ", 0, 4, "warning", "通信タイムアウトのため確認できませんでした（サイト側の問題ではありません）"));
   } else {
