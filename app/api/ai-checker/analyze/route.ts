@@ -84,16 +84,20 @@ export async function POST(request: NextRequest) {
     }
 
     // Step 2: Analyze the input page (full analysis)
-    let pageData, jsonLdSummary, seoResult;
+    const pageData = extractPageData(url.href, html);
+    const jsonLdSummary = summarizeJsonLd(pageData.jsonLd);
+
+    // External checks with fallback (some sites block or are slow from Vercel)
+    let externalChecks;
     try {
-      pageData = extractPageData(url.href, html);
-      jsonLdSummary = summarizeJsonLd(pageData.jsonLd);
-      const externalChecks = await checkExternalResources(url.href);
-      seoResult = runSeoChecks(pageData, externalChecks);
-    } catch (e) {
-      const msg = e instanceof Error ? e.message : String(e);
-      return NextResponse.json({ error: `分析処理エラー: ${msg.slice(0, 100)}` }, { status: 500 });
+      externalChecks = await checkExternalResources(url.href);
+    } catch {
+      externalChecks = {
+        sitemapExists: false, robotsTxtExists: false, llmsTxtExists: false,
+        aiCrawlersBlocked: [] as string[], sitemap: null,
+      };
     }
+    const seoResult = runSeoChecks(pageData, externalChecks);
 
     // Step 3-5: Site-wide analysis (wrapped in try-catch — never blocks main result)
     let siteAnalysis: SiteAnalysis | undefined;
