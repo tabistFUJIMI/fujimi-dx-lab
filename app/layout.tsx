@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import Script from "next/script";
-import JsonLd from "./components/JsonLd";
 import "./globals.css";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "";
@@ -16,22 +15,23 @@ const notoSansJP = Noto_Sans_JP({
 export const metadata: Metadata = {
   metadataBase: new URL("https://fujimi-dx-lab.com"),
   title: {
-    default: "FUJIMI DX Lab | 小さなお店のDXを、現場から。",
+    default: "FUJIMI DX Lab | 小さな組織の困ったをテクノロジーで解決する",
     template: "%s - FUJIMI DX Lab",
   },
   description:
-    "宿泊施設・サロン・飲食店向けDXツール。LINE予約管理・AI自動応答・シフト管理を月額550円から。無料プランあり。FUJIMI DX Lab",
+    "FUJIMI DX Labは静岡県富士市発のDX事業部。施術院・サロン向けFUJIMIN PASS（予約管理・AI応答・シフト管理）、個人向けForProject等、小さな組織が必要なツールを月額¥0から提供。共創パートナー募集中。",
   keywords: [
-    "DX", "小規模事業者", "予約管理", "シフト管理", "LINE予約",
-    "AI", "社内規則", "SNS管理", "FUJIMIN PASS", "FUJIMI DX Lab",
-    "Reserve Navi", "Ask Navi", "Rule Navi", "Shift Navi",
+    "FUJIMI DX Lab", "DX", "小規模事業者", "FUJIMIN PASS",
+    "ForProject", "TASUKI PASS", "予約管理", "AI自動応答",
+    "シフト管理", "LINE予約", "静岡県富士市",
+    "Reserve Navi", "Ask Navi", "Shift Navi",
   ],
   authors: [{ name: "FUJIMI DX Lab", url: "https://fujimi-dx-lab.com" }],
   creator: "ふじみ企業有限会社 FUJIMI DX Lab事業部",
   openGraph: {
-    title: "FUJIMI DX Lab | 小さなお店のDXを、現場から。",
+    title: "FUJIMI DX Lab | 小さな組織の困ったをテクノロジーで解決する",
     description:
-      "宿泊施設・サロン・飲食店向けDXツール。LINE予約管理・AI自動応答・シフト管理を月額550円から。無料プランあり。FUJIMI DX Lab",
+      "静岡県富士市発のDX事業部。施術院・サロン向けFUJIMIN PASS、個人向けForProject等、小さな組織が必要なツールを月額¥0から提供。",
     type: "website",
     locale: "ja_JP",
     siteName: "FUJIMI DX Lab",
@@ -41,14 +41,14 @@ export const metadata: Metadata = {
         url: "/images/ogp-main.png",
         width: 1200,
         height: 630,
-        alt: "FUJIMI DX Lab — 小さなお店のDXを、現場から。",
+        alt: "FUJIMI DX Lab — 小さな組織の困ったをテクノロジーで解決する",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "FUJIMI DX Lab | 小さなお店のDXを、現場から。",
-    description: "宿泊施設・サロン・飲食店向けDXツール。LINE予約管理・AI自動応答・シフト管理を月額550円から。無料プランあり。FUJIMI DX Lab",
+    title: "FUJIMI DX Lab | 小さな組織の困ったをテクノロジーで解決する",
+    description: "静岡県富士市発のDX事業部。施術院・サロン向けFUJIMIN PASS、個人向けForProject等、小さな組織が必要なツールを月額¥0から提供。",
     images: ["/images/ogp-main.png"],
   },
   robots: {
@@ -79,9 +79,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <head>
-        <JsonLd />
-      </head>
+      <head />
       <body className={`${notoSansJP.variable} font-sans antialiased`}>
         {GA_ID && (
           <>

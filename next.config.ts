@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      { source: "/lp/massage", destination: "/plan/sejutsu", permanent: true },
+      { source: "/products/fujimin-pass", destination: "/fujimin-pass", permanent: true },
+      { source: "/lp/massage", destination: "/fujimin-pass", permanent: true },
       { source: "/lp/reserve-navi", destination: "/products/reserve-navi", permanent: true },
     ];
   },

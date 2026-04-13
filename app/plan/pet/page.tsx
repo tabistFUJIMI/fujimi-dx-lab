@@ -7,6 +7,10 @@ export const metadata: Metadata = {
     "ペットサロン・トリミングの予約管理+AI応答+シフト管理 | FUJIMI DX Lab",
   description:
     "トリミング・シャンプーの予約をLINEで自動管理。ペット情報の事前収集にも対応。AI応答で飼い主様の問い合わせを自動化。",
+  robots: { index: false, follow: true },
+  alternates: {
+    canonical: "https://fujimi-dx-lab.com/fujimin-pass",
+  },
   openGraph: {
     title:
       "ペットサロン・トリミングの予約管理+AI応答+シフト管理 | FUJIMI DX Lab",

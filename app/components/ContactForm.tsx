@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 const INQUIRY_TYPES = [
+  "共創パートナーに応募したい",
   "導入を検討したい",
   "まずは話を聞きたい",
   "料金について知りたい",

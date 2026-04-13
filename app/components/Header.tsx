@@ -4,10 +4,9 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const NAV_ITEMS = [
-  { label: "業種で選ぶ", href: "/#industry" },
-  { label: "サービス", href: "/#solutions" },
-  { label: "料金", href: "/pricing" },
-  { label: "お知らせ", href: "/news" },
+  { label: "プロダクト", href: "/#products" },
+  { label: "私たちについて", href: "/#about" },
+  { label: "コラム", href: "/column" },
 ];
 
 export default function Header() {
@@ -55,10 +54,10 @@ export default function Header() {
             </a>
           ))}
           <a
-            href="#contact"
-            className="rounded-lg bg-white/90 px-5 py-2 text-sm font-semibold text-gray-900 shadow-sm backdrop-blur transition-all hover:bg-white hover:shadow-md"
+            href="#partner"
+            className="rounded-lg bg-orange-500 px-5 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:bg-orange-600 hover:shadow-md"
           >
-            お問い合わせ
+            パートナー募集中
           </a>
         </nav>
 
@@ -101,11 +100,11 @@ export default function Header() {
             </a>
           ))}
           <a
-            href="#contact"
-            className="mt-2 block rounded-lg bg-primary px-5 py-3 text-center text-sm font-semibold text-white"
+            href="#partner"
+            className="mt-2 block rounded-lg bg-orange-500 px-5 py-3 text-center text-sm font-semibold text-white"
             onClick={() => setOpen(false)}
           >
-            お問い合わせ
+            パートナー募集中
           </a>
         </nav>
     </header>

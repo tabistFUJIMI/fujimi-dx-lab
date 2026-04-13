@@ -98,7 +98,7 @@ export default function JsonLd() {
     "@type": "Organization",
     name: "FUJIMI DX Lab",
     legalName: "ふじみ企業有限会社",
-    description: "小規模事業者向けDXプラットフォーム「FUJIMIN PASS」の開発・提供",
+    description: "小さな組織の困ったをテクノロジーで解決するDX事業部。施術院・サロン向けFUJIMIN PASS、個人向けForProject、非営利団体向けTASUKI PASSを開発・提供",
     url: "https://fujimi-dx-lab.com",
     email: "support@mail.fujimin-pass.com",
     address: {
@@ -111,59 +111,26 @@ export default function JsonLd() {
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "FUJIMIN PASSエコシステム",
+      name: "FUJIMI DX Lab プロダクト",
       itemListElement: [
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "SoftwareApplication",
-            name: "Reserve Navi",
+            name: "FUJIMIN PASS",
             applicationCategory: "BusinessApplication",
-            description: "LINEから簡単予約。小規模店舗向け予約管理システム",
-            url: "https://fujimi-dx-lab.com/products/reserve-navi",
-            offers: { "@type": "Offer", price: "0", priceCurrency: "JPY", description: "無料プランあり。月額¥980〜" },
+            description: "小規模店舗向けDXシリーズ。LINE予約管理（ReserveNavi）、AI自動応答（AskNavi）、シフト管理（ShiftNavi）等を月額¥0から提供",
+            url: "https://fujimi-dx-lab.com/fujimin-pass",
           },
         },
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "SoftwareApplication",
-            name: "Ask Navi",
+            name: "ForProject",
             applicationCategory: "BusinessApplication",
-            description: "公式LINEの問い合わせにAIが自動応答",
-            url: "https://fujimi-dx-lab.com/products/ask-navi",
-            offers: { "@type": "Offer", price: "550", priceCurrency: "JPY", description: "月額¥550〜" },
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "SoftwareApplication",
-            name: "Rule Navi",
-            applicationCategory: "BusinessApplication",
-            description: "就業規則・マニュアルをAIが検索",
-            url: "https://fujimi-dx-lab.com/products/rule-navi",
-            offers: { "@type": "Offer", price: "550", priceCurrency: "JPY", description: "月額¥550〜" },
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "SoftwareApplication",
-            name: "Shift Navi",
-            applicationCategory: "BusinessApplication",
-            description: "AIがシフトをワンタッチで自動作成",
-            url: "https://fujimi-dx-lab.com/products/shift-navi",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "SoftwareApplication",
-            name: "Social Navi",
-            applicationCategory: "BusinessApplication",
-            description: "X・Instagram・TikTok・Facebookを一元管理",
-            url: "https://fujimi-dx-lab.com/products/social-navi",
+            description: "個人・チーム向けプロジェクト管理。イベント企画・懇親会・結婚式準備をスマホで完結管理",
+            url: "https://fujimi-dx-lab.com/products/forproject",
           },
         },
       ],
@@ -174,7 +141,7 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "ふじみ企業有限会社",
-    description: "静岡県富士市のビジネスホテル運営・DXツール開発",
+    description: "静岡県富士市の旅館経営者が立ち上げた、小さな組織向けDXツール開発事業部",
     address: {
       "@type": "PostalAddress",
       postalCode: "417-0043",
@@ -194,26 +161,34 @@ export default function JsonLd() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "FUJIMIN PASSとは何ですか？",
+        name: "FUJIMI DX Labとは何ですか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "FUJIMIN PASSは小規模事業者向けの統合DXプラットフォームです。予約管理（Reserve Navi）、AI自動応答（Ask Navi）、シフト管理（Shift Navi）、社内規則検索（Rule Navi）、SNS管理（Social Navi）の5つのサービスを、1つのアカウントで利用できます。",
+          text: "FUJIMI DX Labは静岡県富士市のふじみ企業有限会社が運営するDX事業部です。施術院・サロン向けのFUJIMIN PASS、個人向けのForProject、非営利団体向けのTASUKI PASSなど、小さな組織が必要なDXツールを開発・提供しています。",
         },
       },
       {
         "@type": "Question",
-        name: "どのような業種が対象ですか？",
+        name: "どのような製品がありますか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "宿泊施設、サロン・美容室、飲食店、リラクゼーション、クリニック、フィットネスなど、小規模〜中規模の店舗を主な対象としています。",
+          text: "小規模店舗向けのFUJIMIN PASS（ReserveNavi・AskNavi・ShiftNavi等）、個人向けプロジェクト管理のForProject、非営利団体向けのTASUKI PASS（開発中）があります。",
         },
       },
       {
         "@type": "Question",
-        name: "1つのサービスだけでも利用できますか？",
+        name: "無料で始められますか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "はい、必要なサービスだけを選んで利用できます。1つから始めて、お店の成長に合わせて追加できます。",
+          text: "はい。ShiftNaviはずっと無料、ReserveNaviには無料プランがあります。ForProjectも基本無料です。現在、ReserveNaviの共創パートナーを数社限定で募集中（スタンダードプラン最大1年間無料）。",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "共創パートナーとは何ですか？",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "ReserveNaviを実際の店舗運営でご利用いただき、月2回のヒアリングとLINEでのフィードバックにご協力いただけるパートナー店舗様です。スタンダードプラン（通常¥2,980/月）を最大1年間無料でご提供します。",
         },
       },
       {
@@ -221,15 +196,7 @@ export default function JsonLd() {
         name: "料金はいくらですか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Reserve Naviは無料プランあり（月額¥980〜）、Ask NaviとRule Naviは月額¥550〜です。すべて税込価格です。",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "無料で相談できますか？",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "はい、導入のご相談は無料です。お問い合わせフォームからお気軽にご連絡ください。",
+          text: "シリーズによって異なります。FUJIMIN PASSはReserveNavi無料〜¥4,980/月、AskNavi¥550〜/月、ShiftNavi無料〜¥550/月。ForProjectは基本無料・AI機能500円〜。すべて税込価格です。",
         },
       },
     ],
