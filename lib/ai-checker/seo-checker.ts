@@ -501,12 +501,12 @@ export function runSeoChecks(
   // sitemap.xml existence (3 points)
   siteSeo.push(item("sitemap.xml", external.sitemapExists ? 3 : 0, 3,
     external.sitemapExists ? "good" : "warning",
-    external.sitemapExists ? "sitemap.xml検出" : "sitemap.xmlが見つかりません"));
+    external.sitemapExists ? "sitemap.xml検出" : "sitemap.xmlが見つかりませんでした"));
 
   // robots.txt existence (2 points)
   siteSeo.push(item("robots.txt", external.robotsTxtExists ? 2 : 0, 2,
     external.robotsTxtExists ? "good" : "warning",
-    external.robotsTxtExists ? "robots.txt検出" : "robots.txtが見つかりません"));
+    external.robotsTxtExists ? "robots.txt検出" : "robots.txtが見つかりませんでした"));
 
   // Page count (4 points)
   if (sm) {
@@ -519,7 +519,7 @@ export function runSeoChecks(
       pageCountScore >= 3 ? "good" : pageCountScore >= 2 ? "warning" : "bad",
       `${sm.totalPages}ページ検出${sm.urlPatterns.length > 0 ? `（構成: ${sm.urlPatterns.join(", ")}）` : ""}`));
   } else {
-    siteSeo.push(item("サイト規模", 0, 4, "warning", "sitemap解析不可（ページ数不明）"));
+    siteSeo.push(item("サイト規模", 0, 4, "warning", "通信タイムアウトのため確認できませんでした（サイト側の問題ではありません）（ページ数不明）"));
   }
 
   // Blog/Content section (4 points)
@@ -530,7 +530,7 @@ export function runSeoChecks(
         ? `ブログ/コンテンツセクション検出（${sm.blogPageCount}ページ）`
         : "ブログやコンテンツセクションが見つかりません（GEO/LLMO対策にはコンテンツ発信が重要）"));
   } else {
-    siteSeo.push(item("ブログ/コンテンツ", 0, 4, "warning", "sitemap解析不可"));
+    siteSeo.push(item("ブログ/コンテンツ", 0, 4, "warning", "通信タイムアウトのため確認できませんでした（サイト側の問題ではありません）"));
   }
 
   // Update freshness (4 points)
@@ -559,7 +559,7 @@ export function runSeoChecks(
       hasCleanStructure ? "good" : "warning",
       `${sm.urlPatterns.length}カテゴリ検出: ${sm.urlPatterns.slice(0, 5).join(", ")}`));
   } else {
-    siteSeo.push(item("URL構造", 0, 3, "warning", "sitemap解析不可"));
+    siteSeo.push(item("URL構造", 0, 3, "warning", "通信タイムアウトのため確認できませんでした（サイト側の問題ではありません）"));
   }
 
   // === GEO Elements (40 points) ===
