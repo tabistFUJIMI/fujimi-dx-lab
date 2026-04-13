@@ -31,6 +31,17 @@ const BLOG_PATTERNS = [
   /\/magazine/i,
   /\/media\//i,
   /\/stories\//i,
+  /\/info\//i,
+  /\/topics\//i,
+  /\/update/i,
+  /\/notice/i,
+  /\/diary/i,
+  /\/voice/i,
+  /\/report/i,
+  /\/seminar/i,
+  /\/event/i,
+  /\/case/i,
+  /\/works\//i,
 ];
 
 // Extract page data from HTML
@@ -42,15 +53,15 @@ export function extractPageData(url: string, html: string): PageData {
     $('meta[name="description"]').attr("content")?.trim() ?? "";
 
   const ogTags: Record<string, string> = {};
-  $('meta[property^="og:"]').each((_, el) => {
-    const prop = $(el).attr("property");
+  $('meta[property^="og:"], meta[name^="og:"]').each((_, el) => {
+    const prop = $(el).attr("property") || $(el).attr("name");
     const content = $(el).attr("content");
     if (prop && content) ogTags[prop] = content;
   });
 
   const twitterTags: Record<string, string> = {};
-  $('meta[name^="twitter:"]').each((_, el) => {
-    const name = $(el).attr("name");
+  $('meta[name^="twitter:"], meta[property^="twitter:"]').each((_, el) => {
+    const name = $(el).attr("name") || $(el).attr("property");
     const content = $(el).attr("content");
     if (name && content) twitterTags[name] = content;
   });
@@ -109,8 +120,10 @@ export function extractPageData(url: string, html: string): PageData {
   $("p, li, dd").each((_, el) => {
     const text = $(el).text().trim();
     if (
-      text.match(/は.{2,30}(です|である|の|を提供)/) ||
-      text.match(/is\s+a\s+/i)
+      text.match(/は.{2,30}(です|である|の|を提供|を行って|に取り組|を展開|を運営|専門)/) ||
+      text.match(/is\s+a\s+/i) ||
+      text.match(/(株式会社|有限会社|合同会社).{2,30}(です|である|として)/) ||
+      text.match(/サービス.{2,20}(です|を提供)/)
     ) {
       if (text.length < 200) entityDefinitions.push(text);
     }
@@ -429,10 +442,13 @@ export function runSeoChecks(
       `OGPタグ: ${ogCount}/4 設定済み`, requiredOg.filter((k) => !page.ogTags[k]).join(", ") || undefined)
   );
 
-  // Twitter Card (2 points)
-  const hasTwitter = !!page.twitterTags["twitter:card"];
-  pageSeo.push(item("Twitter Card", hasTwitter ? 2 : 0, 2, hasTwitter ? "good" : "warning",
-    hasTwitter ? "Twitter Card設定あり" : "Twitter Cardが未設定"));
+  // Twitter Card (2 points) — OGP complete = Twitter auto-fallback, so no penalty
+  const hasTwitter = !!page.twitterTags["twitter:card"] || !!(page.twitterTags["twitter:title"]);
+  const ogpComplete = ogCount >= 3;
+  const twitterScore = hasTwitter ? 2 : ogpComplete ? 2 : 0;
+  pageSeo.push(item("Twitter Card", twitterScore, 2,
+    hasTwitter ? "good" : ogpComplete ? "good" : "warning",
+    hasTwitter ? "Twitter Card設定あり" : ogpComplete ? "OGP完備のためTwitterは自動対応" : "Twitter Cardが未設定"));
 
   // Heading structure (5 points)
   // Note: SPA sites may render H1 via JavaScript — our HTML-only check can miss it
@@ -519,7 +535,7 @@ export function runSeoChecks(
       pageCountScore >= 3 ? "good" : pageCountScore >= 2 ? "warning" : "bad",
       `${sm.totalPages}ページ検出${sm.urlPatterns.length > 0 ? `（構成: ${sm.urlPatterns.join(", ")}）` : ""}`));
   } else {
-    siteSeo.push(item("サイト規模", 0, 4, "warning", "通信タイムアウトのため確認できませんでした（サイト側の問題ではありません）（ページ数不明）"));
+    siteSeo.push(item("サイト規模", 2, 4, "warning", "通信状況により確認できませんでした（サイト側の問題ではありません）"));
   }
 
   // Blog/Content section (4 points) — check sitemap, page links, WordPress, and page count
@@ -535,7 +551,7 @@ export function runSeoChecks(
       : "ブログ/コンテンツへのリンクを検出";
     siteSeo.push(item("ブログ/コンテンツ", 4, 4, "good", blogMsg));
   } else if (!sm) {
-    siteSeo.push(item("ブログ/コンテンツ", 0, 4, "warning", "通信タイムアウトのため確認できませんでした（サイト側の問題ではありません）"));
+    siteSeo.push(item("ブログ/コンテンツ", 2, 4, "warning", "通信状況により確認できませんでした（サイト側の問題ではありません）"));
   } else {
     siteSeo.push(item("ブログ/コンテンツ", 0, 4, "bad",
       "ブログやコンテンツセクションが見つかりませんでした"));
@@ -568,7 +584,7 @@ export function runSeoChecks(
       hasCleanStructure ? "good" : "warning",
       `${sm.urlPatterns.length}カテゴリ検出: ${sm.urlPatterns.slice(0, 5).join(", ")}`));
   } else {
-    siteSeo.push(item("URL構造", 0, 3, "warning", "通信タイムアウトのため確認できませんでした（サイト側の問題ではありません）"));
+    siteSeo.push(item("URL構造", 1, 3, "warning", "通信状況により確認できませんでした（サイト側の問題ではありません）"));
   }
 
   // === GEO Elements (40 points) ===
@@ -580,8 +596,18 @@ export function runSeoChecks(
 
   // JSON-LD structured data (10 points)
   const jsonLdTypes = page.jsonLd.map((j) => j.type);
-  const geoSchemaTypes = ["Organization", "Article", "BlogPosting", "FAQPage", "Product", "BreadcrumbList", "Person", "WebApplication", "HowTo", "ItemList"];
-  const foundTypes = geoSchemaTypes.filter((t) => jsonLdTypes.some((jt) => jt === t));
+  // Also detect microdata (itemscope/itemtype)
+  const microdataTypes: string[] = [];
+  const microdataMatches = page.html.match(/itemtype="https?:\/\/schema\.org\/(\w+)"/g);
+  if (microdataMatches) {
+    for (const m of microdataMatches) {
+      const type = m.match(/\/(\w+)"/)?.[1];
+      if (type) microdataTypes.push(type);
+    }
+  }
+  const allSchemaTypes = [...new Set([...jsonLdTypes, ...microdataTypes])];
+  const geoSchemaTypes = ["Organization", "Article", "BlogPosting", "FAQPage", "Product", "BreadcrumbList", "Person", "WebApplication", "HowTo", "ItemList", "LocalBusiness", "Hotel"];
+  const foundTypes = geoSchemaTypes.filter((t) => allSchemaTypes.some((st) => st === t));
   let jsonLdScore = Math.min(10, foundTypes.length * 2);
   const hasTripleStack = jsonLdTypes.includes("Article") && jsonLdTypes.includes("FAQPage") &&
     (jsonLdTypes.includes("ItemList") || jsonLdTypes.includes("BreadcrumbList"));
@@ -618,9 +644,11 @@ export function runSeoChecks(
   // Detect FAQ in multiple ways: JSON-LD, <details>, or Q&A-like content in HTML
   const hasFaqSchema = jsonLdTypes.includes("FAQPage");
   const hasDetails = page.semanticElements.details > 0;
+  const hasFaqClass = /class="[^"]*(?:faq|accordion|qa)[^"]*"/i.test(page.html) || /id="[^"]*(?:faq|qa)[^"]*"/i.test(page.html);
   const hasQaContent = page.questionHeadings.length >= 2 ||
     /[QＱ][\.．\s:：]/i.test(page.textContent) ||
-    page.headings.some((h) => /FAQ|よくある質問|Q&A/i.test(h.text));
+    page.headings.some((h) => /FAQ|よくある質問|Q&A|質問/i.test(h.text)) ||
+    hasFaqClass;
   let faqScore = 0;
   if (hasFaqSchema) faqScore += 3;
   if (hasDetails) faqScore += 1;
@@ -644,7 +672,7 @@ export function runSeoChecks(
 
   // llms.txt (5 points)
   geoSeo.push({
-    ...item("llms.txt（AI向け案内）", external.llmsTxtExists ? 5 : 0, 5,
+    ...item("llms.txt（AI向け案内）", external.llmsTxtExists ? 3 : 0, 3,
       external.llmsTxtExists ? "good" : "warning",
       external.llmsTxtExists
         ? "AI向けの案内ファイルが設置されています"
@@ -691,7 +719,7 @@ export function runSeoChecks(
   // Content depth indicator (4 points)
   // Note: SPA sites may have low word count because content is JS-rendered
   const wordCount = page.textContent.split(/\s+/).length;
-  const isLikelySpa = wordCount < 200 && page.html.includes("__next") || page.html.includes("__nuxt") || page.html.includes("ng-app") || page.html.includes("data-reactroot");
+  const isLikelySpa = wordCount < 200 && (page.html.includes("__nuxt") || page.html.includes("ng-app") || page.html.includes("data-reactroot") || page.html.includes("__vue"));
   let depthScore = 0;
   if (isLikelySpa) {
     depthScore = 3; // Don't penalize SPAs — content exists but is JS-rendered
