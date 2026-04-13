@@ -32,7 +32,7 @@ function validateUrl(input: string): URL | null {
   }
 }
 
-async function fetchPage(pageUrl: string): Promise<string | null> {
+async function fetchPage(pageUrl: string, timeoutMs = 5_000): Promise<string | null> {
   try {
     const res = await fetch(pageUrl, {
       headers: {
@@ -41,7 +41,7 @@ async function fetchPage(pageUrl: string): Promise<string | null> {
         "Accept-Language": "ja,en;q=0.9",
       },
       redirect: "follow",
-      signal: AbortSignal.timeout(5_000),
+      signal: AbortSignal.timeout(timeoutMs),
     });
     if (!res.ok) return null;
     const html = await res.text();
@@ -70,10 +70,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "有効なURLを入力してください" }, { status: 400 });
     }
 
-    // Step 1: Fetch the input page
-    const html = await fetchPage(url.href);
+    // Step 1: Fetch the input page (longer timeout for main page)
+    const html = await fetchPage(url.href, 15_000);
     if (!html) {
-      return NextResponse.json({ error: "ページの取得に失敗しました" }, { status: 400 });
+      return NextResponse.json({ error: "ページの取得に失敗しました。サイトの応答が遅いか、アクセスがブロックされている可能性があります。" }, { status: 400 });
     }
 
     // Step 2: Analyze the input page (full analysis)
