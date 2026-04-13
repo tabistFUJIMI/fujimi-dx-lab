@@ -92,7 +92,7 @@ function Spinner({ className = "w-5 h-5" }: { className?: string }) {
 
 // --- FAQ ---
 const faqData = [
-  { q: "AI対策チェッカーとは何ですか？", a: "AI対策チェッカーは、WebサイトのURLを入力するだけでSEO（検索エンジン最適化）とGEO/LLMO（AI検索最適化）のスコアを無料で診断するツールです。ChatGPT、Gemini、Perplexity、ClaudeなどのAI検索エンジンにあなたのサイトが引用されやすいかを評価し、具体的な改善提案を提示します。" },
+  { q: "AI対策チェッカーとは何ですか？", a: "AI対策チェッカーは、WebサイトのURLを入力するだけでSEO（検索エンジン最適化）とGEO/LLMO（AI検索最適化）のスコアを無料で診断するツールです。ChatGPT、Gemini、Perplexity、ClaudeなどのAI検索エンジンにあなたのサイトが引用されやすいかを評価し、具体的な検証結果を提示します。" },
   { q: "GEO（Generative Engine Optimization）とは何ですか？", a: "GEOとは、ChatGPTやGeminiなどのAI検索エンジンの回答で、自社サイトが引用・推薦されるよう最適化する手法です。従来のSEOがGoogleの検索結果で上位表示を目指すのに対し、GEOはAIが回答を生成する際の引用元として選ばれることを目指します。" },
   { q: "LLMOとGEOの違いは何ですか？", a: "LLMO（Large Language Model Optimization）はAIの事前学習データに自社情報を含めることを重視し、GEOはAIがリアルタイム検索（RAG）で情報を取得する際の引用されやすさを重視します。実務上はほぼ同義で使われることが多く、AI対策チェッカーでは両方をまとめて評価しています。" },
   { q: "なぜ従来のSEO対策だけでは不十分なのですか？", a: "AI Overviewsの普及でオーガニック検索のクリック率が最大61%減少するケースが報告されています。Yext社の17.2百万件の分析では、各AIエンジンが異なる基準で引用元を選んでいます。SEOの上位表示とAIでの引用は必ずしも連動しないため、GEO/LLMO対策が別途必要です。" },
@@ -128,24 +128,22 @@ export default function AICheckerPage() {
 
   const analyze = async () => {
     if (!url.trim()) return;
-    setLoading(true); setError(""); setSeoResult(null); setGeoResult(null);
+    setLoading(true); setError(""); setSeoResult(null); setGeoResult(null); setGeoLoading(false);
     try {
       const res = await fetch("/api/ai-checker/analyze", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ url: url.trim() }) });
       const data = await res.json();
-      if (!res.ok) setError(data.error); else setSeoResult(data);
+      if (!res.ok) { setError(data.error); return; }
+      setSeoResult(data);
+      // Auto-start GEO analysis
+      setGeoLoading(true);
+      try {
+        const geoRes = await fetch("/api/ai-checker/analyze/geo", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ pageData: { ...data._pageData, url: data.url } }) });
+        const geoData = await geoRes.json();
+        if (geoRes.ok) setGeoResult(geoData);
+      } catch { /* GEO analysis failed silently — SEO result still shown */ }
+      finally { setGeoLoading(false); }
     } catch { setError("通信エラーが発生しました"); }
     finally { setLoading(false); }
-  };
-
-  const analyzeGeo = async () => {
-    if (!seoResult?._pageData) return;
-    setGeoLoading(true);
-    try {
-      const res = await fetch("/api/ai-checker/analyze/geo", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ pageData: { ...seoResult._pageData, url: seoResult.url } }) });
-      const data = await res.json();
-      if (!res.ok) setError(data.error); else setGeoResult(data);
-    } catch { setError("AI分析中に通信エラーが発生しました"); }
-    finally { setGeoLoading(false); }
   };
 
   const toggle = (k: string) => setExpanded((p) => ({ ...p, [k]: !p[k] }));
@@ -253,24 +251,15 @@ export default function AICheckerPage() {
             </Accordion>
 
             {/* GEO AI Analysis */}
-            {!geoResult && !geoLoading && (
-              <div className="text-center p-12 mt-4 bg-gradient-to-br from-[#e8fffe] to-[#dbe1ff]/30 rounded-3xl border border-[#4cd7f6]/20">
-                <div className="w-16 h-16 bg-[#06b6d4] rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg shadow-[#06b6d4]/30">
-                  <IconBeaker className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-[#191b23] mb-2">GEO/LLMO AI分析</h3>
-                <p className="text-[#434655] mb-6 max-w-md mx-auto">AIがコンテンツを分析し、ChatGPT・Gemini・Perplexity・Claudeでの引用されやすさを評価します</p>
-                <button onClick={analyzeGeo}
-                  className="bg-[#06b6d4] text-white px-12 py-4 rounded-3xl font-bold text-lg hover:shadow-xl hover:shadow-[#06b6d4]/30 transition-all active:scale-95 inline-flex items-center gap-2">
-                  <IconBeaker className="w-5 h-5" /> AI分析を実行する
-                </button>
-                <p className="text-xs text-[#737686] mt-3">1日3回まで無料</p>
+            {!geoResult && !geoLoading && !loading && (
+              <div className="text-center p-8 mt-4 bg-[#f3f3fe] rounded-2xl">
+                <p className="text-sm text-[#737686]">AI構造検証の結果はありません</p>
               </div>
             )}
             {geoLoading && (
-              <div className="text-center p-12 mt-4 bg-[#e8fffe] rounded-3xl border border-[#4cd7f6]/20">
-                <Spinner className="w-10 h-10 text-[#06b6d4] mx-auto mb-4" />
-                <p className="text-[#434655] font-medium">AI分析を実行中...</p>
+              <div className="text-center p-8 mt-4 bg-[#e8fffe] rounded-2xl border border-[#4cd7f6]/20">
+                <Spinner className="w-8 h-8 text-[#06b6d4] mx-auto mb-3" />
+                <p className="text-[#434655] font-medium">AIによる構造検証を実行中...</p>
                 <p className="text-xs text-[#737686] mt-1">10〜20秒ほどかかります</p>
               </div>
             )}
@@ -291,9 +280,22 @@ export default function AICheckerPage() {
                     })}
                   </div>
                 </Accordion>
+                {geoResult.siteStructure && (
+                  <div className="mt-6 p-5 bg-white rounded-2xl border border-[#c3c6d7]/30">
+                    <h4 className="text-sm font-bold text-[#191b23] mb-2">AIが推測したサイト構造</h4>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                      <div><span className="text-[#737686]">種類:</span> <span className="font-medium">{geoResult.siteStructure.siteType}</span></div>
+                      <div><span className="text-[#737686]">規模:</span> <span className="font-medium">{geoResult.siteStructure.estimatedScale}</span></div>
+                      <div><span className="text-[#737686]">ブログ:</span> <span className="font-medium">{geoResult.siteStructure.hasBlog ? "あり" : "なし"}</span></div>
+                      <div><span className="text-[#737686]">FAQ:</span> <span className="font-medium">{geoResult.siteStructure.hasFaq ? "あり" : "なし"}</span></div>
+                    </div>
+                    {geoResult.siteStructure.notes && <p className="text-xs text-[#737686] mt-2">{geoResult.siteStructure.notes}</p>}
+                  </div>
+                )}
+
                 {geoResult.improvements.length > 0 && (
                   <div className="mt-8">
-                    <h3 className="text-xl font-bold text-[#191b23] mb-4">改善提案</h3>
+                    <h3 className="text-xl font-bold text-[#191b23] mb-4">検証結果</h3>
                     <div className="space-y-4">
                       {geoResult.improvements.map((imp, i) => <ImprovementCard key={i} imp={imp} />)}
                     </div>

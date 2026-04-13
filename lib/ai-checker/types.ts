@@ -32,6 +32,14 @@ export interface GeoResult {
   freshness: { score: number; maxScore: number; details: string[] };
   aiSimulation: { score: number; maxScore: number; details: string[] };
   improvements: GeoImprovement[];
+  siteStructure?: {
+    siteType: string;
+    hasBlog: boolean;
+    hasServicePages: boolean;
+    hasFaq: boolean;
+    estimatedScale: string;
+    notes: string;
+  };
 }
 
 export interface GeoImprovement {

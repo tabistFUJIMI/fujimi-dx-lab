@@ -35,7 +35,8 @@ export async function POST(request: NextRequest) {
       questionHeadings: pageData.questionHeadings || [],
     };
 
-    const geoResult = await runGeoCheck(page, pageData.jsonLdSummary || "");
+    const navLinksStr = Array.isArray(pageData.navLinks) ? pageData.navLinks.join("\n") : "";
+    const geoResult = await runGeoCheck(page, pageData.jsonLdSummary || "", navLinksStr);
     return NextResponse.json(geoResult);
   } catch (error) {
     console.error("GEO analysis error:", error);

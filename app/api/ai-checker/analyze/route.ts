@@ -157,6 +157,7 @@ export async function POST(request: NextRequest) {
         entityDefinitions: pageData.entityDefinitions.slice(0, 5),
         questionHeadings: pageData.questionHeadings.slice(0, 10),
         jsonLdSummary,
+        navLinks: extractNavLinks(html, url.href),
       },
     });
   } catch (error) {
