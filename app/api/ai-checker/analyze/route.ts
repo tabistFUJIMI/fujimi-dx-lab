@@ -41,7 +41,7 @@ async function fetchPage(pageUrl: string): Promise<string | null> {
         "Accept-Language": "ja,en;q=0.9",
       },
       redirect: "follow",
-      signal: AbortSignal.timeout(8_000),
+      signal: AbortSignal.timeout(5_000),
     });
     if (!res.ok) return null;
     const html = await res.text();
@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
     let siteAnalysis: SiteAnalysis | undefined;
     try {
       const navLinks = extractNavLinks(html, url.href);
-      const pagesToCheck = navLinks.slice(0, 4);
+      const pagesToCheck = navLinks.slice(0, 3);
       const sitePages: SitePageScore[] = [{
         url: url.href,
         title: pageData.title || url.href,
@@ -143,7 +143,8 @@ export async function POST(request: NextRequest) {
       },
     });
   } catch (error) {
-    console.error("Analysis error:", error);
-    return NextResponse.json({ error: "分析中にエラーが発生しました" }, { status: 500 });
+    const msg = error instanceof Error ? error.message : String(error);
+    console.error("Analysis error:", msg, error);
+    return NextResponse.json({ error: `分析中にエラーが発生しました: ${msg.slice(0, 100)}` }, { status: 500 });
   }
 }
