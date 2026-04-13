@@ -71,16 +71,29 @@ export async function POST(request: NextRequest) {
     }
 
     // Step 1: Fetch the input page (longer timeout for main page)
-    const html = await fetchPage(url.href, 15_000);
-    if (!html) {
-      return NextResponse.json({ error: "ページの取得に失敗しました。サイトの応答が遅いか、アクセスがブロックされている可能性があります。" }, { status: 400 });
+    let html: string;
+    try {
+      const fetched = await fetchPage(url.href, 15_000);
+      if (!fetched) {
+        return NextResponse.json({ error: "ページの取得に失敗しました。サイトの応答が遅いか、アクセスがブロックされている可能性があります。" }, { status: 400 });
+      }
+      html = fetched;
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      return NextResponse.json({ error: `ページ取得エラー: ${msg.slice(0, 100)}` }, { status: 400 });
     }
 
     // Step 2: Analyze the input page (full analysis)
-    const pageData = extractPageData(url.href, html);
-    const jsonLdSummary = summarizeJsonLd(pageData.jsonLd);
-    const externalChecks = await checkExternalResources(url.href);
-    const seoResult = runSeoChecks(pageData, externalChecks);
+    let pageData, jsonLdSummary, seoResult;
+    try {
+      pageData = extractPageData(url.href, html);
+      jsonLdSummary = summarizeJsonLd(pageData.jsonLd);
+      const externalChecks = await checkExternalResources(url.href);
+      seoResult = runSeoChecks(pageData, externalChecks);
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      return NextResponse.json({ error: `分析処理エラー: ${msg.slice(0, 100)}` }, { status: 500 });
+    }
 
     // Step 3-5: Site-wide analysis (wrapped in try-catch — never blocks main result)
     let siteAnalysis: SiteAnalysis | undefined;
