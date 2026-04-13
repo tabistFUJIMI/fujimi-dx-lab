@@ -199,9 +199,10 @@ export default function AICheckerPage() {
             </p>
 
             {/* Disclaimer */}
-            <div className="mb-10 p-4 bg-[#f3f3fe] rounded-2xl border border-[#e1e2ed] text-sm text-[#434655] leading-relaxed">
-              <p className="font-semibold text-[#191b23] mb-1">この診断結果について</p>
-              <p>AI検索（ChatGPT・Gemini・Perplexity・Claude等）はまだ発展途上の技術です。各AIの引用ロジックは非公開で、数ヶ月単位で大きく変わります。「これをやれば確実にAIに引用される」という確定的な手法は現時点では存在しません。ただし、<strong className="text-[#191b23]">良いSEO対策がそのままAI検索対策の土台になる</strong>という点は業界の専門家がほぼ一致しています。このチェッカーは「現時点で効果が期待できる構造」の目安を提示するものです。</p>
+            <div className="mb-10 p-4 bg-[#f3f3fe] rounded-2xl border border-[#e1e2ed] text-sm text-[#434655] leading-relaxed space-y-2">
+              <p className="font-semibold text-[#191b23]">この診断結果について</p>
+              <p>このスコアは<strong className="text-[#191b23]">あくまで参考指標</strong>です。スコアが低い＝悪いサイト、ではありません。業種やサイトの目的によって、必要な対策は異なります。例えば飲食店や美容室のサイトでは、構造化データやFAQよりもGoogleビジネスプロフィールの方がはるかに重要です。</p>
+              <p>AI検索（ChatGPT・Gemini・Perplexity・Claude等）はまだ発展途上の技術です。各AIの引用ロジックは非公開で、数ヶ月単位で大きく変わります。ただし、<strong className="text-[#191b23]">良いSEO対策がそのままAI検索対策の土台になる</strong>という点は業界の専門家がほぼ一致しています。</p>
             </div>
 
             {/* Site-wide analysis */}
