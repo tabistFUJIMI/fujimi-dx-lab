@@ -7,6 +7,7 @@ import {
   quickSeoScore,
 } from "@/lib/ai-checker/seo-checker";
 import { summarizeJsonLd } from "@/lib/ai-checker/geo-checker";
+import { proxyFetch } from "@/lib/ai-checker/proxy-fetch";
 import type { SitePageScore, SiteAnalysis } from "@/lib/ai-checker/types";
 
 export const maxDuration = 60;
@@ -33,22 +34,9 @@ function validateUrl(input: string): URL | null {
 }
 
 async function fetchPage(pageUrl: string, timeoutMs = 5_000): Promise<string | null> {
-  try {
-    const res = await fetch(pageUrl, {
-      headers: {
-        "User-Agent": "AITaisakuChecker/1.0 (FUJIMI DX Lab)",
-        Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "Accept-Language": "ja,en;q=0.9",
-      },
-      redirect: "follow",
-      signal: AbortSignal.timeout(timeoutMs),
-    });
-    if (!res.ok) return null;
-    const html = await res.text();
-    return html.length > 5_000_000 ? html.slice(0, 5_000_000) : html;
-  } catch {
-    return null;
-  }
+  const res = await proxyFetch(pageUrl, { timeout: timeoutMs });
+  if (!res.ok) return null;
+  return res.text || null;
 }
 
 export async function POST(request: NextRequest) {

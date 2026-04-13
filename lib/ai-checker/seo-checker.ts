@@ -7,6 +7,7 @@ import type {
   ExternalChecks,
   SitemapAnalysis,
 } from "./types";
+import { proxyFetch } from "./proxy-fetch";
 
 // Known AI crawlers to check in robots.txt
 const AI_CRAWLERS = [
@@ -221,13 +222,10 @@ export function quickSeoScore(html: string, url: string): { score: number; pageS
 // Parse sitemap.xml and analyze site structure
 async function parseSitemap(origin: string): Promise<SitemapAnalysis | null> {
   try {
-    const res = await fetch(`${origin}/sitemap.xml`, {
-      signal: AbortSignal.timeout(8000),
-      headers: { "User-Agent": "AITaisakuChecker/1.0 (FUJIMI DX Lab)" },
-    });
+    const res = await proxyFetch(`${origin}/sitemap.xml`, { timeout: 10000 });
     if (!res.ok) return null;
 
-    const xml = await res.text();
+    const xml = res.text;
     const $ = cheerio.load(xml, { xmlMode: true });
 
     // Handle sitemap index (multiple sitemaps)
@@ -245,12 +243,9 @@ async function parseSitemap(origin: string): Promise<SitemapAnalysis | null> {
 
       for (const childUrl of childUrls) {
         try {
-          const childRes = await fetch(childUrl, {
-            signal: AbortSignal.timeout(5000),
-            headers: { "User-Agent": "AITaisakuChecker/1.0 (FUJIMI DX Lab)" },
-          });
+          const childRes = await proxyFetch(childUrl, { timeout: 8000 });
           if (childRes.ok) {
-            const childXml = await childRes.text();
+            const childXml = childRes.text;
             const child$ = cheerio.load(childXml, { xmlMode: true });
             child$("url > loc").each((_, el) => {
               sitemapUrls.push(child$(el).text().trim());
@@ -344,15 +339,9 @@ export async function checkExternalResources(
 
   const [sitemapHeadRes, robotsRes, llmsRes, sitemapAnalysis] =
     await Promise.allSettled([
-      fetch(`${origin}/sitemap.xml`, {
-        method: "HEAD",
-        signal: AbortSignal.timeout(5000),
-      }),
-      fetch(`${origin}/robots.txt`, { signal: AbortSignal.timeout(5000) }),
-      fetch(`${origin}/llms.txt`, {
-        method: "HEAD",
-        signal: AbortSignal.timeout(5000),
-      }),
+      proxyFetch(`${origin}/sitemap.xml`, { method: "HEAD", timeout: 8000 }),
+      proxyFetch(`${origin}/robots.txt`, { timeout: 8000 }),
+      proxyFetch(`${origin}/llms.txt`, { method: "HEAD", timeout: 8000 }),
       parseSitemap(origin),
     ]);
 
@@ -366,7 +355,7 @@ export async function checkExternalResources(
 
   const aiCrawlersBlocked: string[] = [];
   if (robotsRes.status === "fulfilled" && robotsRes.value.ok) {
-    const robotsText = await robotsRes.value.text();
+    const robotsText = robotsRes.value.text;
     for (const crawler of AI_CRAWLERS) {
       const pattern = new RegExp(
         `User-agent:\\s*${crawler}[\\s\\S]*?Disallow:\\s*/`,
