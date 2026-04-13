@@ -75,3 +75,15 @@ model GaToken {
   @@map("ga_tokens")
   @@schema("fujimi_dx_lab_hp")
 }
+
+model AnalyticsReport {
+  id            String   @id @default(cuid())
+  period        Int
+  analyticsData String   @map("analytics_data")
+  analysis      String
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  @@map("analytics_reports")
+  @@schema("fujimi_dx_lab_hp")
+}

@@ -1,13 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../../../lib/prisma";
 import { getOAuth2Client } from "../../../../../lib/ga-auth";
-import { requireAdmin } from "../../../../../lib/admin-auth";
 
 export async function GET(req: NextRequest) {
-  const authError = await requireAdmin();
-  if (authError) return authError;
-
   const code = req.nextUrl.searchParams.get("code");
+  const error = req.nextUrl.searchParams.get("error");
+
+  if (error) {
+    return NextResponse.redirect(new URL("/admin/analytics?error=auth_denied", req.url));
+  }
+
   if (!code) {
     return NextResponse.redirect(new URL("/admin/analytics?error=no_code", req.url));
   }
@@ -31,9 +33,9 @@ export async function GET(req: NextRequest) {
       },
     });
 
-    return NextResponse.redirect(new URL("/admin/analytics?connected=true", req.url));
-  } catch (error) {
-    console.error("GA OAuth error:", error);
-    return NextResponse.redirect(new URL("/admin/analytics?error=oauth_failed", req.url));
+    return NextResponse.redirect(new URL("/admin/analytics?success=true", req.url));
+  } catch (e) {
+    console.error("GA OAuth callback error:", e);
+    return NextResponse.redirect(new URL("/admin/analytics?error=token_exchange", req.url));
   }
 }

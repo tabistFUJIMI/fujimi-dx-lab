@@ -7,5 +7,5 @@ export async function GET() {
   if (authError) return authError;
 
   const url = getAuthUrl();
-  return NextResponse.json({ url });
+  return NextResponse.redirect(url);
 }
