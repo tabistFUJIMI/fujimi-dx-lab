@@ -522,15 +522,18 @@ export function runSeoChecks(
     siteSeo.push(item("サイト規模", 0, 4, "warning", "通信タイムアウトのため確認できませんでした（サイト側の問題ではありません）（ページ数不明）"));
   }
 
-  // Blog/Content section (4 points)
-  if (sm) {
-    siteSeo.push(item("ブログ/コンテンツ", sm.hasBlog ? 4 : 0, 4,
-      sm.hasBlog ? "good" : "bad",
-      sm.hasBlog
-        ? `ブログ/コンテンツセクション検出（${sm.blogPageCount}ページ）`
-        : "ブログやコンテンツセクションが見つかりません（GEO/LLMO対策にはコンテンツ発信が重要）"));
-  } else {
+  // Blog/Content section (4 points) — check sitemap AND page links
+  const blogFromSitemap = sm?.hasBlog ?? false;
+  const blogFromLinks = BLOG_PATTERNS.some((p) => p.test(page.html));
+  const hasBlog = blogFromSitemap || blogFromLinks;
+  if (hasBlog) {
+    siteSeo.push(item("ブログ/コンテンツ", 4, 4, "good",
+      sm?.hasBlog ? `ブログ/コンテンツセクション検出（${sm.blogPageCount}ページ）` : "ブログ/コンテンツへのリンクを検出"));
+  } else if (!sm) {
     siteSeo.push(item("ブログ/コンテンツ", 0, 4, "warning", "通信タイムアウトのため確認できませんでした（サイト側の問題ではありません）"));
+  } else {
+    siteSeo.push(item("ブログ/コンテンツ", 0, 4, "bad",
+      "ブログやコンテンツセクションが見つかりませんでした"));
   }
 
   // Update freshness (4 points)
