@@ -1,6 +1,7 @@
 {
-  "lastAuditDate": "2026-04-04",
-  "score": "A-",
-  "appsAudited": 5,
-  "summary": "全5アプリ横断セキュリティ監査実施済み"
+  "lastAuditDate": "2026-04-16",
+  "score": "B-",
+  "appsAudited": 9,
+  "checksPerformed": 12,
+  "summary": "全9リポジトリ横断セキュリティ監査（12項目）実施済み"
 }
