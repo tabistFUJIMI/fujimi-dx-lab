@@ -106,3 +106,40 @@ model AiUsageLog {
   @@map("ai_usage_logs")
   @@schema("fujimi_dx_lab_hp")
 }
+
+model BotAccessLog {
+  id        String   @id @default(cuid())
+  botName   String   @map("bot_name")
+  botTier   String   @map("bot_tier")
+  url       String
+  method    String   @default("GET")
+  userAgent String?  @map("user_agent")
+  ipAddress String?  @map("ip_address")
+  referer   String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([botName])
+  @@index([botTier])
+  @@index([url])
+  @@index([createdAt])
+  @@map("bot_access_logs")
+  @@schema("fujimi_dx_lab_hp")
+}
+
+model BotDailyStats {
+  id          String   @id @default(cuid())
+  date        DateTime @db.Date
+  botName     String   @map("bot_name")
+  botTier     String   @map("bot_tier")
+  url         String
+  accessCount Int      @default(0) @map("access_count")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@unique([date, botName, url])
+  @@index([date])
+  @@index([botName])
+  @@index([botTier])
+  @@map("bot_daily_stats")
+  @@schema("fujimi_dx_lab_hp")
+}

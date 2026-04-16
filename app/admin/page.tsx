@@ -30,6 +30,13 @@ const MENU_ITEMS = [
     icon: "💰",
   },
   {
+    href: "/admin/bot-analytics",
+    title: "Bot Analytics",
+    description: "AIボット・検索エンジンのクロール状況",
+    color: "from-purple-400 to-purple-500",
+    icon: "🤖",
+  },
+  {
     href: "/",
     title: "サイトを表示",
     description: "公開サイトのトップページを開く",
