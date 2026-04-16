@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import Anthropic from '@anthropic-ai/sdk'
 import { requireAdmin } from '../../../../../lib/admin-auth'
 import { prisma } from '../../../../../lib/prisma'
-
-const anthropic = new Anthropic()
+import { callClaudeWithLogging } from '../../../../../lib/ai-cost-logger'
 
 export async function GET() {
   const authError = await requireAdmin()
@@ -85,7 +83,8 @@ ${previousContext ? `## 過去のAI分析レポート（比較用）\n${previous
 マークダウン形式で分かりやすく日本語で回答してください。
 数値を引用する際は太字で強調してください。`
 
-    const response = await anthropic.messages.create({
+    const response = await callClaudeWithLogging({
+      feature: 'analytics',
       model: 'claude-sonnet-4-6',
       max_tokens: 4000,
       messages: [{ role: 'user', content: prompt }],

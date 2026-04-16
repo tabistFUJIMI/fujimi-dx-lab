@@ -1,7 +1,5 @@
-import Anthropic from "@anthropic-ai/sdk";
 import type { PageData, JsonLdData, GeoResult, GeoImprovement } from "./types";
-
-const client = new Anthropic();
+import { callClaudeWithLogging } from "../ai-cost-logger";
 
 function buildSystemPrompt(): string {
   const today = new Date().toISOString().slice(0, 10);
@@ -93,11 +91,13 @@ export async function runGeoCheck(
   const userPrompt = buildUserPrompt(page, jsonLdSummary, navLinks);
 
   try {
-    const response = await client.messages.create({
+    const response = await callClaudeWithLogging({
+      feature: "geo-checker",
       model: "claude-haiku-4-5-20251001",
       max_tokens: 2000,
       system: buildSystemPrompt(),
       messages: [{ role: "user", content: userPrompt }],
+      targetUrl: page.url,
     });
 
     const text =

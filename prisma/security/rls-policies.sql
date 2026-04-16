@@ -52,3 +52,15 @@ CREATE POLICY "ga_tokens_all_service_role"
   TO service_role
   USING (true)
   WITH CHECK (true);
+
+-- ■ ai_usage_logs
+ALTER TABLE fujimi_dx_lab_hp.ai_usage_logs ENABLE ROW LEVEL SECURITY;
+ALTER TABLE fujimi_dx_lab_hp.ai_usage_logs FORCE ROW LEVEL SECURITY;
+
+-- service_roleは全操作可能（APIサーバー・管理画面用）
+CREATE POLICY "ai_usage_logs_all_service_role"
+  ON fujimi_dx_lab_hp.ai_usage_logs
+  FOR ALL
+  TO service_role
+  USING (true)
+  WITH CHECK (true);

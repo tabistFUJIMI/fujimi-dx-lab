@@ -23,6 +23,13 @@ const MENU_ITEMS = [
     icon: "📊",
   },
   {
+    href: "/admin/ai-costs",
+    title: "AIコストモニター",
+    description: "AI API使用量・コストの確認",
+    color: "from-violet-400 to-violet-500",
+    icon: "💰",
+  },
+  {
     href: "/",
     title: "サイトを表示",
     description: "公開サイトのトップページを開く",

@@ -377,7 +377,8 @@ export async function checkExternalResources(
 }
 
 // Run all SEO checks
-// Score: Page SEO (40) + Site SEO (20) + GEO Elements (40) = 100
+// Raw Score: Page SEO (40) + Site SEO (20) + GEO Elements (55) = 115
+// Scaled to 100 — making 100 practically unreachable
 export function runSeoChecks(
   page: PageData,
   external: ExternalChecks
@@ -733,6 +734,117 @@ export function runSeoChecks(
     } : undefined,
   });
 
+  // === 追加GEO項目 ===
+
+  // 引用フレンドリーな数値データ (5 points)
+  // AIが引用しやすい具体的な数値・統計データの有無
+  const numberPatterns = page.textContent.match(/\d[\d,.]+\s*(%|円|万|名|件|年|km|m|分|秒|人|室|泊|社|店舗|拠点)/g) || [];
+  const pricePatterns = page.textContent.match(/(¥|￥)\s*[\d,]+/g) || [];
+  const statPatterns = page.textContent.match(/(満足度|実績|創業|設立|導入|利用者|取引先|従業員|資本金|売上).{0,10}\d/g) || [];
+  const totalDataPoints = new Set([...numberPatterns, ...pricePatterns, ...statPatterns]).size;
+  let dataScore = 0;
+  if (totalDataPoints >= 10) dataScore = 5;
+  else if (totalDataPoints >= 5) dataScore = 3;
+  else if (totalDataPoints >= 2) dataScore = 2;
+  else if (totalDataPoints >= 1) dataScore = 1;
+  geoSeo.push({
+    ...item("具体的な数値データ", dataScore, 5,
+      dataScore >= 3 ? "good" : dataScore >= 1 ? "warning" : "bad",
+      totalDataPoints > 0
+        ? `${totalDataPoints}個の数値データを検出（AIが引用しやすい情報です）`
+        : "具体的な数値データが見つかりませんでした"),
+    evidence: "observed",
+    action: dataScore < 3 ? {
+      what: "具体的な数値データを増やしてください。「創業○年」「満足度○%」「○名の実績」「駅から徒歩○分」など。AIは曖昧な表現より、数字のある情報を優先的に引用します。",
+      difficulty: 1,
+      impact: "Princeton大学の研究で、具体的データを含むコンテンツはAI引用率が40%以上向上",
+    } : undefined,
+  });
+
+  // 著者・専門家情報 (4 points)
+  const hasPersonSchema = allSchemaTypes.includes("Person");
+  const hasAuthorMeta = !!page.html.match(/<meta\s+name="author"/i);
+  const hasAuthorText = !!page.textContent.match(/(著者|監修|執筆者|ライター|専門家|プロフィール|代表|CEO|代表取締役)/);
+  const hasAboutPage = !!page.html.match(/href="[^"]*\/about/i) || !!page.html.match(/href="[^"]*\/company/i);
+  let authorScore = 0;
+  if (hasPersonSchema) authorScore += 2;
+  if (hasAuthorMeta || hasAuthorText) authorScore += 1;
+  if (hasAboutPage) authorScore += 1;
+  authorScore = Math.min(4, authorScore);
+  const authorDetails: string[] = [];
+  if (hasPersonSchema) authorDetails.push("Person構造化データあり");
+  if (hasAuthorMeta) authorDetails.push("author metaタグあり");
+  if (hasAuthorText) authorDetails.push("著者・専門家の記載あり");
+  if (hasAboutPage) authorDetails.push("会社概要/About ページへのリンクあり");
+  geoSeo.push({
+    ...item("著者・専門家情報", authorScore, 4,
+      authorScore >= 3 ? "good" : authorScore >= 1 ? "warning" : "bad",
+      authorDetails.length > 0
+        ? authorDetails.join("、")
+        : "著者や専門家に関する情報が見つかりませんでした"),
+    evidence: "confirmed",
+    action: authorScore < 3 ? {
+      what: "コンテンツの著者や監修者の情報を明示してください。「誰が書いたか」はGoogle E-E-A-Tの重要要素であり、AIもこの情報を信頼性の判断に使います。構造化データ（Person）で記述するのが最も効果的です。",
+      difficulty: 1,
+      impact: "E-E-A-Tスコアの向上はGoogleが公式に重視。AIも権威性を引用判断に使用",
+    } : undefined,
+  });
+
+  // 内部リンクの充実度 (3 points)
+  const internalLinks = new Set<string>();
+  const origin = new URL(page.url).origin;
+  const linkMatches = page.html.match(/href="([^"]+)"/g) || [];
+  for (const match of linkMatches) {
+    const href = match.slice(6, -1);
+    if (href.startsWith("/") && !href.startsWith("//")) {
+      internalLinks.add(href.split("#")[0].split("?")[0]);
+    } else if (href.startsWith(origin)) {
+      try {
+        internalLinks.add(new URL(href).pathname);
+      } catch { /* skip */ }
+    }
+  }
+  const uniqueInternalLinks = internalLinks.size;
+  let linkScore = 0;
+  if (uniqueInternalLinks >= 15) linkScore = 3;
+  else if (uniqueInternalLinks >= 8) linkScore = 2;
+  else if (uniqueInternalLinks >= 3) linkScore = 1;
+  geoSeo.push({
+    ...item("内部リンク", linkScore, 3,
+      linkScore >= 2 ? "good" : linkScore >= 1 ? "warning" : "bad",
+      `${uniqueInternalLinks}個のサイト内リンクを検出`),
+    evidence: "confirmed",
+    action: linkScore < 2 ? {
+      what: "サイト内の関連ページへのリンクを増やしてください。AIクローラーはリンクを辿ってサイト全体を理解します。「詳しくはこちら」のような関連ページへの導線が効果的です。",
+      difficulty: 1,
+      impact: "AIクローラーがサイト全体を把握しやすくなり、文脈ある引用がされやすくなります",
+    } : undefined,
+  });
+
+  // Bing対応シグナル (3 points)
+  // ChatGPTはBingベースなので、Bing最適化は重要
+  const hasBingMeta = !!page.html.match(/<meta\s+name="msvalidate\.01"/i);
+  const hasIndexNow = !!page.html.match(/indexnow/i) || BLOG_PATTERNS.some(p => p.test(page.url));
+  // sitemap提出はBing Webmaster Tools経由だが、sitemapの存在自体がシグナル
+  let bingScore = 0;
+  if (hasBingMeta) bingScore += 2;
+  if (external.sitemapExists) bingScore += 1;
+  bingScore = Math.min(3, bingScore);
+  geoSeo.push({
+    ...item("Bing対応", bingScore, 3,
+      bingScore >= 2 ? "good" : bingScore >= 1 ? "warning" : "bad",
+      [
+        hasBingMeta ? "Bing Webmaster認証タグ検出" : "Bing Webmaster認証タグなし",
+        external.sitemapExists ? "sitemap.xmlあり（Bing自動検出可能）" : "",
+      ].filter(Boolean).join("、")),
+    evidence: "confirmed",
+    action: bingScore < 2 ? {
+      what: "Bing Webmaster Toolsに登録してください（無料）。ChatGPTの検索はBingベースなので、Bingに登録されていないとChatGPTの検索結果に表示されません。登録後、認証用のmetaタグをサイトに設置してください。",
+      difficulty: 2,
+      impact: "ChatGPTの検索結果はBingのインデックスに依存。未登録=ChatGPTに見つからない可能性大",
+    } : undefined,
+  });
+
   // Assign evidence levels to GEO items
   const evidenceMap: Record<string, "confirmed" | "observed" | "experimental"> = {
     "構造化データ": "observed",
@@ -742,13 +854,20 @@ export function runSeoChecks(
     "AIクローラーの許可": "confirmed",
     "自己紹介文": "observed",
     "コンテンツの充実度": "confirmed",
+    "具体的な数値データ": "observed",
+    "著者・専門家情報": "confirmed",
+    "内部リンク": "confirmed",
+    "Bing対応": "confirmed",
   };
   for (const g of geoSeo) {
-    g.evidence = evidenceMap[g.name] || "observed";
+    if (!g.evidence) g.evidence = evidenceMap[g.name] || "observed";
   }
 
   const allItems = [...pageSeo, ...siteSeo, ...geoSeo];
-  const totalScore = allItems.reduce((sum, i) => sum + i.score, 0);
+  const rawScore = allItems.reduce((sum, i) => sum + i.score, 0);
+  const maxPossible = allItems.reduce((sum, i) => sum + i.maxScore, 0);
+  // Scale to 100 — raw maxPossible > 100 so perfect score is hard to reach
+  const totalScore = Math.min(100, Math.round((rawScore / maxPossible) * 100));
 
   return { score: totalScore, items: allItems, pageSeo, siteSeo, geoSeo };
 }

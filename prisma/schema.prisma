@@ -87,3 +87,22 @@ model AnalyticsReport {
   @@map("analytics_reports")
   @@schema("fujimi_dx_lab_hp")
 }
+
+model AiUsageLog {
+  id           String   @id @default(cuid())
+  feature      String   // "geo-checker" | "analytics" など機能名
+  model        String   // "claude-haiku-4-5-20251001" etc
+  inputTokens  Int      @map("input_tokens")
+  outputTokens Int      @map("output_tokens")
+  costUsd      Float    @map("cost_usd") // 計算済みUSドルコスト
+  targetUrl    String?  @map("target_url") // チェッカーの場合は対象URL
+  durationMs   Int?     @map("duration_ms") // API応答時間
+  success      Boolean  @default(true)
+  errorMessage String?  @map("error_message")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@index([feature])
+  @@index([createdAt])
+  @@map("ai_usage_logs")
+  @@schema("fujimi_dx_lab_hp")
+}
