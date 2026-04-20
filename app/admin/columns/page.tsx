@@ -16,15 +16,15 @@ type Column = {
   createdAt: string;
 };
 
-const CATEGORIES = [
-  { value: "basics", label: "基礎知識", color: "bg-blue-100 text-blue-700" },
-  { value: "ai-strategy", label: "AI別対策", color: "bg-purple-100 text-purple-700" },
-  { value: "practice", label: "実践ガイド", color: "bg-emerald-100 text-emerald-700" },
-  { value: "case-study", label: "事例", color: "bg-amber-100 text-amber-700" },
-];
+// コラムカテゴリーは lib/column-categories.ts で単一ソース管理。
+// 管理画面もそこから参照することでラベル/色/値を公開側と完全一致させる。
+import { COLUMN_CATEGORIES, resolveCategory } from "../../../lib/column-categories";
+
+const CATEGORIES = COLUMN_CATEGORIES;
 
 function getCategoryStyle(cat: string) {
-  return CATEGORIES.find((c) => c.value === cat) || CATEGORIES[0];
+  const resolved = resolveCategory(cat);
+  return CATEGORIES.find((c) => c.value === resolved) || CATEGORIES[0];
 }
 
 export default function ColumnsAdmin() {
@@ -37,7 +37,7 @@ export default function ColumnsAdmin() {
   const [slug, setSlug] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [category, setCategory] = useState("basics");
+  const [category, setCategory] = useState("ai-geo-llmo");
   const [tagsInput, setTagsInput] = useState("");
   const [isPublished, setIsPublished] = useState(false);
 
@@ -66,7 +66,7 @@ export default function ColumnsAdmin() {
     setSlug("");
     setTitle("");
     setContent("");
-    setCategory("basics");
+    setCategory("ai-geo-llmo");
     setTagsInput("");
     setIsPublished(false);
     setEditingItem(null);
@@ -148,7 +148,9 @@ export default function ColumnsAdmin() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold">コラム管理</h1>
-          <p className="text-sm text-gray-500">GEO/LLMO対策コラムの管理</p>
+          <p className="text-sm text-gray-500">
+            AI検索/DX推進/時事IT/地方ビジネス コラムの管理
+          </p>
         </div>
         <div className="flex gap-2">
           <Link

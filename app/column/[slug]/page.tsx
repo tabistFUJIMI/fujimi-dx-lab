@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { prisma } from "../../../lib/prisma";
+import { markdownToHtml } from "../../../lib/markdown";
+import {
+  CATEGORY_COLOR_MAP,
+  CATEGORY_LABEL_MAP,
+  resolveCategory,
+} from "../../../lib/column-categories";
+import { BASE_URL } from "../../../lib/base-url";
 
 export const dynamic = "force-dynamic";
 
@@ -28,71 +35,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const categoryLabels: Record<string, string> = {
-  basics: "基礎知識",
-  "ai-strategy": "AI別対策",
-  practice: "実践ガイド",
-  "case-study": "事例",
-};
-
-const categoryColors: Record<string, string> = {
-  basics: "bg-blue-100 text-blue-700",
-  "ai-strategy": "bg-purple-100 text-purple-700",
-  practice: "bg-emerald-100 text-emerald-700",
-  "case-study": "bg-amber-100 text-amber-700",
-};
-
-// Simple Markdown to HTML converter (headings, bold, lists, links, paragraphs)
-function markdownToHtml(md: string): string {
-  return md
-    .split("\n\n")
-    .map((block) => {
-      const trimmed = block.trim();
-      if (!trimmed) return "";
-      // Headings
-      if (trimmed.startsWith("### ")) return `<h3>${inline(trimmed.slice(4))}</h3>`;
-      if (trimmed.startsWith("## ")) return `<h2>${inline(trimmed.slice(3))}</h2>`;
-      if (trimmed.startsWith("# ")) return `<h1>${inline(trimmed.slice(2))}</h1>`;
-      // Unordered list
-      if (trimmed.match(/^[-*] /m)) {
-        const items = trimmed.split("\n").filter((l) => l.match(/^[-*] /));
-        return `<ul>${items.map((l) => `<li>${inline(l.replace(/^[-*] /, ""))}</li>`).join("")}</ul>`;
-      }
-      // Ordered list
-      if (trimmed.match(/^\d+\. /m)) {
-        const items = trimmed.split("\n").filter((l) => l.match(/^\d+\. /));
-        return `<ol>${items.map((l) => `<li>${inline(l.replace(/^\d+\. /, ""))}</li>`).join("")}</ol>`;
-      }
-      // Table
-      if (trimmed.includes("|") && trimmed.includes("---")) {
-        const rows = trimmed.split("\n").filter((l) => l.includes("|") && !l.match(/^\|[\s-|]+\|$/));
-        if (rows.length >= 1) {
-          const headerCells = rows[0].split("|").filter(Boolean).map((c) => c.trim());
-          const bodyRows = rows.slice(1);
-          const thead = `<thead><tr>${headerCells.map((c) => `<th>${inline(c)}</th>`).join("")}</tr></thead>`;
-          const tbody = bodyRows.length > 0
-            ? `<tbody>${bodyRows.map((r) => `<tr>${r.split("|").filter(Boolean).map((c) => `<td>${inline(c.trim())}</td>`).join("")}</tr>`).join("")}</tbody>`
-            : "";
-          return `<table>${thead}${tbody}</table>`;
-        }
-      }
-      // Blockquote
-      if (trimmed.startsWith("> ")) {
-        return `<blockquote>${inline(trimmed.replace(/^> /gm, ""))}</blockquote>`;
-      }
-      return `<p>${inline(trimmed)}</p>`;
-    })
-    .join("\n");
-}
-
-function inline(text: string): string {
-  return text
-    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-    .replace(/\*(.+?)\*/g, "<em>$1</em>")
-    .replace(/`(.+?)`/g, "<code>$1</code>")
-    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
-}
-
 export default async function ColumnArticlePage({ params }: Props) {
   const { slug } = await params;
   const article = await prisma.column.findUnique({ where: { slug } });
@@ -104,6 +46,8 @@ export default async function ColumnArticlePage({ params }: Props) {
     ? new Date(article.publishedAt).toISOString().slice(0, 10)
     : null;
 
+  const resolvedCategory = resolveCategory(article.category);
+
   // JSON-LD Article
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -112,9 +56,9 @@ export default async function ColumnArticlePage({ params }: Props) {
     description: article.excerpt,
     datePublished: article.publishedAt?.toISOString(),
     dateModified: article.updatedAt.toISOString(),
-    author: { "@type": "Organization", name: "FUJIMI DX Lab", url: "https://fujimi-dx-lab.com" },
-    publisher: { "@type": "Organization", name: "FUJIMI DX Lab", url: "https://fujimi-dx-lab.com" },
-    mainEntityOfPage: `https://fujimi-dx-lab.com/column/${article.slug}`,
+    author: { "@type": "Organization", name: "FUJIMI DX Lab", url: BASE_URL },
+    publisher: { "@type": "Organization", name: "FUJIMI DX Lab", url: BASE_URL },
+    mainEntityOfPage: `${BASE_URL}/column/${article.slug}`,
   };
 
   return (
@@ -130,8 +74,12 @@ export default async function ColumnArticlePage({ params }: Props) {
             </Link>
           </div>
           <div className="flex items-center gap-3 mb-3">
-            <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${categoryColors[article.category] || "bg-gray-100 text-gray-700"}`}>
-              {categoryLabels[article.category] || article.category}
+            <span
+              className={`text-xs px-2.5 py-1 rounded-full font-medium ${
+                CATEGORY_COLOR_MAP[resolvedCategory] || "bg-gray-100 text-gray-700"
+              }`}
+            >
+              {CATEGORY_LABEL_MAP[resolvedCategory] || resolvedCategory}
             </span>
             {publishDate && <time className="text-xs text-[#737686]">{publishDate}</time>}
           </div>
