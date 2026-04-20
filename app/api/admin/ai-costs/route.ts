@@ -7,10 +7,12 @@ export async function GET(request: NextRequest) {
   if (authError) return authError;
 
   const searchParams = request.nextUrl.searchParams;
-  const days = parseInt(searchParams.get("days") || "30", 10);
+  const rawDays = parseInt(searchParams.get("days") || "30", 10);
+  // 不正値・負数は 30 にフォールバック、上限 3650（約10年）
+  const days = Number.isFinite(rawDays) && rawDays >= 1 && rawDays <= 3650 ? rawDays : 30;
 
-  const since = new Date();
-  since.setDate(since.getDate() - days);
+  // サーバーのタイムゾーンに依存しない日数計算（ミリ秒単位）
+  const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
 
   // 全ログ取得（期間内）
   const logs = await prisma.aiUsageLog.findMany({

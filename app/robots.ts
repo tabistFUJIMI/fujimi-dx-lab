@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { BASE_URL } from "../lib/base-url";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -45,6 +46,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/admin/", "/login"],
       },
     ],
-    sitemap: "https://fujimi-dx-lab.com/sitemap.xml",
+    sitemap: `${BASE_URL}/sitemap.xml`,
   };
 }

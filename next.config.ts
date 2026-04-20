@@ -22,6 +22,10 @@ const nextConfig: NextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           {
             key: "Content-Security-Policy",
+            // TODO: script-src の 'unsafe-inline' を nonce 方式に置き換える。
+            //   現状は Google Tag Manager のインラインスクリプトを許可するため残している。
+            //   対応時は proxy.ts (Next.js middleware) で per-request nonce を生成し、
+            //   layout.tsx の <Script> / next/script に nonce prop を渡す必要がある。
             value: [
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://ask-navi.fujimin-pass.com",

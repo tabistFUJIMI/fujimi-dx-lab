@@ -102,8 +102,11 @@ ${previousContext ? `## 過去のAI分析レポート（比較用）\n${previous
     })
 
     return NextResponse.json({ analysis: text, reportId: report.id })
-  } catch (e: any) {
-    console.error('AI Analysis error:', e)
-    return NextResponse.json({ error: e.message }, { status: 500 })
+  } catch (e) {
+    const message = e instanceof Error ? e.message : String(e)
+    console.error('AI Analysis error:', message)
+    const userMessage =
+      process.env.NODE_ENV === 'production' ? '分析中にエラーが発生しました' : message
+    return NextResponse.json({ error: userMessage }, { status: 500 })
   }
 }

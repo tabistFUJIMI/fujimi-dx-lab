@@ -30,8 +30,33 @@ export async function PUT(
     const existing = await prisma.announcement.findUnique({ where: { id } });
     if (!existing) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
+    // eventDate の妥当性検証（不正な日付文字列で Invalid Date を保存しないため）
+    let resolvedEventDate: Date | null | undefined;
+    if (eventDate === undefined) {
+      resolvedEventDate = existing.eventDate;
+    } else if (eventDate === null || eventDate === "") {
+      resolvedEventDate = null;
+    } else {
+      const d = new Date(eventDate);
+      if (Number.isNaN(d.getTime())) {
+        return NextResponse.json({ error: "eventDate の形式が不正です" }, { status: 400 });
+      }
+      resolvedEventDate = d;
+    }
+
     const excerpt = content
-      ? content.replace(/<[^>]*>/g, "").slice(0, 100)
+      ? content
+          .replace(/<[^>]*>/g, " ")
+          .replace(/!\[[^\]]*\]\([^)]+\)/g, " ")
+          .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+          .replace(/^#{1,6}\s+/gm, "")
+          .replace(/(\*\*|__)(.*?)\1/g, "$2")
+          .replace(/(\*|_)(.*?)\1/g, "$2")
+          .replace(/`{1,3}([^`]+)`{1,3}/g, "$1")
+          .replace(/^\s*[-*+>]\s+/gm, "")
+          .replace(/\s+/g, " ")
+          .trim()
+          .slice(0, 100)
       : existing.excerpt;
 
     // 新たに公開する場合のみ publishedAt を設定
@@ -45,7 +70,7 @@ export async function PUT(
         content: content ?? existing.content,
         excerpt,
         category: category ?? existing.category,
-        eventDate: eventDate !== undefined ? (eventDate ? new Date(eventDate) : null) : existing.eventDate,
+        eventDate: resolvedEventDate,
         isPublished: isPublished ?? existing.isPublished,
         publishedAt,
       },

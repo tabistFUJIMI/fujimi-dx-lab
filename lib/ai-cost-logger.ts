@@ -59,7 +59,10 @@ export async function callClaudeWithLogging(params: {
             error instanceof Error ? error.message : String(error),
         },
       })
-      .catch(() => {});
+      .catch((logErr) => {
+        // DB書き込みが失敗してもメイン処理をブロックしないが、観測できるようにログは残す
+        console.error("[ai-cost-logger] failed to record error log:", logErr);
+      });
     throw error;
   }
 

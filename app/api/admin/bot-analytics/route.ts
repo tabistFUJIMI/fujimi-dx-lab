@@ -11,7 +11,15 @@ export async function GET(req: NextRequest) {
   const tier = searchParams.get("tier") || "all";
   const format = searchParams.get("format");
 
-  const days = period === "all" ? 3650 : parseInt(period) || 30;
+  // period は "all" または正の整数（日数）を想定。
+  // 不正値は NaN や負数になり、setDate() が無限値になる可能性があるので厳密に検証。
+  let days: number;
+  if (period === "all") {
+    days = 3650;
+  } else {
+    const parsed = parseInt(period, 10);
+    days = Number.isFinite(parsed) && parsed >= 1 && parsed <= 3650 ? parsed : 30;
+  }
   const since = new Date();
   since.setDate(since.getDate() - days);
   since.setHours(0, 0, 0, 0);

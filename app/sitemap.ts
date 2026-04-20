@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "../lib/prisma";
-
-const BASE_URL = "https://fujimi-dx-lab.com";
+import { BASE_URL } from "../lib/base-url";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [

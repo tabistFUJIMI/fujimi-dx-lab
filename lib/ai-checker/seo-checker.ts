@@ -356,12 +356,23 @@ export async function checkExternalResources(
   const aiCrawlersBlocked: string[] = [];
   if (robotsRes.status === "fulfilled" && robotsRes.value.ok) {
     const robotsText = robotsRes.value.text;
+    // robots.txtを「User-agent:」行ごとのブロックに分割して判定する。
+    // 以前は [\\s\\S]*? の lazy match が User-agent ブロックを跨いで他ブロックの
+    // `Disallow: /api/` 等を拾い、全AIクローラーを誤ブロック判定する問題があった。
+    const blocks = robotsText.split(/^(?=User-agent:)/im);
     for (const crawler of AI_CRAWLERS) {
-      const pattern = new RegExp(
-        `User-agent:\\s*${crawler}[\\s\\S]*?Disallow:\\s*/`,
-        "i"
+      const targetBlock = blocks.find((b) =>
+        new RegExp(`^User-agent:\\s*${crawler}\\s*$`, "im").test(b)
       );
-      if (pattern.test(robotsText)) {
+      if (!targetBlock) continue;
+
+      // ブロック内に `Disallow: /` (行全体がDisallow: /のみ) があるかを行単位で判定
+      const lines = targetBlock.split(/\r?\n/);
+      const isFullBlock = lines.some((line) => {
+        const trimmed = line.trim();
+        return /^Disallow:\s*\/\s*$/i.test(trimmed);
+      });
+      if (isFullBlock) {
         aiCrawlersBlocked.push(crawler);
       }
     }
