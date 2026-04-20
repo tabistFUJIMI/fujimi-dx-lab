@@ -1,24 +1,37 @@
 /**
  * Simple Markdown to HTML converter。
- * 見出し / 段落 / リスト / 順序付きリスト / テーブル / 引用 / インライン（**bold** *em* `code` [text](url)）に対応。
+ * 見出し / 段落 / リスト / 順序付きリスト / テーブル / 引用 /
+ * 水平線 / コードブロック / 画像 / コールアウト /
+ * インライン（**bold** *em* `code` [text](url) ![alt](url)）
  *
  * column と guides で同一レンダラを使うため lib に共通化。
  */
 
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 function inline(text: string): string {
-  return text
-    // 画像は先に処理（リンク [text](url) より前）
-    .replace(
-      /!\[([^\]]*)\]\(([^)]+)\)/g,
-      '<img src="$2" alt="$1" loading="lazy" class="rounded-2xl my-6 w-full border border-neutral-200" />'
-    )
-    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-    .replace(/\*(.+?)\*/g, "<em>$1</em>")
-    .replace(/`(.+?)`/g, "<code>$1</code>")
-    .replace(
-      /\[(.+?)\]\((.+?)\)/g,
-      '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
-    );
+  return (
+    text
+      // 画像は先に処理（リンク [text](url) より前）
+      .replace(
+        /!\[([^\]]*)\]\(([^)]+)\)/g,
+        '<img src="$2" alt="$1" loading="lazy" class="rounded-2xl my-6 w-full border border-neutral-200" />'
+      )
+      .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+      .replace(/\*(.+?)\*/g, "<em>$1</em>")
+      .replace(/`(.+?)`/g, "<code>$1</code>")
+      .replace(
+        /\[(.+?)\]\((.+?)\)/g,
+        '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
+      )
+  );
 }
 
 export function markdownToHtml(md: string): string {
@@ -27,6 +40,18 @@ export function markdownToHtml(md: string): string {
     .map((block) => {
       const trimmed = block.trim();
       if (!trimmed) return "";
+
+      // 水平線（--- / *** / ___ を単独行で）
+      if (/^(-{3,}|\*{3,}|_{3,})$/.test(trimmed)) {
+        return '<hr class="my-10 border-0 border-t border-neutral-200" />';
+      }
+
+      // コードブロック（```lang ... ``` または ``` ... ```）
+      const codeBlockMatch = trimmed.match(/^```(\w+)?\s*\n([\s\S]*?)\n```$/);
+      if (codeBlockMatch) {
+        const [, , code] = codeBlockMatch;
+        return `<pre class="bg-neutral-900 text-neutral-100 p-4 rounded-xl overflow-x-auto text-sm my-5 not-prose"><code>${escapeHtml(code)}</code></pre>`;
+      }
 
       // Headings
       if (trimmed.startsWith("### ")) return `<h3>${inline(trimmed.slice(4))}</h3>`;
@@ -49,7 +74,7 @@ export function markdownToHtml(md: string): string {
           .join("")}</ol>`;
       }
 
-      // Table
+      // Table（モバイルでも横スクロールできるようラッパを付ける）
       if (trimmed.includes("|") && trimmed.includes("---")) {
         const rows = trimmed
           .split("\n")
@@ -76,7 +101,7 @@ export function markdownToHtml(md: string): string {
                   )
                   .join("")}</tbody>`
               : "";
-          return `<table>${thead}${tbody}</table>`;
+          return `<div class="my-6 -mx-4 sm:mx-0 overflow-x-auto not-prose"><table class="min-w-full text-sm border border-neutral-200 rounded-xl overflow-hidden"><thead class="bg-neutral-50">${thead.replace("<thead>", "").replace("</thead>", "")}</thead><tbody class="bg-white">${tbody.replace("<tbody>", "").replace("</tbody>", "")}</tbody></table></div>`;
         }
       }
 
@@ -84,21 +109,22 @@ export function markdownToHtml(md: string): string {
       const calloutMatch = trimmed.match(/^:::(info|warning|success|tip)\s*\n([\s\S]+?)\n:::$/);
       if (calloutMatch) {
         const [, variant, body] = calloutMatch;
-        const styles: Record<string, { bg: string; border: string; icon: string; label: string }> = {
+        const styles: Record<
+          string,
+          { bg: string; border: string; icon: string; label: string }
+        > = {
           info: { bg: "bg-blue-50", border: "border-blue-400", icon: "💡", label: "ポイント" },
           warning: { bg: "bg-amber-50", border: "border-amber-400", icon: "⚠️", label: "注意" },
           success: { bg: "bg-emerald-50", border: "border-emerald-400", icon: "✅", label: "うまくいったサイン" },
           tip: { bg: "bg-violet-50", border: "border-violet-400", icon: "💬", label: "ひとこと" },
         };
         const s = styles[variant];
-        return `<div class="${s.bg} border-l-4 ${s.border} px-5 py-4 my-5 rounded-r-xl not-prose"><div class="flex items-start gap-2"><span class="text-xl">${s.icon}</span><div><div class="text-xs font-bold text-neutral-700 mb-1">${s.label}</div><div class="text-sm text-neutral-700 leading-relaxed">${inline(body)}</div></div></div></div>`;
+        return `<div class="${s.bg} border-l-4 ${s.border} px-5 py-4 my-6 rounded-r-xl not-prose"><div class="flex items-start gap-3"><span class="text-xl leading-none pt-0.5">${s.icon}</span><div class="flex-1"><div class="text-xs font-bold text-neutral-700 mb-1.5 tracking-wide">${s.label}</div><div class="text-sm text-neutral-700 leading-relaxed">${inline(body)}</div></div></div></div>`;
       }
 
       // Blockquote
       if (trimmed.startsWith("> ")) {
-        return `<blockquote>${inline(
-          trimmed.replace(/^> /gm, "")
-        )}</blockquote>`;
+        return `<blockquote>${inline(trimmed.replace(/^> /gm, ""))}</blockquote>`;
       }
 
       // 単独画像（1行で !alt(url) のみ）は段落ラッパーなしでそのまま

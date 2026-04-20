@@ -68,50 +68,51 @@ export default async function GuideArticlePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
       />
 
-      <article className="max-w-3xl mx-auto px-4 py-12">
+      <article className="max-w-2xl mx-auto px-5 sm:px-6 py-10 sm:py-14">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 mb-6 text-sm">
+        <nav className="flex items-center gap-2 mb-6 text-xs sm:text-sm text-[#737686]">
           <Link href="/guides" className="text-[#004ac6] hover:underline">
             使い方ガイド
           </Link>
-          <span className="text-[#737686]">/</span>
-          <Link
-            href={`/guides/${product}`}
-            className="text-[#004ac6] hover:underline"
-          >
+          <span>/</span>
+          <Link href={`/guides/${product}`} className="text-[#004ac6] hover:underline">
             {guide.productLabel}
           </Link>
-        </div>
+        </nav>
 
         {/* Header */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-[#191b23] leading-tight mb-3">
-          {guide.title}
-        </h1>
-        {guide.description && (
-          <p className="text-[#434655] leading-relaxed mb-4">
-            {guide.description}
-          </p>
-        )}
-        {guide.updatedAt && (
-          <p className="text-xs text-[#737686] mb-10">
-            最終更新: {guide.updatedAt}
-          </p>
-        )}
+        <header className="mb-8 pb-6 border-b border-neutral-200">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#191b23] leading-tight tracking-tight mb-3">
+            {guide.title}
+          </h1>
+          {guide.description && (
+            <p className="text-[15px] sm:text-base text-[#434655] leading-[1.9]">
+              {guide.description}
+            </p>
+          )}
+          {guide.updatedAt && (
+            <p className="text-xs text-[#737686] mt-4">
+              最終更新: {guide.updatedAt}
+            </p>
+          )}
+        </header>
 
         {/* Content */}
         <div
-          className="prose prose-lg max-w-none
-            prose-headings:text-[#191b23] prose-headings:font-bold
-            prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:pb-2 prose-h2:border-b prose-h2:border-[#e1e2ed]
-            prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-            prose-p:text-[#434655] prose-p:leading-relaxed prose-p:mb-4
-            prose-a:text-[#004ac6] prose-a:no-underline hover:prose-a:underline
-            prose-strong:text-[#191b23]
-            prose-li:text-[#434655]
-            prose-table:text-sm prose-th:bg-[#f3f3fe] prose-th:px-4 prose-th:py-2 prose-th:text-left
-            prose-td:px-4 prose-td:py-2 prose-td:border-t prose-td:border-[#e1e2ed]
-            prose-blockquote:border-l-4 prose-blockquote:border-[#004ac6] prose-blockquote:bg-[#f3f3fe] prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-r-xl
-            prose-code:bg-[#f3f3fe] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm"
+          className="guide-prose text-[#2a2c38]
+            [&>h2]:text-xl sm:[&>h2]:text-[22px] [&>h2]:font-bold [&>h2]:text-[#191b23] [&>h2]:mt-14 [&>h2]:mb-5 [&>h2]:pb-2 [&>h2]:border-b [&>h2]:border-neutral-200 [&>h2]:leading-snug [&>h2]:tracking-tight
+            [&>h3]:text-lg [&>h3]:font-bold [&>h3]:text-[#191b23] [&>h3]:mt-10 [&>h3]:mb-3 [&>h3]:leading-snug
+            [&>p]:text-[15px] sm:[&>p]:text-base [&>p]:text-[#2a2c38] [&>p]:leading-[1.95] [&>p]:my-4
+            [&_a]:text-[#004ac6] [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-[#004ac6]/30 hover:[&_a]:decoration-[#004ac6]
+            [&_strong]:text-[#191b23] [&_strong]:font-semibold
+            [&_code]:bg-neutral-100 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-[13px] [&_code]:text-[#c41e3a] [&_code]:font-mono
+            [&>ul]:my-5 [&>ul]:space-y-2 [&>ul]:pl-5 [&>ul>li]:list-disc [&>ul>li]:marker:text-[#004ac6] [&>ul>li]:text-[15px] sm:[&>ul>li]:text-base [&>ul>li]:leading-[1.85] [&>ul>li]:text-[#2a2c38]
+            [&>ol]:my-5 [&>ol]:space-y-2 [&>ol]:pl-5 [&>ol>li]:list-decimal [&>ol>li]:marker:text-[#004ac6] [&>ol>li]:marker:font-bold [&>ol>li]:text-[15px] sm:[&>ol>li]:text-base [&>ol>li]:leading-[1.85] [&>ol>li]:text-[#2a2c38] [&>ol>li]:pl-1
+            [&>blockquote]:border-l-4 [&>blockquote]:border-[#004ac6] [&>blockquote]:bg-[#f3f3fe] [&>blockquote]:px-5 [&>blockquote]:py-4 [&>blockquote]:my-6 [&>blockquote]:rounded-r-xl [&>blockquote]:text-[#434655] [&>blockquote]:italic
+            [&_table]:w-full [&_table]:text-sm
+            [&_thead_th]:px-4 [&_thead_th]:py-3 [&_thead_th]:text-left [&_thead_th]:font-semibold [&_thead_th]:text-[#191b23] [&_thead_th]:border-b [&_thead_th]:border-neutral-200
+            [&_tbody_td]:px-4 [&_tbody_td]:py-3 [&_tbody_td]:align-top [&_tbody_td]:border-b [&_tbody_td]:border-neutral-100 [&_tbody_td]:text-[#2a2c38]
+            [&_tbody_tr:hover]:bg-neutral-50/50"
           dangerouslySetInnerHTML={{ __html: htmlContent }}
         />
 
