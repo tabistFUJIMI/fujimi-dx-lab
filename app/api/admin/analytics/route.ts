@@ -1,17 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { google } from 'googleapis'
+import { google, analyticsdata_v1beta } from 'googleapis'
 import { requireAdmin } from '../../../../lib/admin-auth'
 import { getAuthenticatedClient } from '../../../../lib/ga-auth'
 
 const PROPERTY_ID = process.env.GA_PROPERTY_ID || ''
 
-async function runReport(analyticsData: any, params: {
-  dateRanges: { startDate: string; endDate: string }[]
-  dimensions?: { name: string }[]
-  metrics: { name: string }[]
-  orderBys?: any[]
-  limit?: number
-}) {
+// GA Data API Beta クライアント型（googleapis が提供）
+type AnalyticsDataClient = analyticsdata_v1beta.Analyticsdata
+type RunReportResponse = analyticsdata_v1beta.Schema$RunReportResponse
+type RunReportRequest = analyticsdata_v1beta.Schema$RunReportRequest
+type ReportRow = analyticsdata_v1beta.Schema$Row
+
+async function runReport(
+  analyticsData: AnalyticsDataClient,
+  params: Omit<RunReportRequest, 'property'>
+): Promise<RunReportResponse> {
   const res = await analyticsData.properties.runReport({
     property: `properties/${PROPERTY_ID}`,
     requestBody: params,
@@ -19,10 +22,10 @@ async function runReport(analyticsData: any, params: {
   return res.data
 }
 
-function parseRows(data: any, dimCount: number) {
-  return (data.rows || []).map((row: any) => ({
+function parseRows(data: RunReportResponse, dimCount: number) {
+  return (data.rows || []).map((row: ReportRow) => ({
     dims: Array.from({ length: dimCount }, (_, i) => row.dimensionValues?.[i]?.value || ''),
-    vals: (row.metricValues || []).map((v: any) => v.value || '0'),
+    vals: (row.metricValues || []).map((v) => v.value || '0'),
   }))
 }
 
@@ -73,7 +76,7 @@ export async function GET(request: NextRequest) {
           { name: 'bounceRate' },
         ],
         orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }],
-        limit: 20,
+        limit: "20",
       }),
       // 流入元
       runReport(analyticsData, {
@@ -81,7 +84,7 @@ export async function GET(request: NextRequest) {
         dimensions: [{ name: 'sessionDefaultChannelGroup' }],
         metrics: [{ name: 'sessions' }, { name: 'activeUsers' }, { name: 'engagedSessions' }],
         orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],
-        limit: 10,
+        limit: "10",
       }),
       // デバイス
       runReport(analyticsData, {
@@ -95,7 +98,7 @@ export async function GET(request: NextRequest) {
         dimensions: [{ name: 'country' }],
         metrics: [{ name: 'sessions' }, { name: 'activeUsers' }],
         orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],
-        limit: 15,
+        limit: "15",
       }),
       // 都市別
       runReport(analyticsData, {
@@ -103,7 +106,7 @@ export async function GET(request: NextRequest) {
         dimensions: [{ name: 'city' }, { name: 'country' }],
         metrics: [{ name: 'sessions' }, { name: 'activeUsers' }],
         orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],
-        limit: 15,
+        limit: "15",
       }),
       // ブラウザ
       runReport(analyticsData, {
@@ -111,7 +114,7 @@ export async function GET(request: NextRequest) {
         dimensions: [{ name: 'browser' }],
         metrics: [{ name: 'sessions' }, { name: 'activeUsers' }],
         orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],
-        limit: 10,
+        limit: "10",
       }),
       // OS
       runReport(analyticsData, {
@@ -119,7 +122,7 @@ export async function GET(request: NextRequest) {
         dimensions: [{ name: 'operatingSystem' }],
         metrics: [{ name: 'sessions' }, { name: 'activeUsers' }],
         orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],
-        limit: 10,
+        limit: "10",
       }),
       // ランディングページ
       runReport(analyticsData, {
@@ -127,7 +130,7 @@ export async function GET(request: NextRequest) {
         dimensions: [{ name: 'landingPagePlusQueryString' }],
         metrics: [{ name: 'sessions' }, { name: 'bounceRate' }, { name: 'averageSessionDuration' }],
         orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],
-        limit: 10,
+        limit: "10",
       }),
       // 時間帯別
       runReport(analyticsData, {
@@ -160,7 +163,7 @@ export async function GET(request: NextRequest) {
         dimensions: [{ name: 'eventName' }],
         metrics: [{ name: 'eventCount' }, { name: 'totalUsers' }],
         orderBys: [{ metric: { metricName: 'eventCount' }, desc: true }],
-        limit: 20,
+        limit: "20",
       }),
       // ユーザー属性（年齢x性別）
       runReport(analyticsData, {
@@ -168,7 +171,7 @@ export async function GET(request: NextRequest) {
         dimensions: [{ name: 'userAgeBracket' }, { name: 'userGender' }],
         metrics: [{ name: 'activeUsers' }, { name: 'sessions' }],
         orderBys: [{ metric: { metricName: 'activeUsers' }, desc: true }],
-        limit: 20,
+        limit: "20",
       }),
       // ページ遷移経路
       runReport(analyticsData, {
@@ -176,7 +179,7 @@ export async function GET(request: NextRequest) {
         dimensions: [{ name: 'pageReferrer' }, { name: 'pagePath' }],
         metrics: [{ name: 'screenPageViews' }],
         orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }],
-        limit: 20,
+        limit: "20",
       }),
     ])
 
@@ -193,48 +196,48 @@ export async function GET(request: NextRequest) {
       eventCount: parseInt(ov?.metricValues?.[8]?.value || '0'),
     }
 
-    const pagesData = parseRows(pages, 2).map((r: any) => ({
+    const pagesData = parseRows(pages, 2).map((r) => ({
       path: r.dims[0], title: r.dims[1],
       views: parseInt(r.vals[0]), users: parseInt(r.vals[1]),
       avgDuration: parseFloat(r.vals[2]), bounceRate: parseFloat(r.vals[3]),
     }))
 
-    const sourcesData = parseRows(sources, 1).map((r: any) => ({
+    const sourcesData = parseRows(sources, 1).map((r) => ({
       channel: r.dims[0], sessions: parseInt(r.vals[0]),
       users: parseInt(r.vals[1]), engagedSessions: parseInt(r.vals[2]),
     }))
 
-    const devicesData = parseRows(devices, 1).map((r: any) => ({
+    const devicesData = parseRows(devices, 1).map((r) => ({
       device: r.dims[0], sessions: parseInt(r.vals[0]), users: parseInt(r.vals[1]),
     }))
 
-    const countriesData = parseRows(countries, 1).map((r: any) => ({
+    const countriesData = parseRows(countries, 1).map((r) => ({
       country: r.dims[0], sessions: parseInt(r.vals[0]), users: parseInt(r.vals[1]),
     }))
 
-    const citiesData = parseRows(cities, 2).map((r: any) => ({
+    const citiesData = parseRows(cities, 2).map((r) => ({
       city: r.dims[0], country: r.dims[1],
       sessions: parseInt(r.vals[0]), users: parseInt(r.vals[1]),
     }))
 
-    const browsersData = parseRows(browsers, 1).map((r: any) => ({
+    const browsersData = parseRows(browsers, 1).map((r) => ({
       browser: r.dims[0], sessions: parseInt(r.vals[0]), users: parseInt(r.vals[1]),
     }))
 
-    const osData = parseRows(os, 1).map((r: any) => ({
+    const osData = parseRows(os, 1).map((r) => ({
       os: r.dims[0], sessions: parseInt(r.vals[0]), users: parseInt(r.vals[1]),
     }))
 
-    const landingData = parseRows(landing, 1).map((r: any) => ({
+    const landingData = parseRows(landing, 1).map((r) => ({
       page: r.dims[0], sessions: parseInt(r.vals[0]),
       bounceRate: parseFloat(r.vals[1]), avgDuration: parseFloat(r.vals[2]),
     }))
 
-    const hourlyData = parseRows(hourly, 1).map((r: any) => ({
+    const hourlyData = parseRows(hourly, 1).map((r) => ({
       hour: parseInt(r.dims[0]), users: parseInt(r.vals[0]), sessions: parseInt(r.vals[1]),
     }))
 
-    const dailyData = parseRows(daily, 1).map((r: any) => {
+    const dailyData = parseRows(daily, 1).map((r) => {
       const d = r.dims[0]
       return {
         date: `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}`,
@@ -243,21 +246,21 @@ export async function GET(request: NextRequest) {
       }
     })
 
-    const userTypeData = parseRows(userType, 1).map((r: any) => ({
+    const userTypeData = parseRows(userType, 1).map((r) => ({
       type: r.dims[0], sessions: parseInt(r.vals[0]),
       users: parseInt(r.vals[1]), avgDuration: parseFloat(r.vals[2]),
     }))
 
-    const eventsData = parseRows(events, 1).map((r: any) => ({
+    const eventsData = parseRows(events, 1).map((r) => ({
       name: r.dims[0], count: parseInt(r.vals[0]), users: parseInt(r.vals[1]),
     }))
 
-    const ageGenderData = parseRows(ageGender, 2).map((r: any) => ({
+    const ageGenderData = parseRows(ageGender, 2).map((r) => ({
       age: r.dims[0], gender: r.dims[1],
       users: parseInt(r.vals[0]), sessions: parseInt(r.vals[1]),
     }))
 
-    const pageFlowData = parseRows(pageFlow, 2).map((r: any) => ({
+    const pageFlowData = parseRows(pageFlow, 2).map((r) => ({
       from: r.dims[0], to: r.dims[1], views: parseInt(r.vals[0]),
     }))
 

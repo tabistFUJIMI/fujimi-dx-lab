@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { google } from 'googleapis'
+import { google, searchconsole_v1 } from 'googleapis'
 import { requireAdmin } from '../../../../../lib/admin-auth'
 import { getAuthenticatedClient } from '../../../../../lib/ga-auth'
+
+type SearchAnalyticsRow = searchconsole_v1.Schema$ApiDataRow
 
 const SITE_URL = process.env.SEARCH_CONSOLE_SITE_URL || 'https://fujimi-dx-lab.com'
 
@@ -85,7 +87,7 @@ export async function GET(request: NextRequest) {
       }),
     ])
 
-    const mapRow = (row: any) => ({
+    const mapRow = (row: SearchAnalyticsRow) => ({
       clicks: row.clicks || 0,
       impressions: row.impressions || 0,
       ctr: row.ctr || 0,
