@@ -3,13 +3,14 @@ import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FadeIn from "../components/FadeIn";
+import { BASE_URL } from "../../lib/base-url";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "お知らせ",
   description: "FUJIMI DX Labからのお知らせ・イベント情報。",
-  alternates: { canonical: "https://fujimi-dx-lab.com/news" },
+  alternates: { canonical: `${BASE_URL}/news` },
 };
 
 const CATEGORY_LABELS: Record<string, { label: string; color: string }> = {
@@ -28,9 +29,8 @@ type Announcement = {
 };
 
 async function getAnnouncements(): Promise<Announcement[]> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
   try {
-    const res = await fetch(`${baseUrl}/api/announcements?limit=50`, {
+    const res = await fetch(`${BASE_URL}/api/announcements?limit=50`, {
       next: { revalidate: 60 },
     });
     const data = await res.json();

@@ -3,9 +3,7 @@
 import { useState } from "react";
 import type {
   SeoResult,
-  GeoResult,
   SeoCheckItem,
-  GeoImprovement,
   SiteAnalysis,
 } from "@/lib/ai-checker/types";
 import Link from "next/link";
@@ -120,28 +118,18 @@ const webAppJsonLd = {
 export default function AICheckerPage() {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
-  const [seoResult, setSeoResult] = useState<{ url: string; analyzedAt: string; seo: SeoResult; siteAnalysis?: SiteAnalysis; _pageData: Record<string, unknown> } | null>(null);
-  const [geoResult, setGeoResult] = useState<GeoResult | null>(null);
-  const [geoLoading, setGeoLoading] = useState(false);
+  const [seoResult, setSeoResult] = useState<{ url: string; analyzedAt: string; seo: SeoResult; siteAnalysis?: SiteAnalysis } | null>(null);
   const [error, setError] = useState("");
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
 
   const analyze = async () => {
     if (!url.trim()) return;
-    setLoading(true); setError(""); setSeoResult(null); setGeoResult(null); setGeoLoading(false);
+    setLoading(true); setError(""); setSeoResult(null);
     try {
       const res = await fetch("/api/ai-checker/analyze", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ url: url.trim() }) });
       const data = await res.json();
       if (!res.ok) { setError(data.error); return; }
       setSeoResult(data);
-      // Auto-start GEO analysis
-      setGeoLoading(true);
-      try {
-        const geoRes = await fetch("/api/ai-checker/analyze/geo", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ pageData: { ...data._pageData, url: data.url } }) });
-        const geoData = await geoRes.json();
-        if (geoRes.ok) setGeoResult(geoData);
-      } catch { /* GEO analysis failed silently — SEO result still shown */ }
-      finally { setGeoLoading(false); }
     } catch { setError("通信エラーが発生しました"); }
     finally { setLoading(false); }
   };
@@ -171,10 +159,11 @@ export default function AICheckerPage() {
               <IconSearch className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#737686]" />
               <input type="url" value={url} onChange={(e) => setUrl(e.target.value)} onKeyDown={(e) => e.key === "Enter" && !loading && analyze()}
                 placeholder="https://example.com" disabled={loading}
-                className="w-full bg-transparent border-none focus:ring-0 pl-12 pr-4 py-4 text-lg placeholder:text-[#737686]/50 text-[#191b23]" />
+                className="w-full bg-transparent border-none focus:ring-0 pl-12 pr-4 py-4 text-lg placeholder:text-[#737686]/50 text-[#191b23]"
+                style={{ colorScheme: 'light' }} />
             </div>
             <button onClick={analyze} disabled={loading || !url.trim()}
-              className="w-full md:w-auto bg-[#2563eb] text-white px-10 py-4 rounded-2xl font-bold text-lg hover:bg-[#004ac6] disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2">
+              className="w-full md:w-auto bg-[#2563eb] text-white px-10 py-4 rounded-2xl font-bold text-lg hover:bg-[#004ac6] disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004ac6]">
               {loading ? <><Spinner /> 分析中</> : <>診断する <IconChart className="w-5 h-5" /></>}
             </button>
           </div>
@@ -228,17 +217,9 @@ export default function AICheckerPage() {
             )}
 
             {/* Score Gauges */}
-            {geoResult ? (
-              <div className="grid grid-cols-3 gap-8 mb-14">
-                <ScoreGauge label="総合スコア" score={Math.round(seoResult.seo.score * 0.4 + geoResult.score * 0.6)} color="#004ac6" />
-                <ScoreGauge label="SEOスコア" score={seoResult.seo.score} color="#16a34a" />
-                <ScoreGauge label="GEO/LLMOスコア" score={geoResult.score} color={geoResult.score >= 50 ? "#d97706" : "#ba1a1a"} />
-              </div>
-            ) : (
-              <div className="flex justify-center mb-14">
-                <ScoreGauge label="SEOスコア" score={seoResult.seo.score} color="#16a34a" size="lg" />
-              </div>
-            )}
+            <div className="flex justify-center mb-14">
+              <ScoreGauge label="SEOスコア" score={seoResult.seo.score} color="#16a34a" size="lg" />
+            </div>
 
             {/* Accordions */}
             <Accordion title="ページSEO" score={sum(seoResult.seo.pageSeo)} max={40} bg="bg-[#f3f3fe]" open={expanded["p"]} onToggle={() => toggle("p")}>
@@ -251,59 +232,6 @@ export default function AICheckerPage() {
               <CheckList items={seoResult.seo.geoSeo} />
             </Accordion>
 
-            {/* GEO AI Analysis */}
-            {!geoResult && !geoLoading && !loading && (
-              <div className="text-center p-8 mt-4 bg-[#f3f3fe] rounded-2xl">
-                <p className="text-sm text-[#737686]">AI構造検証の結果はありません</p>
-              </div>
-            )}
-            {geoLoading && (
-              <div className="text-center p-8 mt-4 bg-[#e8fffe] rounded-2xl border border-[#4cd7f6]/20">
-                <Spinner className="w-8 h-8 text-[#06b6d4] mx-auto mb-3" />
-                <p className="text-[#434655] font-medium">AIによる構造検証を実行中...</p>
-                <p className="text-xs text-[#737686] mt-1">10〜20秒ほどかかります</p>
-              </div>
-            )}
-            {geoResult && (
-              <>
-                <Accordion title="GEO/LLMO AI分析" score={geoResult.score} max={100} bg="bg-[#e8fffe]" accent="text-[#06b6d4]" open={expanded["ai"]} onToggle={() => toggle("ai")}>
-                  <div className="space-y-3">
-                    {(["citability", "aiReadability", "eeat", "freshness", "aiSimulation"] as const).map((k) => {
-                      const labels = { citability: "引用されやすさ", aiReadability: "AI理解しやすさ", eeat: "E-E-A-T要素", freshness: "コンテンツ鮮度", aiSimulation: "AI検索シミュレーション" };
-                      const d = geoResult[k]; const pct = Math.round((d.score / d.maxScore) * 100);
-                      return (
-                        <div key={k} className="p-4 bg-white rounded-2xl border border-[#c3c6d7]/30">
-                          <div className="flex justify-between mb-1.5"><span className="text-sm font-semibold text-[#191b23]">{labels[k]}</span><span className="text-sm text-[#737686]">{d.score}/{d.maxScore}</span></div>
-                          <div className="w-full bg-[#e1e2ed] rounded-full h-2 mb-2"><div className={`h-2 rounded-full transition-all ${pct >= 80 ? "bg-emerald-500" : pct >= 50 ? "bg-amber-500" : "bg-[#ba1a1a]"}`} style={{ width: `${pct}%` }} /></div>
-                          <ul className="text-xs text-[#434655] space-y-0.5">{d.details.map((det, i) => <li key={i} className="leading-relaxed">・{det}</li>)}</ul>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </Accordion>
-                {geoResult.siteStructure && (
-                  <div className="mt-6 p-5 bg-white rounded-2xl border border-[#c3c6d7]/30">
-                    <h4 className="text-sm font-bold text-[#191b23] mb-2">AIが推測したサイト構造</h4>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
-                      <div><span className="text-[#737686]">種類:</span> <span className="font-medium">{geoResult.siteStructure.siteType}</span></div>
-                      <div><span className="text-[#737686]">規模:</span> <span className="font-medium">{geoResult.siteStructure.estimatedScale}</span></div>
-                      <div><span className="text-[#737686]">ブログ:</span> <span className="font-medium">{geoResult.siteStructure.hasBlog ? "あり" : "なし"}</span></div>
-                      <div><span className="text-[#737686]">FAQ:</span> <span className="font-medium">{geoResult.siteStructure.hasFaq ? "あり" : "なし"}</span></div>
-                    </div>
-                    {geoResult.siteStructure.notes && <p className="text-xs text-[#737686] mt-2">{geoResult.siteStructure.notes}</p>}
-                  </div>
-                )}
-
-                {geoResult.improvements.length > 0 && (
-                  <div className="mt-8">
-                    <h3 className="text-xl font-bold text-[#191b23] mb-4">検証結果</h3>
-                    <div className="space-y-4">
-                      {geoResult.improvements.map((imp, i) => <ImprovementCard key={i} imp={imp} />)}
-                    </div>
-                  </div>
-                )}
-              </>
-            )}
 
             {/* CTA */}
             <div className="mt-12 text-center p-8 bg-[#f3f3fe] rounded-3xl">
@@ -488,21 +416,6 @@ function CheckList({ items }: { items: SeoCheckItem[] }) {
           )}
         </div>
       ))}
-    </div>
-  );
-}
-
-function ImprovementCard({ imp }: { imp: GeoImprovement }) {
-  const tl: Record<string, string> = { all: "全AI共通", chatgpt: "ChatGPT", gemini: "Gemini", perplexity: "Perplexity", claude: "Claude" };
-  const tc: Record<string, string> = { all: "bg-[#e1e2ed] text-[#434655]", chatgpt: "bg-emerald-100 text-emerald-700", gemini: "bg-blue-100 text-blue-700", perplexity: "bg-purple-100 text-purple-700", claude: "bg-orange-100 text-orange-700" };
-  return (
-    <div className="bg-white p-6 rounded-3xl border-t-4 border-[#ba1a1a] relative">
-      <span className="absolute -top-3.5 left-6 bg-[#ba1a1a] text-white text-xs font-bold px-3 py-1 rounded-full">#{imp.priority}</span>
-      <div className="flex items-center gap-2 mt-1 mb-2">
-        <span className="font-bold text-[#191b23]">{imp.title}</span>
-        {imp.target && <span className={`text-xs px-2.5 py-0.5 rounded-full font-medium ${tc[imp.target] || tc.all}`}>{tl[imp.target] || imp.target}</span>}
-      </div>
-      <p className="text-sm text-[#434655] leading-relaxed">{imp.description}</p>
     </div>
   );
 }

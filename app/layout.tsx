@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { BASE_URL } from "../lib/base-url";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "";
 
@@ -13,7 +14,7 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://fujimi-dx-lab.com"),
+  metadataBase: new URL(BASE_URL),
   title: {
     default: "FUJIMI DX Lab | 小さな組織の困ったをテクノロジーで解決する",
     template: "%s - FUJIMI DX Lab",
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     "シフト管理", "LINE予約", "静岡県富士市",
     "Reserve Navi", "Ask Navi", "Shift Navi",
   ],
-  authors: [{ name: "FUJIMI DX Lab", url: "https://fujimi-dx-lab.com" }],
+  authors: [{ name: "FUJIMI DX Lab", url: BASE_URL }],
   creator: "ふじみ企業有限会社 FUJIMI DX Lab事業部",
   openGraph: {
     title: "FUJIMI DX Lab | 小さな組織の困ったをテクノロジーで解決する",
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ja_JP",
     siteName: "FUJIMI DX Lab",
-    url: "https://fujimi-dx-lab.com",
+    url: BASE_URL,
     images: [
       {
         url: "/images/ogp-main.png",
@@ -63,7 +64,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://fujimi-dx-lab.com",
+    canonical: BASE_URL,
   },
   icons: {
     icon: "/favicon.ico",

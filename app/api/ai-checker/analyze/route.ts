@@ -6,7 +6,6 @@ import {
   runSeoChecks,
   quickSeoScore,
 } from "@/lib/ai-checker/seo-checker";
-import { summarizeJsonLd } from "@/lib/ai-checker/geo-checker";
 import { proxyFetch } from "@/lib/ai-checker/proxy-fetch";
 import type { SitePageScore, SiteAnalysis } from "@/lib/ai-checker/types";
 
@@ -73,7 +72,6 @@ export async function POST(request: NextRequest) {
 
     // Step 2: Analyze the input page (full analysis)
     const pageData = extractPageData(url.href, html);
-    const jsonLdSummary = summarizeJsonLd(pageData.jsonLd);
 
     // External checks with fallback (some sites block or are slow from Vercel)
     let externalChecks;
@@ -87,10 +85,12 @@ export async function POST(request: NextRequest) {
     }
     const seoResult = runSeoChecks(pageData, externalChecks);
 
+    // html から nav linksを1回だけ抽出（以前は siteAnalysis と _pageData で重複実行していた）
+    const navLinks = extractNavLinks(html, url.href);
+
     // Step 3-5: Site-wide analysis (wrapped in try-catch — never blocks main result)
     let siteAnalysis: SiteAnalysis | undefined;
     try {
-      const navLinks = extractNavLinks(html, url.href);
       const pagesToCheck = navLinks.slice(0, 3);
       const sitePages: SitePageScore[] = [{
         url: url.href,
@@ -136,17 +136,6 @@ export async function POST(request: NextRequest) {
       analyzedAt: new Date().toISOString(),
       seo: seoResult,
       siteAnalysis,
-      _pageData: {
-        textContent: pageData.textContent,
-        title: pageData.title,
-        metaDescription: pageData.metaDescription,
-        headings: pageData.headings,
-        semanticElements: pageData.semanticElements,
-        entityDefinitions: pageData.entityDefinitions.slice(0, 5),
-        questionHeadings: pageData.questionHeadings.slice(0, 10),
-        jsonLdSummary,
-        navLinks: extractNavLinks(html, url.href),
-      },
     });
   } catch (error) {
     const msg = error instanceof Error ? error.message : String(error);

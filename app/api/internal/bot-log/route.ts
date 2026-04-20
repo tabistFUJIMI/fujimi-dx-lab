@@ -2,8 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
 export async function POST(request: NextRequest) {
+  const expected = process.env.INTERNAL_API_SECRET;
+  // 環境変数が未設定または空文字列の場合、ヘッダー側も空にすれば一致してしまう。
+  // サーバー側で設定されていなければ常に拒否。
+  if (!expected || expected.length < 16) {
+    console.error("[internal/bot-log] INTERNAL_API_SECRET is not configured");
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   const secret = request.headers.get("x-internal-secret");
-  if (secret !== process.env.INTERNAL_API_SECRET) {
+  if (secret !== expected) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

@@ -43,8 +43,22 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const body = await req.json();
-    const { type, name, email, company, message } = body;
+    let body: Record<string, unknown>;
+    try {
+      body = await req.json();
+    } catch {
+      return NextResponse.json(
+        { error: "不正なリクエストです" },
+        { status: 400 }
+      );
+    }
+    const { type, name, email, company, message } = body as {
+      type?: string;
+      name?: string;
+      email?: string;
+      company?: string;
+      message?: string;
+    };
 
     // 必須チェック
     if (!type || !name || !email || !message) {

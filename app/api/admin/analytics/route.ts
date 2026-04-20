@@ -279,9 +279,10 @@ export async function GET(request: NextRequest) {
       ageGender: ageGenderData,
       pageFlow: pageFlowData,
     })
-  } catch (e: any) {
-    console.error('GA Data API error:', e)
-    if (e.message?.includes('invalid_grant') || e.message?.includes('Token has been expired')) {
+  } catch (e) {
+    const message = e instanceof Error ? e.message : String(e)
+    console.error('GA Data API error:', message)
+    if (message.includes('invalid_grant') || message.includes('Token has been expired')) {
       return NextResponse.json({ error: 'token_expired', message: '再認証が必要です' }, { status: 401 })
     }
     return NextResponse.json({ error: 'api_error', message: 'アナリティクスデータの取得に失敗しました' }, { status: 500 })

@@ -134,14 +134,20 @@ export async function GET(request: NextRequest) {
       countries,
       daily,
     })
-  } catch (e: any) {
-    console.error('Search Console API error:', e)
-    if (e.message?.includes('is not a verified site')) {
+  } catch (e) {
+    const message = e instanceof Error ? e.message : String(e)
+    console.error('Search Console API error:', message)
+    if (message.includes('is not a verified site')) {
       return NextResponse.json({
         error: 'not_verified',
         message: 'Search Consoleでサイトが未登録です。Google Search Consoleでサイトを登録してください。',
       }, { status: 400 })
     }
-    return NextResponse.json({ error: 'api_error', message: e.message }, { status: 500 })
+    // 本番環境ではエラーメッセージ全文を返さない（内部情報漏洩防止）
+    const userMessage =
+      process.env.NODE_ENV === 'production'
+        ? 'Search Console APIとの通信でエラーが発生しました'
+        : message
+    return NextResponse.json({ error: 'api_error', message: userMessage }, { status: 500 })
   }
 }

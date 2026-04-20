@@ -120,14 +120,27 @@ export async function runGeoCheck(
     try {
       parsed = JSON.parse(cleaned);
     } catch (parseErr) {
-      console.error("JSON parse failed. Raw text:", text.slice(0, 500));
-      console.error("Cleaned text:", cleaned.slice(0, 500));
-      console.error("Parse error:", parseErr);
+      // 本番環境では生のAIレスポンスや詳細なエラーをログに残さない
+      // （AIレスポンスには内部プロンプトの断片や機密情報が含まれる可能性があるため）
+      if (process.env.NODE_ENV !== "production") {
+        console.error("JSON parse failed. Raw text:", text.slice(0, 500));
+        console.error("Cleaned text:", cleaned.slice(0, 500));
+        console.error("Parse error:", parseErr);
+      } else {
+        console.error("[geo-checker] JSON parse failed");
+      }
       return fallbackResult("AI分析結果の解析に失敗しました");
     }
     return normalizeResult(parsed);
   } catch (error) {
-    console.error("GEO check error:", error);
+    if (process.env.NODE_ENV !== "production") {
+      console.error("GEO check error:", error);
+    } else {
+      console.error(
+        "[geo-checker] check failed:",
+        error instanceof Error ? error.message : "unknown"
+      );
+    }
     return fallbackResult("AI分析中にエラーが発生しました");
   }
 }
