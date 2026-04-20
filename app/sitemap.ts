@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "../lib/prisma";
 import { BASE_URL } from "../lib/base-url";
+import { PRODUCT_GUIDES, listGuidesForProduct } from "../lib/guides";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
@@ -14,6 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/products/forproject`, lastModified: new Date("2026-04-01"), changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/tools/ai-checker`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE_URL}/column`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE_URL}/guides`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/pricing`, lastModified: new Date("2026-04-20"), changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/news`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/lp/partner`, lastModified: new Date("2026-04-20"), changeFrequency: "monthly", priority: 0.6 },
@@ -46,5 +48,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // DB unavailable — skip dynamic pages
   }
 
-  return [...staticPages, ...columnPages];
+  // 製品別ガイドページ（content/guides/ 配下のMarkdownから収集）
+  const guidePages: MetadataRoute.Sitemap = [];
+  for (const product of PRODUCT_GUIDES) {
+    const guides = listGuidesForProduct(product.productSlug);
+    if (guides.length === 0) continue;
+    guidePages.push({
+      url: `${BASE_URL}/guides/${product.productSlug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    });
+    for (const g of guides) {
+      guidePages.push({
+        url: `${BASE_URL}/guides/${product.productSlug}/${g.slug}`,
+        lastModified: g.updatedAt ? new Date(g.updatedAt) : new Date(),
+        changeFrequency: "monthly",
+        priority: 0.6,
+      });
+    }
+  }
+
+  return [...staticPages, ...columnPages, ...guidePages];
 }

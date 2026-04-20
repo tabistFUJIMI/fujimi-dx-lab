@@ -49,7 +49,7 @@ model Column {
   title       String
   content     String    // Markdown or HTML
   excerpt     String?   // 未設定時は本文先頭120文字
-  category    String    @default("basics") // basics | ai-strategy | practice | case-study
+  category    String    @default("ai-geo-llmo") // ai-geo-llmo | ai-dx | it-trends | local-business
   tags        String[]  @default([])
   ogImage     String?   @map("og_image")
   isPublished Boolean   @default(false) @map("is_published")
