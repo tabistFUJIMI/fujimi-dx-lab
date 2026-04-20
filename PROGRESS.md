@@ -1,5 +1,43 @@
 # FUJIMI DX Lab HP - 進捗
 
+## 2026-04-20: バグ監査 + コラム4カテゴリ化 + /guides 新設
+
+### やったこと
+
+#### バグ監査・修正（PR #8, #9, #11, #12）
+- 包括的バグ監査で27項目洗い出し → 25件修正
+- **重要修正**:
+  - robots.txt クローラー判定 regex バグ（自社が AI クローラーブロック中と誤判定）
+  - AI分析 UI を完全廃止（構造分析のみ残す方針に）
+  - CSP を nonce ベースに刷新（proxy.ts + layout.tsx、strict-dynamic + unsafe-inline フォールバック）
+  - Supabase PgBouncer prepared statement 衝突を `pgbouncer=true` で回避（/column・/api/internal/bot-log の間欠500解消）
+  - proxy.ts を Next.js 16 正規位置（プロジェクト直下）へ移動、bot 検知 middleware が正式動作するように
+  - Google API 型定義を `googleapis` の Schema$* 型に置換
+  - BASE_URL を `lib/base-url.ts` に一元化、layout/sitemap/robots/news のハードコード解消
+  - INTERNAL_API_SECRET 空文字列時の認証バイパス対策
+  - JSON.parse ガード、情報漏洩防止、Invalid Date 検証、OAuth null チェック 等
+
+#### コラム4カテゴリ化（PR #10, #11）
+- カテゴリを4テーマに再編: ai-geo-llmo / ai-dx / it-trends / local-business
+- `lib/column-categories.ts` で一元管理、公開・管理画面で同一定義を参照
+- /column にカテゴリフィルタUI追加（URL `?category=` パラメータ対応）
+- 既存5記事を Supabase MCP 経由で `ai-geo-llmo` に移行（旧カテゴリ名は tags に保持）
+
+#### /guides 新設（PR #10）
+- Markdownベースの製品別ガイドセクション
+- DB不要、content/guides/<product>/<slug>.md で管理
+- 3階層: 全製品index → 製品別 → 個別記事
+- HowTo JSON-LD・前後記事ナビ・sitemap統合
+- ReserveNavi / ShiftNavi に「はじめての導入ガイド」初版作成
+
+### 次にやること
+- ai-dx / it-trends / local-business カテゴリへの初稿執筆
+- 残り5製品（AskNavi / RuleNavi / SocialNavi / FUJIMIN PASS / ForProject）のガイド初稿
+- CSP unsafe-inline の完全廃止（JSON-LD を nonce 対応の共通コンポーネント化）
+- Google API 応答の any 型残り（app/api/admin/analytics/route.ts 内部）の型付け完成
+
+---
+
 ## 2026-04-13
 
 ### やったこと: AI対策チェッカー + コラム記事システム構築
