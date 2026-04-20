@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import Script from "next/script";
+import { headers } from "next/headers";
 import "./globals.css";
 import { BASE_URL } from "../lib/base-url";
 
@@ -73,11 +74,15 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // proxy.ts (middleware) が設定した per-request nonce を取得
+  const headersList = await headers();
+  const nonce = headersList.get("x-nonce") ?? undefined;
+
   return (
     <html lang="ja">
       <head />
@@ -87,8 +92,9 @@ export default function RootLayout({
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
               strategy="afterInteractive"
+              nonce={nonce}
             />
-            <Script id="google-analytics" strategy="afterInteractive">
+            <Script id="google-analytics" strategy="afterInteractive" nonce={nonce}>
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
