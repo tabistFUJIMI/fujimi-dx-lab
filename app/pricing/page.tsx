@@ -47,16 +47,16 @@ const RESERVE_PLANS = [
   },
   {
     name: "スタンダード",
-    price: "¥2,980",
+    price: "¥2,480",
     period: "/月",
-    features: ["スタッフ無制限", "予約件数無制限", "700pt付き", "LINE拡張あり"],
+    features: ["スタッフ5名まで", "予約件数無制限", "週次・月次AIレポート", "500pt付き", "LINE拡張あり"],
     recommended: true,
   },
   {
     name: "プロ",
-    price: "¥4,980",
+    price: "¥3,980",
     period: "/月",
-    features: ["スタッフ無制限", "予約件数無制限", "1,500pt付き", "優先サポート"],
+    features: ["スタッフ15名まで", "予約件数無制限", "週次・月次AIレポート", "1,500pt付き", "LINE拡張あり"],
     recommended: false,
   },
 ];
@@ -66,12 +66,12 @@ const RESERVE_COMPARISON = {
   headers: ["機能", "無料", "ライト", "スタンダード", "プロ"],
   rows: [
     ["月間予約件数", "50件", "無制限", "無制限", "無制限"],
-    ["スタッフ数", "1名", "1名", "無制限", "無制限"],
+    ["スタッフ数", "1名", "1名", "5名まで", "15名まで"],
     ["予約履歴", "3ヶ月", "無制限", "無制限", "無制限"],
     ["AI機能", false, "購入ptで", true, true],
-    ["FUJIMINポイント", false, false, "700pt", "1,500pt"],
+    ["FUJIMINポイント", false, false, "500pt", "1,500pt"],
     ["LINE拡張", false, true, true, true],
-    ["優先サポート", false, false, false, true],
+    ["週次・月次AIレポート", false, false, true, true],
   ],
 };
 

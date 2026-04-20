@@ -455,7 +455,7 @@ export default function MassageLPPage() {
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold text-white" style={{ backgroundColor: "#f97316" }}>おすすめ</span>
                   <div className="text-center">
                     <p className="text-sm font-semibold" style={{ color: "#f97316" }}>スタンダードプラン</p>
-                    <p className="mt-2 text-4xl font-extrabold text-gray-900">¥2,980<span className="text-base font-normal text-gray-500">/月</span></p>
+                    <p className="mt-2 text-4xl font-extrabold text-gray-900">¥2,480<span className="text-base font-normal text-gray-500">/月</span></p>
                     <p className="mt-1 text-xs text-gray-500">LINE予約 + AI応答がセット</p>
                   </div>
                   <div className="mt-6">
@@ -476,24 +476,23 @@ export default function MassageLPPage() {
                       <th className="px-5 py-4 text-left font-semibold text-gray-700">機能</th>
                       <th className="px-5 py-4 text-center font-semibold text-gray-500">無料</th>
                       <th className="px-5 py-4 text-center font-semibold text-gray-500">ライト<br /><span className="text-xs font-normal">¥980/月</span></th>
-                      <th className="px-5 py-4 text-center font-semibold" style={{ color: "#f97316" }}>スタンダード<br /><span className="text-xs font-normal">¥2,980/月</span></th>
-                      <th className="px-5 py-4 text-center font-semibold text-gray-500">プロ<br /><span className="text-xs font-normal">¥5,500/月</span></th>
+                      <th className="px-5 py-4 text-center font-semibold" style={{ color: "#f97316" }}>スタンダード<br /><span className="text-xs font-normal">¥2,480/月</span></th>
+                      <th className="px-5 py-4 text-center font-semibold text-gray-500">プロ<br /><span className="text-xs font-normal">¥3,980/月</span></th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-50">
                     {[
-                      { feature: "LINE予約受付", free: "月100件", lite: "無制限", std: "無制限", pro: "無制限" },
+                      { feature: "予約受付", free: "月50件", lite: "無制限", std: "無制限", pro: "無制限" },
                       { feature: "予約カレンダー", free: "✓", lite: "✓", std: "✓", pro: "✓" },
                       { feature: "自動リマインド", free: "✓", lite: "✓", std: "✓", pro: "✓" },
                       { feature: "LINE通知", free: "✓", lite: "✓", std: "✓", pro: "✓" },
-                      { feature: "予約履歴", free: "1ヶ月", lite: "12ヶ月", std: "無制限", pro: "無制限" },
-                      { feature: "スタッフ数", free: "1名", lite: "1名", std: "無制限", pro: "無制限" },
-                      { feature: "店舗数", free: "1", lite: "1", std: "1", pro: "最大3" },
+                      { feature: "予約履歴", free: "3ヶ月", lite: "無制限", std: "無制限", pro: "無制限" },
+                      { feature: "スタッフ数", free: "1名", lite: "1名", std: "5名まで", pro: "15名まで" },
                       { feature: "顧客カルテ", free: "—", lite: "手入力", std: "AI自動要約", pro: "AI自動要約" },
-                      { feature: "AI自動応答（Ask Navi）", free: "—", lite: "—", std: "ライト付帯", pro: "ライト付帯" },
                       { feature: "リピート離脱アラート", free: "—", lite: "—", std: "✓", pro: "✓" },
-                      { feature: "売上レポート", free: "—", lite: "—", std: "✓", pro: "✓" },
-                      { feature: "サポート", free: "—", lite: "チャット・メール", std: "チャット・メール", pro: "優先サポート" },
+                      { feature: "週次・月次AIレポート", free: "—", lite: "—", std: "✓", pro: "✓" },
+                      { feature: "FUJIMINポイント", free: "—", lite: "購入", std: "月500pt", pro: "月1,500pt" },
+                      { feature: "サポート", free: "—", lite: "チャット・メール", std: "チャット・メール", pro: "チャット・メール" },
                     ].map((row) => (
                       <tr key={row.feature} className="hover:bg-gray-50/50">
                         <td className="px-5 py-3 font-medium text-gray-700">{row.feature}</td>

@@ -37,22 +37,22 @@ const PLANS = [
   {
     name: "無料", price: "¥0", period: "", description: "まずはお試し",
     color: "#6b7280", bgColor: "#f9fafb",
-    highlights: ["月100件まで", "スタッフ1名", "LINE通知・リマインド"],
+    highlights: ["月50件まで", "スタッフ1名", "LINE通知・リマインド"],
   },
   {
     name: "ライト", price: "¥980", period: "/月", description: "1人運営のお店に",
     color: "#0284c7", bgColor: "#f0f9ff",
-    highlights: ["予約件数 無制限", "CSV入出力", "週次・月次レポート"],
+    highlights: ["予約件数 無制限", "CSV入出力", "AI機能（購入ptで）"],
   },
   {
-    name: "スタンダード", price: "¥2,980", period: "/月", description: "AI機能で接客力アップ",
+    name: "スタンダード", price: "¥2,480", period: "/月", description: "AIレポートで経営見える化",
     color: "#f97316", bgColor: "#fff7ed", recommended: true,
-    highlights: ["スタッフ 無制限", "リピート促進LINE", "離脱検知・自動フォロー"],
+    highlights: ["スタッフ5名まで", "週次・月次AIレポート", "FUJIMINポイント 月500pt"],
   },
   {
-    name: "プロ", price: "¥5,500", period: "/月", description: "複数店舗のオーナーに",
+    name: "プロ", price: "¥3,980", period: "/月", description: "中規模店舗向け",
     color: "#7c3aed", bgColor: "#f5f3ff",
-    highlights: ["最大3店舗", "FUJIMINポイント 月2,500pt", "優先サポート"],
+    highlights: ["スタッフ15名まで", "FUJIMINポイント 月1,500pt", "週次・月次AIレポート"],
   },
 ];
 
@@ -106,7 +106,7 @@ export default function ReserveNaviLP() {
         operatingSystem: "Web",
         description: "LINEから簡単予約。小規模店舗向け予約管理システム。無料プランあり。",
         url: "https://fujimi-dx-lab.com/lp/reserve-navi",
-        offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "5500", priceCurrency: "JPY" },
+        offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "3980", priceCurrency: "JPY" },
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />
       <Header />
