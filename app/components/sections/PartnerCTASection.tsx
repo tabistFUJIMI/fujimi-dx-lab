@@ -45,7 +45,7 @@ export default function PartnerCTASection() {
                 <span className="text-orange-400">無料</span>
               </p>
               <p className="mt-1 text-sm text-slate-400">
-                通常 ¥2,980/月相当 → 最大1年間無料
+                通常 ¥2,480/月相当 → 最大1年間無料
               </p>
               <ul className="mt-4 space-y-2 text-sm text-slate-300">
                 <li className="flex items-start gap-2">

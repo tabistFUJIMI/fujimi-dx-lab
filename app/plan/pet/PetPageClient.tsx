@@ -131,7 +131,7 @@ const PRICING_PLANS = [
     bonusValue: "660",
     recommended: true,
     services: [
-      "ReserveNavi スタンダード（¥2,980/月）",
+      "ReserveNavi スタンダード（¥2,480/月）",
       "AskNavi スタンダード（¥1,100/月）",
       "ShiftNavi スタンダード（¥550/月）",
     ],
@@ -143,7 +143,7 @@ const PRICING_PLANS = [
     bonusValue: "1,650",
     recommended: false,
     services: [
-      "ReserveNavi プロ（¥4,980/月）",
+      "ReserveNavi プロ（¥3,980/月）",
       "AskNavi プロ（¥2,200/月）",
       "ShiftNavi スタンダード（¥550/月）",
     ],
@@ -156,8 +156,8 @@ const SINGLE_PRICES = [
     plans: [
       { name: "無料", price: "¥0" },
       { name: "ライト", price: "¥980/月" },
-      { name: "スタンダード", price: "¥2,980/月" },
-      { name: "プロ", price: "¥4,980/月" },
+      { name: "スタンダード", price: "¥2,480/月" },
+      { name: "プロ", price: "¥3,980/月" },
     ],
   },
   {
@@ -418,7 +418,9 @@ export default function PetPageClient() {
                 <FadeIn delay={0.3}>
                   <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                     <a
-                      href="#contact"
+                      href="https://www.fujimin-pass.com/register"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center justify-center rounded-2xl bg-amber-600 px-8 py-4 text-base font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-amber-700"
                       style={{
                         boxShadow: "0 0 30px rgba(217,119,6,0.3)",
@@ -901,7 +903,7 @@ export default function PetPageClient() {
                     {[
                       {
                         feature: "予約管理",
-                        price: "ReserveNavi ¥0〜¥4,980",
+                        price: "ReserveNavi ¥0〜¥3,980",
                       },
                       { feature: "LINE対応", price: "標準搭載" },
                       {
@@ -1167,19 +1169,19 @@ export default function PetPageClient() {
                 <br />
                 なんでもお気軽にどうぞ。
               </p>
-              <div className="mt-8">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center rounded-2xl bg-white px-10 py-4 text-base font-bold text-amber-600 transition-all duration-300 hover:scale-105 animate-pulse"
-                  style={{
-                    boxShadow: "0 0 30px rgba(255,255,255,0.3)",
-                    animationDuration: "3s",
-                  }}
-                >
-                  無料で相談する
-                </a>
-              </div>
               <div className="mt-10">
+                <a
+                  href="https://www.fujimin-pass.com/register"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-base font-bold text-amber-600 shadow-lg transition-all duration-300 hover:scale-105"
+                >
+                  今すぐ無料で始める
+                </a>
+                <p className="mt-3 text-sm text-amber-100/60">クレジットカード不要・いつでも解約OK</p>
+                <p className="mt-8 text-sm text-amber-100/80">ご質問がある方は以下のフォームからどうぞ</p>
+              </div>
+              <div className="mt-6">
                 <ContactForm />
               </div>
             </FadeIn>
@@ -1279,7 +1281,9 @@ export default function PetPageClient() {
             から
           </p>
           <a
-            href="#contact"
+            href="https://www.fujimin-pass.com/register"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex-1 rounded-xl py-3 text-center text-sm font-bold text-white shadow-lg"
             style={{ backgroundColor: "#d97706" }}
           >

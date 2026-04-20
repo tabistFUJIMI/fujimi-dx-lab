@@ -130,32 +130,39 @@ const PLANS = [
   },
   {
     name: "スタンダード",
-    price: "¥2,980",
+    price: "¥2,480",
     period: "/月",
-    description: "AI機能で接客力アップ",
+    description: "AI機能と自動レポートで経営をサポート",
     recommended: true,
     color: "#f97316",
     bgColor: "#fff7ed",
     features: [
       { label: "スタッフ", value: "無制限" },
-      { label: "予約件数", value: "無制限" },
-      { label: "FUJIMINポイント", value: "月700pt" },
+      { label: "予約件数（目安）", value: "月300件まで" },
+      { label: "直近12ヶ月来店のお客様（目安）", value: "1,300名まで" },
+      { label: "AI機能用ポイント", value: "月500pt" },
+      { label: "レポート専用ポイント", value: "月500pt" },
+      { label: "週次・月次AIレポート", value: true },
+      { label: "店舗向けAIチャットボット", value: true },
+      { label: "AIデータ移行 30日2,000ptまで無料", value: true },
       { label: "LINE拡張", value: true },
-      { label: "離脱検知・自動フォロー", value: true },
-      { label: "セグメント配信", value: true },
     ],
   },
   {
     name: "プロ",
-    price: "¥4,980",
+    price: "¥3,980",
     period: "/月",
     description: "しっかり活用したいオーナーに",
     color: "#7c3aed",
     bgColor: "#f5f3ff",
     features: [
       { label: "スタッフ", value: "無制限" },
-      { label: "予約件数", value: "無制限" },
-      { label: "FUJIMINポイント", value: "月1,500pt" },
+      { label: "予約件数（目安）", value: "月800件まで" },
+      { label: "直近12ヶ月来店のお客様（目安）", value: "2,500名まで" },
+      { label: "AI機能用ポイント", value: "月1,500pt" },
+      { label: "レポート専用ポイント", value: "月500pt" },
+      { label: "週次・月次AIレポート", value: true },
+      { label: "店舗向けAIチャットボット", value: true },
       { label: "LINE拡張", value: true },
       { label: "優先サポート", value: true },
     ],
@@ -165,12 +172,14 @@ const PLANS = [
 const AI_FEATURES = [
   { icon: "📋", title: "AIカルテ分析", desc: "接客メモをAIが構造化・要約。アレルギーや注意事項も自動検出します。" },
   { icon: "🔍", title: "来店前ブリーフィング", desc: "予約のお客様の過去情報をダッシュボードに自動表示。誕生日検知にも対応。" },
-  { icon: "💡", title: "次回予約の提案", desc: "来店パターンを分析し、メニュー・日時の候補を3つ提案します。" },
-  { icon: "⚠️", title: "リピート離脱アラート", desc: "平均来店間隔の1.5倍を超えたら自動検知。フォローメッセージ案も生成。" },
-  { icon: "📊", title: "日次・月次レポート", desc: "日次の売上サマリーに加え、月次のセグメント分析・トレンド分析を自動生成。" },
-  { icon: "📤", title: "LINE配信＆AI下書き", desc: "顧客セグメントを絞って配信。AIがカルテを参照して下書きを自動生成します。" },
-  { icon: "📄", title: "ペーパーレス移行", desc: "手書きカルテやスキャン文書をAIが読み取り。データ移行の手間を大幅削減。" },
-  { icon: "💌", title: "施術後自動フォロー", desc: "施術翌日のお礼＆N日後のフォローメッセージをカルテ参照で自動生成。" },
+  { icon: "💡", title: "次回予約の提案", desc: "来店パターンを分析し、カルテの次回メモ入力を自動サジェスト。" },
+  { icon: "⚠️", title: "リピート離脱アラート", desc: "平均来店間隔を超えそうなお客様を自動検知。お声がけの目安をお知らせします。" },
+  { icon: "📊", title: "週次・月次AIレポート", desc: "毎週の売上分析に加え、月次の深掘り分析（お客様グループ・来店傾向の変化など）を自動生成。" },
+  { icon: "💬", title: "店舗向けAIチャットボット", desc: "「山田さんの前回の施術は？」「今月の優良顧客は？」と質問すればAIが即回答。" },
+  { icon: "📤", title: "定型文テンプレート", desc: "サンクスメッセージや空き枠ご案内の定型文をお店で作成。お客様名やメニュー名は自動で差し込まれます。" },
+  { icon: "📄", title: "ペーパーレス移行", desc: "手書きカルテやスキャン文書をAIが読み取り。スタンダード以上は登録30日間2,000ptまで無料。" },
+  { icon: "💌", title: "翌朝サンクスメッセージ", desc: "ご来店完了後、翌朝9時にお礼メッセージを自動送信。定型文は事前にカスタマイズ可能。" },
+  { icon: "🗓️", title: "空き枠ご案内の自動下書き", desc: "数日先に空きが多い日を自動検出し、休眠ぎみのお客様向け配信下書きを作成。送信は店舗の承認制。" },
 ];
 
 export default function ReserveNaviPage() {
@@ -185,7 +194,7 @@ export default function ReserveNaviPage() {
         operatingSystem: "Web",
         description: "LINEから簡単予約。小規模店舗向け予約管理システム",
         url: "https://fujimi-dx-lab.com/products/reserve-navi",
-        offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "4980", priceCurrency: "JPY" },
+        offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "3980", priceCurrency: "JPY" },
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -516,10 +525,13 @@ export default function ReserveNaviPage() {
               <div className="mt-10 rounded-2xl border border-gray-100 bg-gray-50 p-6 text-center">
                 <p className="text-sm text-gray-600">
                   <span className="font-semibold">FUJIMINポイントとは？</span>
-                  　AI機能を使うためのポイントです。プランに含まれるポイントで足りない場合は追加購入できます。
+                  　AI機能を使うためのポイントです。スタンダード以上のプランでは、AIカルテ分析などにお使いいただく「手動用ポイント」と、週次・月次の自動レポート生成に使われる「レポート専用ポイント」を別枠でご用意しています。
+                </p>
+                <p className="mt-2 text-xs text-gray-500">
+                  月額プランのポイントは3ヶ月、追加購入のポイントは6ヶ月の有効期限内で自動繰越されます。
                 </p>
                 <p className="mt-2 text-xs text-gray-400">
-                  追加購入: 100pt / ¥550 ・ 500pt / ¥1,650 ・ 1,500pt / ¥3,850（購入から1年間有効）
+                  追加購入: 100pt / ¥550 ・ 500pt / ¥1,650 ・ 1,500pt / ¥3,850（購入から6ヶ月有効）
                 </p>
               </div>
             </FadeIn>

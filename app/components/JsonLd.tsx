@@ -180,7 +180,7 @@ export default function JsonLd() {
         name: "無料で始められますか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "はい。ShiftNaviはずっと無料、ReserveNaviには無料プランがあります。ForProjectも基本無料です。現在、ReserveNaviの共創パートナーを数社限定で募集中（スタンダードプラン最大1年間無料）。",
+          text: "はい。ShiftNaviはずっと無料、ReserveNaviには無料プランがあります。ForProjectも基本無料です。クレジットカード不要ですぐに始められます。",
         },
       },
       {
@@ -188,7 +188,7 @@ export default function JsonLd() {
         name: "共創パートナーとは何ですか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "ReserveNaviを実際の店舗運営でご利用いただき、月2回のヒアリングとLINEでのフィードバックにご協力いただけるパートナー店舗様です。スタンダードプラン（通常¥2,980/月）を最大1年間無料でご提供します。",
+          text: "ReserveNaviを実際の店舗運営でご利用いただき、月2回のヒアリングとLINEでのフィードバックにご協力いただけるパートナー店舗様です。スタンダードプラン（通常¥2,480/月）を最大1年間無料でご提供します。",
         },
       },
       {
@@ -196,7 +196,7 @@ export default function JsonLd() {
         name: "料金はいくらですか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "シリーズによって異なります。FUJIMIN PASSはReserveNavi無料〜¥4,980/月、AskNavi¥550〜/月、ShiftNavi無料〜¥550/月。ForProjectは基本無料・AI機能500円〜。すべて税込価格です。",
+          text: "シリーズによって異なります。FUJIMIN PASSはReserveNavi無料〜¥3,980/月、AskNavi¥550〜/月、ShiftNavi無料〜¥550/月。ForProjectは基本無料・AI機能500円〜。すべて税込価格です。",
         },
       },
     ],
