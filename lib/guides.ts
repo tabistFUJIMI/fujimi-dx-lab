@@ -54,11 +54,6 @@ export const PRODUCT_GUIDES: ProductGuideMeta[] = [
     description: "社内規則AI検索の使い方ガイド",
   },
   {
-    productSlug: "social-navi",
-    productLabel: "Social Navi",
-    description: "SNS一元管理の使い方ガイド",
-  },
-  {
     productSlug: "fujimin-pass",
     productLabel: "FUJIMIN PASS",
     description: "統合DXプラットフォームの使い方ガイド",
