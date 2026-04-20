@@ -7,6 +7,11 @@
 
 function inline(text: string): string {
   return text
+    // 画像は先に処理（リンク [text](url) より前）
+    .replace(
+      /!\[([^\]]*)\]\(([^)]+)\)/g,
+      '<img src="$2" alt="$1" loading="lazy" class="rounded-2xl my-6 w-full border border-neutral-200" />'
+    )
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\*(.+?)\*/g, "<em>$1</em>")
     .replace(/`(.+?)`/g, "<code>$1</code>")
@@ -75,11 +80,30 @@ export function markdownToHtml(md: string): string {
         }
       }
 
+      // Callout — :::info / :::warning / :::success / :::tip
+      const calloutMatch = trimmed.match(/^:::(info|warning|success|tip)\s*\n([\s\S]+?)\n:::$/);
+      if (calloutMatch) {
+        const [, variant, body] = calloutMatch;
+        const styles: Record<string, { bg: string; border: string; icon: string; label: string }> = {
+          info: { bg: "bg-blue-50", border: "border-blue-400", icon: "💡", label: "ポイント" },
+          warning: { bg: "bg-amber-50", border: "border-amber-400", icon: "⚠️", label: "注意" },
+          success: { bg: "bg-emerald-50", border: "border-emerald-400", icon: "✅", label: "うまくいったサイン" },
+          tip: { bg: "bg-violet-50", border: "border-violet-400", icon: "💬", label: "ひとこと" },
+        };
+        const s = styles[variant];
+        return `<div class="${s.bg} border-l-4 ${s.border} px-5 py-4 my-5 rounded-r-xl not-prose"><div class="flex items-start gap-2"><span class="text-xl">${s.icon}</span><div><div class="text-xs font-bold text-neutral-700 mb-1">${s.label}</div><div class="text-sm text-neutral-700 leading-relaxed">${inline(body)}</div></div></div></div>`;
+      }
+
       // Blockquote
       if (trimmed.startsWith("> ")) {
         return `<blockquote>${inline(
           trimmed.replace(/^> /gm, "")
         )}</blockquote>`;
+      }
+
+      // 単独画像（1行で !alt(url) のみ）は段落ラッパーなしでそのまま
+      if (/^!\[[^\]]*\]\([^)]+\)$/.test(trimmed)) {
+        return inline(trimmed);
       }
 
       return `<p>${inline(trimmed)}</p>`;
