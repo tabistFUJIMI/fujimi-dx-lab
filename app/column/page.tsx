@@ -8,6 +8,16 @@ import {
   resolveCategory,
 } from "../../lib/column-categories";
 
+// ai-geo-llmo には旧カテゴリ値 (basics / ai-strategy / practice / case-study) の
+// 未マイグレーション記事も含める。マイグレーション完了後は ["ai-geo-llmo"] のみで十分。
+const AI_GEO_LLMO_DB_VALUES = [
+  "ai-geo-llmo",
+  "basics",
+  "ai-strategy",
+  "practice",
+  "case-study",
+];
+
 export const dynamic = "force-dynamic";
 
 type Props = {
@@ -44,11 +54,17 @@ export default async function ColumnListPage({ searchParams }: Props) {
     ? COLUMN_CATEGORIES.find((c) => c.value === rawCategory)?.value
     : undefined;
 
-  const columns = await prisma.column.findMany({
+  // DB側フィルタ。ai-geo-llmo は旧カテゴリも含む。
+  const categoryFilter = selectedCategory
+    ? selectedCategory === "ai-geo-llmo"
+      ? { category: { in: AI_GEO_LLMO_DB_VALUES } }
+      : { category: selectedCategory }
+    : {};
+
+  const visibleColumns = await prisma.column.findMany({
     where: {
       isPublished: true,
-      // 旧カテゴリ値が混在している可能性があるので、選択時はDB側でフィルタせず
-      // 後段で resolveCategory() 経由で判定する（DB未マイグレーションの環境でも動くように）
+      ...categoryFilter,
     },
     orderBy: { publishedAt: "desc" },
     select: {
@@ -60,10 +76,6 @@ export default async function ColumnListPage({ searchParams }: Props) {
       publishedAt: true,
     },
   });
-
-  const visibleColumns = selectedCategory
-    ? columns.filter((c) => resolveCategory(c.category) === selectedCategory)
-    : columns;
 
   return (
     <>
