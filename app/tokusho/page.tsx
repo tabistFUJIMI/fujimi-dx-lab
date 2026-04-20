@@ -58,7 +58,7 @@ export default function TokushoPage() {
                         </p>
                         <div className="space-y-1.5">
                           <p className="font-medium text-slate-800">Reserve Navi（予約管理）</p>
-                          <p>フリー: ¥0 / ライト: ¥980 / スタンダード: ¥2,480 / プロ: ¥3,980</p>
+                          <p>フリー: ¥0 / ライト: ¥980 / スタンダード: ¥2,980 / プロ: ¥4,980</p>
                         </div>
                         <div className="space-y-1.5">
                           <p className="font-medium text-slate-800">Ask Navi（AI応答）/ Rule Navi（社内規則AI）</p>

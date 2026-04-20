@@ -10,7 +10,7 @@ const PRODUCTS = [
     tagline: "LINE予約管理",
     description:
       "LINE経由の予約を自動管理。電話対応を減らし、予約の取りこぼしをゼロに。顧客管理・AI分析機能付き。",
-    price: "無料〜¥3,980/月",
+    price: "無料〜¥4,980/月",
     href: "/products/reserve-navi",
     color: "#f97316",
     featured: true,
@@ -87,7 +87,7 @@ export default function FujiminPassPage() {
         name: "共創パートナーとは何ですか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "ReserveNaviのスタンダードプラン（通常¥2,480/月）を最大1年間無料でご利用いただき、月2回のヒアリングとLINEでの随時フィードバックにご協力いただくプログラムです。数社限定で募集しています。",
+          text: "ReserveNaviのスタンダードプラン（通常¥2,980/月）を最大1年間無料でご利用いただき、月2回のヒアリングとLINEでの随時フィードバックにご協力いただくプログラムです。数社限定で募集しています。",
         },
       },
       {
@@ -111,7 +111,7 @@ export default function FujiminPassPage() {
         name: "パートナー期間終了後はどうなりますか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "スタンダードプラン（¥2,480/月）を継続するか、ライトプラン（¥980/月）にダウングレードするかを選択できます。いつでも辞退も可能です。",
+          text: "スタンダードプラン（¥2,980/月）を継続するか、ライトプラン（¥980/月）にダウングレードするかを選択できます。いつでも辞退も可能です。",
         },
       },
     ],
@@ -164,6 +164,9 @@ export default function FujiminPassPage() {
               "radial-gradient(ellipse at 20% 0%, #312e81 0%, transparent 50%), radial-gradient(ellipse at 80% 100%, #1e3a5f 0%, transparent 50%), linear-gradient(135deg, #1e1b4b 0%, #0f172a 50%, #020617 100%)",
           }}
         >
+          <h1 className="sr-only">
+            FUJIMIN PASS — 小規模店舗向けDXツールシリーズ
+          </h1>
           <div className="relative z-10 mx-auto max-w-4xl text-center">
             <FadeIn>
               <a
@@ -178,42 +181,40 @@ export default function FujiminPassPage() {
               </a>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <h1
-                className="mt-8 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl"
-                style={{ lineHeight: 1.15 }}
+              <p
+                className="mt-8 text-4xl font-extrabold tracking-tight md:text-5xl"
+                style={{ lineHeight: 1.1 }}
               >
-                月数万円のSaaSは、
+                FUJIMIN PASS
+              </p>
+              <p className="mt-4 text-xl text-indigo-200">
+                小さなお店の予約・問い合わせ・シフトを
                 <br />
-                小さなお店には重すぎる。
-              </h1>
-              <p className="mt-6 text-lg font-semibold text-indigo-200 md:text-xl">
-                だから自分たちで作っています。
-                <br className="md:hidden" />
-                <span className="text-orange-300">FUJIMIN PASS</span>
-                ｜現場が本気で使うDXシリーズ。
+                1つずつ解決するDXシリーズ
               </p>
             </FadeIn>
             {/* LLMO対策: 冒頭要約 */}
             <FadeIn delay={0.2}>
               <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-300">
-                FUJIMIN PASSは、旅館経営者がAIと一緒に作っている小規模店舗向けDXシリーズです。
-                LINE予約管理（ReserveNavi）、AI自動応答（AskNavi）、シフト管理（ShiftNavi・無料）など、
-                ちょうどいい機能を月額¥0から、必要なものだけ選んで始められます。
+                FUJIMIN
+                PASSは施術院・サロン・美容室など小規模店舗向けのDXツールシリーズです。
+                LINE予約管理（ReserveNavi）、AI自動応答（AskNavi）、シフト管理（ShiftNavi・無料）の3つを中心に、
+                月額¥0から必要なものだけ選んで始められます。
               </p>
             </FadeIn>
             <FadeIn delay={0.3}>
               <div className="mt-8 flex flex-wrap justify-center gap-4">
                 <a
-                  href="#products"
+                  href="#partner"
                   className="inline-flex items-center rounded-xl bg-orange-500 px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:scale-105 hover:bg-orange-600"
                 >
-                  無料で試せるツールを見る ↓
+                  パートナーに応募する
                 </a>
                 <a
-                  href="#partner"
+                  href="#products"
                   className="inline-flex items-center rounded-xl border border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all hover:bg-white/10"
                 >
-                  共創パートナーに応募
+                  ツール一覧を見る ↓
                 </a>
               </div>
               <p className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-sm text-slate-400">
@@ -221,68 +222,6 @@ export default function FujiminPassPage() {
                 <span>✓ いつでも解約OK</span>
                 <span>✓ クレカ登録不要</span>
               </p>
-            </FadeIn>
-          </div>
-        </section>
-
-        {/* ─── なぜ作っているか ─── */}
-        <section className="bg-[#FFFCFA] px-4 py-24">
-          <div className="mx-auto max-w-3xl">
-            <FadeIn>
-              <div className="text-center">
-                <p className="text-xs font-bold uppercase tracking-widest text-orange-500">
-                  Why FUJIMIN PASS
-                </p>
-                <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
-                  なぜ、私たちが作るのか。
-                </h2>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.1}>
-              <div className="mt-12 space-y-6 text-base leading-loose text-slate-700 md:text-lg">
-                <p>
-                  予約システムに、シフト調整に、チャットボットに、
-                  <br />
-                  オプション料金に──。
-                  <br />
-                  気づけば、月数万円。
-                </p>
-                <p>
-                  旅館を経営する私自身が、ずっとそれに困っていました。
-                  <br />
-                  痒いところに手が届かない。機能が多すぎて使いこなせない。
-                </p>
-                <p className="font-bold text-slate-900">
-                  幸い、私にはIT知識がありました。
-                  <br />
-                  AIを使えば、小さな会社でも対応できる。
-                </p>
-                <p>
-                  小さい会社だからこそ、細かい対応ができる。
-                  <br />
-                  24時間対応の宿で鍛えた現場感覚を、ツールに込められる。
-                </p>
-                <p>
-                  低価格で、ちょうどいい機能。
-                  <br />
-                  AIが仕事をサポートしてくれる。
-                  <br />
-                  それが、FUJIMIN PASSです。
-                </p>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-              <div className="mt-12 rounded-2xl border border-orange-100 bg-white p-6 text-center shadow-sm md:p-8">
-                <p className="text-lg font-bold leading-relaxed text-slate-900 md:text-xl">
-                  必要なものを、
-                  <span className="text-orange-500">1つから</span>
-                  。
-                  <br className="md:hidden" />
-                  まずは、得意分野の予約から。
-                </p>
-              </div>
             </FadeIn>
           </div>
         </section>
@@ -393,7 +332,7 @@ export default function FujiminPassPage() {
                     <span className="text-orange-400"> 無料</span>
                   </p>
                   <p className="mt-1 text-sm text-slate-400">
-                    通常 ¥2,480/月相当 → 最大1年間無料
+                    通常 ¥2,980/月相当 → 最大1年間無料
                   </p>
                   <ul className="mt-4 space-y-2 text-sm text-slate-300">
                     <li className="flex items-start gap-2">
@@ -487,7 +426,7 @@ export default function FujiminPassPage() {
                 },
                 {
                   q: "パートナー期間終了後はどうなりますか？",
-                  a: "スタンダードプラン（¥2,480/月）を継続するか、ライトプラン（¥980/月）にダウングレードするかを選択できます。いつでも辞退も可能です。",
+                  a: "スタンダードプラン（¥2,980/月）を継続するか、ライトプラン（¥980/月）にダウングレードするかを選択できます。いつでも辞退も可能です。",
                 },
                 {
                   q: "対象業種は決まっていますか？",

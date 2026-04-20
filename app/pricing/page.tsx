@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "料金プラン | FUJIMI DX Lab",
-    description: "ShiftNaviフリー¥0〜、ReserveNavi月額¥980〜、スタンダード¥2,480。1ツールから始められる小規模事業者向けDXプラットフォーム。",
+    description: "ShiftNaviフリー¥0〜、ReserveNavi月額¥980〜。1ツールから始められる小規模事業者向けDXプラットフォーム。",
     url: "https://fujimi-dx-lab.com/pricing",
     siteName: "FUJIMI DX Lab",
     locale: "ja_JP",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "料金プラン | FUJIMI DX Lab",
-    description: "ShiftNaviフリー¥0〜、ReserveNaviライト¥980〜スタンダード¥2,480。1ツールから始められるDXプラットフォーム。",
+    description: "ShiftNaviフリー¥0〜、ReserveNavi月額¥980〜。1ツールから始められるDXプラットフォーム。",
   },
 };
 
@@ -47,31 +47,16 @@ const RESERVE_PLANS = [
   },
   {
     name: "スタンダード",
-    price: "¥2,480",
+    price: "¥2,980",
     period: "/月",
-    features: [
-      "スタッフ無制限",
-      "予約件数無制限（目安 月300件）",
-      "直近12ヶ月来店のお客様1,300名まで",
-      "AI機能用 500pt / 月",
-      "週次・月次AIレポート（専用枠500pt）",
-      "店舗向けAIチャットボット",
-      "LINE拡張あり",
-      "AIデータ移行 30日2,000ptまで無料",
-    ],
+    features: ["スタッフ無制限", "予約件数無制限", "700pt付き", "LINE拡張あり"],
     recommended: true,
   },
   {
     name: "プロ",
-    price: "¥3,980",
+    price: "¥4,980",
     period: "/月",
-    features: [
-      "スタンダードの全機能",
-      "目安 月800件の予約規模まで",
-      "直近12ヶ月来店のお客様2,500名まで",
-      "AI機能用 1,500pt / 月",
-      "優先サポート",
-    ],
+    features: ["スタッフ無制限", "予約件数無制限", "1,500pt付き", "優先サポート"],
     recommended: false,
   },
 ];
@@ -80,16 +65,11 @@ const RESERVE_PLANS = [
 const RESERVE_COMPARISON = {
   headers: ["機能", "無料", "ライト", "スタンダード", "プロ"],
   rows: [
-    ["月間予約件数", "50件", "無制限", "無制限（目安300件）", "無制限（目安800件）"],
+    ["月間予約件数", "50件", "無制限", "無制限", "無制限"],
     ["スタッフ数", "1名", "1名", "無制限", "無制限"],
     ["予約履歴", "3ヶ月", "無制限", "無制限", "無制限"],
-    ["直近12ヶ月来店のお客様対応目安", "50名", "200名", "1,300名", "2,500名"],
     ["AI機能", false, "購入ptで", true, true],
-    ["手動用ポイント", false, false, "500pt", "1,500pt"],
-    ["レポート専用ポイント", false, false, "500pt", "500pt"],
-    ["週次・月次AIレポート", false, false, true, true],
-    ["店舗向けAIチャットボット", false, "購入ptで", true, true],
-    ["AIデータ移行 30日無料枠", false, false, "2,000ptまで", "2,000ptまで"],
+    ["FUJIMINポイント", false, false, "700pt", "1,500pt"],
     ["LINE拡張", false, true, true, true],
     ["優先サポート", false, false, false, true],
   ],
@@ -186,19 +166,11 @@ const FAQS = [
   },
   {
     q: "無料トライアルはありますか？",
-    a: "ShiftNaviはフリープラン（スタッフ5名まで）、ReserveNaviは無料プラン（月50件）をご用意しています。AskNavi・RuleNaviは7日間の無料トライアルがあります。お申込みいただいた月から課金が発生します。",
+    a: "ShiftNaviはフリープラン（スタッフ5名まで）、ReserveNaviは無料プラン（月50件）をご用意しています。AskNavi・RuleNaviは7日間の無料トライアルがあります。",
   },
   {
     q: "FUJIMINポイントとは何ですか？",
-    a: "FUJIMINポイントはAI機能の従量課金に使えるポイントです。ReserveNaviスタンダード以上では「手動用ポイント」と「週次・月次レポート専用ポイント」を別枠でご用意しています。実質の1pt単価は購入パックにより約2.57〜5.5円です。月額プランのポイントは3ヶ月、購入ポイントは6ヶ月の有効期限内で自動繰越されます。",
-  },
-  {
-    q: "FUJIMIN PASS新規登録の特典はありますか？",
-    a: "FUJIMIN PASSにご登録いただくと、500ポイントを90日間有効の特典としてプレゼントします。AskNaviやSlideNaviなど対応するすべてのアプリで利用可能です。",
-  },
-  {
-    q: "ReserveNaviで既存の顧客データを移行できますか？",
-    a: "スタンダード以上のプランをご契約いただくと、手書きカルテや既存の顧客リストのAI読み取り機能が登録から30日間・累計2,000ポイントまで無料でご利用いただけます。ライトプランをご契約の場合も、購入ポイントでご利用可能です。",
+    a: "FUJIMINポイントはAI機能の従量課金に使えるポイントです。月額プランの上限を超えた場合や、SlideNaviなどのAIツールで消費します。1pt = 1円相当です。有効期限はありません。",
   },
 ];
 

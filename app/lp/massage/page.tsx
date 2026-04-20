@@ -455,7 +455,7 @@ export default function MassageLPPage() {
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold text-white" style={{ backgroundColor: "#f97316" }}>おすすめ</span>
                   <div className="text-center">
                     <p className="text-sm font-semibold" style={{ color: "#f97316" }}>スタンダードプラン</p>
-                    <p className="mt-2 text-4xl font-extrabold text-gray-900">¥2,480<span className="text-base font-normal text-gray-500">/月</span></p>
+                    <p className="mt-2 text-4xl font-extrabold text-gray-900">¥2,980<span className="text-base font-normal text-gray-500">/月</span></p>
                     <p className="mt-1 text-xs text-gray-500">LINE予約 + AI応答がセット</p>
                   </div>
                   <div className="mt-6">
@@ -476,7 +476,7 @@ export default function MassageLPPage() {
                       <th className="px-5 py-4 text-left font-semibold text-gray-700">機能</th>
                       <th className="px-5 py-4 text-center font-semibold text-gray-500">無料</th>
                       <th className="px-5 py-4 text-center font-semibold text-gray-500">ライト<br /><span className="text-xs font-normal">¥980/月</span></th>
-                      <th className="px-5 py-4 text-center font-semibold" style={{ color: "#f97316" }}>スタンダード<br /><span className="text-xs font-normal">¥2,480/月</span></th>
+                      <th className="px-5 py-4 text-center font-semibold" style={{ color: "#f97316" }}>スタンダード<br /><span className="text-xs font-normal">¥2,980/月</span></th>
                       <th className="px-5 py-4 text-center font-semibold text-gray-500">プロ<br /><span className="text-xs font-normal">¥5,500/月</span></th>
                     </tr>
                   </thead>

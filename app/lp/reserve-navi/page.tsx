@@ -4,7 +4,6 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
-import StickyCTA from "../../components/StickyCTA";
 
 export const metadata: Metadata = {
   title: "Reserve Navi | LINE予約管理システム｜無料から始められる予約管理",
@@ -43,17 +42,17 @@ const PLANS = [
   {
     name: "ライト", price: "¥980", period: "/月", description: "1人運営のお店に",
     color: "#0284c7", bgColor: "#f0f9ff",
-    highlights: ["予約件数 無制限", "CSV入出力", "AI機能は購入ポイントで利用"],
+    highlights: ["予約件数 無制限", "CSV入出力", "週次・月次レポート"],
   },
   {
-    name: "スタンダード", price: "¥2,480", period: "/月", description: "AI機能＋自動レポートで経営をサポート",
+    name: "スタンダード", price: "¥2,980", period: "/月", description: "AI機能で接客力アップ",
     color: "#f97316", bgColor: "#fff7ed", recommended: true,
-    highlights: ["スタッフ無制限", "AI機能用 月500pt", "週次・月次AIレポート（専用枠500pt）", "店舗向けAIチャットボット"],
+    highlights: ["スタッフ 無制限", "リピート促進LINE", "離脱検知・自動フォロー"],
   },
   {
-    name: "プロ", price: "¥3,980", period: "/月", description: "月800件規模の店舗に",
+    name: "プロ", price: "¥5,500", period: "/月", description: "複数店舗のオーナーに",
     color: "#7c3aed", bgColor: "#f5f3ff",
-    highlights: ["月予約800件まで", "AI機能用 月1,500pt", "優先サポート"],
+    highlights: ["最大3店舗", "FUJIMINポイント 月2,500pt", "優先サポート"],
   },
 ];
 
@@ -145,37 +144,24 @@ export default function ReserveNaviLP() {
               </div>
             </FadeIn>
             <FadeIn delay={0.3}>
-              <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <a
-                  href="https://www.fujimin-pass.com/register"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold text-orange-600 shadow-lg transition-all duration-300 hover:scale-105 sm:w-auto"
+                  href="#pricing"
+                  className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold text-orange-600 shadow-lg transition-all duration-300 hover:scale-105"
                 >
-                  無料で始める →
+                  無料プランを見る
                 </a>
                 <a
-                  href="https://lin.ee/UPArZn9"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#06C755] px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 sm:w-auto"
+                  href="#contact"
+                  className="inline-flex items-center gap-2 rounded-xl border-2 border-white/40 bg-white/10 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden="true">
-                    <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.282.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.286-.63-.63V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
-                  </svg>
-                  LINEで相談
+                  相談する（無料）
                 </a>
               </div>
-              <a
-                href="#contact"
-                className="mt-4 inline-block text-sm text-orange-100 underline-offset-4 hover:underline"
-              >
-                フォームで相談したい方はこちら
-              </a>
             </FadeIn>
             <FadeIn delay={0.35}>
               <p className="mt-6 text-sm text-orange-200/70">
-                無料プランあり ・ クレジットカード不要 ・ いつでも解約OK
+                無料プランあり ・ クレジットカード不要 ・ 2026年4月中旬サービス開始予定
               </p>
             </FadeIn>
           </div>
@@ -293,13 +279,11 @@ export default function ReserveNaviLP() {
                     </ul>
                     <div className="mt-6">
                       <a
-                        href="https://www.fujimin-pass.com/register"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="#contact"
                         className="block w-full rounded-lg py-2.5 text-center text-sm font-semibold transition-colors"
                         style={plan.recommended ? { backgroundColor: plan.color, color: "#fff" } : { backgroundColor: "#f3f4f6", color: "#374151" }}
                       >
-                        {plan.price === "¥0" ? "無料で始める" : "このプランで始める"}
+                        {plan.price === "¥0" ? "無料プランについて相談する" : "お問い合わせ"}
                       </a>
                     </div>
                   </div>
@@ -458,85 +442,21 @@ export default function ReserveNaviLP() {
           <div className="relative z-10 mx-auto max-w-3xl text-center">
             <FadeIn>
               <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-                今日から、予約管理を変えませんか？
+                まずは気軽にご相談ください
               </h2>
               <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-orange-100/80">
-                3つの始め方から選べます。
+                「うちの業種でも使える？」「まずは無料プランから試したい」
                 <br />
-                クレジットカード登録は不要です。
+                なんでもお気軽にどうぞ。
               </p>
-            </FadeIn>
-
-            <FadeIn delay={0.1}>
-              <div className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-3">
-                {/* 1. 無料登録 */}
-                <a
-                  href="https://www.fujimin-pass.com/register"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex flex-col items-center rounded-2xl bg-white p-6 text-orange-600 shadow-xl transition-all hover:-translate-y-1"
-                >
-                  <span className="text-3xl">🚀</span>
-                  <p className="mt-3 text-base font-extrabold">無料で始める</p>
-                  <p className="mt-1 text-xs text-orange-500/80">FUJIMIN PASSに登録</p>
-                  <span className="mt-3 text-sm font-bold underline-offset-4 group-hover:underline">
-                    1分で完了 →
-                  </span>
-                </a>
-
-                {/* 2. LINE相談 */}
-                <a
-                  href="https://lin.ee/UPArZn9"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex flex-col items-center rounded-2xl bg-[#06C755] p-6 text-white shadow-xl transition-all hover:-translate-y-1"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-8 w-8" aria-hidden="true">
-                    <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.282.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.286-.63-.63V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
-                  </svg>
-                  <p className="mt-3 text-base font-extrabold">LINEで相談</p>
-                  <p className="mt-1 text-xs text-white/80">気軽に質問</p>
-                  <span className="mt-3 text-sm font-bold underline-offset-4 group-hover:underline">
-                    友だち追加 →
-                  </span>
-                </a>
-
-                {/* 3. フォーム */}
-                <a
-                  href="#form"
-                  className="group flex flex-col items-center rounded-2xl border-2 border-white/40 bg-white/5 p-6 text-white backdrop-blur-sm transition-all hover:-translate-y-1 hover:bg-white/10"
-                >
-                  <span className="text-3xl">✉️</span>
-                  <p className="mt-3 text-base font-extrabold">フォームで相談</p>
-                  <p className="mt-1 text-xs text-white/80">じっくり聞きたい方へ</p>
-                  <span className="mt-3 text-sm font-bold underline-offset-4 group-hover:underline">
-                    入力フォームへ ↓
-                  </span>
-                </a>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-              <div id="form" className="mt-16 rounded-3xl bg-white/95 p-6 text-left shadow-2xl backdrop-blur-sm md:p-10">
-                <p className="text-center text-sm font-bold text-gray-500">
-                  ✉️ お問い合わせフォーム
-                </p>
-                <div className="mt-6">
-                  <ContactForm />
-                </div>
+              <div className="mt-10">
+                <ContactForm />
               </div>
             </FadeIn>
           </div>
         </section>
       </main>
       <Footer />
-      <StickyCTA
-        primaryHref="https://www.fujimin-pass.com/register"
-        primaryLabel="無料で始める"
-        secondaryHref="https://lin.ee/UPArZn9"
-        secondaryLabel="LINEで相談"
-        caption="クレカ不要・1分で登録"
-      />
     </>
   );
 }
