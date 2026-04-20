@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ContactForm from "../../components/ContactForm";
+import SignupFlowButton from "../../components/SignupFlowButton";
 import FadeIn from "../../components/FadeIn";
 import RelatedProducts from "../../components/RelatedProducts";
 import AskNaviWidget from "../../components/AskNaviWidget";
@@ -157,7 +158,7 @@ export default function AskNaviPage() {
               </FadeIn>
               <FadeIn delay={0.25}>
                 <div className="mt-8 flex flex-wrap gap-4">
-                  <a href="https://www.fujimin-pass.com/register" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold shadow-lg transition-all duration-300 hover:scale-105" style={{ color: "#0d9488" }}>無料で始める</a>
+                  <SignupFlowButton label="申し込む" appName="Ask Navi" accentColor="#0d9488" className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold shadow-lg transition-all duration-300 hover:scale-105" style={{ color: "#0d9488" }} />
                   <a href="#pricing" className="inline-flex items-center gap-2 rounded-xl border-2 border-white/40 bg-white/10 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20">料金プランを見る</a>
                 </div>
               </FadeIn>
@@ -322,7 +323,7 @@ export default function AskNaviPage() {
                       ))}
                     </div>
                     <div className="mt-6">
-                      <a href="https://www.fujimin-pass.com/register" target="_blank" rel="noopener noreferrer" className="block w-full rounded-lg py-2.5 text-center text-sm font-semibold transition-colors" style={plan.recommended ? { backgroundColor: plan.color, color: "#fff" } : { backgroundColor: "#f3f4f6", color: "#374151" }}>このプランで申し込む</a>
+                      <SignupFlowButton label="申し込む" appName="Ask Navi" planName={plan.name} accentColor={plan.color} className="block w-full rounded-lg py-2.5 text-center text-sm font-semibold transition-colors" style={plan.recommended ? { backgroundColor: plan.color, color: "#fff" } : { backgroundColor: "#f3f4f6", color: "#374151" }} />
                     </div>
                   </div>
                 </FadeIn>
@@ -454,10 +455,8 @@ export default function AskNaviPage() {
               </div>
 
               <div className="mt-8">
-                <a href="https://www.fujimin-pass.com/register" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-white px-10 py-4 text-lg font-bold shadow-xl transition-all duration-300 hover:scale-105 active:scale-[0.98]" style={{ color: "#0d9488" }}>
-                  無料で始める →
-                </a>
-                <p className="mt-3 text-xs text-teal-100/80">FUJIMIN PASS に登録 → 管理画面から Ask Navi をお申し込み</p>
+                <SignupFlowButton label="申し込む" appName="Ask Navi" accentColor="#0d9488" className="inline-flex items-center gap-2 rounded-xl bg-white px-10 py-4 text-lg font-bold shadow-xl transition-all duration-300 hover:scale-105 active:scale-[0.98]" style={{ color: "#0d9488" }} />
+                <p className="mt-3 text-xs text-teal-100/80">3ステップで完了（ボタンを押すと詳しい流れが表示されます）</p>
               </div>
 
               <div className="mt-14 pt-10 border-t border-white/20">

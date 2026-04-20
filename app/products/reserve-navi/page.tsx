@@ -7,6 +7,7 @@ import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
 import RelatedProducts from "../../components/RelatedProducts";
 import { ProductBreadcrumb } from "../../components/JsonLd";
+import SignupFlowButton from "../../components/SignupFlowButton";
 
 export const metadata: Metadata = {
   title: "Reserve Navi | LINE予約管理",
@@ -261,14 +262,12 @@ export default function ReserveNaviPage() {
                 </FadeIn>
                 <FadeIn delay={0.25}>
                   <div className="mt-8 flex flex-wrap gap-4">
-                    <a
-                      href="https://www.fujimin-pass.com/register"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <SignupFlowButton
+                      label="申し込む"
+                      appName="ReserveNavi"
+                      accentColor="#f97316"
                       className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold text-orange-600 shadow-lg transition-all duration-300 hover:scale-105 active:scale-[0.98]"
-                    >
-                      無料で始める
-                    </a>
+                    />
                     <a
                       href="#pricing"
                       className="inline-flex items-center gap-2 rounded-xl border-2 border-white/40 bg-white/10 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20"
@@ -503,19 +502,18 @@ export default function ReserveNaviPage() {
                     </div>
 
                     <div className="mt-6">
-                      <a
-                        href="https://www.fujimin-pass.com/register"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <SignupFlowButton
+                        label={plan.price === "¥0" ? "無料で始める" : "申し込む"}
+                        appName="ReserveNavi"
+                        planName={plan.name}
+                        accentColor={plan.color}
                         className="block w-full rounded-lg py-2.5 text-center text-sm font-semibold transition-colors"
                         style={
                           plan.recommended
                             ? { backgroundColor: plan.color, color: "#fff" }
                             : { backgroundColor: "#f3f4f6", color: "#374151" }
                         }
-                      >
-                        {plan.price === "¥0" ? "無料で始める" : "このプランで申し込む"}
-                      </a>
+                      />
                     </div>
                   </div>
                 </FadeIn>
@@ -662,16 +660,14 @@ export default function ReserveNaviPage() {
 
               {/* プライマリCTA */}
               <div className="mt-8">
-                <a
-                  href="https://www.fujimin-pass.com/register"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <SignupFlowButton
+                  label="申し込む"
+                  appName="ReserveNavi"
+                  accentColor="#f97316"
                   className="inline-flex items-center gap-2 rounded-xl bg-white px-10 py-4 text-lg font-bold text-orange-600 shadow-xl transition-all duration-300 hover:scale-105 active:scale-[0.98]"
-                >
-                  無料で始める →
-                </a>
+                />
                 <p className="mt-3 text-xs text-orange-100/80">
-                  FUJIMIN PASS に登録 → 管理画面から ReserveNavi をお申し込み
+                  3ステップで完了（ボタンを押すと詳しい流れが表示されます）
                 </p>
               </div>
 

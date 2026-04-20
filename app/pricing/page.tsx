@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FadeIn from "../components/FadeIn";
 import ContactForm from "../components/ContactForm";
+import SignupFlowButton from "../components/SignupFlowButton";
 
 export const metadata: Metadata = {
   title: "料金プラン | FUJIMI DX Lab",
@@ -301,16 +302,17 @@ export default function PricingPage() {
                         </li>
                       ))}
                     </ul>
-                    <a
-                      href="/products/shift-navi"
-                      className={`mt-6 block rounded-xl px-4 py-3 text-center text-sm font-bold transition-all hover:scale-[1.02] ${
+                    <SignupFlowButton
+                      label={plan.price === "¥0" ? "無料で始める" : "申し込む"}
+                      appName="Shift Navi"
+                      planName={plan.name}
+                      accentColor="#ea580c"
+                      className={`mt-6 block w-full rounded-xl px-4 py-3 text-center text-sm font-bold transition-all hover:scale-[1.02] ${
                         plan.recommended
                           ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg"
                           : "border border-gray-200 text-gray-700 hover:border-gray-300"
                       }`}
-                    >
-                      {plan.price === "¥0" ? "無料で始める" : "このプランで始める"}
-                    </a>
+                    />
                     <p className="mt-2 text-center text-xs text-gray-400">
                       {plan.price === "¥0" ? "縛りなし・いつでも解約OK" : "縛りなし・いつでも解約OK"}
                     </p>
@@ -367,17 +369,18 @@ export default function PricingPage() {
                         </li>
                       ))}
                     </ul>
-                    <a
-                      href="/products/reserve-navi"
-                      className={`mt-6 block rounded-xl px-4 py-3 text-center text-sm font-bold transition-all hover:scale-[1.02] ${
+                    <SignupFlowButton
+                      label={plan.price === "¥0" ? "無料で始める" : "申し込む"}
+                      appName="ReserveNavi"
+                      planName={plan.name}
+                      accentColor="#7c3aed"
+                      className={`mt-6 block w-full rounded-xl px-4 py-3 text-center text-sm font-bold transition-all hover:scale-[1.02] ${
                         plan.recommended
                           ? "text-white shadow-lg"
                           : "border border-gray-200 text-gray-700 hover:border-gray-300"
                       }`}
                       style={plan.recommended ? { backgroundColor: "#7c3aed" } : undefined}
-                    >
-                      {plan.price === "¥0" ? "無料で始める" : "このプランで始める"}
-                    </a>
+                    />
                     <p className="mt-2 text-center text-xs text-gray-400">
                       {plan.price === "¥0" ? "縛りなし・いつでも解約OK" : "縛りなし・いつでも解約OK"}
                     </p>
@@ -484,17 +487,18 @@ export default function PricingPage() {
                         </li>
                       ))}
                     </ul>
-                    <a
-                      href="/products/ask-navi"
-                      className={`mt-6 block rounded-xl px-4 py-3 text-center text-sm font-bold transition-all hover:scale-[1.02] ${
+                    <SignupFlowButton
+                      label="申し込む"
+                      appName="Ask Navi"
+                      planName={plan.name}
+                      accentColor="#e94560"
+                      className={`mt-6 block w-full rounded-xl px-4 py-3 text-center text-sm font-bold transition-all hover:scale-[1.02] ${
                         plan.recommended
                           ? "text-white shadow-lg"
                           : "border border-gray-200 text-gray-700 hover:border-gray-300"
                       }`}
                       style={plan.recommended ? { backgroundColor: "#e94560" } : undefined}
-                    >
-                      7日間無料で試す
-                    </a>
+                    />
                     <p className="mt-2 text-center text-xs text-gray-400">
                       縛りなし・いつでも解約OK
                     </p>
