@@ -262,18 +262,26 @@ export default function ReserveNaviPage() {
                 <FadeIn delay={0.25}>
                   <div className="mt-8 flex flex-wrap gap-4">
                     <a
-                      href="#pricing"
+                      href="https://www.fujimin-pass.com/register"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold text-orange-600 shadow-lg transition-all duration-300 hover:scale-105 active:scale-[0.98]"
+                    >
+                      無料で始める
+                    </a>
+                    <a
+                      href="#pricing"
+                      className="inline-flex items-center gap-2 rounded-xl border-2 border-white/40 bg-white/10 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20"
                     >
                       料金プランを見る
                     </a>
-                    <a
-                      href="#contact"
-                      className="inline-flex items-center gap-2 rounded-xl border-2 border-white/40 bg-white/10 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20"
-                    >
-                      無料で相談する
-                    </a>
                   </div>
+                </FadeIn>
+                <FadeIn delay={0.3}>
+                  <p className="mt-4 text-xs text-orange-100/80">
+                    ※ ReserveNaviはFUJIMIN PASSの一員として提供されます。
+                    まずFUJIMIN PASSにご登録後、ReserveNaviをお申し込みください。
+                  </p>
                 </FadeIn>
               </div>
               <FadeIn delay={0.15} className="hidden lg:block">
@@ -496,7 +504,9 @@ export default function ReserveNaviPage() {
 
                     <div className="mt-6">
                       <a
-                        href="#contact"
+                        href="https://www.fujimin-pass.com/register"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="block w-full rounded-lg py-2.5 text-center text-sm font-semibold transition-colors"
                         style={
                           plan.recommended
@@ -504,13 +514,32 @@ export default function ReserveNaviPage() {
                             : { backgroundColor: "#f3f4f6", color: "#374151" }
                         }
                       >
-                        {plan.price === "¥0" ? "無料プランについて相談する" : "お問い合わせ"}
+                        {plan.price === "¥0" ? "無料で始める" : "このプランで申し込む"}
                       </a>
                     </div>
                   </div>
                 </FadeIn>
               ))}
             </div>
+
+            <FadeIn delay={0.3}>
+              <div className="mt-8 rounded-xl border border-orange-200 bg-orange-50 p-5 text-sm text-orange-900">
+                <p className="font-semibold mb-1 flex items-center gap-1.5">
+                  <span>ℹ️</span>
+                  <span>ご契約の流れ</span>
+                </p>
+                <ol className="ml-6 list-decimal space-y-1 text-xs">
+                  <li>
+                    まず <a href="https://www.fujimin-pass.com/register" target="_blank" rel="noopener noreferrer" className="font-semibold underline">FUJIMIN PASS</a> にご登録（無料・メール認証のみ）
+                  </li>
+                  <li>管理画面から ReserveNavi のプランをご選択＆お申し込み</li>
+                  <li>クレジットカード決済の場合はすぐご利用開始（銀行振込は1〜3営業日）</li>
+                </ol>
+                <p className="mt-2 text-xs">
+                  ReserveNavi単独でのご契約はできません。FUJIMIN PASSアカウント（無料）から、必要なアプリだけを選んでご契約いただく仕組みです。
+                </p>
+              </div>
+            </FadeIn>
 
             <FadeIn delay={0.3}>
               <div className="mt-10 rounded-2xl border border-gray-100 bg-gray-50 p-6 text-center">
@@ -600,14 +629,57 @@ export default function ReserveNaviPage() {
           <div className="relative z-10 mx-auto max-w-3xl text-center">
             <FadeIn>
               <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-                まずは気軽にご相談ください
+                今すぐ無料で始められます
               </h2>
               <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-orange-100/80">
-                「うちの業種でも使える？」「設定を手伝ってほしい」
-                <br />
-                なんでもお気軽にどうぞ。無料でご相談いただけます。
+                メール認証のみ・クレジットカード不要。1分で登録が完了します。
               </p>
-              <div className="mt-10">
+
+              {/* FUJIMIN PASS 案内カード */}
+              <div className="mx-auto mt-8 max-w-xl rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 p-6 text-left">
+                <p className="font-bold text-white text-base mb-2 flex items-center gap-2">
+                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white/20 text-xs">?</span>
+                  <span>FUJIMIN PASSとは</span>
+                </p>
+                <p className="text-sm text-orange-100/90 leading-relaxed mb-3">
+                  ReserveNaviを含む複数の業務アプリを「ひとつのアカウント」「ひとつのお支払い」で使えるプラットフォームです。
+                </p>
+                <ul className="space-y-1.5 text-xs text-orange-100/80">
+                  <li className="flex items-start gap-2">
+                    <span className="shrink-0">✓</span>
+                    <span>登録・アカウント作成は<strong className="text-white">無料</strong>（メール認証のみ）</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="shrink-0">✓</span>
+                    <span>必要なアプリだけを選んでご契約（ReserveNaviの無料プランならずっと¥0）</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="shrink-0">✓</span>
+                    <span>初回登録で<strong className="text-white">500ポイントプレゼント</strong>（90日有効・AI機能で使える）</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* プライマリCTA */}
+              <div className="mt-8">
+                <a
+                  href="https://www.fujimin-pass.com/register"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-white px-10 py-4 text-lg font-bold text-orange-600 shadow-xl transition-all duration-300 hover:scale-105 active:scale-[0.98]"
+                >
+                  無料で始める →
+                </a>
+                <p className="mt-3 text-xs text-orange-100/80">
+                  FUJIMIN PASS に登録 → 管理画面から ReserveNavi をお申し込み
+                </p>
+              </div>
+
+              {/* セカンダリ: 相談 */}
+              <div className="mt-14 pt-10 border-t border-white/20">
+                <p className="text-sm text-orange-100/80 mb-4">
+                  「うちの業種でも使える？」「設定を手伝ってほしい」などのご相談はこちら
+                </p>
                 <ContactForm />
               </div>
             </FadeIn>
