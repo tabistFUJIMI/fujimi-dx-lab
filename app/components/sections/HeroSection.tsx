@@ -78,7 +78,7 @@ export default function HeroSection() {
               </a>
             </div>
             <p className="mt-4 text-center text-xs text-[#8A7F74] lg:text-left">
-              ✓ クレカ不要 ・ ✓ 1分で登録 ・ ✓ いつでも解約OK
+              ✓ 1分で登録 ・ ✓ 初期費用¥0 ・ ✓ いつでも解約OK
             </p>
           </FadeIn>
         </div>
@@ -92,10 +92,10 @@ export default function HeroSection() {
               style={{ transform: "rotate(-2deg)" }}
             >
               <Image
-                src="/images/salon-owner-phone.png"
-                alt="サロンオーナーがスマホで予約管理をしている様子"
-                width={600}
-                height={600}
+                src="/images/generated/hero-photo-high.png"
+                alt="サロンオーナーがスマホで笑顔でLINE予約を確認している様子"
+                width={1536}
+                height={1024}
                 priority
                 className="h-72 w-full object-cover md:h-96"
               />

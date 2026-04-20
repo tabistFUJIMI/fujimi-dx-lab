@@ -442,7 +442,7 @@ export default function MassageLPPage() {
                   <div className="text-center">
                     <p className="text-sm font-semibold text-gray-500">無料プラン</p>
                     <p className="mt-2 text-4xl font-extrabold text-gray-900">¥0</p>
-                    <p className="mt-1 text-xs text-gray-500">ずっと無料・クレカ登録不要</p>
+                    <p className="mt-1 text-xs text-gray-500">ずっと無料・縛りなし</p>
                   </div>
                   <div className="mt-6">
                     <a href="#contact" className="block w-full rounded-lg bg-gray-100 py-3 text-center text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-200">

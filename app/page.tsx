@@ -28,7 +28,7 @@ export default function Home() {
         primaryLabel="無料で始める"
         secondaryHref="https://lin.ee/UPArZn9"
         secondaryLabel="LINE相談"
-        caption="クレカ不要・1分で登録"
+        caption="1分で登録・いつでも解約OK"
       />
     </>
   );

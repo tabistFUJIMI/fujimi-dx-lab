@@ -11,7 +11,7 @@ type Props = {
   secondaryHref?: string;
   /** 副CTAラベル */
   secondaryLabel?: string;
-  /** 小さい注釈（クレカ不要など） */
+  /** 小さい注釈（注釈テキストなど） */
   caption?: string;
   /** スクロール何pxで表示するか */
   showAfter?: number;
@@ -26,7 +26,7 @@ export default function StickyCTA({
   primaryLabel = "無料で相談する",
   secondaryHref,
   secondaryLabel,
-  caption = "クレカ不要・1分で送信",
+  caption = "1分で送信・いつでも解約OK",
   showAfter = 400,
 }: Props) {
   const [visible, setVisible] = useState(false);

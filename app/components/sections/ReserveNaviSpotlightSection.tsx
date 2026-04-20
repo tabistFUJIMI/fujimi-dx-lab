@@ -15,19 +15,19 @@ const INDUSTRIES = [
 const STEPS = [
   {
     num: "1",
-    emoji: "📲",
+    image: "/images/generated/step1-line-open.png",
     title: "LINEを開くだけ",
     desc: "お客様はお店の公式LINEから予約スタート。アプリのダウンロードは不要。",
   },
   {
     num: "2",
-    emoji: "🏷️",
+    image: "/images/generated/step2-select-menu.png",
     title: "メニューを選ぶ",
     desc: "施術メニューや所要時間を分かりやすく表示。指名予約にも対応。",
   },
   {
     num: "3",
-    emoji: "🗓️",
+    image: "/images/generated/step3-confirm-booking.png",
     title: "日時を選んで予約完了",
     desc: "空き状況がリアルタイムで反映。ダブルブッキングはゼロに。",
   },
@@ -149,19 +149,27 @@ export default function ReserveNaviSpotlightSection() {
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {STEPS.map((step, i) => (
               <FadeIn key={step.num} delay={i * 0.1}>
-                <div className="relative h-full rounded-3xl border border-[#F5EFE6] bg-[#FFFCFA] p-7 transition-all hover:-translate-y-1 hover:shadow-lg">
-                  <div className="mb-4 flex items-center justify-between">
-                    <span className="text-4xl">{step.emoji}</span>
-                    <span className="font-[family-name:var(--font-quicksand)] text-3xl font-extrabold text-[#F97316]/30">
+                <div className="relative h-full overflow-hidden rounded-3xl border border-[#F5EFE6] bg-[#FFFCFA] transition-all hover:-translate-y-1 hover:shadow-lg">
+                  <div className="relative aspect-square overflow-hidden bg-[#FFF7ED]">
+                    <Image
+                      src={step.image}
+                      alt={step.title}
+                      width={400}
+                      height={400}
+                      className="h-full w-full object-cover"
+                    />
+                    <span className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white font-[family-name:var(--font-quicksand)] text-lg font-extrabold text-[#F97316] shadow-md">
                       {step.num}
                     </span>
                   </div>
-                  <h4 className="text-lg font-bold text-[#3E362E]">
-                    {step.title}
-                  </h4>
-                  <p className="mt-2 text-sm leading-relaxed text-[#52483F]">
-                    {step.desc}
-                  </p>
+                  <div className="p-6">
+                    <h4 className="text-lg font-bold text-[#3E362E]">
+                      {step.title}
+                    </h4>
+                    <p className="mt-2 text-sm leading-relaxed text-[#52483F]">
+                      {step.desc}
+                    </p>
+                  </div>
                 </div>
               </FadeIn>
             ))}
@@ -187,7 +195,7 @@ export default function ReserveNaviSpotlightSection() {
             </Link>
           </div>
           <p className="mt-4 text-center text-xs text-[#8A7F74]">
-            クレカ不要・1分で登録 ／ FUJIMIN PASS への登録で利用開始
+            1分で登録・いつでも解約OK ／ FUJIMIN PASS への登録で利用開始
           </p>
         </FadeIn>
       </div>

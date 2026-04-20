@@ -107,7 +107,7 @@ export default function PartnerCTASection() {
         {/* 安心要素 */}
         <FadeIn delay={0.15}>
           <p className="mt-8 text-center text-sm text-[#8A7F74]">
-            ✓ いつでも辞退OK ・ ✓ 無理な引き止めはしません ・ ✓ クレカ不要
+            ✓ いつでも辞退OK ・ ✓ 無理な引き止めはしません ・ ✓ 初期費用¥0
           </p>
         </FadeIn>
 

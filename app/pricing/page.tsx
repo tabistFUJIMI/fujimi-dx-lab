@@ -312,7 +312,7 @@ export default function PricingPage() {
                       {plan.price === "¥0" ? "無料で始める" : "このプランで始める"}
                     </a>
                     <p className="mt-2 text-center text-xs text-gray-400">
-                      {plan.price === "¥0" ? "クレジットカード不要" : "縛りなし・いつでも解約OK"}
+                      {plan.price === "¥0" ? "縛りなし・いつでも解約OK" : "縛りなし・いつでも解約OK"}
                     </p>
                   </div>
                 </FadeIn>
@@ -379,7 +379,7 @@ export default function PricingPage() {
                       {plan.price === "¥0" ? "無料で始める" : "このプランで始める"}
                     </a>
                     <p className="mt-2 text-center text-xs text-gray-400">
-                      {plan.price === "¥0" ? "クレジットカード不要" : "縛りなし・いつでも解約OK"}
+                      {plan.price === "¥0" ? "縛りなし・いつでも解約OK" : "縛りなし・いつでも解約OK"}
                     </p>
                   </div>
                 </FadeIn>

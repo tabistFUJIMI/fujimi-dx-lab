@@ -220,7 +220,7 @@ export default function FujiminPassPage() {
               <p className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-sm text-slate-400">
                 <span>✓ 初期費用¥0</span>
                 <span>✓ いつでも解約OK</span>
-                <span>✓ クレカ登録不要</span>
+                <span>✓ いつでも解約OK</span>
               </p>
             </FadeIn>
           </div>
