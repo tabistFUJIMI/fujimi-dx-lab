@@ -154,7 +154,7 @@ export default function ContactForm() {
         通常1〜2営業日以内にメールでご返信いたします
       </p>
       <p className="text-center text-xs text-blue-100/60 mt-2">
-        お急ぎの方は<a href="https://lin.ee/ocefT7H" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">LINEでもご相談いただけます</a>
+        お急ぎの方は<a href="https://lin.ee/UPArZn9" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">LINEでもご相談いただけます</a>
       </p>
 
       {status === "error" && (

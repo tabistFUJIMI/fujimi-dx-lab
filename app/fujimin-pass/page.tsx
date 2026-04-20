@@ -10,7 +10,7 @@ const PRODUCTS = [
     tagline: "LINE予約管理",
     description:
       "LINE経由の予約を自動管理。電話対応を減らし、予約の取りこぼしをゼロに。顧客管理・AI分析機能付き。",
-    price: "無料〜¥4,980/月",
+    price: "無料〜¥3,980/月",
     href: "/products/reserve-navi",
     color: "#f97316",
     featured: true,
@@ -64,7 +64,7 @@ export default function FujiminPassPage() {
     offers: {
       "@type": "AggregateOffer",
       lowPrice: "0",
-      highPrice: "5500",
+      highPrice: "3980",
       priceCurrency: "JPY",
       offerCount: "4",
     },
@@ -87,7 +87,7 @@ export default function FujiminPassPage() {
         name: "共創パートナーとは何ですか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "ReserveNaviのスタンダードプラン（通常¥2,980/月）を最大1年間無料でご利用いただき、月2回のヒアリングとLINEでの随時フィードバックにご協力いただくプログラムです。数社限定で募集しています。",
+          text: "ReserveNaviのスタンダードプラン（通常¥2,480/月）を最大1年間無料でご利用いただき、月2回のヒアリングとLINEでの随時フィードバックにご協力いただくプログラムです。数社限定で募集しています。",
         },
       },
       {
@@ -111,7 +111,7 @@ export default function FujiminPassPage() {
         name: "パートナー期間終了後はどうなりますか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "スタンダードプラン（¥2,980/月）を継続するか、ライトプラン（¥980/月）にダウングレードするかを選択できます。いつでも辞退も可能です。",
+          text: "スタンダードプラン（¥2,480/月）を継続するか、ライトプラン（¥980/月）にダウングレードするかを選択できます。いつでも辞退も可能です。",
         },
       },
     ],
@@ -332,7 +332,7 @@ export default function FujiminPassPage() {
                     <span className="text-orange-400"> 無料</span>
                   </p>
                   <p className="mt-1 text-sm text-slate-400">
-                    通常 ¥2,980/月相当 → 最大1年間無料
+                    通常 ¥2,480/月相当 → 最大1年間無料
                   </p>
                   <ul className="mt-4 space-y-2 text-sm text-slate-300">
                     <li className="flex items-start gap-2">
@@ -426,7 +426,7 @@ export default function FujiminPassPage() {
                 },
                 {
                   q: "パートナー期間終了後はどうなりますか？",
-                  a: "スタンダードプラン（¥2,980/月）を継続するか、ライトプラン（¥980/月）にダウングレードするかを選択できます。いつでも辞退も可能です。",
+                  a: "スタンダードプラン（¥2,480/月）を継続するか、ライトプラン（¥980/月）にダウングレードするかを選択できます。いつでも辞退も可能です。",
                 },
                 {
                   q: "対象業種は決まっていますか？",

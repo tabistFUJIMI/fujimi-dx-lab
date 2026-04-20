@@ -135,7 +135,7 @@ const PRICING_PLANS = [
     bonusValue: "660",
     recommended: true,
     services: [
-      "ReserveNavi スタンダード（¥2,980/月）",
+      "ReserveNavi スタンダード（¥2,480/月）",
       "AskNavi スタンダード（¥1,100/月）",
       "ShiftNavi スタンダード（¥550/月）",
     ],
@@ -147,7 +147,7 @@ const PRICING_PLANS = [
     bonusValue: "1,650",
     recommended: false,
     services: [
-      "ReserveNavi プロ（¥4,980/月）",
+      "ReserveNavi プロ（¥3,980/月）",
       "AskNavi プロ（¥2,200/月）",
       "ShiftNavi スタンダード（¥550/月）",
     ],
@@ -160,8 +160,8 @@ const SINGLE_PRICES = [
     plans: [
       { name: "無料", price: "¥0" },
       { name: "ライト", price: "¥980/月" },
-      { name: "スタンダード", price: "¥2,980/月" },
-      { name: "プロ", price: "¥4,980/月" },
+      { name: "スタンダード", price: "¥2,480/月" },
+      { name: "プロ", price: "¥3,980/月" },
     ],
   },
   {
@@ -382,7 +382,7 @@ export default function SalonPageClient() {
                 </FadeIn>
                 <FadeIn delay={0.35}>
                   <p className="mt-6 inline-block rounded-full border border-rose-200 bg-rose-50 px-4 py-1.5 text-sm font-semibold text-rose-600">
-                    2026年4月中旬 サービス開始予定｜事前相談受付中
+                    2026年4月サービス開始｜お気軽にご相談ください
                   </p>
                 </FadeIn>
               </div>
@@ -545,7 +545,7 @@ export default function SalonPageClient() {
                   FUJIMIN PASSなら必要なアプリを1つずつ追加できます。
                 </p>
                 <a
-                  href="/products/fujimin-pass"
+                  href="/fujimin-pass"
                   className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-rose-600 hover:text-rose-700"
                 >
                   すべてのアプリを見る →
@@ -692,7 +692,7 @@ export default function SalonPageClient() {
                       {
                         feature: "予約管理",
                         general: "¥9,790/月",
-                        ours: "ReserveNavi ¥0\u301C¥5,500",
+                        ours: "ReserveNavi ¥0\u301C¥3,980",
                       },
                       {
                         feature: "LINE対応",

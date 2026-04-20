@@ -100,7 +100,7 @@ export default function AskNaviPage() {
         operatingSystem: "Web",
         description: "公式LINEの問い合わせにAIが自動応答",
         url: "https://fujimi-dx-lab.com/products/ask-navi",
-        offers: { "@type": "AggregateOffer", lowPrice: "550", highPrice: "5500", priceCurrency: "JPY" },
+        offers: { "@type": "AggregateOffer", lowPrice: "550", highPrice: "3980", priceCurrency: "JPY" },
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({

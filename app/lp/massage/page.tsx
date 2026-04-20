@@ -9,7 +9,7 @@ import FadeIn from "../../components/FadeIn";
 export const metadata: Metadata = {
   title: "マッサージ・整体院のための予約管理 | FUJIMI DX Lab",
   description:
-    "施術中に鳴る電話、もう気にしなくていい。LINEで24時間予約受付+AIが質問に自動応答。マッサージ・整体・鍼灸院向け。無料プランあり、月額1,980円から。",
+    "施術中に鳴る電話、もう気にしなくていい。LINEで24時間予約受付+AIが質問に自動応答。マッサージ・整体・鍼灸院向け。無料プランあり、月額980円から。",
   openGraph: {
     title: "マッサージ・整体院のための予約管理 | FUJIMI DX Lab",
     description:
@@ -156,7 +156,7 @@ export default function MassageLPPage() {
                     無料プランあり。1人運営のお店でもすぐに始められます。
                   </p>
                 <p className="mt-2 inline-block rounded-full border border-orange-400/30 bg-orange-500/10 px-4 py-1.5 text-sm font-semibold text-orange-300">
-                    2026年4月中旬 サービス開始｜事前相談受付中
+                    2026年4月サービス開始｜お気軽にご相談ください
                   </p>
                 </FadeIn>
                 <FadeIn delay={0.3}>

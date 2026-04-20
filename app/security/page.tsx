@@ -236,7 +236,7 @@ export default function SecurityPage() {
                 </a>
                 <span className="hidden text-slate-300 sm:inline">|</span>
                 <a
-                  href="https://lin.ee/ocefT7H"
+                  href="https://lin.ee/UPArZn9"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-blue-600 underline hover:text-blue-800"

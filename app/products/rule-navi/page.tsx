@@ -74,7 +74,7 @@ export default function RuleNaviPage() {
         operatingSystem: "Web",
         description: "就業規則・マニュアルをAIが検索",
         url: "https://fujimi-dx-lab.com/products/rule-navi",
-        offers: { "@type": "AggregateOffer", lowPrice: "550", highPrice: "5500", priceCurrency: "JPY" },
+        offers: { "@type": "AggregateOffer", lowPrice: "550", highPrice: "3980", priceCurrency: "JPY" },
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({

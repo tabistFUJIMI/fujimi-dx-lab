@@ -10,7 +10,7 @@ import { ProductBreadcrumb } from "../../components/JsonLd";
 export const metadata: Metadata = {
   title: "FUJIMIN PASS | 統合DXプラットフォーム",
   description: "小規模事業者向け統合DXプラットフォーム FUJIMIN PASS。予約管理・AI応答・シフト管理・社内規則検索を1アカウントで。月額550円から、必要なツールだけ選べる。FUJIMI DX Lab",
-  alternates: { canonical: "https://fujimi-dx-lab.com/products/fujimin-pass" },
+  alternates: { canonical: "https://fujimi-dx-lab.com/fujimin-pass" },
   openGraph: {
     title: "FUJIMIN PASS | 統合DXプラットフォーム - FUJIMI DX Lab",
     description: "小規模事業者向け統合DXプラットフォーム FUJIMIN PASS。予約管理・AI応答・シフト管理・社内規則検索を1アカウントで。月額550円から、必要なツールだけ選べる。FUJIMI DX Lab",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 const NAVI_TOOLS = [
-  { slug: "reserve-navi", name: "Reserve Navi", desc: "LINE予約管理", icon: "📅", color: "#f97316", price: "無料〜¥5,500/月" },
+  { slug: "reserve-navi", name: "Reserve Navi", desc: "LINE予約管理", icon: "📅", color: "#f97316", price: "無料〜¥3,980/月" },
   { slug: "ask-navi", name: "Ask Navi", desc: "LINE AI自動応答", icon: "💬", color: "#14b8a6", price: "¥550〜¥5,500/月" },
   { slug: "rule-navi", name: "Rule Navi", desc: "社内規則AI検索", icon: "📖", color: "#a855f7", price: "¥550〜¥5,500/月" },
   { slug: "shift-navi", name: "Shift Navi", desc: "AIシフト管理", icon: "📊", color: "#3b82f6", price: "完全無料" },
@@ -46,8 +46,8 @@ export default function FujiminPassPage() {
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
         description: "小規模事業者向け統合DXプラットフォーム",
-        url: "https://fujimi-dx-lab.com/products/fujimin-pass",
-        offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "5500", priceCurrency: "JPY" },
+        url: "https://fujimi-dx-lab.com/fujimin-pass",
+        offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "3980", priceCurrency: "JPY" },
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -66,7 +66,7 @@ export default function FujiminPassPage() {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "ホーム", item: "https://fujimi-dx-lab.com" },
-          { "@type": "ListItem", position: 2, name: "FUJIMIN PASS", item: "https://fujimi-dx-lab.com/products/fujimin-pass" },
+          { "@type": "ListItem", position: 2, name: "FUJIMIN PASS", item: "https://fujimi-dx-lab.com/fujimin-pass" },
         ],
       }) }} />
       <Header />
@@ -77,7 +77,7 @@ export default function FujiminPassPage() {
             <FadeIn delay={0.05}><div className="mb-4 flex items-center gap-3"><span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/20 text-2xl">🔑</span><span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold tracking-wider text-indigo-100 uppercase">統合DXプラットフォーム</span></div></FadeIn>
             <FadeIn delay={0.1}><h1 className="text-4xl font-extrabold tracking-tight md:text-5xl" style={{ lineHeight: 1.15 }}>FUJIMIN PASS<span className="mt-2 block text-lg font-medium text-indigo-100 md:text-xl">統合DXプラットフォーム</span></h1></FadeIn>
             <FadeIn delay={0.15}><p className="mt-6 text-xl font-medium text-indigo-100">お店のDX、ひとつのアカウントでまるごとカバー。</p></FadeIn>
-            <FadeIn delay={0.2}><p className="mt-4 max-w-lg leading-relaxed text-indigo-100/80">予約管理、AI応答、シフト管理、社内規則検索…<br />バラバラのツールをFUJIMIN PASSでひとつに。<br /><span className="font-semibold text-white">必要なものだけ選んで始められます。</span></p><p className="mt-3 inline-block rounded-full border border-indigo-300/30 bg-indigo-400/10 px-4 py-1.5 text-sm font-semibold text-indigo-200">2026年4月中旬 サービス開始予定｜事前相談受付中</p></FadeIn>
+            <FadeIn delay={0.2}><p className="mt-4 max-w-lg leading-relaxed text-indigo-100/80">予約管理、AI応答、シフト管理、社内規則検索…<br />バラバラのツールをFUJIMIN PASSでひとつに。<br /><span className="font-semibold text-white">必要なものだけ選んで始められます。</span></p><p className="mt-3 inline-block rounded-full border border-indigo-300/30 bg-indigo-400/10 px-4 py-1.5 text-sm font-semibold text-indigo-200">2026年4月サービス開始｜お気軽にご相談ください</p></FadeIn>
             <FadeIn delay={0.25}><div className="mt-8"><a href="#contact" className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold shadow-lg transition-all duration-300 hover:scale-105" style={{ color: "#4f46e5" }}>無料で相談する</a></div></FadeIn>
           </div></div>
         </section>

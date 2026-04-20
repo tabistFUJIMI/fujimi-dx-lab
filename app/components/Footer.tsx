@@ -46,7 +46,7 @@ export default function Footer() {
                 { name: "コラム", href: "/column" },
                 { name: "AI対策チェッカー", href: "/tools/ai-checker" },
                 { name: "お知らせ", href: "/news" },
-                { name: "LINEで気軽に相談", href: "https://lin.ee/ocefT7H", external: true },
+                { name: "LINEで気軽に相談", href: "https://lin.ee/UPArZn9", external: true },
               ].map((item) => (
                 <li key={item.name}>
                   <a

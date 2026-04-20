@@ -130,7 +130,7 @@ const PRICING_PLANS = [
     bonusValue: "660",
     recommended: true,
     services: [
-      "ReserveNavi スタンダード（¥2,980/月）",
+      "ReserveNavi スタンダード（¥2,480/月）",
       "AskNavi スタンダード（¥1,100/月）",
       "ShiftNavi スタンダード（¥550/月）",
     ],
@@ -142,7 +142,7 @@ const PRICING_PLANS = [
     bonusValue: "1,650",
     recommended: false,
     services: [
-      "ReserveNavi プロ（¥4,980/月）",
+      "ReserveNavi プロ（¥3,980/月）",
       "AskNavi プロ（¥2,200/月）",
       "ShiftNavi スタンダード（¥550/月）",
     ],
@@ -155,8 +155,8 @@ const SINGLE_PRICES = [
     plans: [
       { name: "無料", price: "¥0" },
       { name: "ライト", price: "¥980/月" },
-      { name: "スタンダード", price: "¥2,980/月" },
-      { name: "プロ", price: "¥4,980/月" },
+      { name: "スタンダード", price: "¥2,480/月" },
+      { name: "プロ", price: "¥3,980/月" },
     ],
   },
   {
@@ -440,7 +440,7 @@ export default function SejutsuPageClient() {
                 </FadeIn>
                 <FadeIn delay={0.35}>
                   <p className="mt-6 inline-block rounded-full border border-orange-400/30 bg-orange-500/10 px-4 py-1.5 text-sm font-semibold text-orange-300">
-                    2026年4月中旬 サービス開始予定｜事前相談受付中
+                    2026年4月サービス開始｜お気軽にご相談ください
                   </p>
                 </FadeIn>
               </div>
@@ -681,7 +681,7 @@ export default function SejutsuPageClient() {
                   FUJIMIN PASSなら必要なアプリを1つずつ追加できます。
                 </p>
                 <a
-                  href="/products/fujimin-pass"
+                  href="/fujimin-pass"
                   className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-violet-600 hover:text-violet-700"
                 >
                   すべてのアプリを見る →
@@ -902,7 +902,7 @@ export default function SejutsuPageClient() {
                     {[
                       {
                         feature: "予約管理",
-                        price: "ReserveNavi ¥0〜¥4,980",
+                        price: "ReserveNavi ¥0〜¥3,980",
                       },
                       { feature: "LINE対応", price: "標準搭載" },
                       {

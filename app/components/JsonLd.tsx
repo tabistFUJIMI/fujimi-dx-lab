@@ -98,9 +98,10 @@ export default function JsonLd() {
     "@type": "Organization",
     name: "FUJIMI DX Lab",
     legalName: "ふじみ企業有限会社",
-    description: "小さな組織の困ったをテクノロジーで解決するDX事業部。施術院・サロン向けFUJIMIN PASS、個人向けForProject、非営利団体向けTASUKI PASSを開発・提供",
+    description: "小さな組織の困ったをテクノロジーで解決するDX事業部。施術院・サロン向けFUJIMIN PASS、個人向けForProject、非営利団体向けTASUKI PASSを開発・提供。2026年4月サービス開始。",
     url: "https://fujimi-dx-lab.com",
     email: "support@mail.fujimin-pass.com",
+    foundingDate: "2026-04",
     address: {
       "@type": "PostalAddress",
       postalCode: "417-0043",
@@ -188,7 +189,7 @@ export default function JsonLd() {
         name: "共創パートナーとは何ですか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "ReserveNaviを実際の店舗運営でご利用いただき、月2回のヒアリングとLINEでのフィードバックにご協力いただけるパートナー店舗様です。スタンダードプラン（通常¥2,980/月）を最大1年間無料でご提供します。",
+          text: "ReserveNaviを実際の店舗運営でご利用いただき、月2回のヒアリングとLINEでのフィードバックにご協力いただけるパートナー店舗様です。スタンダードプラン（通常¥2,480/月）を最大1年間無料でご提供します。",
         },
       },
       {
@@ -196,7 +197,7 @@ export default function JsonLd() {
         name: "料金はいくらですか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "シリーズによって異なります。FUJIMIN PASSはReserveNavi無料〜¥4,980/月、AskNavi¥550〜/月、ShiftNavi無料〜¥550/月。ForProjectは基本無料・AI機能500円〜。すべて税込価格です。",
+          text: "シリーズによって異なります。FUJIMIN PASSはReserveNavi無料〜¥3,980/月、AskNavi¥550〜/月、ShiftNavi無料〜¥550/月。ForProjectは基本無料・AI機能500円〜。すべて税込価格です。",
         },
       },
     ],
