@@ -104,7 +104,7 @@ export default function RuleNaviPage() {
             <FadeIn delay={0.1}><h1 className="text-4xl font-extrabold tracking-tight md:text-5xl" style={{ lineHeight: 1.15 }}>Rule Navi<span className="mt-2 block text-lg font-medium text-purple-100 md:text-xl">社内規則AI検索</span></h1></FadeIn>
             <FadeIn delay={0.15}><p className="mt-6 text-xl font-medium text-purple-100">就業規則やマニュアル、探すのに何分かけてますか？</p></FadeIn>
             <FadeIn delay={0.2}><p className="mt-4 max-w-lg leading-relaxed text-purple-100/80">PDFをアップするだけ。スタッフはチャットで聞くだけ。<br />AIが就業規則・マニュアルから答えを見つけます。<br /><span className="font-semibold text-white">月額¥550〜。10名以下のチームにも。</span></p></FadeIn>
-            <FadeIn delay={0.25}><div className="mt-8 flex flex-wrap gap-4"><a href="#pricing" className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold shadow-lg transition-all duration-300 hover:scale-105" style={{ color: "#9333ea" }}>料金プランを見る</a><a href="#contact" className="inline-flex items-center gap-2 rounded-xl border-2 border-white/40 bg-white/10 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20">無料で相談する</a></div></FadeIn>
+            <FadeIn delay={0.25}><div className="mt-8 flex flex-wrap gap-4"><a href="https://www.fujimin-pass.com/register" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold shadow-lg transition-all duration-300 hover:scale-105" style={{ color: "#9333ea" }}>無料で始める</a><a href="#pricing" className="inline-flex items-center gap-2 rounded-xl border-2 border-white/40 bg-white/10 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20">料金プランを見る</a></div></FadeIn><FadeIn delay={0.3}><p className="mt-4 text-xs text-white/70">※ Rule NaviはFUJIMIN PASSの一員として提供されます。まずFUJIMIN PASSにご登録後、Rule Naviをお申し込みください。</p></FadeIn>
           </div></div>
         </section>
 
@@ -128,7 +128,7 @@ export default function RuleNaviPage() {
 
         <section id="pricing" className="px-4 py-24 md:py-32" style={{backgroundColor:"#fafaf9"}}><div className="mx-auto max-w-5xl">
           <FadeIn><div className="text-center"><h2 className="text-3xl font-bold tracking-tight md:text-4xl">料金プラン</h2><p className="mx-auto mt-4 max-w-md text-gray-500">月額¥550から。チームの人数に合わせて選べます。<br />すべて税込価格です。</p></div></FadeIn>
-          <div className="mt-14 flex gap-5 overflow-x-auto pb-4 snap-x lg:grid lg:grid-cols-4 lg:overflow-visible">{PLANS.map((plan,i)=>(<FadeIn key={plan.name} delay={i*0.06}><div className={`relative h-full min-w-[260px] flex-shrink-0 lg:min-w-0 lg:flex-shrink rounded-2xl border-2 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${plan.recommended?"shadow-md":""}`} style={{borderColor:plan.recommended?plan.color:"#e5e7eb",backgroundColor:plan.bgColor}}>{plan.recommended&&(<span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold text-white" style={{backgroundColor:plan.color}}>おすすめ</span>)}<div className="text-center"><p className="text-sm font-semibold" style={{color:plan.color}}>{plan.name}</p><p className="mt-2 text-3xl font-extrabold text-gray-900">{plan.price}<span className="text-base font-normal text-gray-500">{plan.period}</span></p><p className="mt-1 text-xs text-gray-500">{plan.description}</p></div><div className="mt-6 space-y-2.5">{plan.features.map((f)=>(<div key={f.label} className="flex items-center justify-between text-sm"><span className="text-gray-500">{f.label}</span><span className="font-medium text-gray-900">{f.value}</span></div>))}</div><div className="mt-6"><a href="#contact" className="block w-full rounded-lg py-2.5 text-center text-sm font-semibold transition-colors" style={plan.recommended?{backgroundColor:plan.color,color:"#fff"}:{backgroundColor:"#f3f4f6",color:"#374151"}}>お問い合わせ</a></div></div></FadeIn>))}</div>
+          <div className="mt-14 flex gap-5 overflow-x-auto pb-4 snap-x lg:grid lg:grid-cols-4 lg:overflow-visible">{PLANS.map((plan,i)=>(<FadeIn key={plan.name} delay={i*0.06}><div className={`relative h-full min-w-[260px] flex-shrink-0 lg:min-w-0 lg:flex-shrink rounded-2xl border-2 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${plan.recommended?"shadow-md":""}`} style={{borderColor:plan.recommended?plan.color:"#e5e7eb",backgroundColor:plan.bgColor}}>{plan.recommended&&(<span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold text-white" style={{backgroundColor:plan.color}}>おすすめ</span>)}<div className="text-center"><p className="text-sm font-semibold" style={{color:plan.color}}>{plan.name}</p><p className="mt-2 text-3xl font-extrabold text-gray-900">{plan.price}<span className="text-base font-normal text-gray-500">{plan.period}</span></p><p className="mt-1 text-xs text-gray-500">{plan.description}</p></div><div className="mt-6 space-y-2.5">{plan.features.map((f)=>(<div key={f.label} className="flex items-center justify-between text-sm"><span className="text-gray-500">{f.label}</span><span className="font-medium text-gray-900">{f.value}</span></div>))}</div><div className="mt-6"><a href="https://www.fujimin-pass.com/register" target="_blank" rel="noopener noreferrer" className="block w-full rounded-lg py-2.5 text-center text-sm font-semibold transition-colors" style={plan.recommended?{backgroundColor:plan.color,color:"#fff"}:{backgroundColor:"#f3f4f6",color:"#374151"}}>このプランで申し込む</a></div></div></FadeIn>))}</div>
           <FadeIn delay={0.3}><div className="mt-10 rounded-2xl border border-gray-100 bg-gray-50 p-6 text-center"><p className="text-sm text-gray-600"><span className="font-semibold">FUJIMINポイントとは？</span>　AIが回答するたびに消費されるポイントです。プランに含まれるポイントで足りない場合は追加購入できます。</p><p className="mt-2 text-xs text-gray-400">追加購入: 100pt / ¥550 ・ 500pt / ¥1,650 ・ 1,500pt / ¥3,850（購入から1年間有効）</p><p className="mt-1 text-xs text-gray-400">※ 回数目安はAI応答1回あたり約3ptで計算。質問の長さや登録情報の量により変動します。</p></div></FadeIn>
         </div></section>
 
@@ -144,7 +144,39 @@ export default function RuleNaviPage() {
 
         <RelatedProducts currentSlug="rule-navi" />
 
-        <section id="contact" className="relative overflow-hidden px-4 py-24 text-white md:py-32" style={{background:"linear-gradient(135deg, #a855f7 0%, #9333ea 50%, #7e22ce 100%)"}}><div className="relative z-10 mx-auto max-w-3xl text-center"><FadeIn><h2 className="text-3xl font-bold tracking-tight md:text-4xl">まずは気軽にご相談ください</h2><p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-purple-100/80">「うちの規模でも使える？」「どんなPDFが対応してる？」<br />なんでもお気軽にどうぞ。無料でご相談いただけます。</p><div className="mt-10"><ContactForm /></div></FadeIn></div></section>
+        <section id="contact" className="relative overflow-hidden px-4 py-24 text-white md:py-32" style={{background:"linear-gradient(135deg, #a855f7 0%, #9333ea 50%, #7e22ce 100%)"}}>
+          <div className="relative z-10 mx-auto max-w-3xl text-center">
+            <FadeIn>
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">今すぐ無料で始められます</h2>
+              <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-purple-100/80">メール認証のみ・クレジットカード不要。1分で登録が完了します。</p>
+
+              <div className="mx-auto mt-8 max-w-xl rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 p-6 text-left">
+                <p className="font-bold text-white text-base mb-2 flex items-center gap-2">
+                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white/20 text-xs">?</span>
+                  <span>FUJIMIN PASSとは</span>
+                </p>
+                <p className="text-sm text-purple-100/90 leading-relaxed mb-3">
+                  Rule Naviを含む複数の業務アプリを「ひとつのアカウント」「ひとつのお支払い」で使えるプラットフォームです。
+                </p>
+                <ul className="space-y-1.5 text-xs text-purple-100/80">
+                  <li className="flex items-start gap-2"><span className="shrink-0">✓</span><span>登録・アカウント作成は<strong className="text-white">無料</strong>（メール認証のみ）</span></li>
+                  <li className="flex items-start gap-2"><span className="shrink-0">✓</span><span>必要なアプリだけを選んでご契約</span></li>
+                  <li className="flex items-start gap-2"><span className="shrink-0">✓</span><span>初回登録で<strong className="text-white">500ポイントプレゼント</strong>（90日有効・AI機能で使える）</span></li>
+                </ul>
+              </div>
+
+              <div className="mt-8">
+                <a href="https://www.fujimin-pass.com/register" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-white px-10 py-4 text-lg font-bold shadow-xl transition-all duration-300 hover:scale-105 active:scale-[0.98]" style={{ color: "#9333ea" }}>無料で始める →</a>
+                <p className="mt-3 text-xs text-purple-100/80">FUJIMIN PASS に登録 → 管理画面から Rule Navi をお申し込み</p>
+              </div>
+
+              <div className="mt-14 pt-10 border-t border-white/20">
+                <p className="text-sm text-purple-100/80 mb-4">「うちの規模でも使える？」「どんなPDFが対応してる？」などのご相談はこちら</p>
+                <ContactForm />
+              </div>
+            </FadeIn>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

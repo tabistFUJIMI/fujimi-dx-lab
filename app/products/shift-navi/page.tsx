@@ -69,7 +69,7 @@ export default function ShiftNaviPage() {
             <FadeIn delay={0.1}><h1 className="text-4xl font-extrabold tracking-tight md:text-5xl" style={{ lineHeight: 1.15 }}>Shift Navi<span className="mt-2 block text-lg font-medium text-blue-100 md:text-xl">AIシフト管理</span></h1></FadeIn>
             <FadeIn delay={0.15}><p className="mt-6 text-xl font-medium text-blue-100">シフト作成、まだExcelで何時間もかけてますか？</p></FadeIn>
             <FadeIn delay={0.2}><p className="mt-4 max-w-lg leading-relaxed text-blue-100/80">条件を伝えるだけで、AIがシフトを自動作成。<br />スタッフの休み希望もスマホで自動収集。<br /><span className="font-semibold text-white">面倒なシフト調整から解放されます。</span></p></FadeIn>
-            <FadeIn delay={0.25}><div className="mt-8"><a href="#contact" className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold shadow-lg transition-all duration-300 hover:scale-105" style={{ color: "#2563eb" }}>導入のご相談はこちら</a></div></FadeIn>
+            <FadeIn delay={0.25}><div className="mt-8 flex flex-wrap gap-4"><a href="https://www.fujimin-pass.com/register" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold shadow-lg transition-all duration-300 hover:scale-105" style={{ color: "#2563eb" }}>無料で始める</a><a href="#contact" className="inline-flex items-center gap-2 rounded-xl border-2 border-white/40 bg-white/10 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20">導入相談</a></div></FadeIn><FadeIn delay={0.3}><p className="mt-4 text-xs text-white/70">※ Shift NaviはFUJIMIN PASSの一員として提供されます。まずFUJIMIN PASSにご登録後、Shift Naviをお申し込みください。</p></FadeIn>
           </div></div>
         </section>
 
@@ -112,7 +112,39 @@ export default function ShiftNaviPage() {
 
         <RelatedProducts currentSlug="shift-navi" />
 
-        <section id="contact" className="relative overflow-hidden px-4 py-24 text-white md:py-32" style={{background:"linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%)"}}><div className="relative z-10 mx-auto max-w-3xl text-center"><FadeIn><h2 className="text-3xl font-bold tracking-tight md:text-4xl">まずは気軽にご相談ください</h2><p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-blue-100/80">「うちのシフトパターンでも使える？」「何人から使える？」<br />なんでもお気軽にどうぞ。無料でご相談いただけます。</p><div className="mt-10"><ContactForm /></div></FadeIn></div></section>
+        <section id="contact" className="relative overflow-hidden px-4 py-24 text-white md:py-32" style={{background:"linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%)"}}>
+          <div className="relative z-10 mx-auto max-w-3xl text-center">
+            <FadeIn>
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">今すぐ無料で始められます</h2>
+              <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-blue-100/80">フリープランはスタッフ5名まで無料。メール認証のみ・クレジットカード不要。</p>
+
+              <div className="mx-auto mt-8 max-w-xl rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 p-6 text-left">
+                <p className="font-bold text-white text-base mb-2 flex items-center gap-2">
+                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white/20 text-xs">?</span>
+                  <span>FUJIMIN PASSとは</span>
+                </p>
+                <p className="text-sm text-blue-100/90 leading-relaxed mb-3">
+                  Shift Naviを含む複数の業務アプリを「ひとつのアカウント」「ひとつのお支払い」で使えるプラットフォームです。
+                </p>
+                <ul className="space-y-1.5 text-xs text-blue-100/80">
+                  <li className="flex items-start gap-2"><span className="shrink-0">✓</span><span>登録・アカウント作成は<strong className="text-white">無料</strong>（メール認証のみ）</span></li>
+                  <li className="flex items-start gap-2"><span className="shrink-0">✓</span><span>必要なアプリだけを選んでご契約</span></li>
+                  <li className="flex items-start gap-2"><span className="shrink-0">✓</span><span>初回登録で<strong className="text-white">500ポイントプレゼント</strong>（90日有効・AI機能で使える）</span></li>
+                </ul>
+              </div>
+
+              <div className="mt-8">
+                <a href="https://www.fujimin-pass.com/register" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-white px-10 py-4 text-lg font-bold shadow-xl transition-all duration-300 hover:scale-105 active:scale-[0.98]" style={{ color: "#2563eb" }}>無料で始める →</a>
+                <p className="mt-3 text-xs text-blue-100/80">FUJIMIN PASS に登録 → 管理画面から Shift Navi をお申し込み</p>
+              </div>
+
+              <div className="mt-14 pt-10 border-t border-white/20">
+                <p className="text-sm text-blue-100/80 mb-4">「うちのシフトパターンでも使える？」などのご相談はこちら</p>
+                <ContactForm />
+              </div>
+            </FadeIn>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

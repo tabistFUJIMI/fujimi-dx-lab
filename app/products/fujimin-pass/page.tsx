@@ -78,7 +78,7 @@ export default function FujiminPassPage() {
             <FadeIn delay={0.1}><h1 className="text-4xl font-extrabold tracking-tight md:text-5xl" style={{ lineHeight: 1.15 }}>FUJIMIN PASS<span className="mt-2 block text-lg font-medium text-indigo-100 md:text-xl">統合DXプラットフォーム</span></h1></FadeIn>
             <FadeIn delay={0.15}><p className="mt-6 text-xl font-medium text-indigo-100">お店のDX、ひとつのアカウントでまるごとカバー。</p></FadeIn>
             <FadeIn delay={0.2}><p className="mt-4 max-w-lg leading-relaxed text-indigo-100/80">予約管理、AI応答、シフト管理、社内規則検索…<br />バラバラのツールをFUJIMIN PASSでひとつに。<br /><span className="font-semibold text-white">必要なものだけ選んで始められます。</span></p><p className="mt-3 inline-block rounded-full border border-indigo-300/30 bg-indigo-400/10 px-4 py-1.5 text-sm font-semibold text-indigo-200">2026年4月サービス開始｜お気軽にご相談ください</p></FadeIn>
-            <FadeIn delay={0.25}><div className="mt-8"><a href="#contact" className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold shadow-lg transition-all duration-300 hover:scale-105" style={{ color: "#4f46e5" }}>無料で相談する</a></div></FadeIn>
+            <FadeIn delay={0.25}><div className="mt-8 flex flex-wrap gap-4"><a href="https://www.fujimin-pass.com/register" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold shadow-lg transition-all duration-300 hover:scale-105" style={{ color: "#4f46e5" }}>無料で始める</a><a href="#contact" className="inline-flex items-center gap-2 rounded-xl border-2 border-white/40 bg-white/10 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20">相談する</a></div></FadeIn><FadeIn delay={0.3}><p className="mt-4 text-xs text-indigo-100/80">メール認証のみ・クレジットカード不要。初回登録で500ptプレゼント（90日有効）。</p></FadeIn>
           </div></div>
         </section>
 
@@ -143,7 +143,32 @@ export default function FujiminPassPage() {
 
         <RelatedProducts currentSlug="fujimin-pass" />
 
-        <section id="contact" className="relative overflow-hidden px-4 py-24 text-white md:py-32" style={{background:"linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #4338ca 100%)"}}><div className="relative z-10 mx-auto max-w-3xl text-center"><FadeIn><h2 className="text-3xl font-bold tracking-tight md:text-4xl">うちでも使えるかな？<br />まずはご相談ください</h2><p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-indigo-100/80">「どのツールから始めればいい？」「うちの業種に合う？」<br />なんでもお気軽にどうぞ。無料でご相談いただけます。</p><div className="mt-10"><ContactForm /></div></FadeIn></div></section>
+        <section id="contact" className="relative overflow-hidden px-4 py-24 text-white md:py-32" style={{background:"linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #4338ca 100%)"}}>
+          <div className="relative z-10 mx-auto max-w-3xl text-center">
+            <FadeIn>
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">今すぐ無料で始められます</h2>
+              <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-indigo-100/80">メール認証のみ・クレジットカード不要。1分で登録が完了します。</p>
+
+              <div className="mx-auto mt-8 max-w-xl rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 p-6 text-left">
+                <p className="font-bold text-white text-base mb-2">📦 登録後にできること</p>
+                <ul className="space-y-1.5 text-xs text-indigo-100/90">
+                  <li className="flex items-start gap-2"><span className="shrink-0">✓</span><span>管理画面から<strong className="text-white">必要なアプリだけ</strong>を選んでご契約</span></li>
+                  <li className="flex items-start gap-2"><span className="shrink-0">✓</span><span>初回登録で<strong className="text-white">500ポイントプレゼント</strong>（90日有効・AI機能で使える）</span></li>
+                  <li className="flex items-start gap-2"><span className="shrink-0">✓</span><span>アプリごとに無料プランあり（ShiftNavi フリー / ReserveNavi 無料）</span></li>
+                </ul>
+              </div>
+
+              <div className="mt-8">
+                <a href="https://www.fujimin-pass.com/register" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-white px-10 py-4 text-lg font-bold shadow-xl transition-all duration-300 hover:scale-105 active:scale-[0.98]" style={{ color: "#4f46e5" }}>無料で始める →</a>
+              </div>
+
+              <div className="mt-14 pt-10 border-t border-white/20">
+                <p className="text-sm text-indigo-100/80 mb-4">「どのツールから始めればいい？」などのご相談はこちら</p>
+                <ContactForm />
+              </div>
+            </FadeIn>
+          </div>
+        </section>
       </main>
       <Footer />
     </>
