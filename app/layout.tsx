@@ -7,11 +7,15 @@ import { BASE_URL } from "../lib/base-url";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "";
 
+// preload: false — CJKフォントは多数サブセットに分割されるため、preload=trueだと
+// 初回ロードで多数のpreloadタグが生成されLCPを悪化させる。
+// preload=false でブラウザが必要なサブセットだけを遅延取得する。
 const notoSansJP = Noto_Sans_JP({
   variable: "--font-noto-sans-jp",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
