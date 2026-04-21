@@ -23,10 +23,15 @@ export const metadata: Metadata = {
   description:
     "FUJIMI DX Labは静岡県富士市発のDX事業部。施術院・サロン向けFUJIMIN PASS（予約管理・AI応答・シフト管理）、個人向けForProject等、小さな組織が必要なツールを月額¥0から提供。共創パートナー募集中。",
   keywords: [
-    "FUJIMI DX Lab", "DX", "小規模事業者", "FUJIMIN PASS",
-    "ForProject", "TASUKI PASS", "予約管理", "AI自動応答",
-    "シフト管理", "LINE予約", "静岡県富士市",
-    "Reserve Navi", "Ask Navi", "Shift Navi",
+    // ブランド名のバリエーション（検索時の打鍵ゆらぎ対策）
+    "FUJIMI DX Lab", "fujimidxlab", "fujimi-dx-lab", "fujimi dx lab",
+    "ふじみDXラボ", "フジミDXラボ", "ふじみディーエックスラボ",
+    // 製品・業態
+    "DX", "小規模事業者", "FUJIMIN PASS", "ForProject", "TASUKI PASS",
+    "予約管理", "AI自動応答", "シフト管理", "LINE予約",
+    "Reserve Navi", "Ask Navi", "Shift Navi", "Rule Navi",
+    // 地域
+    "静岡県富士市", "富士市DX", "静岡DX",
   ],
   authors: [{ name: "FUJIMI DX Lab", url: BASE_URL }],
   creator: "ふじみ企業有限会社 FUJIMI DX Lab事業部",

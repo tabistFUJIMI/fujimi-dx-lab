@@ -5,6 +5,9 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-10">
           <div>
             <p className="text-lg font-bold text-white">FUJIMI DX Lab</p>
+            <p className="mt-1 text-xs text-slate-500">
+              （ふじみDXラボ／fujimidxlab）
+            </p>
             <p className="mt-2 text-sm text-slate-500">
               ふじみ企業有限会社 FUJIMI DX Lab事業部
             </p>
