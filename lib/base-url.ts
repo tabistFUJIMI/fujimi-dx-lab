@@ -6,13 +6,30 @@
  *   2. NEXT_PUBLIC_VERCEL_URL（Vercelプレビュー環境で自動設定される）
  *   3. 本番URL（最終フォールバック）
  *
- * localhost を fallback に置くと、環境変数未設定のまま本番にデプロイされた場合
- * メール・OGP・sitemap のリンクが全部 localhost になってしまうため、
- * 本番URL をデフォルトにする。
+ * www正規化:
+ *   本番の実配信URLは www 付きのため、canonical/OGP/sitemap すべて
+ *   www 付きで統一する。環境変数で www なしを渡されても自動補完する。
+ *
+ * localhost/vercel.app 等の preview ドメインは正規化スキップ（本来の
+ *   URL で動作させる）。
  */
+function canonicalize(rawUrl: string): string {
+  try {
+    const url = new URL(rawUrl);
+    // 本番ドメインのみ www 正規化（preview・localhost はそのまま）
+    if (url.hostname === "fujimi-dx-lab.com") {
+      url.hostname = "www.fujimi-dx-lab.com";
+    }
+    // 末尾スラッシュ除去
+    return url.toString().replace(/\/$/, "");
+  } catch {
+    return rawUrl.replace(/\/$/, "");
+  }
+}
+
 export const BASE_URL = (() => {
   if (process.env.NEXT_PUBLIC_BASE_URL) {
-    return process.env.NEXT_PUBLIC_BASE_URL.replace(/\/$/, "");
+    return canonicalize(process.env.NEXT_PUBLIC_BASE_URL);
   }
   if (process.env.NEXT_PUBLIC_VERCEL_URL) {
     return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
