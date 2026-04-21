@@ -11,7 +11,7 @@ import { ProductBreadcrumb } from "../../components/JsonLd";
 export const metadata: Metadata = {
   title: "FUJIMIN PASS | 統合DXプラットフォーム",
   description: "小規模事業者向け統合DXプラットフォーム FUJIMIN PASS。予約管理・AI応答・シフト管理・社内規則検索を1アカウントで。月額550円から、必要なツールだけ選べる。FUJIMI DX Lab",
-  alternates: { canonical: "https://fujimi-dx-lab.com/fujimin-pass" },
+  alternates: { canonical: "https://www.fujimi-dx-lab.com/fujimin-pass" },
   openGraph: {
     title: "FUJIMIN PASS | 統合DXプラットフォーム - FUJIMI DX Lab",
     description: "小規模事業者向け統合DXプラットフォーム FUJIMIN PASS。予約管理・AI応答・シフト管理・社内規則検索を1アカウントで。月額550円から、必要なツールだけ選べる。FUJIMI DX Lab",
@@ -47,7 +47,7 @@ export default function FujiminPassPage() {
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
         description: "小規模事業者向け統合DXプラットフォーム",
-        url: "https://fujimi-dx-lab.com/fujimin-pass",
+        url: "https://www.fujimi-dx-lab.com/fujimin-pass",
         offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "3980", priceCurrency: "JPY" },
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />
@@ -66,8 +66,8 @@ export default function FujiminPassPage() {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "ホーム", item: "https://fujimi-dx-lab.com" },
-          { "@type": "ListItem", position: 2, name: "FUJIMIN PASS", item: "https://fujimi-dx-lab.com/fujimin-pass" },
+          { "@type": "ListItem", position: 1, name: "ホーム", item: "https://www.fujimi-dx-lab.com" },
+          { "@type": "ListItem", position: 2, name: "FUJIMIN PASS", item: "https://www.fujimi-dx-lab.com/fujimin-pass" },
         ],
       }) }} />
       <Header />

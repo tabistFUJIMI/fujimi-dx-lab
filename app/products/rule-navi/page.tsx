@@ -11,7 +11,7 @@ import { ProductBreadcrumb } from "../../components/JsonLd";
 export const metadata: Metadata = {
   title: "Rule Navi | 社内規則AI検索",
   description: "社内規則AI検索 Rule Navi。就業規則・マニュアルのPDFをアップするだけでAIが検索可能に。宿泊施設・クリニック・中小企業向け。月額550円から。FUJIMI DX Lab",
-  alternates: { canonical: "https://fujimi-dx-lab.com/products/rule-navi" },
+  alternates: { canonical: "https://www.fujimi-dx-lab.com/products/rule-navi" },
   openGraph: {
     title: "Rule Navi | 社内規則AI検索 - FUJIMI DX Lab",
     description: "社内規則AI検索 Rule Navi。就業規則・マニュアルのPDFをアップするだけでAIが検索可能に。宿泊施設・クリニック・中小企業向け。月額550円から。FUJIMI DX Lab",
@@ -74,7 +74,7 @@ export default function RuleNaviPage() {
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
         description: "就業規則・マニュアルをAIが検索",
-        url: "https://fujimi-dx-lab.com/products/rule-navi",
+        url: "https://www.fujimi-dx-lab.com/products/rule-navi",
         offers: { "@type": "AggregateOffer", lowPrice: "550", highPrice: "3980", priceCurrency: "JPY" },
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />
@@ -92,8 +92,8 @@ export default function RuleNaviPage() {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "ホーム", item: "https://fujimi-dx-lab.com" },
-          { "@type": "ListItem", position: 2, name: "Rule Navi", item: "https://fujimi-dx-lab.com/products/rule-navi" },
+          { "@type": "ListItem", position: 1, name: "ホーム", item: "https://www.fujimi-dx-lab.com" },
+          { "@type": "ListItem", position: 2, name: "Rule Navi", item: "https://www.fujimi-dx-lab.com/products/rule-navi" },
         ],
       }) }} />
       <Header />

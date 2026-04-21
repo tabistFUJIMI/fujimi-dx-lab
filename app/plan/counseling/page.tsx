@@ -7,9 +7,8 @@ export const metadata: Metadata = {
     "カウンセリング・相談の予約管理+AI応答+シフト管理 | FUJIMI DX Lab",
   description:
     "初回相談・継続セッションの予約をLINEで自動管理。承認制予約でダブルブッキング防止。AI応答で問い合わせ自動化。",
-  robots: { index: false, follow: true },
   alternates: {
-    canonical: "https://fujimi-dx-lab.com/fujimin-pass",
+    canonical: "https://www.fujimi-dx-lab.com/plan/counseling",
   },
   openGraph: {
     title:

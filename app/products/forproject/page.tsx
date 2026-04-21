@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "ForProject | AIプロジェクト管理PWA",
   description:
     "ForProject — イベント企画・懇親会・結婚式準備をスマホで完結管理。AIアシスタント・タスク管理・予算管理・日程調整を搭載。500円から始められるポイント制。FUJIMI DX Lab",
-  alternates: { canonical: "https://fujimi-dx-lab.com/products/forproject" },
+  alternates: { canonical: "https://www.fujimi-dx-lab.com/products/forproject" },
   openGraph: {
     title: "ForProject | AIプロジェクト管理PWA - FUJIMI DX Lab",
     description:

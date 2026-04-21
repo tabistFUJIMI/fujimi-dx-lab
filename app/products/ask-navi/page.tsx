@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Ask Navi | LINE AI自動応答",
   description:
     "LINE AI自動応答 Ask Navi。公式LINEやWebサイトの問い合わせにAIが24時間自動応答。サロン・飲食店・宿泊施設向け。月額550円から。FUJIMI DX Lab",
-  alternates: { canonical: "https://fujimi-dx-lab.com/products/ask-navi" },
+  alternates: { canonical: "https://www.fujimi-dx-lab.com/products/ask-navi" },
   openGraph: {
     title: "Ask Navi | LINE AI自動応答 - FUJIMI DX Lab",
     description: "LINE AI自動応答 Ask Navi。公式LINEやWebサイトの問い合わせにAIが24時間自動応答。サロン・飲食店・宿泊施設向け。月額550円から。FUJIMI DX Lab",
@@ -100,7 +100,7 @@ export default function AskNaviPage() {
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
         description: "公式LINEの問い合わせにAIが自動応答",
-        url: "https://fujimi-dx-lab.com/products/ask-navi",
+        url: "https://www.fujimi-dx-lab.com/products/ask-navi",
         offers: { "@type": "AggregateOffer", lowPrice: "550", highPrice: "3980", priceCurrency: "JPY" },
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />
@@ -118,8 +118,8 @@ export default function AskNaviPage() {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "ホーム", item: "https://fujimi-dx-lab.com" },
-          { "@type": "ListItem", position: 2, name: "Ask Navi", item: "https://fujimi-dx-lab.com/products/ask-navi" },
+          { "@type": "ListItem", position: 1, name: "ホーム", item: "https://www.fujimi-dx-lab.com" },
+          { "@type": "ListItem", position: 2, name: "Ask Navi", item: "https://www.fujimi-dx-lab.com/products/ask-navi" },
         ],
       }) }} />
       <Header />

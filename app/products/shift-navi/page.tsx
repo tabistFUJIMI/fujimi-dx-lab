@@ -11,7 +11,7 @@ import { ProductBreadcrumb } from "../../components/JsonLd";
 export const metadata: Metadata = {
   title: "Shift Navi | AIシフト管理",
   description: "AIシフト自動作成 Shift Navi。スタッフの休み希望をスマホで収集、AIがワンタッチでシフト生成。宿泊施設・飲食店・サロン向け。FUJIMI DX Lab",
-  alternates: { canonical: "https://fujimi-dx-lab.com/products/shift-navi" },
+  alternates: { canonical: "https://www.fujimi-dx-lab.com/products/shift-navi" },
   openGraph: {
     title: "Shift Navi | AIシフト管理 - FUJIMI DX Lab",
     description: "AIシフト自動作成 Shift Navi。スタッフの休み希望をスマホで収集、AIがワンタッチでシフト生成。宿泊施設・飲食店・サロン向け。FUJIMI DX Lab",
@@ -39,7 +39,7 @@ export default function ShiftNaviPage() {
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
         description: "AIがシフトをワンタッチで自動作成",
-        url: "https://fujimi-dx-lab.com/products/shift-navi",
+        url: "https://www.fujimi-dx-lab.com/products/shift-navi",
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -57,8 +57,8 @@ export default function ShiftNaviPage() {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "ホーム", item: "https://fujimi-dx-lab.com" },
-          { "@type": "ListItem", position: 2, name: "Shift Navi", item: "https://fujimi-dx-lab.com/products/shift-navi" },
+          { "@type": "ListItem", position: 1, name: "ホーム", item: "https://www.fujimi-dx-lab.com" },
+          { "@type": "ListItem", position: 2, name: "Shift Navi", item: "https://www.fujimi-dx-lab.com/products/shift-navi" },
         ],
       }) }} />
       <Header />

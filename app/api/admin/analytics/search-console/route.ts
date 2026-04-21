@@ -5,7 +5,8 @@ import { getAuthenticatedClient } from '../../../../../lib/ga-auth'
 
 type SearchAnalyticsRow = searchconsole_v1.Schema$ApiDataRow
 
-const SITE_URL = process.env.SEARCH_CONSOLE_SITE_URL || 'https://fujimi-dx-lab.com'
+// GSCはドメインプロパティを使用（sc-domain:形式）
+const SITE_URL = process.env.SEARCH_CONSOLE_SITE_URL || 'sc-domain:fujimi-dx-lab.com'
 
 export async function GET(request: NextRequest) {
   const authError = await requireAdmin()
@@ -100,7 +101,9 @@ export async function GET(request: NextRequest) {
     }))
 
     const pages = (pageData.data.rows || []).map(row => ({
-      page: (row.keys?.[0] || '').replace(SITE_URL, ''),
+      // ドメインプロパティでは page が完全URL（www有/無両方）で返るため、
+      // ドメイン部分を正規表現で除去してパスのみにする
+      page: (row.keys?.[0] || '').replace(/^https?:\/\/(www\.)?fujimi-dx-lab\.com/, ''),
       ...mapRow(row),
     }))
 

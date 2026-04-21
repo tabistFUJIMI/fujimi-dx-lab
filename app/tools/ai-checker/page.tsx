@@ -108,10 +108,10 @@ const webAppJsonLd = {
   "@context": "https://schema.org", "@type": "WebApplication",
   name: "AI対策チェッカー",
   description: "AI対策チェッカーは、WebサイトのURLを入力するだけでSEOとGEO/LLMO（AI検索最適化）のスコアを診断する無料ツールです。",
-  url: "https://fujimi-dx-lab.com/tools/ai-checker",
+  url: "https://www.fujimi-dx-lab.com/tools/ai-checker",
   applicationCategory: "SEO Tool", operatingSystem: "Web Browser",
   offers: { "@type": "Offer", price: "0", priceCurrency: "JPY" },
-  provider: { "@type": "Organization", name: "FUJIMI DX Lab", url: "https://fujimi-dx-lab.com" },
+  provider: { "@type": "Organization", name: "FUJIMI DX Lab", url: "https://www.fujimi-dx-lab.com" },
 };
 
 // --- Main Component ---

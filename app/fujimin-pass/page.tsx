@@ -55,11 +55,11 @@ export default function FujiminPassPage() {
     applicationCategory: "BusinessApplication",
     description:
       "FUJIMIN PASSは小規模店舗向けDXシリーズ。LINE予約管理（ReserveNavi）、AI自動応答（AskNavi）、シフト管理（ShiftNavi）、社内規則検索（RuleNavi）を月額¥0から提供。施術院・サロン・美容室など予約制の小規模店舗に最適。",
-    url: "https://fujimi-dx-lab.com/fujimin-pass",
+    url: "https://www.fujimi-dx-lab.com/fujimin-pass",
     provider: {
       "@type": "Organization",
       name: "FUJIMI DX Lab",
-      url: "https://fujimi-dx-lab.com",
+      url: "https://www.fujimi-dx-lab.com",
     },
     offers: {
       "@type": "AggregateOffer",
@@ -125,13 +125,13 @@ export default function FujiminPassPage() {
         "@type": "ListItem",
         position: 1,
         name: "ホーム",
-        item: "https://fujimi-dx-lab.com",
+        item: "https://www.fujimi-dx-lab.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "FUJIMIN PASS",
-        item: "https://fujimi-dx-lab.com/fujimin-pass",
+        item: "https://www.fujimi-dx-lab.com/fujimin-pass",
       },
     ],
   };

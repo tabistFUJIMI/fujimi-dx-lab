@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "ReserveNavi 共創パートナー募集 | FUJIMI DX Lab",
   description:
     "ReserveNaviのスタンダードプラン（通常¥2,480/月）を最大1年間無料でご利用いただけるパートナープログラム。数社限定で募集中。",
-  alternates: { canonical: "https://fujimi-dx-lab.com/lp/partner" },
+  alternates: { canonical: "https://www.fujimi-dx-lab.com/lp/partner" },
   openGraph: {
     title: "ReserveNavi 共創パートナー募集 | FUJIMI DX Lab",
     description:

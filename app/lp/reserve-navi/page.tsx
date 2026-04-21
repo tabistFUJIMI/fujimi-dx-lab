@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Reserve Navi | LINE予約管理システム｜無料から始められる予約管理",
   description:
     "LINEで24時間予約受付。無料プランあり、月額980円から。サロン・整体・ジム・ペットサロン向けのシンプルな予約管理システム。宿泊施設が自社で使うために作った、続けられる価格の予約管理。",
-  alternates: { canonical: "https://fujimi-dx-lab.com/lp/reserve-navi" },
+  alternates: { canonical: "https://www.fujimi-dx-lab.com/lp/reserve-navi" },
   openGraph: {
     title: "Reserve Navi | 無料から始められるLINE予約管理",
     description:
@@ -105,7 +105,7 @@ export default function ReserveNaviLP() {
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
         description: "LINEから簡単予約。小規模店舗向け予約管理システム。無料プランあり。",
-        url: "https://fujimi-dx-lab.com/lp/reserve-navi",
+        url: "https://www.fujimi-dx-lab.com/lp/reserve-navi",
         offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "3980", priceCurrency: "JPY" },
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />

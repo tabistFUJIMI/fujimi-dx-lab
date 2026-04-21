@@ -7,9 +7,8 @@ export const metadata: Metadata = {
     "パーソナルジムの予約管理+AI応答+シフト管理 | FUJIMI DX Lab",
   description:
     "トレーニングセッション予約をLINEで自動管理。トレーナー指名・体験予約にも対応。AI応答で問い合わせ自動化。ShiftNavi無料。",
-  robots: { index: false, follow: true },
   alternates: {
-    canonical: "https://fujimi-dx-lab.com/fujimin-pass",
+    canonical: "https://www.fujimi-dx-lab.com/plan/gym",
   },
   openGraph: {
     title:

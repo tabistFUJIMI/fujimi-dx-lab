@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     images: ["/images/lp/massage-ogp.jpg"],
   },
   alternates: {
-    canonical: "https://fujimi-dx-lab.com/lp/massage",
+    canonical: "https://www.fujimi-dx-lab.com/lp/massage",
   },
 };
 
@@ -655,13 +655,13 @@ export default function MassageLPPage() {
                   "@type": "ListItem",
                   position: 1,
                   name: "ホーム",
-                  item: "https://fujimi-dx-lab.com",
+                  item: "https://www.fujimi-dx-lab.com",
                 },
                 {
                   "@type": "ListItem",
                   position: 2,
                   name: "マッサージ・整体院向け",
-                  item: "https://fujimi-dx-lab.com/lp/massage",
+                  item: "https://www.fujimi-dx-lab.com/lp/massage",
                 },
               ],
             }),
@@ -676,7 +676,7 @@ export default function MassageLPPage() {
               name: "Reserve Navi",
               applicationCategory: "BusinessApplication",
               description: "マッサージ・整体院向けLINE予約管理+AI自動応答システム",
-              url: "https://fujimi-dx-lab.com/lp/massage",
+              url: "https://www.fujimi-dx-lab.com/lp/massage",
               offers: {
                 "@type": "Offer",
                 price: "0",
@@ -687,11 +687,11 @@ export default function MassageLPPage() {
                 "@type": "Organization",
                 name: "FUJIMI DX Lab",
                 legalName: "ふじみ企業有限会社",
-                url: "https://fujimi-dx-lab.com",
+                url: "https://www.fujimi-dx-lab.com",
                 address: {
                   "@type": "PostalAddress",
                   postalCode: "417-0043",
-                  streetAddress: "新田島町3-20",
+                  streetAddress: "荒田島町3-20",
                   addressLocality: "富士市",
                   addressRegion: "静岡県",
                   addressCountry: "JP",

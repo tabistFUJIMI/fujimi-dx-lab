@@ -23,13 +23,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: item.title,
     description,
     alternates: {
-      canonical: `https://fujimi-dx-lab.com/news/${id}`,
+      canonical: `https://www.fujimi-dx-lab.com/news/${id}`,
     },
     openGraph: {
       title: item.title,
       description,
       type: "article",
-      url: `https://fujimi-dx-lab.com/news/${id}`,
+      url: `https://www.fujimi-dx-lab.com/news/${id}`,
       siteName: "FUJIMI DX Lab",
       locale: "ja_JP",
       publishedTime: (item.publishedAt || item.createdAt).toISOString(),
@@ -64,17 +64,17 @@ export default async function NewsDetailPage({ params }: Props) {
     datePublished: (item.publishedAt || item.createdAt).toISOString(),
     dateModified: item.updatedAt.toISOString(),
     author: { "@type": "Organization", name: "FUJIMI DX Lab" },
-    publisher: { "@type": "Organization", name: "FUJIMI DX Lab", url: "https://fujimi-dx-lab.com" },
-    mainEntityOfPage: `https://fujimi-dx-lab.com/news/${id}`,
+    publisher: { "@type": "Organization", name: "FUJIMI DX Lab", url: "https://www.fujimi-dx-lab.com" },
+    mainEntityOfPage: `https://www.fujimi-dx-lab.com/news/${id}`,
   };
 
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "ホーム", item: "https://fujimi-dx-lab.com" },
-      { "@type": "ListItem", position: 2, name: "お知らせ", item: "https://fujimi-dx-lab.com/news" },
-      { "@type": "ListItem", position: 3, name: item.title, item: `https://fujimi-dx-lab.com/news/${id}` },
+      { "@type": "ListItem", position: 1, name: "ホーム", item: "https://www.fujimi-dx-lab.com" },
+      { "@type": "ListItem", position: 2, name: "お知らせ", item: "https://www.fujimi-dx-lab.com/news" },
+      { "@type": "ListItem", position: 3, name: item.title, item: `https://www.fujimi-dx-lab.com/news/${id}` },
     ],
   };
 

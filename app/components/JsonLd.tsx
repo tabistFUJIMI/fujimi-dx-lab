@@ -12,12 +12,12 @@ export function PlanServiceJsonLd({ slug, name, description, serviceType }: Plan
     name,
     description,
     serviceType,
-    url: `https://fujimi-dx-lab.com/plan/${slug}`,
+    url: `https://www.fujimi-dx-lab.com/plan/${slug}`,
     provider: {
       "@type": "Organization",
       name: "FUJIMI DX Lab",
       legalName: "ふじみ企業有限会社",
-      url: "https://fujimi-dx-lab.com",
+      url: "https://www.fujimi-dx-lab.com",
     },
     areaServed: {
       "@type": "Country",
@@ -66,9 +66,9 @@ export function PlanServiceJsonLd({ slug, name, description, serviceType }: Plan
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "ホーム", item: "https://fujimi-dx-lab.com" },
-      { "@type": "ListItem", position: 2, name: "業種別プラン", item: "https://fujimi-dx-lab.com/plan" },
-      { "@type": "ListItem", position: 3, name, item: `https://fujimi-dx-lab.com/plan/${slug}` },
+      { "@type": "ListItem", position: 1, name: "ホーム", item: "https://www.fujimi-dx-lab.com" },
+      { "@type": "ListItem", position: 2, name: "業種別プラン", item: "https://www.fujimi-dx-lab.com/plan" },
+      { "@type": "ListItem", position: 3, name, item: `https://www.fujimi-dx-lab.com/plan/${slug}` },
     ],
   };
 
@@ -85,8 +85,8 @@ export function ProductBreadcrumb({ name, slug }: { name: string; slug: string }
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "ホーム", item: "https://fujimi-dx-lab.com" },
-      { "@type": "ListItem", position: 2, name, item: `https://fujimi-dx-lab.com/products/${slug}` },
+      { "@type": "ListItem", position: 1, name: "ホーム", item: "https://www.fujimi-dx-lab.com" },
+      { "@type": "ListItem", position: 2, name, item: `https://www.fujimi-dx-lab.com/products/${slug}` },
     ],
   };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />;
@@ -111,13 +111,13 @@ export default function JsonLd() {
     ],
     legalName: "ふじみ企業有限会社",
     description: "小さな組織の困ったをテクノロジーで解決するDX事業部。施術院・サロン向けFUJIMIN PASS、個人向けForProject、非営利団体向けTASUKI PASSを開発・提供。2026年4月サービス開始。",
-    url: "https://fujimi-dx-lab.com",
+    url: "https://www.fujimi-dx-lab.com",
     email: "support@mail.fujimin-pass.com",
     foundingDate: "2026-04",
     address: {
       "@type": "PostalAddress",
       postalCode: "417-0043",
-      streetAddress: "新田島町3-20",
+      streetAddress: "荒田島町3-20",
       addressLocality: "富士市",
       addressRegion: "静岡県",
       addressCountry: "JP",
@@ -133,7 +133,7 @@ export default function JsonLd() {
             name: "FUJIMIN PASS",
             applicationCategory: "BusinessApplication",
             description: "小規模店舗向けDXシリーズ。LINE予約管理（ReserveNavi）、AI自動応答（AskNavi）、シフト管理（ShiftNavi）等を月額¥0から提供",
-            url: "https://fujimi-dx-lab.com/fujimin-pass",
+            url: "https://www.fujimi-dx-lab.com/fujimin-pass",
           },
         },
         {
@@ -143,7 +143,7 @@ export default function JsonLd() {
             name: "ForProject",
             applicationCategory: "BusinessApplication",
             description: "個人・チーム向けプロジェクト管理。イベント企画・懇親会・結婚式準備をスマホで完結管理",
-            url: "https://fujimi-dx-lab.com/products/forproject",
+            url: "https://www.fujimi-dx-lab.com/products/forproject",
           },
         },
       ],
@@ -158,13 +158,13 @@ export default function JsonLd() {
     address: {
       "@type": "PostalAddress",
       postalCode: "417-0043",
-      streetAddress: "新田島町3-20",
+      streetAddress: "荒田島町3-20",
       addressLocality: "富士市",
       addressRegion: "静岡県",
       addressCountry: "JP",
     },
     email: "support@mail.fujimin-pass.com",
-    url: "https://fujimi-dx-lab.com",
+    url: "https://www.fujimi-dx-lab.com",
     areaServed: { "@type": "Country", name: "Japan" },
   };
 
@@ -219,7 +219,7 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "ホーム", item: "https://fujimi-dx-lab.com" },
+      { "@type": "ListItem", position: 1, name: "ホーム", item: "https://www.fujimi-dx-lab.com" },
     ],
   };
 

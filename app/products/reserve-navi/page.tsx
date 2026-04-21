@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Reserve Navi | LINE予約管理",
   description:
     "LINE予約管理システム Reserve Navi。サロン・整体・ジム・ペットサロン向け。無料プランあり、月額980円から。LINEミニアプリで24時間予約受付。FUJIMI DX Lab",
-  alternates: { canonical: "https://fujimi-dx-lab.com/products/reserve-navi" },
+  alternates: { canonical: "https://www.fujimi-dx-lab.com/products/reserve-navi" },
   openGraph: {
     title: "Reserve Navi | LINE予約管理 - FUJIMI DX Lab",
     description: "LINE予約管理システム Reserve Navi。サロン・整体・ジム・ペットサロン向け。無料プランあり、月額980円から。LINEミニアプリで24時間予約受付。FUJIMI DX Lab",
@@ -185,7 +185,7 @@ export default function ReserveNaviPage() {
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
         description: "LINEから簡単予約。小規模店舗向け予約管理システム",
-        url: "https://fujimi-dx-lab.com/products/reserve-navi",
+        url: "https://www.fujimi-dx-lab.com/products/reserve-navi",
         offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "3980", priceCurrency: "JPY" },
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />
@@ -204,8 +204,8 @@ export default function ReserveNaviPage() {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "ホーム", item: "https://fujimi-dx-lab.com" },
-          { "@type": "ListItem", position: 2, name: "Reserve Navi", item: "https://fujimi-dx-lab.com/products/reserve-navi" },
+          { "@type": "ListItem", position: 1, name: "ホーム", item: "https://www.fujimi-dx-lab.com" },
+          { "@type": "ListItem", position: 2, name: "Reserve Navi", item: "https://www.fujimi-dx-lab.com/products/reserve-navi" },
         ],
       }) }} />
       <Header />

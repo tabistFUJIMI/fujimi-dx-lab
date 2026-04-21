@@ -7,9 +7,8 @@ export const metadata: Metadata = {
     "整体・マッサージ院の予約管理+AI応答+シフト管理｜施術プラン | FUJIMI DX Lab",
   description:
     "施術の手を止めるたび、お客様は離れていく。LINE予約受付・AI自動応答・シフト管理をひとまとめに。ShiftNavi無料。月額550円〜。",
-  robots: { index: false, follow: true },
   alternates: {
-    canonical: "https://fujimi-dx-lab.com/fujimin-pass",
+    canonical: "https://www.fujimi-dx-lab.com/plan/sejutsu",
   },
   openGraph: {
     title:

@@ -1216,19 +1216,19 @@ export default function PhotoPageClient() {
                   "@type": "ListItem",
                   position: 1,
                   name: "ホーム",
-                  item: "https://fujimi-dx-lab.com",
+                  item: "https://www.fujimi-dx-lab.com",
                 },
                 {
                   "@type": "ListItem",
                   position: 2,
                   name: "業種別プラン",
-                  item: "https://fujimi-dx-lab.com/pricing#packages",
+                  item: "https://www.fujimi-dx-lab.com/pricing#packages",
                 },
                 {
                   "@type": "ListItem",
                   position: 3,
                   name: "写真スタジオプラン",
-                  item: "https://fujimi-dx-lab.com/plan/photo",
+                  item: "https://www.fujimi-dx-lab.com/plan/photo",
                 },
               ],
             }),
@@ -1256,7 +1256,7 @@ export default function PhotoPageClient() {
               creator: {
                 "@type": "Organization",
                 name: "FUJIMI DX Lab",
-                url: "https://fujimi-dx-lab.com",
+                url: "https://www.fujimi-dx-lab.com",
               },
             }),
           }}

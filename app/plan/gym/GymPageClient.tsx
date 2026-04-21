@@ -1119,19 +1119,19 @@ export default function GymPageClient() {
                   "@type": "ListItem",
                   position: 1,
                   name: "ホーム",
-                  item: "https://fujimi-dx-lab.com",
+                  item: "https://www.fujimi-dx-lab.com",
                 },
                 {
                   "@type": "ListItem",
                   position: 2,
                   name: "業種別プラン",
-                  item: "https://fujimi-dx-lab.com/pricing#packages",
+                  item: "https://www.fujimi-dx-lab.com/pricing#packages",
                 },
                 {
                   "@type": "ListItem",
                   position: 3,
                   name: "パーソナルジムプラン",
-                  item: "https://fujimi-dx-lab.com/plan/gym",
+                  item: "https://www.fujimi-dx-lab.com/plan/gym",
                 },
               ],
             }),
@@ -1155,7 +1155,7 @@ export default function GymPageClient() {
               },
               description:
                 "パーソナルジム向けLINE予約管理・AI自動応答・シフト管理の統合プラットフォーム",
-              url: "https://fujimi-dx-lab.com/plan/gym",
+              url: "https://www.fujimi-dx-lab.com/plan/gym",
             }),
           }}
         />

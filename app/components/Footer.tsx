@@ -15,7 +15,7 @@ export default function Footer() {
               小さな組織の困ったを、テクノロジーで。
             </p>
             <p className="mt-3 text-xs text-slate-500">
-              〒417-0043 静岡県富士市新田島町3-20
+              〒417-0043 静岡県富士市荒田島町3-20
             </p>
           </div>
           <div>

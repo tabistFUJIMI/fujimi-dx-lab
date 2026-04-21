@@ -10,12 +10,12 @@ export const metadata: Metadata = {
   description:
     "ReserveNavi・AskNavi・ShiftNavi・RuleNaviの料金プラン一覧。1つから始められます。業種別パッケージならさらにお得。",
   alternates: {
-    canonical: "https://fujimi-dx-lab.com/pricing",
+    canonical: "https://www.fujimi-dx-lab.com/pricing",
   },
   openGraph: {
     title: "料金プラン | FUJIMI DX Lab",
     description: "ShiftNaviフリー¥0〜、ReserveNavi月額¥980〜。1ツールから始められる小規模事業者向けDXプラットフォーム。",
-    url: "https://fujimi-dx-lab.com/pricing",
+    url: "https://www.fujimi-dx-lab.com/pricing",
     siteName: "FUJIMI DX Lab",
     locale: "ja_JP",
     type: "website",
@@ -184,8 +184,8 @@ export default function PricingPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "ホーム", item: "https://fujimi-dx-lab.com" },
-      { "@type": "ListItem", position: 2, name: "料金プラン", item: "https://fujimi-dx-lab.com/pricing" },
+      { "@type": "ListItem", position: 1, name: "ホーム", item: "https://www.fujimi-dx-lab.com" },
+      { "@type": "ListItem", position: 2, name: "料金プラン", item: "https://www.fujimi-dx-lab.com/pricing" },
     ],
   };
 

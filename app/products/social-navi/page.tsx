@@ -10,7 +10,7 @@ import { ProductBreadcrumb } from "../../components/JsonLd";
 export const metadata: Metadata = {
   title: "Social Navi | SNS一元管理",
   description: "SNS一元管理ツール Social Navi。X・Instagram・TikTok・Facebookを一括管理。AIが投稿文を自動生成。FUJIMI DX Lab",
-  alternates: { canonical: "https://fujimi-dx-lab.com/products/social-navi" },
+  alternates: { canonical: "https://www.fujimi-dx-lab.com/products/social-navi" },
   openGraph: {
     title: "Social Navi | SNS一元管理 - FUJIMI DX Lab",
     description: "SNS一元管理ツール Social Navi。X・Instagram・TikTok・Facebookを一括管理。AIが投稿文を自動生成。FUJIMI DX Lab",
@@ -38,15 +38,15 @@ export default function SocialNaviPage() {
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
         description: "X・Instagram・TikTok・Facebookを一元管理",
-        url: "https://fujimi-dx-lab.com/products/social-navi",
+        url: "https://www.fujimi-dx-lab.com/products/social-navi",
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "ホーム", item: "https://fujimi-dx-lab.com" },
-          { "@type": "ListItem", position: 2, name: "Social Navi", item: "https://fujimi-dx-lab.com/products/social-navi" },
+          { "@type": "ListItem", position: 1, name: "ホーム", item: "https://www.fujimi-dx-lab.com" },
+          { "@type": "ListItem", position: 2, name: "Social Navi", item: "https://www.fujimi-dx-lab.com/products/social-navi" },
         ],
       }) }} />
       <Header />

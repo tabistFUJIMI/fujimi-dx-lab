@@ -33,7 +33,7 @@ export default function TokushoPage() {
                   <Row label="販売業者" value="ふじみ企業有限会社" />
                   <Row label="運営責任者" value="代表取締役 佐野文男" />
                   <Row label="事業部責任者" value="FUJIMI DX Lab事業部 佐野弘明" />
-                  <Row label="所在地" value="〒417-0043 静岡県富士市新田島町3-20" />
+                  <Row label="所在地" value="〒417-0043 静岡県富士市荒田島町3-20" />
                   <Row
                     label="連絡先"
                     value={
@@ -48,7 +48,7 @@ export default function TokushoPage() {
                       </>
                     }
                   />
-                  <Row label="販売URL" value={<><a href="https://fujimi-dx-lab.com" className="text-blue-600 underline hover:text-blue-800">https://fujimi-dx-lab.com</a>（説明・申込）<br /><a href="https://fujimin-pass.com" className="text-blue-600 underline hover:text-blue-800">https://fujimin-pass.com</a>（ログイン・管理画面）<br /><a href="https://forproject.fujimin-pass.com" className="text-blue-600 underline hover:text-blue-800">https://forproject.fujimin-pass.com</a>（ForProject）</>} />
+                  <Row label="販売URL" value={<><a href="https://www.fujimi-dx-lab.com" className="text-blue-600 underline hover:text-blue-800">https://www.fujimi-dx-lab.com</a>（説明・申込）<br /><a href="https://fujimin-pass.com" className="text-blue-600 underline hover:text-blue-800">https://fujimin-pass.com</a>（ログイン・管理画面）<br /><a href="https://forproject.fujimin-pass.com" className="text-blue-600 underline hover:text-blue-800">https://forproject.fujimin-pass.com</a>（ForProject）</>} />
                   <Row
                     label="販売価格"
                     value={

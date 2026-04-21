@@ -7,9 +7,8 @@ export const metadata: Metadata = {
     "写真スタジオの予約管理+AI応答+シフト管理 | FUJIMI DX Lab",
   description:
     "スタジオ撮影の予約をLINEで自動管理。撮影種類・人数の事前収集にも対応。AI応答で問い合わせ自動化。",
-  robots: { index: false, follow: true },
   alternates: {
-    canonical: "https://fujimi-dx-lab.com/fujimin-pass",
+    canonical: "https://www.fujimi-dx-lab.com/plan/photo",
   },
   openGraph: {
     title:

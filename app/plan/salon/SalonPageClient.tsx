@@ -970,19 +970,19 @@ export default function SalonPageClient() {
                   "@type": "ListItem",
                   position: 1,
                   name: "ホーム",
-                  item: "https://fujimi-dx-lab.com",
+                  item: "https://www.fujimi-dx-lab.com",
                 },
                 {
                   "@type": "ListItem",
                   position: 2,
                   name: "業種別プラン",
-                  item: "https://fujimi-dx-lab.com/pricing#packages",
+                  item: "https://www.fujimi-dx-lab.com/pricing#packages",
                 },
                 {
                   "@type": "ListItem",
                   position: 3,
                   name: "ネイル・エステサロンプラン",
-                  item: "https://fujimi-dx-lab.com/plan/salon",
+                  item: "https://www.fujimi-dx-lab.com/plan/salon",
                 },
               ],
             }),
@@ -1006,7 +1006,7 @@ export default function SalonPageClient() {
               },
               description:
                 "ネイル・エステサロン向けLINE予約管理・AI自動応答・シフト管理の統合プラットフォーム",
-              url: "https://fujimi-dx-lab.com/plan/salon",
+              url: "https://www.fujimi-dx-lab.com/plan/salon",
             }),
           }}
         />

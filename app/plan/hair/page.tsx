@@ -7,9 +7,8 @@ export const metadata: Metadata = {
     "美容室・ヘアサロンの予約管理+AI応答+シフト管理 | FUJIMI DX Lab",
   description:
     "カット・カラー・パーマの予約をLINEで自動管理。スタイリスト指名予約にも対応。AI応答でDM対応を自動化。ShiftNavi無料。",
-  robots: { index: false, follow: true },
   alternates: {
-    canonical: "https://fujimi-dx-lab.com/fujimin-pass",
+    canonical: "https://www.fujimi-dx-lab.com/plan/hair",
   },
   openGraph: {
     title:
