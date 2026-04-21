@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       "LINE予約受付・AI自動応答・シフト管理をひとまとめに。ShiftNavi無料。月額550円〜。",
     images: [
       {
-        url: "/images/plan/sejutsu-hero.png",
+        url: "/images/plan/sejutsu-hero.jpg",
         width: 1200,
         height: 630,
         alt: "施術プラン - FUJIMI DX Lab",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "施術プラン | FUJIMI DX Lab",
     description:
       "LINE予約受付・AI自動応答・シフト管理をひとまとめに。ShiftNavi無料。月額550円〜。",
-    images: ["/images/plan/sejutsu-hero.png"],
+    images: ["/images/plan/sejutsu-hero.jpg"],
   },
 };
 

@@ -44,7 +44,7 @@ export default async function ProductGuideIndexPage({ params }: Props) {
   const setup = guides.find((g) => categorizeGuide(g.slug, g.title) === "setup");
   const features = guides.filter((g) => categorizeGuide(g.slug, g.title) === "feature");
 
-  const heroImage = `/images/guides/${productSlug}.png`;
+  const heroImage = `/images/guides/${productSlug}.jpg`;
 
   return (
     <>

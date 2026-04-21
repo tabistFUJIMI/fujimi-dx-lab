@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       "ジェルネイル・まつエク・フェイシャルの予約をLINEで自動管理。AI応答で問い合わせ対応も自動化。ShiftNavi無料。月額550円〜。",
     images: [
       {
-        url: "/images/plan/salon-ogp.png",
+        url: "/images/plan/salon-ogp.jpg",
         width: 1200,
         height: 630,
         alt: "ネイル・エステサロンプラン - FUJIMI DX Lab",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "ネイル・エステサロンプラン | FUJIMI DX Lab",
     description:
       "ジェルネイル・まつエク・フェイシャルの予約をLINEで自動管理。AI応答で問い合わせ対応も自動化。ShiftNavi無料。月額550円〜。",
-    images: ["/images/plan/salon-ogp.png"],
+    images: ["/images/plan/salon-ogp.jpg"],
   },
 };
 

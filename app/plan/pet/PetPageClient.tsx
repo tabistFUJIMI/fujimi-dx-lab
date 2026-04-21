@@ -446,7 +446,7 @@ export default function PetPageClient() {
 
               {/* Hero右側: ダッシュボードモック */}
               <FadeIn delay={0.2} className="mt-8 lg:mt-0">
-                <Image src="/images/plan/pet-hero.png" alt="pet" width={600} height={400} className="rounded-2xl shadow-2xl" priority />
+                <Image src="/images/plan/pet-hero.jpg" alt="pet" width={600} height={400} className="rounded-2xl shadow-2xl" priority />
               </FadeIn>
             </div>
           </div>

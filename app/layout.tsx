@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     url: BASE_URL,
     images: [
       {
-        url: "/images/ogp-main.png",
+        url: "/images/ogp-main.jpg",
         width: 1200,
         height: 630,
         alt: "FUJIMI DX Lab — 小さな組織の困ったをテクノロジーで解決する",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "FUJIMI DX Lab | 小さな組織の困ったをテクノロジーで解決する",
     description: "静岡県富士市発のDX事業部。施術院・サロン向けFUJIMIN PASS、個人向けForProject等、小さな組織が必要なツールを月額¥0から提供。",
-    images: ["/images/ogp-main.png"],
+    images: ["/images/ogp-main.jpg"],
   },
   robots: {
     index: true,

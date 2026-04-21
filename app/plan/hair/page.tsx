@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       "カット・カラー・パーマの予約をLINEで自動管理。スタイリスト指名予約にも対応。AI応答でDM対応を自動化。ShiftNavi無料。",
     images: [
       {
-        url: "/images/plan/hair-ogp.png",
+        url: "/images/plan/hair-ogp.jpg",
         width: 1200,
         height: 630,
         alt: "美容室・ヘアサロンプラン - FUJIMI DX Lab",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "美容室・ヘアサロンプラン | FUJIMI DX Lab",
     description:
       "カット・カラー・パーマの予約をLINEで自動管理。スタイリスト指名予約にも対応。ShiftNavi無料。",
-    images: ["/images/plan/hair-ogp.png"],
+    images: ["/images/plan/hair-ogp.jpg"],
   },
 };
 

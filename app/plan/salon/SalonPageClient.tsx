@@ -389,7 +389,7 @@ export default function SalonPageClient() {
               <FadeIn delay={0.2} className="mt-8 lg:mt-0">
                 <div className="relative">
                   <Image
-                    src="/images/plan/salon-hero.png"
+                    src="/images/plan/salon-hero.jpg"
                     alt="サロンでの施術イメージ"
                     width={600}
                     height={400}

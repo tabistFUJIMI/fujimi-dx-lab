@@ -442,7 +442,7 @@ export default function GymPageClient() {
 
               {/* Hero右側: ダッシュボードモック */}
               <FadeIn delay={0.2} className="mt-8 lg:mt-0">
-                <Image src="/images/plan/gym-hero.png" alt="gym" width={600} height={400} className="rounded-2xl shadow-2xl" priority />
+                <Image src="/images/plan/gym-hero.jpg" alt="gym" width={600} height={400} className="rounded-2xl shadow-2xl" priority />
               </FadeIn>
             </div>
           </div>

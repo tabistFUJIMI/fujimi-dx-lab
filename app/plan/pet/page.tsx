@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       "トリミング・シャンプーの予約をLINEで自動管理。ペット情報の事前収集にも対応。AI応答で飼い主様の問い合わせを自動化。",
     images: [
       {
-        url: "/images/plan/pet-hero.png",
+        url: "/images/plan/pet-hero.jpg",
         width: 1200,
         height: 630,
         alt: "ペットサロンプラン - FUJIMI DX Lab",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "ペットサロンプラン | FUJIMI DX Lab",
     description:
       "トリミング・シャンプーの予約をLINEで自動管理。ペット情報の事前収集にも対応。AI応答で飼い主様の問い合わせを自動化。",
-    images: ["/images/plan/pet-hero.png"],
+    images: ["/images/plan/pet-hero.jpg"],
   },
 };
 

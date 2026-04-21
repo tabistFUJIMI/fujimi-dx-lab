@@ -38,7 +38,7 @@ export default function GuidesIndexPage() {
         <div className="max-w-5xl mx-auto grid gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
           {productsWithGuides.map((product) => {
             const disabled = product.articleCount === 0;
-            const heroImage = `/images/guides/${product.productSlug}.png`;
+            const heroImage = `/images/guides/${product.productSlug}.jpg`;
             const baseCls =
               "block rounded-2xl bg-white transition-all overflow-hidden border";
             const stateCls = disabled

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       "初回相談・継続セッションの予約をLINEで自動管理。承認制予約でダブルブッキング防止。AI応答で問い合わせ自動化。",
     images: [
       {
-        url: "/images/plan/counseling-hero.png",
+        url: "/images/plan/counseling-hero.jpg",
         width: 1200,
         height: 630,
         alt: "カウンセリングプラン - FUJIMI DX Lab",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "カウンセリングプラン | FUJIMI DX Lab",
     description:
       "初回相談・継続セッションの予約をLINEで自動管理。承認制予約でダブルブッキング防止。AI応答で問い合わせ自動化。",
-    images: ["/images/plan/counseling-hero.png"],
+    images: ["/images/plan/counseling-hero.jpg"],
   },
 };
 

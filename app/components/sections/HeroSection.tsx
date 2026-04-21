@@ -92,11 +92,12 @@ export default function HeroSection() {
               style={{ transform: "rotate(-2deg)" }}
             >
               <Image
-                src="/images/generated/hero-photo-high.png"
+                src="/images/generated/hero-photo-high.jpg"
                 alt="サロンオーナーがスマホで笑顔でLINE予約を確認している様子"
-                width={1536}
-                height={1024}
+                width={1200}
+                height={800}
                 priority
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="h-72 w-full object-cover md:h-96"
               />
             </div>

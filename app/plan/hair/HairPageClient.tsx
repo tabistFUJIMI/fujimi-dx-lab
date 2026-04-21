@@ -442,7 +442,7 @@ export default function HairPageClient() {
 
               {/* Hero右側: ダッシュボードモック */}
               <FadeIn delay={0.2} className="mt-8 lg:mt-0">
-                <Image src="/images/plan/hair-hero.png" alt="hair" width={600} height={400} className="rounded-2xl shadow-2xl" priority />
+                <Image src="/images/plan/hair-hero.jpg" alt="hair" width={600} height={400} className="rounded-2xl shadow-2xl" priority />
               </FadeIn>
             </div>
           </div>
