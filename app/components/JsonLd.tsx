@@ -97,6 +97,18 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "FUJIMI DX Lab",
+    // 検索エンジンにブランド表記のバリエーションを明示する。
+    // スペースあり/なし、ハイフン有無、カタカナ/ひらがな等、ユーザーが打つ可能性のある表記を網羅
+    alternateName: [
+      "fujimidxlab",
+      "fujimi-dx-lab",
+      "fujimi dx lab",
+      "FujiMiDXLab",
+      "ふじみDXラボ",
+      "フジミDXラボ",
+      "フジミディーエックスラボ",
+      "ふじみディーエックスラボ",
+    ],
     legalName: "ふじみ企業有限会社",
     description: "小さな組織の困ったをテクノロジーで解決するDX事業部。施術院・サロン向けFUJIMIN PASS、個人向けForProject、非営利団体向けTASUKI PASSを開発・提供。2026年4月サービス開始。",
     url: "https://fujimi-dx-lab.com",
