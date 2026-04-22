@@ -1,5 +1,7 @@
 import Image from "next/image";
 import FadeIn from "../FadeIn";
+import SignupFlowButton from "../SignupFlowButton";
+import { SERVICE_LAUNCH_BANNER } from "@/lib/service-launch";
 
 export default function HeroSection() {
   return (
@@ -20,7 +22,7 @@ export default function HeroSection() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-400 opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-orange-400" />
               </span>
-              2026年4月サービス開始｜旅館経営者がAIと一緒に作っています
+              {SERVICE_LAUNCH_BANNER.replace("｜お気軽にご相談ください", "")}｜旅館経営者がAIと一緒に作っています
             </span>
           </FadeIn>
 
@@ -51,14 +53,11 @@ export default function HeroSection() {
 
           <FadeIn delay={0.3}>
             <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center lg:justify-start justify-center">
-              <a
-                href="https://www.fujimin-pass.com/register"
-                target="_blank"
-                rel="noopener noreferrer"
+              <SignupFlowButton
+                label="無料で始める →"
+                accentColor="#F97316"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F97316] px-7 py-4 text-base font-bold text-white shadow-[0_8px_24px_rgba(249,115,22,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#EA580C]"
-              >
-                無料で始める →
-              </a>
+              />
               <a
                 href="https://lin.ee/UPArZn9"
                 target="_blank"

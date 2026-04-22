@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import FadeIn from "../FadeIn";
+import SignupFlowButton from "../SignupFlowButton";
 
 const INDUSTRIES = [
   { label: "美容室", emoji: "💇", href: "/plan/hair" },
@@ -179,14 +180,12 @@ export default function ReserveNaviSpotlightSection() {
         {/* ─── CTA ─── */}
         <FadeIn delay={0.3}>
           <div className="mt-16 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <a
-              href="https://www.fujimin-pass.com/register"
-              target="_blank"
-              rel="noopener noreferrer"
+            <SignupFlowButton
+              label="無料で始める →"
+              appName="ReserveNavi"
+              accentColor="#F97316"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#F97316] px-8 py-4 text-base font-bold text-white shadow-[0_8px_24px_rgba(249,115,22,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#EA580C] sm:w-auto"
-            >
-              無料で始める →
-            </a>
+            />
             <Link
               href="/lp/reserve-navi"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#F97316] bg-white px-8 py-4 text-base font-bold text-[#F97316] transition-all duration-300 hover:bg-[#FFF7ED] sm:w-auto"

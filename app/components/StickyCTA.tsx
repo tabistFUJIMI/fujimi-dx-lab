@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import SignupFlowButton from "./SignupFlowButton";
 
 type Props = {
   /** 主CTAリンク（相談フォーム or 無料登録） */
@@ -15,6 +16,8 @@ type Props = {
   caption?: string;
   /** スクロール何pxで表示するか */
   showAfter?: number;
+  /** 主CTAをサービス開始日ゲート付きのSignupFlowButtonにする */
+  primaryGated?: boolean;
 };
 
 /**
@@ -28,6 +31,7 @@ export default function StickyCTA({
   secondaryLabel,
   caption = "1分で送信・いつでも解約OK",
   showAfter = 400,
+  primaryGated = false,
 }: Props) {
   const [visible, setVisible] = useState(false);
 
@@ -68,12 +72,21 @@ export default function StickyCTA({
               <span className="hidden xs:inline">{secondaryLabel}</span>
             </a>
           ) : null}
-          <a
-            href={primaryHref}
-            className="flex h-12 flex-1 items-center justify-center rounded-full bg-[#F97316] text-sm font-bold text-white shadow-[0_4px_14px_rgba(249,115,22,0.35)] transition-all hover:bg-[#EA580C]"
-          >
-            {primaryLabel}
-          </a>
+          {primaryGated ? (
+            <SignupFlowButton
+              label={primaryLabel}
+              href={primaryHref}
+              accentColor="#F97316"
+              className="flex h-12 flex-1 items-center justify-center rounded-full bg-[#F97316] text-sm font-bold text-white shadow-[0_4px_14px_rgba(249,115,22,0.35)] transition-all hover:bg-[#EA580C]"
+            />
+          ) : (
+            <a
+              href={primaryHref}
+              className="flex h-12 flex-1 items-center justify-center rounded-full bg-[#F97316] text-sm font-bold text-white shadow-[0_4px_14px_rgba(249,115,22,0.35)] transition-all hover:bg-[#EA580C]"
+            >
+              {primaryLabel}
+            </a>
+          )}
         </div>
         {caption ? (
           <p className="mx-auto mt-1.5 max-w-3xl text-center text-[10px] text-[#8A7F74]">

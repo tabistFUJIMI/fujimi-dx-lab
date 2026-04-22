@@ -110,10 +110,10 @@ export default function JsonLd() {
       "ふじみディーエックスラボ",
     ],
     legalName: "ふじみ企業有限会社",
-    description: "小さな組織の困ったをテクノロジーで解決するDX事業部。施術院・サロン向けFUJIMIN PASS、個人向けForProject、非営利団体向けTASUKI PASSを開発・提供。2026年4月サービス開始。",
+    description: "小さな組織の困ったをテクノロジーで解決するDX事業部。施術院・サロン向けFUJIMIN PASS、個人向けForProject、非営利団体向けTASUKI PASSを開発・提供。2026年5月1日サービス開始。",
     url: "https://www.fujimi-dx-lab.com",
     email: "support@mail.fujimin-pass.com",
-    foundingDate: "2026-04",
+    foundingDate: "2026-05",
     address: {
       "@type": "PostalAddress",
       postalCode: "417-0043",

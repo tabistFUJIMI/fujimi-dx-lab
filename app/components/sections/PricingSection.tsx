@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 import FadeIn from "../FadeIn";
+import SignupFlowButton from "../SignupFlowButton";
 
 export default function PricingSection() {
   return (
@@ -50,14 +51,12 @@ export default function PricingSection() {
                   メールサポート
                 </li>
               </ul>
-              <a
-                href="https://www.fujimin-pass.com/register"
-                target="_blank"
-                rel="noopener noreferrer"
+              <SignupFlowButton
+                label="無料で始める"
+                planName="フリープラン"
+                accentColor="#475569"
                 className="block w-full rounded-xl bg-slate-100 py-3 text-center font-bold text-slate-800 transition-colors hover:bg-slate-200"
-              >
-                無料で始める
-              </a>
+              />
             </div>
           </FadeIn>
 
@@ -98,14 +97,12 @@ export default function PricingSection() {
                   AI高度分析レポート
                 </li>
               </ul>
-              <a
-                href="https://www.fujimin-pass.com/register"
-                target="_blank"
-                rel="noopener noreferrer"
+              <SignupFlowButton
+                label="無料トライアルを始める"
+                planName="スタンダードプラン"
+                accentColor="#4f46e5"
                 className="block w-full rounded-xl bg-indigo-600 py-3 text-center font-bold text-white shadow-md transition-colors hover:bg-indigo-700"
-              >
-                無料トライアルを始める
-              </a>
+              />
             </div>
           </FadeIn>
         </div>
