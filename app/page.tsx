@@ -26,6 +26,7 @@ export default function Home() {
       <StickyCTA
         primaryHref="https://www.fujimin-pass.com/register"
         primaryLabel="無料で始める"
+        primaryGated
         secondaryHref="https://lin.ee/UPArZn9"
         secondaryLabel="LINE相談"
         caption="1分で登録・いつでも解約OK"

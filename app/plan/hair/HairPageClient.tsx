@@ -435,7 +435,7 @@ export default function HairPageClient() {
                 </FadeIn>
                 <FadeIn delay={0.35}>
                   <p className="mt-6 inline-block rounded-full border border-violet-400/30 bg-violet-500/10 px-4 py-1.5 text-sm font-semibold text-violet-300">
-                    2026年4月サービス開始｜お気軽にご相談ください
+                    2026年5月1日サービス開始｜お気軽にご相談ください
                   </p>
                 </FadeIn>
               </div>

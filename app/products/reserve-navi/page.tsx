@@ -528,7 +528,7 @@ export default function ReserveNaviPage() {
                 </p>
                 <ol className="ml-6 list-decimal space-y-1 text-xs">
                   <li>
-                    まず <a href="https://www.fujimin-pass.com/register" target="_blank" rel="noopener noreferrer" className="font-semibold underline">FUJIMIN PASS</a> にご登録（無料・メール認証のみ）
+                    まず <SignupFlowButton label="FUJIMIN PASS" accentColor="#4f46e5" className="font-semibold underline cursor-pointer" /> にご登録（無料・メール認証のみ）
                   </li>
                   <li>管理画面から ReserveNavi のプランをご選択＆お申し込み</li>
                   <li>クレジットカード決済の場合はすぐご利用開始（銀行振込は1〜3営業日）</li>

@@ -10,6 +10,7 @@ import {
   LineChart,
 } from "lucide-react";
 import FadeIn from "../FadeIn";
+import SignupFlowButton from "../SignupFlowButton";
 
 type ProductCard = {
   name: string;
@@ -242,14 +243,11 @@ export default function ProductSeriesSection() {
               FUJIMIN PASSに登録すれば、すべてのプロダクトが追加料金なしですぐに使えます。
             </p>
             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a
-                href="https://www.fujimin-pass.com/register"
-                target="_blank"
-                rel="noopener noreferrer"
+              <SignupFlowButton
+                label="FUJIMIN PASS に無料登録 →"
+                accentColor="#F97316"
                 className="inline-flex w-full items-center justify-center rounded-full bg-[#F97316] px-7 py-3.5 text-sm font-bold text-white shadow-[0_8px_20px_rgba(249,115,22,0.3)] transition-all hover:-translate-y-0.5 hover:bg-[#EA580C] sm:w-auto"
-              >
-                FUJIMIN PASS に無料登録 →
-              </a>
+              />
               <Link
                 href="/fujimin-pass"
                 className="inline-flex w-full items-center justify-center rounded-full border-2 border-[#E8E2D9] bg-white px-7 py-3.5 text-sm font-bold text-[#52483F] transition-all hover:border-[#F97316] hover:text-[#F97316] sm:w-auto"

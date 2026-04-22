@@ -439,7 +439,7 @@ export default function PhotoPageClient() {
                 </FadeIn>
                 <FadeIn delay={0.35}>
                   <p className="mt-6 inline-block rounded-full border border-indigo-400/30 bg-indigo-500/10 px-4 py-1.5 text-sm font-semibold text-indigo-300">
-                    2026年4月サービス開始｜お気軽にご相談ください
+                    2026年5月1日サービス開始｜お気軽にご相談ください
                   </p>
                 </FadeIn>
               </div>

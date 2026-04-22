@@ -1,5 +1,23 @@
 # FUJIMI DX Lab HP - 進捗
 
+## 2026-04-23: サービス開始日を5/1にシフト・申込動線を自動ゲート化
+
+### やったこと
+- サービス開始日を 2026-04 → 2026-05-01（JST）に変更
+- 共通ユーティリティ `lib/service-launch.ts` を新設（`SERVICE_LAUNCH_ISO` / `isSignupOpen()`）
+- クライアントフック `app/hooks/useServiceLaunch.ts` を新設：5/1 00:00 を跨いだ瞬間に `setTimeout` で動線を自動解放
+- `SignupFlowButton` を拡張：5/1 前は「受付開始予告」モーダルに切替、CTAは LINE相談へ。5/1 以降は従来の登録フローに自動復帰
+- 直接リンクだった登録CTA（Header / HeroSection / PricingSection / ProductSeriesSection / ReserveNaviSpotlightSection / StickyCTA / products/reserve-navi 手順リンク）を `SignupFlowButton` 経由に統一し、一括ゲーティング
+- StickyCTA に `primaryGated` オプションを追加
+- 「2026年4月サービス開始」文言を plan/lp/products 全12ページで 2026年5月1日 に更新
+- AboutSection の会社概要、JsonLd の description / foundingDate を 2026-05 基準に更新
+
+### 次にやること
+- 5/1 切替後の動作をブラウザ実機で確認（特にHeader/StickyCTAの見た目）
+- 準備中モーダルの文言ブラッシュアップ（必要に応じて）
+
+---
+
 ## 2026-04-20: バグ監査 + コラム4カテゴリ化 + /guides 新設
 
 ### やったこと

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import SignupFlowButton from "./SignupFlowButton";
 
 const NAV_ITEMS = [
   { label: "ReserveNavi", href: "/lp/reserve-navi" },
@@ -64,14 +65,11 @@ export default function Header() {
             </svg>
             LINE
           </a>
-          <a
-            href="https://www.fujimin-pass.com/register"
-            target="_blank"
-            rel="noopener noreferrer"
+          <SignupFlowButton
+            label="無料で始める"
+            accentColor="#F97316"
             className="rounded-full bg-[#F97316] px-5 py-2.5 text-sm font-bold text-white shadow-[0_4px_14px_rgba(249,115,22,0.25)] transition-all hover:-translate-y-0.5 hover:bg-[#EA580C]"
-          >
-            無料で始める
-          </a>
+          />
         </nav>
 
         {/* Mobile toggle */}
@@ -112,15 +110,11 @@ export default function Header() {
             {item.label}
           </a>
         ))}
-        <a
-          href="https://www.fujimin-pass.com/register"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-3 block rounded-lg bg-[#F97316] px-5 py-3 text-center text-sm font-bold text-white"
-          onClick={() => setOpen(false)}
-        >
-          無料で始める
-        </a>
+        <SignupFlowButton
+          label="無料で始める"
+          accentColor="#F97316"
+          className="mt-3 block w-full rounded-lg bg-[#F97316] px-5 py-3 text-center text-sm font-bold text-white"
+        />
         <a
           href="https://lin.ee/UPArZn9"
           target="_blank"
