@@ -41,6 +41,13 @@ export function markdownToHtml(md: string): string {
       const trimmed = block.trim();
       if (!trimmed) return "";
 
+      // Raw HTML ブロック (note.com風リッチ記事用)
+      // <div class="col-*"> 等のカスタムコンポーネントクラスで始まる場合は
+      // マークダウン処理をスキップしてそのまま出力する
+      if (/^<(div|section|figure|aside|article|header|footer|nav)\b/i.test(trimmed)) {
+        return trimmed;
+      }
+
       // 水平線（--- / *** / ___ を単独行で）
       if (/^(-{3,}|\*{3,}|_{3,})$/.test(trimmed)) {
         return '<hr class="my-10 border-0 border-t border-neutral-200" />';
