@@ -10,6 +10,7 @@ import {
 } from "../../../lib/column-categories";
 import { BASE_URL } from "../../../lib/base-url";
 import { getAdminSession } from "../../../lib/admin-session";
+import { getRelatedServices } from "../../../lib/service-mapping";
 
 export const dynamic = "force-dynamic";
 
@@ -54,6 +55,31 @@ export default async function ColumnArticlePage({ params, searchParams }: Props)
   const canViewDraft = isAdmin && isPreviewMode;
 
   if (!article.isPublished && !canViewDraft) notFound();
+
+  // 関連記事（同カテゴリ or タグ重複で3件、公開済みのみ）
+  const relatedArticles = await prisma.column.findMany({
+    where: {
+      isPublished: true,
+      slug: { not: article.slug },
+      OR: [
+        { category: article.category },
+        { tags: { hasSome: article.tags } },
+      ],
+    },
+    orderBy: [{ publishedAt: "desc" }],
+    take: 3,
+    select: {
+      slug: true,
+      title: true,
+      excerpt: true,
+      category: true,
+      tags: true,
+      publishedAt: true,
+    },
+  });
+
+  // 関連サービス（タグから自動選出、最大2件）
+  const relatedServices = getRelatedServices(article.tags, 2);
 
   const htmlContent = markdownToHtml(article.content);
   const publishDate = article.publishedAt
@@ -149,20 +175,92 @@ export default async function ColumnArticlePage({ params, searchParams }: Props)
           dangerouslySetInnerHTML={{ __html: htmlContent }}
         />
 
-        {/* CTA */}
-        <div className="mt-16 p-8 bg-gradient-to-r from-[#eef4ff] to-[#e8fffe] rounded-2xl text-center">
-          <h3 className="text-xl font-bold text-[#191b23] mb-2">あなたのサイトを今すぐ診断</h3>
-          <p className="text-sm text-[#434655] mb-4">AI対策チェッカーでSEO・GEO/LLMOスコアを無料チェック</p>
-          <Link
-            href="/tools/ai-checker"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#004ac6] text-white rounded-xl font-bold hover:bg-[#003ea8] transition-all"
-          >
-            AI対策チェッカーを使う →
-          </Link>
-        </div>
+        {/* 関連サービス（タグから自動選出） */}
+        {relatedServices.length > 0 && (
+          <section className="mt-16">
+            <div className="mb-6 flex items-baseline justify-between">
+              <h2 className="text-lg font-bold text-[#191b23]">
+                この記事に関連するサービス
+              </h2>
+              <span className="text-xs text-[#737686] tracking-wider">
+                FUJIMI DX LAB
+              </span>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {relatedServices.map((s) => (
+                <Link
+                  key={s.id}
+                  href={s.href}
+                  className="group block p-6 rounded-2xl border border-[#e1e2ed] bg-white hover:border-[#004ac6] hover:shadow-lg transition-all"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-2xl">{s.emoji}</span>
+                    <h3 className="text-base font-bold text-[#191b23] group-hover:text-[#004ac6]">
+                      {s.name}
+                    </h3>
+                  </div>
+                  <p className="text-sm font-semibold text-[#004ac6] mb-2">
+                    {s.tagline}
+                  </p>
+                  <p className="text-sm text-[#434655] leading-relaxed mb-3">
+                    {s.pitch}
+                  </p>
+                  <span className="text-xs text-[#004ac6] font-medium inline-flex items-center gap-1">
+                    詳しく見る →
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 関連記事（同カテゴリ or タグ重複） */}
+        {relatedArticles.length > 0 && (
+          <section className="mt-16">
+            <div className="mb-6 flex items-baseline justify-between">
+              <h2 className="text-lg font-bold text-[#191b23]">
+                この記事と関連するコラム
+              </h2>
+              <Link
+                href="/column"
+                className="text-xs text-[#004ac6] hover:underline"
+              >
+                すべて見る →
+              </Link>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {relatedArticles.map((rel) => {
+                const relCat = resolveCategory(rel.category);
+                return (
+                  <Link
+                    key={rel.slug}
+                    href={`/column/${rel.slug}`}
+                    className="group block p-5 rounded-2xl border border-[#e1e2ed] bg-white hover:border-[#004ac6] hover:shadow-md transition-all"
+                  >
+                    <span
+                      className={`inline-block text-xs px-2 py-0.5 rounded-full font-medium mb-3 ${
+                        CATEGORY_COLOR_MAP[relCat] || "bg-gray-100 text-gray-700"
+                      }`}
+                    >
+                      {CATEGORY_LABEL_MAP[relCat] || relCat}
+                    </span>
+                    <h3 className="text-sm font-bold text-[#191b23] leading-snug mb-2 group-hover:text-[#004ac6] line-clamp-2">
+                      {rel.title}
+                    </h3>
+                    {rel.excerpt && (
+                      <p className="text-xs text-[#737686] line-clamp-3 leading-relaxed">
+                        {rel.excerpt}
+                      </p>
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        )}
 
         {/* Back to list */}
-        <div className="mt-8 text-center">
+        <div className="mt-16 text-center">
           <Link href="/column" className="text-sm text-[#004ac6] hover:underline">
             ← コラム一覧に戻る
           </Link>
