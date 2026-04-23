@@ -2,6 +2,13 @@ import Link from "next/link";
 
 const MENU_ITEMS = [
   {
+    href: "/admin/columns",
+    title: "コラム管理",
+    description: "コラム記事の作成・編集・公開管理（AI検索・DX・時事IT）",
+    color: "from-violet-400 to-fuchsia-500",
+    icon: "📝",
+  },
+  {
     href: "/admin/announcements",
     title: "お知らせ管理",
     description: "お知らせの作成・編集・公開管理",

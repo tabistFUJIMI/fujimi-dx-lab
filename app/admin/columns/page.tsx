@@ -11,9 +11,11 @@ type Column = {
   excerpt: string | null;
   category: string;
   tags: string[];
+  ogImage: string | null;
   isPublished: boolean;
   publishedAt: string | null;
   createdAt: string;
+  updatedAt: string;
 };
 
 // コラムカテゴリーは lib/column-categories.ts で単一ソース管理。
@@ -33,12 +35,19 @@ export default function ColumnsAdmin() {
   const [showForm, setShowForm] = useState(false);
   const [editingItem, setEditingItem] = useState<Column | null>(null);
 
+  // Filter state
+  const [categoryFilter, setCategoryFilter] = useState<string>("all");
+  const [statusFilter, setStatusFilter] = useState<"all" | "published" | "draft">("all");
+  const [searchQuery, setSearchQuery] = useState("");
+
   // Form state
   const [slug, setSlug] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [category, setCategory] = useState("ai-geo-llmo");
   const [tagsInput, setTagsInput] = useState("");
+  const [ogImage, setOgImage] = useState("");
+  const [excerptOverride, setExcerptOverride] = useState("");
   const [isPublished, setIsPublished] = useState(false);
 
   const fetchItems = useCallback(async () => {
@@ -68,6 +77,8 @@ export default function ColumnsAdmin() {
     setContent("");
     setCategory("ai-geo-llmo");
     setTagsInput("");
+    setOgImage("");
+    setExcerptOverride("");
     setIsPublished(false);
     setEditingItem(null);
     setShowForm(false);
@@ -79,9 +90,36 @@ export default function ColumnsAdmin() {
     setContent(item.content);
     setCategory(item.category);
     setTagsInput(item.tags.join(", "));
+    setOgImage(item.ogImage || "");
+    setExcerptOverride(item.excerpt || "");
     setIsPublished(item.isPublished);
     setEditingItem(item);
     setShowForm(true);
+    // Scroll to form
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // Quick toggle publish/draft status from list
+  const togglePublish = async (item: Column) => {
+    const next = !item.isPublished;
+    const verb = next ? "公開" : "下書きに戻す";
+    if (!confirm(`この記事を${verb}しますか？\n\n${item.title}`)) return;
+
+    try {
+      const res = await fetch(`/api/admin/columns/${item.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ isPublished: next }),
+      });
+      if (!res.ok) {
+        const data = await res.json();
+        alert(data.error || "切り替えに失敗しました");
+        return;
+      }
+      fetchItems();
+    } catch {
+      alert("切り替えに失敗しました");
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -105,7 +143,16 @@ export default function ColumnsAdmin() {
       const res = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slug, title, content, category, tags, isPublished }),
+        body: JSON.stringify({
+          slug,
+          title,
+          content,
+          category,
+          tags,
+          ogImage: ogImage || null,
+          excerpt: excerptOverride || undefined, // undefined で API の自動生成にまかせる
+          isPublished,
+        }),
       });
 
       if (!res.ok) {
@@ -236,8 +283,42 @@ export default function ColumnsAdmin() {
               </div>
             </div>
 
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  OG画像URL
+                  <span className="ml-2 text-xs text-gray-400">（SNS共有時に表示）</span>
+                </label>
+                <input
+                  type="text"
+                  value={ogImage}
+                  onChange={(e) => setOgImage(e.target.value)}
+                  placeholder="/images/column/xxx.png"
+                  className="w-full px-3 py-2 border rounded-lg text-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  抜粋（120字）
+                  <span className="ml-2 text-xs text-gray-400">（空なら本文先頭から自動）</span>
+                </label>
+                <input
+                  type="text"
+                  value={excerptOverride}
+                  onChange={(e) => setExcerptOverride(e.target.value.slice(0, 160))}
+                  placeholder="検索結果・SNS共有で表示される説明文"
+                  className="w-full px-3 py-2 border rounded-lg text-sm"
+                />
+              </div>
+            </div>
+
             <div>
-              <label className="block text-sm font-medium mb-1">本文（Markdown対応） *</label>
+              <label className="flex items-center justify-between mb-1">
+                <span className="text-sm font-medium">本文（Markdown対応） *</span>
+                <span className="text-xs text-gray-400">
+                  {content.length.toLocaleString()} 文字
+                </span>
+              </label>
               <textarea
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
@@ -278,6 +359,56 @@ export default function ColumnsAdmin() {
         </div>
       )}
 
+      {/* Filters */}
+      {!showForm && items.length > 0 && (
+        <div className="mb-4 flex flex-wrap items-center gap-2 p-3 bg-white border rounded-lg">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="🔍 タイトル・スラッグ・タグで検索..."
+            className="flex-1 min-w-[200px] px-3 py-1.5 border rounded-lg text-sm"
+          />
+          <select
+            value={categoryFilter}
+            onChange={(e) => setCategoryFilter(e.target.value)}
+            className="px-3 py-1.5 border rounded-lg text-sm"
+          >
+            <option value="all">全カテゴリ</option>
+            {CATEGORIES.map((c) => (
+              <option key={c.value} value={c.value}>
+                {c.label}
+              </option>
+            ))}
+          </select>
+          <select
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value as typeof statusFilter)}
+            className="px-3 py-1.5 border rounded-lg text-sm"
+          >
+            <option value="all">全ステータス</option>
+            <option value="published">公開のみ</option>
+            <option value="draft">下書きのみ</option>
+          </select>
+          <span className="text-xs text-gray-500 ml-auto">
+            {
+              items.filter((it) => {
+                if (categoryFilter !== "all" && resolveCategory(it.category) !== categoryFilter) return false;
+                if (statusFilter === "published" && !it.isPublished) return false;
+                if (statusFilter === "draft" && it.isPublished) return false;
+                if (searchQuery) {
+                  const q = searchQuery.toLowerCase();
+                  const hay = (it.title + " " + it.slug + " " + it.tags.join(" ")).toLowerCase();
+                  if (!hay.includes(q)) return false;
+                }
+                return true;
+              }).length
+            }{" "}
+            件表示中 / 全 {items.length} 件
+          </span>
+        </div>
+      )}
+
       {/* List */}
       {isLoading ? (
         <p className="text-gray-500 text-center py-8">読み込み中...</p>
@@ -285,57 +416,104 @@ export default function ColumnsAdmin() {
         <p className="text-gray-500 text-center py-8">記事がありません</p>
       ) : (
         <div className="space-y-2">
-          {items.map((item) => {
-            const cat = getCategoryStyle(item.category);
-            return (
-              <div
-                key={item.id}
-                className="flex items-center justify-between p-4 bg-white border rounded-lg hover:bg-gray-50"
-              >
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className={`text-xs px-2 py-0.5 rounded-full ${cat.color}`}>
-                      {cat.label}
-                    </span>
-                    <span
-                      className={`text-xs px-2 py-0.5 rounded-full ${
+          {items
+            .filter((it) => {
+              if (categoryFilter !== "all" && resolveCategory(it.category) !== categoryFilter) return false;
+              if (statusFilter === "published" && !it.isPublished) return false;
+              if (statusFilter === "draft" && it.isPublished) return false;
+              if (searchQuery) {
+                const q = searchQuery.toLowerCase();
+                const hay = (it.title + " " + it.slug + " " + it.tags.join(" ")).toLowerCase();
+                if (!hay.includes(q)) return false;
+              }
+              return true;
+            })
+            .map((item) => {
+              const cat = getCategoryStyle(item.category);
+              const updatedAt = new Date(item.updatedAt).toLocaleString("ja-JP", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit",
+                hour: "2-digit",
+                minute: "2-digit",
+              });
+              return (
+                <div
+                  key={item.id}
+                  className={`flex items-center justify-between p-4 bg-white border rounded-lg hover:bg-gray-50 ${
+                    item.isPublished ? "border-l-4 border-l-green-500" : "border-l-4 border-l-gray-300"
+                  }`}
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1 flex-wrap">
+                      <span className={`text-xs px-2 py-0.5 rounded-full ${cat.color}`}>
+                        {cat.label}
+                      </span>
+                      <span
+                        className={`text-xs px-2 py-0.5 rounded-full font-semibold ${
+                          item.isPublished
+                            ? "bg-green-100 text-green-700"
+                            : "bg-gray-100 text-gray-500"
+                        }`}
+                      >
+                        {item.isPublished ? "✓ 公開" : "📝 下書き"}
+                      </span>
+                      <span className="text-xs text-gray-400 truncate">/column/{item.slug}</span>
+                      <span className="text-xs text-gray-400 ml-auto">
+                        更新: {updatedAt}
+                      </span>
+                    </div>
+                    <p className="font-medium text-sm truncate">{item.title}</p>
+                    {item.tags.length > 0 && (
+                      <div className="flex gap-1 mt-1 flex-wrap">
+                        {item.tags.slice(0, 8).map((tag) => (
+                          <span key={tag} className="text-xs text-gray-400">
+                            #{tag}
+                          </span>
+                        ))}
+                        {item.tags.length > 8 && (
+                          <span className="text-xs text-gray-400">+{item.tags.length - 8}</span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2 ml-4 flex-shrink-0">
+                    <button
+                      onClick={() => togglePublish(item)}
+                      title={item.isPublished ? "下書きに戻す" : "公開する"}
+                      className={`px-3 py-1.5 text-xs font-semibold rounded ${
                         item.isPublished
-                          ? "bg-green-100 text-green-700"
-                          : "bg-gray-100 text-gray-500"
+                          ? "bg-gray-100 text-gray-700 border border-gray-300 hover:bg-gray-200"
+                          : "bg-green-600 text-white hover:bg-green-700"
                       }`}
                     >
-                      {item.isPublished ? "公開" : "下書き"}
-                    </span>
-                    <span className="text-xs text-gray-400">/column/{item.slug}</span>
+                      {item.isPublished ? "下書きに戻す" : "公開する"}
+                    </button>
+                    <a
+                      href={`/column/${item.slug}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="公開ページを開く（下書きは管理者のみ閲覧可）"
+                      className="px-3 py-1.5 text-xs border rounded hover:bg-gray-100"
+                    >
+                      プレビュー
+                    </a>
+                    <button
+                      onClick={() => startEdit(item)}
+                      className="px-3 py-1.5 text-xs border rounded hover:bg-gray-100"
+                    >
+                      編集
+                    </button>
+                    <button
+                      onClick={() => handleDelete(item.id)}
+                      className="px-3 py-1.5 text-xs text-red-600 border border-red-200 rounded hover:bg-red-50"
+                    >
+                      削除
+                    </button>
                   </div>
-                  <p className="font-medium text-sm truncate">{item.title}</p>
-                  {item.tags.length > 0 && (
-                    <div className="flex gap-1 mt-1">
-                      {item.tags.map((tag) => (
-                        <span key={tag} className="text-xs text-gray-400">
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
                 </div>
-                <div className="flex items-center gap-2 ml-4">
-                  <button
-                    onClick={() => startEdit(item)}
-                    className="px-3 py-1 text-xs border rounded hover:bg-gray-100"
-                  >
-                    編集
-                  </button>
-                  <button
-                    onClick={() => handleDelete(item.id)}
-                    className="px-3 py-1 text-xs text-red-600 border border-red-200 rounded hover:bg-red-50"
-                  >
-                    削除
-                  </button>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       )}
     </div>
