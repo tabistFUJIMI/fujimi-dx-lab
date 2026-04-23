@@ -9,23 +9,29 @@ import {
   resolveCategory,
 } from "../../../lib/column-categories";
 import { BASE_URL } from "../../../lib/base-url";
+import { getAdminSession } from "../../../lib/admin-session";
 
 export const dynamic = "force-dynamic";
 
-type Props = { params: Promise<{ slug: string }> };
+type Props = {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ preview?: string }>;
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const article = await prisma.column.findUnique({
     where: { slug },
-    select: { title: true, excerpt: true, slug: true },
+    select: { title: true, excerpt: true, slug: true, isPublished: true },
   });
   if (!article) return {};
 
+  // 下書きは検索エンジンにインデックスさせない
   return {
     title: article.title,
     description: article.excerpt || undefined,
     alternates: { canonical: `/column/${article.slug}` },
+    robots: article.isPublished ? undefined : { index: false, follow: false },
     openGraph: {
       title: article.title,
       description: article.excerpt || undefined,
@@ -35,11 +41,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function ColumnArticlePage({ params }: Props) {
+export default async function ColumnArticlePage({ params, searchParams }: Props) {
   const { slug } = await params;
+  const { preview } = await searchParams;
   const article = await prisma.column.findUnique({ where: { slug } });
 
-  if (!article || !article.isPublished) notFound();
+  if (!article) notFound();
+
+  // 下書きは管理者ログイン中かつ ?preview=1 でのみ閲覧可能
+  const isPreviewMode = preview === "1";
+  const isAdmin = isPreviewMode ? await getAdminSession() : false;
+  const canViewDraft = isAdmin && isPreviewMode;
+
+  if (!article.isPublished && !canViewDraft) notFound();
 
   const htmlContent = markdownToHtml(article.content);
   const publishDate = article.publishedAt
@@ -66,6 +80,27 @@ export default async function ColumnArticlePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
 
       <article className="max-w-3xl mx-auto px-4 py-16">
+        {/* Draft preview banner */}
+        {!article.isPublished && canViewDraft && (
+          <div className="mb-8 rounded-2xl border border-amber-300 bg-amber-50 px-5 py-4 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">📝</span>
+              <div>
+                <div className="text-sm font-semibold text-amber-900">これは下書きプレビューです</div>
+                <div className="text-xs text-amber-800 mt-0.5">
+                  一般公開されていません（管理者のみ閲覧可能）
+                </div>
+              </div>
+            </div>
+            <Link
+              href="/admin/columns"
+              className="whitespace-nowrap text-xs px-4 py-2 bg-amber-900 text-amber-50 rounded-lg hover:bg-amber-800"
+            >
+              管理画面で公開 →
+            </Link>
+          </div>
+        )}
+
         {/* Header */}
         <div className="mb-10">
           <div className="flex items-center gap-3 mb-4">

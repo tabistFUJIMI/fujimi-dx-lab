@@ -490,10 +490,10 @@ export default function ColumnsAdmin() {
                       {item.isPublished ? "下書きに戻す" : "公開する"}
                     </button>
                     <a
-                      href={`/column/${item.slug}`}
+                      href={`/column/${item.slug}${item.isPublished ? "" : "?preview=1"}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      title="公開ページを開く（下書きは管理者のみ閲覧可）"
+                      title={item.isPublished ? "公開ページを開く" : "下書きプレビューを開く（管理者のみ閲覧可）"}
                       className="px-3 py-1.5 text-xs border rounded hover:bg-gray-100"
                     >
                       プレビュー
