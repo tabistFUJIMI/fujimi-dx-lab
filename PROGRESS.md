@@ -1,5 +1,43 @@
 # FUJIMI DX Lab HP - 進捗
 
+## 2026-04-24: ReserveNavi 料金体系の最終確定と全面反映
+
+### やったこと
+- **料金体系を3プラン化**（フリープラン廃止）・全期間税込統一
+  - ライト ¥980（予約枠1つ、1名運営、AIなし）
+  - スタンダード ¥2,980（予約枠5つ、同時稼働5名相当、月800pt、メインプラン）
+  - プロ ¥4,980（予約枠15まで、月1,600pt）
+- **早期メンバー割引スキームを廃止**し「登録ボーナスポイント増量」方式へ変更
+  - 2026/5/1〜7/31 新規登録 → ウェルカムpt 1,500（通常500pt・3倍、有効期限90日）
+  - 二重価格・固定割引額・解約失効ロジック・専用利用規約条項は全廃
+- **「スタッフ○名まで」→「予約枠○つまで（同時稼働○名相当）」** に表記変更
+  - ShiftNavi連携で10名以上のスタッフを動的割当可能と明示
+- **共創パートナー募集期間を5/1〜7/31に統一**（早期メンバーと同期間）
+  - 2027/11/30まで無料、以降は通常価格で継続
+- **無料トライアル廃止**（即課金、資金的制約）
+- **税込表記を維持**（個人事業主向け、法的リスク最小化）
+- **AskNavi/RuleNaviの「7日間無料トライアル」誤情報を削除**
+
+### 変更ファイル（22）
+- `app/components/EarlyBirdBanner.tsx`（新規＋全面書き換え）
+- `app/pricing/page.tsx` / `app/products/reserve-navi/page.tsx` / `app/products/fujimin-pass/page.tsx`
+- `app/lp/reserve-navi/page.tsx` / `app/lp/massage/page.tsx` / `app/lp/partner/page.tsx`
+- `app/fujimin-pass/page.tsx` / `app/tokusho/page.tsx`
+- `app/plan/{salon,sejutsu,counseling,photo,hair,pet,gym}/*PageClient.tsx`（7ファイル）
+- `app/components/JsonLd.tsx` / `sections/PartnerCTASection.tsx` / `sections/ReserveNaviSpotlightSection.tsx`
+- `content/llms.txt` / `content/guides/reserve-navi/overview.md` / `content/guides/fujimin-pass/*.md`
+
+### 検証
+- `npx tsc --noEmit` exit 0（型エラーなし）
+- 旧価格（¥2,480/¥3,980/¥1,480/¥5,500）のReserveNavi関連残留なし
+
+### 次にやること
+- Vercel Preview で全ページ目視確認
+- PR作成 → main マージ → 本番反映
+- 別PRでFUJIMIN PASS本体側の `grantWelcomePoints` 期間判定・`prisma/seed.ts` pt更新・Stripe Price ID更新
+
+---
+
 ## 2026-04-24: AI ツール用設定ファイル追加
 
 ### やったこと（コミット `4a32990`）

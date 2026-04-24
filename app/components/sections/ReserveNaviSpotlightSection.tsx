@@ -121,7 +121,7 @@ export default function ReserveNaviSpotlightSection() {
                     <span className="text-xs text-[#8A7F74]">予約件数無制限</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="font-bold text-[#F97316]">¥2,480〜</span>
+                    <span className="font-bold text-[#F97316]">¥2,980〜</span>
                     <span className="text-xs text-[#8A7F74]">AIレポートで経営見える化</span>
                   </li>
                 </ul>

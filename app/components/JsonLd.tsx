@@ -201,7 +201,7 @@ export default function JsonLd() {
         name: "共創パートナーとは何ですか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "ReserveNaviを実際の店舗運営でご利用いただき、月2回のヒアリングとLINEでのフィードバックにご協力いただけるパートナー店舗様です。スタンダードプラン（通常¥2,480/月）を最大1年間無料でご提供します。",
+          text: "ReserveNaviを実際の店舗運営でご利用いただき、月2回のヒアリングとLINEでのフィードバックにご協力いただけるパートナー店舗様です。スタンダードプラン（通常¥2,980/月）を2027年11月30日までの約19ヶ月間無料でご提供します。2026年5月1日〜7月31日の間で各業種3社・計9社を募集。",
         },
       },
       {
@@ -209,7 +209,7 @@ export default function JsonLd() {
         name: "料金はいくらですか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "シリーズによって異なります。FUJIMIN PASSはReserveNavi無料〜¥3,980/月、AskNavi¥550〜/月、ShiftNavi無料〜¥550/月。ForProjectは基本無料・AI機能500円〜。すべて税込価格です。",
+          text: "シリーズによって異なります。FUJIMIN PASSはReserveNavi¥980〜¥4,980/月、AskNavi¥550〜/月、ShiftNavi無料〜¥550/月。ForProjectは基本無料・AI機能500円〜。すべて税込価格です。",
         },
       },
     ],

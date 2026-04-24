@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 const NAVI_TOOLS = [
-  { slug: "reserve-navi", name: "Reserve Navi", desc: "LINE予約管理", icon: "📅", color: "#f97316", price: "無料〜¥3,980/月" },
+  { slug: "reserve-navi", name: "Reserve Navi", desc: "LINE予約管理", icon: "📅", color: "#f97316", price: "¥980〜¥4,980/月" },
   { slug: "ask-navi", name: "Ask Navi", desc: "LINE AI自動応答", icon: "💬", color: "#14b8a6", price: "¥550〜¥5,500/月" },
   { slug: "rule-navi", name: "Rule Navi", desc: "社内規則AI検索", icon: "📖", color: "#a855f7", price: "¥550〜¥5,500/月" },
   { slug: "shift-navi", name: "Shift Navi", desc: "AIシフト管理", icon: "📊", color: "#3b82f6", price: "完全無料" },
@@ -48,7 +48,7 @@ export default function FujiminPassPage() {
         operatingSystem: "Web",
         description: "小規模事業者向け統合DXプラットフォーム",
         url: "https://www.fujimi-dx-lab.com/fujimin-pass",
-        offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "3980", priceCurrency: "JPY" },
+        offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "5500", priceCurrency: "JPY" },
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({

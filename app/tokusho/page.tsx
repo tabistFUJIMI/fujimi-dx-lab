@@ -58,7 +58,10 @@ export default function TokushoPage() {
                         </p>
                         <div className="space-y-1.5">
                           <p className="font-medium text-slate-800">Reserve Navi（予約管理）</p>
-                          <p>フリー: ¥0 / ライト: ¥980 / スタンダード: ¥2,480 / プロ: ¥3,980</p>
+                          <p>ライト: ¥980 / スタンダード: ¥2,980 / プロ: ¥4,980</p>
+                          <p className="text-xs text-slate-600 mt-1">
+                            2026年5月1日〜7月31日の早期メンバー募集期間中に新規登録された方には、登録時ウェルカムポイントとして通常500ptの3倍となる1,500pt（有効期限90日）を進呈いたします。本特典は予告なく終了または変更する場合があります。
+                          </p>
                         </div>
                         <div className="space-y-1.5">
                           <p className="font-medium text-slate-800">Ask Navi（AI応答）/ Rule Navi（社内規則AI）</p>

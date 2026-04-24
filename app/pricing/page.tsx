@@ -4,11 +4,12 @@ import Footer from "../components/Footer";
 import FadeIn from "../components/FadeIn";
 import ContactForm from "../components/ContactForm";
 import SignupFlowButton from "../components/SignupFlowButton";
+import EarlyBirdBanner from "../components/EarlyBirdBanner";
 
 export const metadata: Metadata = {
   title: "料金プラン | FUJIMI DX Lab",
   description:
-    "ReserveNavi・AskNavi・ShiftNavi・RuleNaviの料金プラン一覧。1つから始められます。業種別パッケージならさらにお得。",
+    "ReserveNavi（ライト¥980/スタンダード¥2,980/プロ¥4,980）・AskNavi・ShiftNavi・RuleNaviの料金プラン。5/1〜7/31の早期メンバー登録でウェルカムpt1,500進呈。業種別パッケージもご用意。",
   alternates: {
     canonical: "https://www.fujimi-dx-lab.com/pricing",
   },
@@ -33,46 +34,39 @@ export const metadata: Metadata = {
 
 const RESERVE_PLANS = [
   {
-    name: "無料",
-    price: "¥0",
-    period: "/月",
-    features: ["スタッフ1名", "月50件まで予約受付", "予約履歴3ヶ月", "AI機能なし"],
-    recommended: false,
-  },
-  {
     name: "ライト",
     price: "¥980",
     period: "/月",
-    features: ["スタッフ1名", "予約件数無制限", "予約履歴無制限", "AI機能あり（購入ptで）", "LINE拡張あり"],
+    features: ["予約枠1つ（1名運営）", "予約件数無制限", "予約履歴無制限", "AI機能あり（購入ptで）", "LINE拡張あり"],
     recommended: false,
   },
   {
     name: "スタンダード",
-    price: "¥2,480",
+    price: "¥2,980",
     period: "/月",
-    features: ["スタッフ5名まで", "予約件数無制限", "週次・月次AIレポート", "500pt付き", "LINE拡張あり"],
+    features: ["予約枠5つまで（同時稼働5名相当）", "予約件数無制限", "週次・月次AIレポート", "月800pt付き", "LINE拡張あり"],
     recommended: true,
   },
   {
     name: "プロ",
-    price: "¥3,980",
+    price: "¥4,980",
     period: "/月",
-    features: ["スタッフ15名まで", "予約件数無制限", "週次・月次AIレポート", "1,500pt付き", "LINE拡張あり"],
+    features: ["予約枠15まで", "予約件数無制限", "週次・月次AIレポート", "月1,600pt付き", "LINE拡張あり"],
     recommended: false,
   },
 ];
 
 /* ReserveNavi 機能比較表 */
 const RESERVE_COMPARISON = {
-  headers: ["機能", "無料", "ライト", "スタンダード", "プロ"],
+  headers: ["機能", "ライト", "スタンダード", "プロ"],
   rows: [
-    ["月間予約件数", "50件", "無制限", "無制限", "無制限"],
-    ["スタッフ数", "1名", "1名", "5名まで", "15名まで"],
-    ["予約履歴", "3ヶ月", "無制限", "無制限", "無制限"],
-    ["AI機能", false, "購入ptで", true, true],
-    ["FUJIMINポイント", false, false, "500pt", "1,500pt"],
-    ["LINE拡張", false, true, true, true],
-    ["週次・月次AIレポート", false, false, true, true],
+    ["月間予約件数", "無制限", "無制限", "無制限"],
+    ["予約枠数", "1つ（1名運営）", "5つ（同時稼働5名相当）", "15まで"],
+    ["予約履歴", "無制限", "無制限", "無制限"],
+    ["AI機能", "購入ptで", true, true],
+    ["FUJIMINポイント", false, "月800pt", "月1,600pt"],
+    ["LINE拡張", true, true, true],
+    ["週次・月次AIレポート", false, true, true],
   ],
 };
 
@@ -154,6 +148,14 @@ const POINT_PLANS = [
 
 const FAQS = [
   {
+    q: "早期メンバー特典とは何ですか？",
+    a: "2026年5月1日〜7月31日の3ヶ月間を「早期メンバー募集期間」とし、期間中に新規登録された方には、登録時ウェルカムポイントとして通常500ptの3倍となる1,500pt（有効期限90日）を進呈いたします。週次AIレポート・AIカルテ分析・AIデータ移行など、AI機能を十分に試していただけるポイント量です。2026年8月1日以降の新規登録は通常500ptの進呈となります。共創パートナー（各業種3社・計9社）は選考制で、2027年11月30日まで無料でご利用いただけます。",
+  },
+  {
+    q: "2名以上のスタッフがいるお店ですが、スタンダードプランで足りますか？",
+    a: "ほとんどの場合「はい」です。スタンダードの「予約枠5つまで」はReserveNavi側で登録する予約枠（チェア・ベッド・席）の数を指します。ShiftNavi連携により、例えば10名のスタッフを5つの予約枠に時間帯別に動的割り当てて運用することが可能です。ただし、お客様がスタッフを必ず指名する「指名予約必須」の業態（例：美容室で全スタッフを選べるようにしたい）の場合は、スタッフ個別に予約枠を登録する必要があるため、プロプラン（予約枠15まで）の選択をおすすめします。",
+  },
+  {
     q: "最低利用期間はありますか？",
     a: "最低利用期間はありません。いつでも解約できます。日割り返金はございませんので、月末までご利用いただけます。",
   },
@@ -166,8 +168,8 @@ const FAQS = [
     a: "はい、いつでもアップグレード・ダウングレードが可能です。アップグレードは即時反映、ダウングレードは次の更新日から適用されます。",
   },
   {
-    q: "無料トライアルはありますか？",
-    a: "ShiftNaviはフリープラン（スタッフ5名まで）、ReserveNaviは無料プラン（月50件）をご用意しています。AskNavi・RuleNaviは7日間の無料トライアルがあります。",
+    q: "無料で試せますか？",
+    a: "ShiftNaviはフリープラン（スタッフ5名まで）が永久無料でご利用いただけます。ReserveNaviは2026年5月1日〜7月31日の早期メンバー期間中にご登録いただくと、登録時に1,500ptのAIクレジットを進呈し、AI機能をじっくりお試しいただけます（通常期間は500pt）。AskNavi・RuleNaviは有料プラン（月額¥550〜）となりますが、お申込み前のデモやヒアリングはお気軽にご相談ください。",
   },
   {
     q: "FUJIMINポイントとは何ですか？",
@@ -337,7 +339,12 @@ export default function PricingPage() {
                 ReserveNaviは、LINEから24時間予約を受け付けられる小規模店舗向け予約管理システムです。無料プランから始められます。
               </p>
             </FadeIn>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <FadeIn delay={0.1}>
+              <div className="mx-auto mt-8 max-w-3xl">
+                <EarlyBirdBanner variant="full" accentColor="#7c3aed" productLabel="ReserveNavi" />
+              </div>
+            </FadeIn>
+            <div className="mt-12 grid gap-6 sm:grid-cols-1 lg:grid-cols-3">
               {RESERVE_PLANS.map((plan, i) => (
                 <FadeIn key={plan.name} delay={i * 0.08}>
                   <div
@@ -370,7 +377,7 @@ export default function PricingPage() {
                       ))}
                     </ul>
                     <SignupFlowButton
-                      label={plan.price === "¥0" ? "無料で始める" : "申し込む"}
+                      label="申し込む"
                       appName="ReserveNavi"
                       planName={plan.name}
                       accentColor="#7c3aed"
@@ -382,7 +389,7 @@ export default function PricingPage() {
                       style={plan.recommended ? { backgroundColor: "#7c3aed" } : undefined}
                     />
                     <p className="mt-2 text-center text-xs text-gray-400">
-                      {plan.price === "¥0" ? "縛りなし・いつでも解約OK" : "縛りなし・いつでも解約OK"}
+                      縛りなし・いつでも解約OK
                     </p>
                   </div>
                 </FadeIn>
@@ -419,7 +426,7 @@ export default function PricingPage() {
                             <td
                               key={ci}
                               className={`px-4 py-3 ${ci === 0 ? "text-left font-medium text-gray-700" : "text-center"} ${
-                                ci === 3 ? "bg-purple-50" : ""
+                                ci === 2 ? "bg-purple-50" : ""
                               }`}
                             >
                               {cell === true ? (

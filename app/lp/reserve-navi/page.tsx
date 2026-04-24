@@ -4,16 +4,17 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
+import EarlyBirdBanner from "../../components/EarlyBirdBanner";
 
 export const metadata: Metadata = {
-  title: "Reserve Navi | LINE予約管理システム｜無料から始められる予約管理",
+  title: "Reserve Navi | LINE予約管理システム｜月額¥980から始められる予約管理",
   description:
-    "LINEで24時間予約受付。無料プランあり、月額980円から。サロン・整体・ジム・ペットサロン向けのシンプルな予約管理システム。宿泊施設が自社で使うために作った、続けられる価格の予約管理。",
+    "LINEで24時間予約受付。月額¥980から始められる。サロン・整体・ジム・ペットサロン向けのシンプルな予約管理システム。宿泊施設が自社で使うために作った、続けられる価格の予約管理。",
   alternates: { canonical: "https://www.fujimi-dx-lab.com/lp/reserve-navi" },
   openGraph: {
-    title: "Reserve Navi | 無料から始められるLINE予約管理",
+    title: "Reserve Navi | 月額¥980から始められるLINE予約管理",
     description:
-      "LINEで24時間予約受付。無料プランあり。小さなお店のために、宿が作った予約管理システム。",
+      "LINEで24時間予約受付。月額¥980から。小さなお店のために、宿が作った予約管理システム。",
     images: [{ url: "/images/reserve-navi.jpg", width: 1200, height: 630, alt: "Reserve Navi LINE予約管理" }],
   },
 };
@@ -33,26 +34,32 @@ const STEPS = [
   { num: "4", title: "予約完了！", desc: "LINEに確認メッセージが届く", emoji: "✅" },
 ];
 
-const PLANS = [
-  {
-    name: "無料", price: "¥0", period: "", description: "まずはお試し",
-    color: "#6b7280", bgColor: "#f9fafb",
-    highlights: ["月50件まで", "スタッフ1名", "LINE通知・リマインド"],
-  },
+type LpPlan = {
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  color: string;
+  bgColor: string;
+  highlights: string[];
+  recommended?: boolean;
+};
+
+const PLANS: LpPlan[] = [
   {
     name: "ライト", price: "¥980", period: "/月", description: "1人運営のお店に",
     color: "#0284c7", bgColor: "#f0f9ff",
     highlights: ["予約件数 無制限", "CSV入出力", "AI機能（購入ptで）"],
   },
   {
-    name: "スタンダード", price: "¥2,480", period: "/月", description: "AIレポートで経営見える化",
+    name: "スタンダード", price: "¥2,980", period: "/月", description: "AIレポートで経営見える化",
     color: "#f97316", bgColor: "#fff7ed", recommended: true,
-    highlights: ["スタッフ5名まで", "週次・月次AIレポート", "FUJIMINポイント 月500pt"],
+    highlights: ["予約枠5つまで（同時稼働5名相当）", "週次・月次AIレポート", "FUJIMINポイント 月800pt"],
   },
   {
-    name: "プロ", price: "¥3,980", period: "/月", description: "中規模店舗向け",
+    name: "プロ", price: "¥4,980", period: "/月", description: "複数スタッフ・AI本格活用",
     color: "#7c3aed", bgColor: "#f5f3ff",
-    highlights: ["スタッフ15名まで", "FUJIMINポイント 月1,500pt", "週次・月次AIレポート"],
+    highlights: ["予約枠15まで", "FUJIMINポイント 月1,600pt", "週次・月次AIレポート"],
   },
 ];
 
@@ -104,9 +111,9 @@ export default function ReserveNaviLP() {
         name: "Reserve Navi",
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
-        description: "LINEから簡単予約。小規模店舗向け予約管理システム。無料プランあり。",
+        description: "LINEから簡単予約。小規模店舗向け予約管理システム。月額¥980〜。",
         url: "https://www.fujimi-dx-lab.com/lp/reserve-navi",
-        offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "3980", priceCurrency: "JPY" },
+        offers: { "@type": "AggregateOffer", lowPrice: "980", highPrice: "4980", priceCurrency: "JPY" },
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />
       <Header />
@@ -149,7 +156,7 @@ export default function ReserveNaviLP() {
                   href="#pricing"
                   className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold text-orange-600 shadow-lg transition-all duration-300 hover:scale-105"
                 >
-                  無料プランを見る
+                  料金プランを見る
                 </a>
                 <a
                   href="#contact"
@@ -161,7 +168,7 @@ export default function ReserveNaviLP() {
             </FadeIn>
             <FadeIn delay={0.35}>
               <p className="mt-6 text-sm text-orange-200/70">
-                無料プランあり ・ いつでも解約OK ・ 2026年5月1日サービス開始
+                月額¥980〜 ・ いつでも解約OK ・ 2026年5月1日サービス開始
               </p>
             </FadeIn>
           </div>
@@ -242,14 +249,20 @@ export default function ReserveNaviLP() {
               <div className="text-center">
                 <h2 className="text-3xl font-bold tracking-tight md:text-4xl">料金プラン</h2>
                 <p className="mx-auto mt-4 max-w-md text-gray-500">
-                  無料プランからスタート。お店の成長に合わせてアップグレード。
+                  月額¥980からスタート。お店の成長に合わせてアップグレード。
                   <br />
                   すべて税込価格です。
                 </p>
               </div>
             </FadeIn>
 
-            <div className="mt-14 flex gap-5 overflow-x-auto pb-4 snap-x lg:grid lg:grid-cols-4 lg:overflow-visible">
+            <FadeIn delay={0.1}>
+              <div className="mx-auto mt-8 max-w-3xl">
+                <EarlyBirdBanner variant="full" accentColor="#f97316" productLabel="ReserveNavi" />
+              </div>
+            </FadeIn>
+
+            <div className="mt-14 flex gap-5 overflow-x-auto pb-4 snap-x lg:grid lg:grid-cols-3 lg:overflow-visible">
               {PLANS.map((plan, i) => (
                 <FadeIn key={plan.name} delay={i * 0.06}>
                   <div
@@ -283,7 +296,7 @@ export default function ReserveNaviLP() {
                         className="block w-full rounded-lg py-2.5 text-center text-sm font-semibold transition-colors"
                         style={plan.recommended ? { backgroundColor: plan.color, color: "#fff" } : { backgroundColor: "#f3f4f6", color: "#374151" }}
                       >
-                        {plan.price === "¥0" ? "無料プランについて相談する" : "お問い合わせ"}
+                        お問い合わせ
                       </a>
                     </div>
                   </div>
@@ -445,7 +458,7 @@ export default function ReserveNaviLP() {
                 まずは気軽にご相談ください
               </h2>
               <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-orange-100/80">
-                「うちの業種でも使える？」「まずは無料プランから試したい」
+                「うちの業種でも使える？」「まずは相談したい」
                 <br />
                 なんでもお気軽にどうぞ。
               </p>

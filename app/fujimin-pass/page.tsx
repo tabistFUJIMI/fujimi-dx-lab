@@ -10,7 +10,7 @@ const PRODUCTS = [
     tagline: "LINE予約管理",
     description:
       "LINE経由の予約を自動管理。電話対応を減らし、予約の取りこぼしをゼロに。顧客管理・AI分析機能付き。",
-    price: "無料〜¥3,980/月",
+    price: "¥980〜¥4,980/月",
     href: "/products/reserve-navi",
     color: "#f97316",
     featured: true,
@@ -87,7 +87,7 @@ export default function FujiminPassPage() {
         name: "共創パートナーとは何ですか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "ReserveNaviのスタンダードプラン（通常¥2,480/月）を最大1年間無料でご利用いただき、月2回のヒアリングとLINEでの随時フィードバックにご協力いただくプログラムです。数社限定で募集しています。",
+          text: "ReserveNaviのスタンダードプラン（通常¥2,980/月）を2027年11月30日まで無料でご利用いただき、月2回のヒアリングとLINEでの随時フィードバックにご協力いただくプログラムです。2026年5月1日〜7月31日の期間に、各業種3社・合計9社を募集しています。",
         },
       },
       {
@@ -111,7 +111,7 @@ export default function FujiminPassPage() {
         name: "パートナー期間終了後はどうなりますか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "スタンダードプラン（¥2,480/月）を継続するか、ライトプラン（¥980/月）にダウングレードするかを選択できます。いつでも辞退も可能です。",
+          text: "2027年12月1日以降、スタンダードプラン（¥2,980/月）を継続するか、ライトプラン（¥980/月）にダウングレードするかを選択できます。いつでも辞退も可能です。",
         },
       },
     ],
@@ -304,7 +304,7 @@ export default function FujiminPassPage() {
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-400 opacity-75" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-orange-400" />
                   </span>
-                  数社限定
+                  各業種3社・計9社限定｜2026/5/1〜7/31 募集
                 </span>
                 <h2 className="mt-6 text-3xl font-bold tracking-tight md:text-4xl">
                   ReserveNavi 共創パートナー募集
@@ -329,10 +329,10 @@ export default function FujiminPassPage() {
                   </p>
                   <p className="mt-3 text-2xl font-extrabold text-white">
                     スタンダードプラン
-                    <span className="text-orange-400"> 無料</span>
+                    <span className="text-orange-400"> 1年無料</span>
                   </p>
                   <p className="mt-1 text-sm text-slate-400">
-                    通常 ¥2,480/月相当 → 最大1年間無料
+                    通常 ¥2,980/月相当 → 2027/11/30 まで無料
                   </p>
                   <ul className="mt-4 space-y-2 text-sm text-slate-300">
                     <li className="flex items-start gap-2">
@@ -345,7 +345,7 @@ export default function FujiminPassPage() {
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="mt-0.5 text-orange-400">✓</span>
-                      期間終了後はスタンダード継続 or ライト¥980に変更可
+                      2027/12/1 以降はスタンダード（¥2,980）で継続 or ライト¥980に変更可
                     </li>
                   </ul>
                 </div>
@@ -426,7 +426,7 @@ export default function FujiminPassPage() {
                 },
                 {
                   q: "パートナー期間終了後はどうなりますか？",
-                  a: "スタンダードプラン（¥2,480/月）を継続するか、ライトプラン（¥980/月）にダウングレードするかを選択できます。いつでも辞退も可能です。",
+                  a: "2027年12月1日以降、スタンダードプラン（¥2,980/月）を継続するか、ライトプラン（¥980/月）にダウングレードするかを選択できます。いつでも辞退も可能です。",
                 },
                 {
                   q: "対象業種は決まっていますか？",

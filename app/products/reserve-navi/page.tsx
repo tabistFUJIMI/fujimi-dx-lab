@@ -8,6 +8,7 @@ import FadeIn from "../../components/FadeIn";
 import RelatedProducts from "../../components/RelatedProducts";
 import { ProductBreadcrumb } from "../../components/JsonLd";
 import SignupFlowButton from "../../components/SignupFlowButton";
+import EarlyBirdBanner from "../../components/EarlyBirdBanner";
 
 export const metadata: Metadata = {
   title: "Reserve Navi | LINE予約管理",
@@ -73,7 +74,7 @@ const PAIN_POINTS = {
     "LINEで24時間いつでも予約を受付",
     "目の前のお客様に集中できる。予約はLINEにお任せ",
     "リアルタイム空き状況でダブルブッキングゼロ",
-    "無料プラン（月50件）あり。月額¥980〜で始められる",
+    "月額¥980〜で始められる。AI機能が必要ならスタンダード¥2,980",
     "自動リマインダーで無断キャンセルが激減",
     "来店履歴・カルテが自動で蓄積される",
   ],
@@ -98,22 +99,18 @@ const IDEAL_CUSTOMERS = [
   { icon: "🏢", title: "貸出品・設備予約", description: "会議室・レンタルスペースなど、容量制限付きの時間枠管理に。" },
 ];
 
-const PLANS = [
-  {
-    name: "無料",
-    price: "¥0",
-    period: "",
-    description: "まずはお試し",
-    color: "#6b7280",
-    bgColor: "#f9fafb",
-    features: [
-      { label: "スタッフ", value: "1名" },
-      { label: "予約件数", value: "月50件" },
-      { label: "予約履歴", value: "3ヶ月" },
-      { label: "AI機能", value: "なし" },
-      { label: "LINE通知・リマインド", value: true },
-    ],
-  },
+type Plan = {
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  recommended?: boolean;
+  color: string;
+  bgColor: string;
+  features: { label: string; value: string | boolean }[];
+};
+
+const PLANS: Plan[] = [
   {
     name: "ライト",
     price: "¥980",
@@ -122,7 +119,7 @@ const PLANS = [
     color: "#0284c7",
     bgColor: "#f0f9ff",
     features: [
-      { label: "スタッフ", value: "1名" },
+      { label: "予約枠", value: "1つ（1名運営）" },
       { label: "予約件数", value: "無制限" },
       { label: "予約履歴", value: "無制限" },
       { label: "AI機能", value: "あり（購入ptで）" },
@@ -131,16 +128,16 @@ const PLANS = [
   },
   {
     name: "スタンダード",
-    price: "¥2,480",
+    price: "¥2,980",
     period: "/月",
     description: "AI機能で接客力アップ",
     recommended: true,
     color: "#f97316",
     bgColor: "#fff7ed",
     features: [
-      { label: "スタッフ", value: "5名まで" },
+      { label: "予約枠", value: "5つまで（同時稼働5名相当）" },
       { label: "予約件数", value: "無制限" },
-      { label: "FUJIMINポイント", value: "月500pt" },
+      { label: "FUJIMINポイント", value: "月800pt" },
       { label: "週次・月次AIレポート", value: true },
       { label: "LINE拡張", value: true },
       { label: "顧客データAI移行", value: "無料" },
@@ -148,15 +145,15 @@ const PLANS = [
   },
   {
     name: "プロ",
-    price: "¥3,980",
+    price: "¥4,980",
     period: "/月",
-    description: "中規模店舗向け",
+    description: "複数スタッフ・AI本格活用",
     color: "#7c3aed",
     bgColor: "#f5f3ff",
     features: [
-      { label: "スタッフ", value: "15名まで" },
+      { label: "予約枠", value: "15まで" },
       { label: "予約件数", value: "無制限" },
-      { label: "FUJIMINポイント", value: "月1,500pt" },
+      { label: "FUJIMINポイント", value: "月1,600pt" },
       { label: "週次・月次AIレポート", value: true },
       { label: "LINE拡張", value: true },
     ],
@@ -186,7 +183,7 @@ export default function ReserveNaviPage() {
         operatingSystem: "Web",
         description: "LINEから簡単予約。小規模店舗向け予約管理システム",
         url: "https://www.fujimi-dx-lab.com/products/reserve-navi",
-        offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "3980", priceCurrency: "JPY" },
+        offers: { "@type": "AggregateOffer", lowPrice: "980", highPrice: "4980", priceCurrency: "JPY" },
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -198,6 +195,7 @@ export default function ReserveNaviPage() {
           { "@type": "Question", name: "LINEの公式アカウントが必要ですか？", acceptedAnswer: { "@type": "Answer", text: "はい。LINE公式アカウント（無料で作成可能）が必要です。設定方法はサポートがお手伝いします。" } },
           { "@type": "Question", name: "スタッフが機械に詳しくなくても大丈夫？", acceptedAnswer: { "@type": "Answer", text: "大丈夫です。画面はとてもシンプルに作られています。初期設定もサポートがお手伝いします。" } },
           { "@type": "Question", name: "お客様側にアプリのダウンロードは必要ですか？", acceptedAnswer: { "@type": "Answer", text: "不要です。LINEさえあれば予約できます。" } },
+          { "@type": "Question", name: "早期メンバー特典とは何ですか？", acceptedAnswer: { "@type": "Answer", text: "2026年5月1日〜7月31日の3ヶ月間に新規登録された方には、通常500ptの3倍となる1,500ptのウェルカムポイント（有効期限90日）を進呈いたします。週次AIレポート・AIカルテ分析・AIデータ移行を十分にお試しいただける量です。2026年8月1日以降の新規登録は通常500ptの進呈となります。" } },
         ],
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -461,7 +459,13 @@ export default function ReserveNaviPage() {
               </div>
             </FadeIn>
 
-            <div className="mt-14 flex gap-5 overflow-x-auto pb-4 snap-x lg:grid lg:grid-cols-4 lg:overflow-visible">
+            <FadeIn delay={0.1}>
+              <div className="mx-auto mt-8 max-w-3xl">
+                <EarlyBirdBanner variant="full" accentColor="#f97316" productLabel="ReserveNavi" />
+              </div>
+            </FadeIn>
+
+            <div className="mt-14 flex gap-5 overflow-x-auto pb-4 snap-x lg:grid lg:grid-cols-3 lg:overflow-visible">
               {PLANS.map((plan, i) => (
                 <FadeIn key={plan.name} delay={i * 0.06}>
                   <div
@@ -503,7 +507,7 @@ export default function ReserveNaviPage() {
 
                     <div className="mt-6">
                       <SignupFlowButton
-                        label={plan.price === "¥0" ? "無料で始める" : "申し込む"}
+                        label="申し込む"
                         appName="ReserveNavi"
                         planName={plan.name}
                         accentColor={plan.color}
