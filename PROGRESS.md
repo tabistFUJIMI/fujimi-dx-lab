@@ -1,5 +1,18 @@
 # FUJIMI DX Lab HP - 進捗
 
+## 2026-04-24: AI ツール用設定ファイル追加
+
+### やったこと（コミット `4a32990`）
+- `.claude/` 配下に agents / commands / skills の設定ディレクトリ追加
+- `.agents/skills/` 配下にエージェント用スキル配置
+- `.aidesigner/` に AIDesigner の run 履歴保持用 gitkeep
+- `.mcp.json` で MCP サーバ接続設定
+
+### 背景
+AIDesigner スキル（UIデザイン生成）をこのリポジトリでも使えるようにするため、関連設定を commit 対象に含めた。
+
+---
+
 ## 2026-04-23: サービス開始日を5/1にシフト・申込動線を自動ゲート化
 
 ### やったこと
