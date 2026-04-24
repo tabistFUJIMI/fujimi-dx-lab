@@ -107,7 +107,7 @@ export default function HeroSection() {
               style={{ transform: "rotate(-4deg)" }}
             >
               <p className="font-[family-name:var(--font-quicksand)] text-3xl font-extrabold md:text-4xl">
-                ¥0~
+                ¥980~
               </p>
               <p className="text-xs font-bold opacity-90">月額料金</p>
             </div>

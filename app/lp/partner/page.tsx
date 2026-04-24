@@ -8,7 +8,7 @@ import FadeIn from "../../components/FadeIn";
 export const metadata: Metadata = {
   title: "ReserveNavi 共創パートナー募集 | FUJIMI DX Lab",
   description:
-    "ReserveNaviのスタンダードプラン（通常¥2,480/月）を最大1年間無料でご利用いただけるパートナープログラム。数社限定で募集中。",
+    "ReserveNaviのスタンダードプラン（通常¥2,980/月）を2027年11月30日まで無料でご利用いただけるパートナープログラム。2026/5/1〜7/31の期間、各業種3社・計9社を募集中。",
   alternates: { canonical: "https://www.fujimi-dx-lab.com/lp/partner" },
   openGraph: {
     title: "ReserveNavi 共創パートナー募集 | FUJIMI DX Lab",
@@ -37,7 +37,7 @@ export default function PartnerLPPage() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-400 opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-orange-400" />
                 </span>
-                数社限定｜共創パートナー募集中
+                各業種3社・計9社限定｜2026/5/1〜7/31 募集
               </span>
             </FadeIn>
             <FadeIn delay={0.1}>
@@ -90,16 +90,16 @@ export default function PartnerLPPage() {
                   </p>
                   <p className="mt-4 text-2xl font-extrabold text-slate-900">
                     スタンダードプラン
-                    <span className="ml-2 text-orange-500">無料</span>
+                    <span className="ml-2 text-orange-500">1年無料</span>
                   </p>
                   <p className="mt-1 text-sm text-slate-500">
-                    通常 ¥2,480/月相当 → 最大1年間無料
+                    通常 ¥2,980/月相当 → 2027/11/30 まで無料（最大約19ヶ月）
                   </p>
                   <ul className="mt-6 space-y-3 text-sm text-slate-700">
                     {[
                       "ReserveNavi の全機能をご利用いただけます",
                       "導入サポート・初期設定のお手伝い付き",
-                      "期間終了後はスタンダード継続 or ライト¥980に変更可",
+                      "2027/12/1 以降はスタンダード（¥2,980/月）で継続 or ライト¥980に変更可",
                     ].map((t) => (
                       <li key={t} className="flex items-start gap-2">
                         <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-orange-400" />

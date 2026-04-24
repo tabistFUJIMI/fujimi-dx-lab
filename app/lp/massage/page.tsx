@@ -5,15 +5,16 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
+import EarlyBirdBanner from "../../components/EarlyBirdBanner";
 
 export const metadata: Metadata = {
   title: "マッサージ・整体院のための予約管理 | FUJIMI DX Lab",
   description:
-    "施術中に鳴る電話、もう気にしなくていい。LINEで24時間予約受付+AIが質問に自動応答。マッサージ・整体・鍼灸院向け。無料プランあり、月額980円から。",
+    "施術中に鳴る電話、もう気にしなくていい。LINEで24時間予約受付+AIが質問に自動応答。マッサージ・整体・鍼灸院向け。月額¥980から。",
   openGraph: {
     title: "マッサージ・整体院のための予約管理 | FUJIMI DX Lab",
     description:
-      "施術中の電話対応から解放。LINE予約+AI自動応答で、施術に集中できる環境を。無料プランあり。",
+      "施術中の電話対応から解放。LINE予約+AI自動応答で、施術に集中できる環境を。月額¥980〜。",
     images: [
       {
         url: "/images/lp/massage-ogp.jpg",
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "マッサージ・整体院のための予約管理 | FUJIMI DX Lab",
-    description: "施術中の電話対応から解放。LINE予約+AI自動応答。無料プランあり。",
+    description: "施術中の電話対応から解放。LINE予約+AI自動応答。月額¥980〜。",
     images: ["/images/lp/massage-ogp.jpg"],
   },
   alternates: {
@@ -153,7 +154,7 @@ export default function MassageLPPage() {
                 </FadeIn>
                 <FadeIn delay={0.25}>
                   <p className="mt-3 text-sm text-slate-400">
-                    無料プランあり。1人運営のお店でもすぐに始められます。
+                    月額¥980〜。1人運営のお店でもすぐに始められます。
                   </p>
                 <p className="mt-2 inline-block rounded-full border border-orange-400/30 bg-orange-500/10 px-4 py-1.5 text-sm font-semibold text-orange-300">
                     2026年5月1日サービス開始｜お気軽にご相談ください
@@ -424,29 +425,35 @@ export default function MassageLPPage() {
             <FadeIn>
               <div className="text-center">
                 <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-                  まずは無料ではじめる
+                  月額¥980からはじめる
                 </h2>
                 <p className="mx-auto mt-4 max-w-md text-gray-500">
-                  まずは無料プランでお試しもOK。
+                  ライトプランは月額¥980、スタンダードは¥2,980でAI機能も使えます。
                   <br />
                   <strong className="text-gray-700">契約期間の縛りなし。いつでも解約できます。</strong>
                 </p>
               </div>
             </FadeIn>
 
+            <FadeIn delay={0.05}>
+              <div className="mx-auto mt-8 max-w-3xl">
+                <EarlyBirdBanner variant="full" accentColor="#f97316" productLabel="ReserveNavi" />
+              </div>
+            </FadeIn>
+
             {/* プランカード */}
             <FadeIn delay={0.1}>
               <div className="mt-14 grid gap-6 md:grid-cols-2">
-                {/* 無料プラン */}
+                {/* ライトプラン */}
                 <div className="rounded-2xl border-2 border-gray-200 bg-white p-8">
                   <div className="text-center">
-                    <p className="text-sm font-semibold text-gray-500">無料プラン</p>
-                    <p className="mt-2 text-4xl font-extrabold text-gray-900">¥0</p>
-                    <p className="mt-1 text-xs text-gray-500">ずっと無料・縛りなし</p>
+                    <p className="text-sm font-semibold text-gray-500">ライトプラン</p>
+                    <p className="mt-2 text-4xl font-extrabold text-gray-900">¥980<span className="text-base font-normal text-gray-500">/月</span></p>
+                    <p className="mt-1 text-xs text-gray-500">1名運営・AIなし志向の方に</p>
                   </div>
                   <div className="mt-6">
                     <a href="#contact" className="block w-full rounded-lg bg-gray-100 py-3 text-center text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-200">
-                      無料プランについて相談する
+                      ライトプランについて相談する
                     </a>
                   </div>
                 </div>
@@ -455,8 +462,9 @@ export default function MassageLPPage() {
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold text-white" style={{ backgroundColor: "#f97316" }}>おすすめ</span>
                   <div className="text-center">
                     <p className="text-sm font-semibold" style={{ color: "#f97316" }}>スタンダードプラン</p>
-                    <p className="mt-2 text-4xl font-extrabold text-gray-900">¥2,480<span className="text-base font-normal text-gray-500">/月</span></p>
-                    <p className="mt-1 text-xs text-gray-500">LINE予約 + AI応答がセット</p>
+                    <p className="mt-2 text-4xl font-extrabold text-gray-900">¥2,980<span className="text-base font-normal text-gray-500">/月</span></p>
+                    <p className="mt-1 text-xs text-gray-500">LINE予約 + AI応答 + 月800pt付き</p>
+                    <p className="mt-2 text-[11px] leading-relaxed text-gray-600">施術単価5,000〜8,000円のお店なら、<br />月1件の予約で元が取れる計算です。</p>
                   </div>
                   <div className="mt-6">
                     <a href="#contact" className="block w-full rounded-lg py-3 text-center text-sm font-semibold text-white transition-colors hover:opacity-90" style={{ backgroundColor: "#f97316" }}>
@@ -474,29 +482,27 @@ export default function MassageLPPage() {
                   <thead>
                     <tr className="border-b border-gray-100">
                       <th className="px-5 py-4 text-left font-semibold text-gray-700">機能</th>
-                      <th className="px-5 py-4 text-center font-semibold text-gray-500">無料</th>
                       <th className="px-5 py-4 text-center font-semibold text-gray-500">ライト<br /><span className="text-xs font-normal">¥980/月</span></th>
-                      <th className="px-5 py-4 text-center font-semibold" style={{ color: "#f97316" }}>スタンダード<br /><span className="text-xs font-normal">¥2,480/月</span></th>
-                      <th className="px-5 py-4 text-center font-semibold text-gray-500">プロ<br /><span className="text-xs font-normal">¥3,980/月</span></th>
+                      <th className="px-5 py-4 text-center font-semibold" style={{ color: "#f97316" }}>スタンダード<br /><span className="text-xs font-normal">¥2,980/月</span></th>
+                      <th className="px-5 py-4 text-center font-semibold text-gray-500">プロ<br /><span className="text-xs font-normal">¥4,980/月</span></th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-50">
                     {[
-                      { feature: "予約受付", free: "月50件", lite: "無制限", std: "無制限", pro: "無制限" },
-                      { feature: "予約カレンダー", free: "✓", lite: "✓", std: "✓", pro: "✓" },
-                      { feature: "自動リマインド", free: "✓", lite: "✓", std: "✓", pro: "✓" },
-                      { feature: "LINE通知", free: "✓", lite: "✓", std: "✓", pro: "✓" },
-                      { feature: "予約履歴", free: "3ヶ月", lite: "無制限", std: "無制限", pro: "無制限" },
-                      { feature: "スタッフ数", free: "1名", lite: "1名", std: "5名まで", pro: "15名まで" },
-                      { feature: "顧客カルテ", free: "—", lite: "手入力", std: "AI自動要約", pro: "AI自動要約" },
-                      { feature: "リピート離脱アラート", free: "—", lite: "—", std: "✓", pro: "✓" },
-                      { feature: "週次・月次AIレポート", free: "—", lite: "—", std: "✓", pro: "✓" },
-                      { feature: "FUJIMINポイント", free: "—", lite: "購入", std: "月500pt", pro: "月1,500pt" },
-                      { feature: "サポート", free: "—", lite: "チャット・メール", std: "チャット・メール", pro: "チャット・メール" },
+                      { feature: "予約受付", lite: "無制限", std: "無制限", pro: "無制限" },
+                      { feature: "予約カレンダー", lite: "✓", std: "✓", pro: "✓" },
+                      { feature: "自動リマインド", lite: "✓", std: "✓", pro: "✓" },
+                      { feature: "LINE通知", lite: "✓", std: "✓", pro: "✓" },
+                      { feature: "予約履歴", lite: "無制限", std: "無制限", pro: "無制限" },
+                      { feature: "予約枠数", lite: "1つ（1名）", std: "5つ（同時稼働5名相当）", pro: "15まで" },
+                      { feature: "顧客カルテ", lite: "手入力", std: "AI自動要約", pro: "AI自動要約" },
+                      { feature: "リピート離脱アラート", lite: "—", std: "✓", pro: "✓" },
+                      { feature: "週次・月次AIレポート", lite: "—", std: "✓", pro: "✓" },
+                      { feature: "FUJIMINポイント", lite: "購入", std: "月800pt", pro: "月1,600pt" },
+                      { feature: "サポート", lite: "チャット・メール", std: "チャット・メール", pro: "チャット・メール" },
                     ].map((row) => (
                       <tr key={row.feature} className="hover:bg-gray-50/50">
                         <td className="px-5 py-3 font-medium text-gray-700">{row.feature}</td>
-                        <td className="px-5 py-3 text-center text-gray-500">{row.free}</td>
                         <td className="px-5 py-3 text-center text-gray-500">{row.lite}</td>
                         <td className="px-5 py-3 text-center font-medium text-gray-900">{row.std}</td>
                         <td className="px-5 py-3 text-center text-gray-500">{row.pro}</td>
@@ -564,7 +570,7 @@ export default function MassageLPPage() {
                 },
                 {
                   q: "途中でプランを変更できますか？",
-                  a: "はい、いつでもプランの変更・アップグレードが可能です。まずは無料プランでお試しください。",
+                  a: "はい、いつでもプランの変更・アップグレードが可能です。まずはライトプラン（¥980/月）から始めていただけます。",
                 },
               ].map((faq, i) => (
                 <FadeIn key={i} delay={i * 0.05}>
@@ -634,10 +640,10 @@ export default function MassageLPPage() {
                 },
                 {
                   "@type": "Question",
-                  name: "無料で使えますか？",
+                  name: "料金はいくらからですか？",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "はい。無料プランは月100件まで、ずっと無料です。クレジットカードの登録も不要です。",
+                    text: "ライトプラン（月¥980）から始められます。契約期間の縛りなし・いつでも解約OKです。2026年5月1日〜7月31日の早期メンバー登録で、AIクレジット1,500pt（通常500pt）を進呈します。",
                   },
                 },
               ],
@@ -681,7 +687,7 @@ export default function MassageLPPage() {
                 "@type": "Offer",
                 price: "0",
                 priceCurrency: "JPY",
-                description: "無料プランあり。月額¥980〜",
+                description: "月額¥980〜。AI機能はスタンダード¥2,980から",
               },
               provider: {
                 "@type": "Organization",

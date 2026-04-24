@@ -5,6 +5,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ContactForm from "../../components/ContactForm";
 import FadeIn from "../../components/FadeIn";
+import EarlyBirdBanner from "../../components/EarlyBirdBanner";
 import MockCalendar from "../components/MockCalendar";
 import MockLineBooking from "../components/MockLineBooking";
 import MockCustomerCard from "../components/MockCustomerCard";
@@ -130,7 +131,7 @@ const PRICING_PLANS = [
     bonusValue: "660",
     recommended: true,
     services: [
-      "ReserveNavi スタンダード（¥2,480/月）",
+      "ReserveNavi スタンダード（¥2,980/月）",
       "AskNavi スタンダード（¥1,100/月）",
       "ShiftNavi スタンダード（¥550/月）",
     ],
@@ -142,7 +143,7 @@ const PRICING_PLANS = [
     bonusValue: "1,650",
     recommended: false,
     services: [
-      "ReserveNavi プロ（¥3,980/月）",
+      "ReserveNavi プロ（¥4,980/月）",
       "AskNavi プロ（¥2,200/月）",
       "ShiftNavi スタンダード（¥550/月）",
     ],
@@ -153,10 +154,9 @@ const SINGLE_PRICES = [
   {
     name: "ReserveNavi",
     plans: [
-      { name: "無料", price: "¥0" },
       { name: "ライト", price: "¥980/月" },
-      { name: "スタンダード", price: "¥2,480/月" },
-      { name: "プロ", price: "¥3,980/月" },
+      { name: "スタンダード", price: "¥2,980/月" },
+      { name: "プロ", price: "¥4,980/月" },
     ],
   },
   {
@@ -902,7 +902,7 @@ export default function SejutsuPageClient() {
                     {[
                       {
                         feature: "予約管理",
-                        price: "ReserveNavi ¥0〜¥3,980",
+                        price: "ReserveNavi ¥980〜¥4,980",
                       },
                       { feature: "LINE対応", price: "標準搭載" },
                       {
@@ -973,6 +973,12 @@ export default function SejutsuPageClient() {
                     プランはあくまでおすすめの組み合わせです。
                   </p>
                 </div>
+              </div>
+            </FadeIn>
+
+            <FadeIn delay={0.1}>
+              <div className="mx-auto mt-6 max-w-3xl">
+                <EarlyBirdBanner variant="compact" accentColor="#f97316" productLabel="ReserveNavi" />
               </div>
             </FadeIn>
 

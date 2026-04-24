@@ -81,7 +81,7 @@ export default function ReserveNaviSpotlightSection() {
               {/* バッジ */}
               <div className="absolute -top-4 -left-4 rounded-2xl border-4 border-white bg-[#F97316] px-4 py-3 text-white shadow-xl">
                 <p className="font-[family-name:var(--font-quicksand)] text-2xl font-extrabold">
-                  ¥0~
+                  ¥980~
                 </p>
                 <p className="text-[10px] font-bold opacity-90">月額</p>
               </div>
@@ -121,7 +121,7 @@ export default function ReserveNaviSpotlightSection() {
                     <span className="text-xs text-[#8A7F74]">予約件数無制限</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="font-bold text-[#F97316]">¥2,480〜</span>
+                    <span className="font-bold text-[#F97316]">¥2,980〜</span>
                     <span className="text-xs text-[#8A7F74]">AIレポートで経営見える化</span>
                   </li>
                 </ul>
