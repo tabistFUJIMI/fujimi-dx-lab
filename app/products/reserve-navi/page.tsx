@@ -13,11 +13,11 @@ import EarlyBirdBanner from "../../components/EarlyBirdBanner";
 export const metadata: Metadata = {
   title: "Reserve Navi | LINE予約管理",
   description:
-    "LINE予約管理システム Reserve Navi。サロン・整体・ジム・ペットサロン向け。無料プランあり、月額980円から。LINEミニアプリで24時間予約受付。FUJIMI DX Lab",
+    "LINE予約管理システム Reserve Navi。サロン・整体・ジム・ペットサロン向け。月額¥980（ライト）から。LINEミニアプリで24時間予約受付。FUJIMI DX Lab",
   alternates: { canonical: "https://www.fujimi-dx-lab.com/products/reserve-navi" },
   openGraph: {
     title: "Reserve Navi | LINE予約管理 - FUJIMI DX Lab",
-    description: "LINE予約管理システム Reserve Navi。サロン・整体・ジム・ペットサロン向け。無料プランあり、月額980円から。LINEミニアプリで24時間予約受付。FUJIMI DX Lab",
+    description: "LINE予約管理システム Reserve Navi。サロン・整体・ジム・ペットサロン向け。月額¥980（ライト）から。LINEミニアプリで24時間予約受付。FUJIMI DX Lab",
     images: [{ url: "/images/reserve-navi.jpg", width: 1200, height: 630, alt: "Reserve Navi LINE予約管理" }],
   },
 };
@@ -55,9 +55,9 @@ const FEATURES = [
   },
   {
     icon: "💰",
-    title: "無料からスタート",
+    title: "月¥980から",
     description:
-      "無料プランをご提供。月50件まで使えるので、小さなお店ならこれで十分です。",
+      "ライトプラン月¥980で、LINE Mini App予約・リマインダー・空き枠管理まで。小さなお店でも迷わず始められます。",
   },
 ];
 
@@ -74,7 +74,7 @@ const PAIN_POINTS = {
     "LINEで24時間いつでも予約を受付",
     "目の前のお客様に集中できる。予約はLINEにお任せ",
     "リアルタイム空き状況でダブルブッキングゼロ",
-    "月額¥980〜で始められる。AI機能が必要ならスタンダード¥2,980",
+    "月額¥980〜で始められる。AI機能が必要ならスタンダード¥2,480",
     "自動リマインダーで無断キャンセルが激減",
     "来店履歴・カルテが自動で蓄積される",
   ],
@@ -128,7 +128,7 @@ const PLANS: Plan[] = [
   },
   {
     name: "スタンダード",
-    price: "¥2,980",
+    price: "¥2,480",
     period: "/月",
     description: "AI機能で接客力アップ",
     recommended: true,
@@ -141,11 +141,12 @@ const PLANS: Plan[] = [
       { label: "週次・月次AIレポート", value: true },
       { label: "LINE拡張", value: true },
       { label: "顧客データAI移行", value: "無料" },
+      { label: "ShiftNaviバンドル", value: "無料同梱（スタッフ5名まで）" },
     ],
   },
   {
     name: "プロ",
-    price: "¥4,980",
+    price: "¥3,980",
     period: "/月",
     description: "複数スタッフ・AI本格活用",
     color: "#7c3aed",
@@ -156,6 +157,7 @@ const PLANS: Plan[] = [
       { label: "FUJIMINポイント", value: "月1,600pt" },
       { label: "週次・月次AIレポート", value: true },
       { label: "LINE拡張", value: true },
+      { label: "ShiftNaviバンドル", value: "無料同梱（スタッフ15名まで）" },
     ],
   },
 ];
@@ -183,7 +185,7 @@ export default function ReserveNaviPage() {
         operatingSystem: "Web",
         description: "LINEから簡単予約。小規模店舗向け予約管理システム",
         url: "https://www.fujimi-dx-lab.com/products/reserve-navi",
-        offers: { "@type": "AggregateOffer", lowPrice: "980", highPrice: "4980", priceCurrency: "JPY" },
+        offers: { "@type": "AggregateOffer", lowPrice: "980", highPrice: "3980", priceCurrency: "JPY" },
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -248,7 +250,7 @@ export default function ReserveNaviPage() {
                     <br />
                     お店の「めんどくさい」をまるっと解決します。
                     <br />
-                    <span className="font-semibold text-white">無料プランあり。今日から使えます。</span>
+                    <span className="font-semibold text-white">月¥980から。今日から使えます。</span>
                   </p>
                 </FadeIn>
                 <FadeIn delay={0.22}>
@@ -452,7 +454,7 @@ export default function ReserveNaviPage() {
                   料金プラン
                 </h2>
                 <p className="mx-auto mt-4 max-w-md text-gray-500">
-                  無料プランあり。お店の成長に合わせてアップグレード。
+                  ライト ¥980 / スタンダード ¥2,480 / プロ ¥3,980 の3プラン。お店の成長に合わせてアップグレード。
                   <br />
                   すべて税込価格です。
                 </p>
@@ -653,7 +655,7 @@ export default function ReserveNaviPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="shrink-0">✓</span>
-                    <span>必要なアプリだけを選んでご契約（ReserveNaviの無料プランならずっと¥0）</span>
+                    <span>必要なアプリだけを選んでご契約（ReserveNavi ライトなら月¥980）</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="shrink-0">✓</span>

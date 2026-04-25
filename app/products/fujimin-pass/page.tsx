@@ -20,10 +20,10 @@ export const metadata: Metadata = {
 };
 
 const NAVI_TOOLS = [
-  { slug: "reserve-navi", name: "Reserve Navi", desc: "LINE予約管理", icon: "📅", color: "#f97316", price: "¥980〜¥4,980/月" },
+  { slug: "reserve-navi", name: "Reserve Navi", desc: "LINE予約管理", icon: "📅", color: "#f97316", price: "¥980〜¥3,980/月" },
   { slug: "ask-navi", name: "Ask Navi", desc: "LINE AI自動応答", icon: "💬", color: "#14b8a6", price: "¥550〜¥5,500/月" },
   { slug: "rule-navi", name: "Rule Navi", desc: "社内規則AI検索", icon: "📖", color: "#a855f7", price: "¥550〜¥5,500/月" },
-  { slug: "shift-navi", name: "Shift Navi", desc: "AIシフト管理", icon: "📊", color: "#3b82f6", price: "完全無料" },
+  { slug: "shift-navi", name: "Shift Navi", desc: "AIシフト管理", icon: "📊", color: "#3b82f6", price: "¥550/月" },
   { slug: "social-navi", name: "Social Navi", desc: "SNS一元管理", icon: "📣", color: "#f43f5e", price: "開発中", badge: "Coming Soon" },
 ];
 
@@ -48,7 +48,7 @@ export default function FujiminPassPage() {
         operatingSystem: "Web",
         description: "小規模事業者向け統合DXプラットフォーム",
         url: "https://www.fujimi-dx-lab.com/fujimin-pass",
-        offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "5500", priceCurrency: "JPY" },
+        offers: { "@type": "AggregateOffer", lowPrice: "550", highPrice: "5500", priceCurrency: "JPY" },
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -155,7 +155,7 @@ export default function FujiminPassPage() {
                 <ul className="space-y-1.5 text-xs text-indigo-100/90">
                   <li className="flex items-start gap-2"><span className="shrink-0">✓</span><span>管理画面から<strong className="text-white">必要なアプリだけ</strong>を選んでご契約</span></li>
                   <li className="flex items-start gap-2"><span className="shrink-0">✓</span><span>初回登録で<strong className="text-white">500ポイントプレゼント</strong>（90日有効・AI機能で使える）</span></li>
-                  <li className="flex items-start gap-2"><span className="shrink-0">✓</span><span>アプリごとに無料プランあり（ShiftNavi フリー / ReserveNavi 無料）</span></li>
+                  <li className="flex items-start gap-2"><span className="shrink-0">✓</span><span>ReserveNaviは<strong className="text-white">月¥980</strong>から、AskNavi・RuleNavi・ShiftNaviは<strong className="text-white">月¥550</strong>から</span></li>
                 </ul>
               </div>
 

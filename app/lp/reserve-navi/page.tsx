@@ -52,12 +52,12 @@ const PLANS: LpPlan[] = [
     highlights: ["予約件数 無制限", "CSV入出力", "AI機能（購入ptで）"],
   },
   {
-    name: "スタンダード", price: "¥2,980", period: "/月", description: "AIレポートで経営見える化",
+    name: "スタンダード", price: "¥2,480", period: "/月", description: "AIレポートで経営見える化",
     color: "#f97316", bgColor: "#fff7ed", recommended: true,
     highlights: ["予約枠5つまで（同時稼働5名相当）", "週次・月次AIレポート", "FUJIMINポイント 月800pt"],
   },
   {
-    name: "プロ", price: "¥4,980", period: "/月", description: "複数スタッフ・AI本格活用",
+    name: "プロ", price: "¥3,980", period: "/月", description: "複数スタッフ・AI本格活用",
     color: "#7c3aed", bgColor: "#f5f3ff",
     highlights: ["予約枠15まで", "FUJIMINポイント 月1,600pt", "週次・月次AIレポート"],
   },
@@ -113,7 +113,7 @@ export default function ReserveNaviLP() {
         operatingSystem: "Web",
         description: "LINEから簡単予約。小規模店舗向け予約管理システム。月額¥980〜。",
         url: "https://www.fujimi-dx-lab.com/lp/reserve-navi",
-        offers: { "@type": "AggregateOffer", lowPrice: "980", highPrice: "4980", priceCurrency: "JPY" },
+        offers: { "@type": "AggregateOffer", lowPrice: "980", highPrice: "3980", priceCurrency: "JPY" },
         provider: { "@type": "Organization", name: "FUJIMI DX Lab" },
       }) }} />
       <Header />

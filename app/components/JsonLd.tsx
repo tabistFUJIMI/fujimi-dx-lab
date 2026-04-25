@@ -27,14 +27,12 @@ export function PlanServiceJsonLd({ slug, name, description, serviceType }: Plan
       {
         "@type": "Offer",
         name: "ShiftNavi（シフト管理）",
-        price: "0",
-        priceCurrency: "JPY",
-        description: "無料",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
-          price: "0",
+          price: "550",
           priceCurrency: "JPY",
           unitText: "月額",
+          description: "スタンダード月額¥550（税込）。ReserveNaviスタンダード以上の契約で無料同梱（バンドル）",
         },
       },
       {
@@ -56,7 +54,7 @@ export function PlanServiceJsonLd({ slug, name, description, serviceType }: Plan
           price: "980",
           priceCurrency: "JPY",
           unitText: "月額",
-          description: "無料プランあり。月額980円〜（税込）",
+          description: "ライト月額¥980・スタンダード¥2,480・プロ¥3,980の3プラン（税込）",
         },
       },
     ],
@@ -132,7 +130,7 @@ export default function JsonLd() {
             "@type": "SoftwareApplication",
             name: "FUJIMIN PASS",
             applicationCategory: "BusinessApplication",
-            description: "小規模店舗向けDXシリーズ。LINE予約管理（ReserveNavi）、AI自動応答（AskNavi）、シフト管理（ShiftNavi）等を月額¥0から提供",
+            description: "小規模店舗向けDXシリーズ。LINE予約管理（ReserveNavi）、AI自動応答（AskNavi）、シフト管理（ShiftNavi）等を月額¥550から提供",
             url: "https://www.fujimi-dx-lab.com/fujimin-pass",
           },
         },
@@ -190,10 +188,10 @@ export default function JsonLd() {
       },
       {
         "@type": "Question",
-        name: "無料で始められますか？",
+        name: "一番安いプランはいくらですか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "はい。ShiftNaviはずっと無料、ReserveNaviには無料プランがあります。ForProjectも基本無料です。現在、ReserveNaviの共創パートナーを数社限定で募集中（スタンダードプラン最大1年間無料）。",
+          text: "ReserveNaviはライト¥980/月、AskNavi・RuleNavi・ShiftNaviは¥550/月から始められます。必要なアプリだけを選んでご契約いただけます。現在、ReserveNaviの共創パートナーを数社限定で募集中（スタンダードプラン¥2,480を2027年11月30日まで無料）。",
         },
       },
       {
@@ -201,7 +199,7 @@ export default function JsonLd() {
         name: "共創パートナーとは何ですか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "ReserveNaviを実際の店舗運営でご利用いただき、月2回のヒアリングとLINEでのフィードバックにご協力いただけるパートナー店舗様です。スタンダードプラン（通常¥2,980/月）を2027年11月30日までの約19ヶ月間無料でご提供します。2026年5月1日〜7月31日の間で各業種3社・計9社を募集。",
+          text: "ReserveNaviを実際の店舗運営でご利用いただき、月2回のヒアリングとLINEでのフィードバックにご協力いただけるパートナー店舗様です。スタンダードプラン（通常¥2,480/月）を2027年11月30日までの約19ヶ月間無料でご提供します。2026年5月1日〜7月31日の間で各業種3社・計9社を募集。",
         },
       },
       {
@@ -209,7 +207,7 @@ export default function JsonLd() {
         name: "料金はいくらですか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "シリーズによって異なります。FUJIMIN PASSはReserveNavi¥980〜¥4,980/月、AskNavi¥550〜/月、ShiftNavi無料〜¥550/月。ForProjectは基本無料・AI機能500円〜。すべて税込価格です。",
+          text: "シリーズによって異なります。FUJIMIN PASSはReserveNavi¥980〜¥3,980/月、AskNavi・RuleNavi・ShiftNaviは¥550〜/月。ForProjectは基本無料・AI機能500円〜。すべて税込価格です。",
         },
       },
     ],

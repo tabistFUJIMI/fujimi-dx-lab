@@ -46,7 +46,7 @@ export default function HeroSection() {
               施術中に電話を取れない、ダブルブッキング、シフト作成で徹夜——
               <br className="hidden md:block" />
               小さなお店の悩みを、
-              <strong className="text-[#3E362E]">月¥0から</strong>
+              <strong className="text-[#3E362E]">月¥980から</strong>
               はじめられるツールで。
             </p>
           </FadeIn>

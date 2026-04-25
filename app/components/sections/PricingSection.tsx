@@ -10,50 +10,50 @@ export default function PricingSection() {
         <FadeIn>
           <div className="text-center">
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
-              まずは無料プランから。
+              月¥550からスタート。
             </h2>
             <p className="mt-4 text-slate-500">
-              事業の成長に合わせて、必要な機能だけをアップグレード。
+              必要なアプリだけを選んで、いつでも追加・解約できます。予約管理は月¥980〜、AI応答・シフト管理は月¥550〜。
             </p>
           </div>
         </FadeIn>
 
         <div className="mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
-          {/* Free Plan */}
+          {/* ¥550 plans (Ask/Rule/Shift) */}
           <FadeIn delay={0.05}>
             <div className="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-8 transition-colors hover:border-slate-300">
               <div className="mb-8">
                 <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-slate-600">
-                  Free
+                  Light
                 </span>
                 <h3 className="mt-4 text-2xl font-bold text-slate-900">
-                  フリープラン
+                  シングル・アプリ
                 </h3>
                 <p className="mt-1 text-sm text-slate-500">
-                  まずはお試しで使いたい方に。
+                  まずはひとつのアプリだけ試したい方に。
                 </p>
               </div>
               <div className="mb-8">
-                <span className="text-4xl font-black text-slate-900">¥0</span>
-                <span className="ml-2 text-slate-500">/ 月</span>
+                <span className="text-4xl font-black text-slate-900">¥550</span>
+                <span className="ml-2 text-slate-500">〜 / 月</span>
               </div>
               <ul className="mb-10 flex-grow space-y-4 text-sm text-slate-600">
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="h-5 w-5 shrink-0 text-slate-300" />
-                  ReserveNavi: 月50件まで
+                  AskNavi（AI自動応答）
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="h-5 w-5 shrink-0 text-slate-300" />
-                  ShiftNavi: スタッフ5名まで
+                  RuleNavi（社内規則AI検索）
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="h-5 w-5 shrink-0 text-slate-300" />
-                  メールサポート
+                  ShiftNavi（AIシフト管理）
                 </li>
               </ul>
               <SignupFlowButton
-                label="無料で始める"
-                planName="フリープラン"
+                label="¥550で始める"
+                planName="ライトプラン"
                 accentColor="#475569"
                 className="block w-full rounded-xl bg-slate-100 py-3 text-center font-bold text-slate-800 transition-colors hover:bg-slate-200"
               />
@@ -68,38 +68,38 @@ export default function PricingSection() {
               </div>
               <div className="mb-8 mt-2">
                 <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-indigo-600">
-                  Standard
+                  Reserve
                 </span>
                 <h3 className="mt-4 text-2xl font-bold text-slate-900">
-                  スタンダードプラン
+                  予約管理プラン
                 </h3>
                 <p className="mt-1 text-sm text-slate-500">
-                  業務全体を効率化したい組織へ。
+                  LINE予約で来店を増やしたいお店へ。
                 </p>
               </div>
               <div className="mb-8">
                 <span className="text-4xl font-black text-slate-900">
-                  ¥550
+                  ¥980
                 </span>
                 <span className="ml-2 text-slate-500">〜 / 月</span>
               </div>
               <ul className="mb-10 flex-grow space-y-4 text-sm text-slate-700">
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="h-5 w-5 shrink-0 text-indigo-500" />
-                  <span className="font-bold">アプリごとに選んで使い放題</span>
+                  <span className="font-bold">ReserveNavi ライト（月¥980）</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="h-5 w-5 shrink-0 text-indigo-500" />
-                  データ処理上限の大幅拡張
+                  LINE予約・リマインド・自動管理
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="h-5 w-5 shrink-0 text-indigo-500" />
-                  AI高度分析レポート
+                  スタンダード・プロへアップグレード可能
                 </li>
               </ul>
               <SignupFlowButton
-                label="無料トライアルを始める"
-                planName="スタンダードプラン"
+                label="予約管理を始める"
+                planName="予約管理プラン"
                 accentColor="#4f46e5"
                 className="block w-full rounded-xl bg-indigo-600 py-3 text-center font-bold text-white shadow-md transition-colors hover:bg-indigo-700"
               />

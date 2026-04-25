@@ -52,7 +52,7 @@ export default function ShiftNaviPage() {
           { "@type": "Question", name: "スタッフは何を操作しますか？", acceptedAnswer: { "@type": "Answer", text: "スマホから休み希望を入力するだけです。完成したシフトもスマホで確認できます。" } },
           { "@type": "Question", name: "複雑な勤務条件にも対応できますか？", acceptedAnswer: { "@type": "Answer", text: "はい。連勤制限、特定スタッフの同日回避、資格要件など、自然な言葉でAIに伝えるだけで対応します。" } },
           { "@type": "Question", name: "印刷はできますか？", acceptedAnswer: { "@type": "Answer", text: "はい。A4用紙にきれいにレイアウトされた状態で印刷できます。" } },
-          { "@type": "Question", name: "料金はいくらですか？", acceptedAnswer: { "@type": "Answer", text: "フリープラン（スタッフ5名まで・AI機能なし）は¥0、スタンダードプラン（スタッフ15名まで・100pt付き・AI機能あり）は月額¥550です。" } },
+          { "@type": "Question", name: "料金はいくらですか？", acceptedAnswer: { "@type": "Answer", text: "スタンダードプラン（スタッフ15名まで・100pt付き・AI自動作成あり）で月額¥550（税込）です。" } },
         ],
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -110,7 +110,7 @@ export default function ShiftNaviPage() {
 
         <section className="px-4 py-24 md:py-32"><div className="mx-auto max-w-3xl">
           <FadeIn><div className="text-center"><h2 className="text-3xl font-bold tracking-tight md:text-4xl">よくある質問</h2></div></FadeIn>
-          <div className="mt-14 space-y-6">{[{q:"AIが作ったシフトは修正できますか？",a:"もちろんです。ドラッグ&ドロップで直感的に修正できます。AIに再生成してもらうこともできます。"},{q:"スタッフは何を操作しますか？",a:"スマホから休み希望を入力するだけです。完成したシフトもスマホで確認できます。"},{q:"複雑な勤務条件にも対応できますか？",a:"はい。連勤制限、特定スタッフの同日回避、資格要件など、自然な言葉でAIに伝えるだけで対応します。"},{q:"印刷はできますか？",a:"はい。A4用紙にきれいにレイアウトされた状態で印刷できます。"},{q:"料金はいくらですか？",a:"フリープラン（スタッフ5名まで・AI機能なし）は¥0、スタンダードプラン（スタッフ15名まで・100pt付き・AI機能あり）は月額¥550です。"}].map((faq,i)=>(<FadeIn key={i} delay={i*0.05}><div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm"><h3 className="font-bold text-gray-900">Q. {faq.q}</h3><p className="mt-2 text-sm leading-relaxed text-gray-500">A. {faq.a}</p></div></FadeIn>))}</div>
+          <div className="mt-14 space-y-6">{[{q:"AIが作ったシフトは修正できますか？",a:"もちろんです。ドラッグ&ドロップで直感的に修正できます。AIに再生成してもらうこともできます。"},{q:"スタッフは何を操作しますか？",a:"スマホから休み希望を入力するだけです。完成したシフトもスマホで確認できます。"},{q:"複雑な勤務条件にも対応できますか？",a:"はい。連勤制限、特定スタッフの同日回避、資格要件など、自然な言葉でAIに伝えるだけで対応します。"},{q:"印刷はできますか？",a:"はい。A4用紙にきれいにレイアウトされた状態で印刷できます。"},{q:"料金はいくらですか？",a:"スタンダードプラン（スタッフ15名まで・100pt付き・AI自動作成あり）で月額¥550（税込）です。"}].map((faq,i)=>(<FadeIn key={i} delay={i*0.05}><div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm"><h3 className="font-bold text-gray-900">Q. {faq.q}</h3><p className="mt-2 text-sm leading-relaxed text-gray-500">A. {faq.a}</p></div></FadeIn>))}</div>
         </div></section>
 
         <RelatedProducts currentSlug="shift-navi" />
@@ -118,8 +118,11 @@ export default function ShiftNaviPage() {
         <section id="contact" className="relative overflow-hidden px-4 py-24 text-white md:py-32" style={{background:"linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%)"}}>
           <div className="relative z-10 mx-auto max-w-3xl text-center">
             <FadeIn>
-              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">今すぐ無料で始められます</h2>
-              <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-blue-100/80">フリープランはスタッフ5名まで無料。メール認証のみ・クレジットカード不要。</p>
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">月¥550でシフト管理を自動化</h2>
+              <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-blue-100/80">スタッフ15名まで・AI自動作成つきで月額¥550（税込）。メール認証で即日スタート。</p>
+              <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-blue-100/90 bg-white/10 rounded-lg px-4 py-2 border border-white/20">
+                💡 <strong className="text-white">ReserveNavi スタンダード／プロ</strong>をご契約の場合、ShiftNavi はバンドルプランとして<strong className="text-white">無料同梱</strong>されます。
+              </p>
 
               <div className="mx-auto mt-8 max-w-xl rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 p-6 text-left">
                 <p className="font-bold text-white text-base mb-2 flex items-center gap-2">
