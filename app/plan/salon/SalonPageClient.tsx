@@ -79,8 +79,8 @@ const STEPS = [
 
 const FAQS = [
   {
-    q: "本当に無料で使えますか？",
-    a: "ShiftNaviはフリープラン（¥0・スタッフ5名まで）があります。ReserveNaviにも無料プラン（月50件）があります。まずは無料でお試しいただけます。",
+    q: "一番安いプランはいくらですか？",
+    a: "ReserveNaviはライトプラン月¥980から、AskNavi・RuleNavi・ShiftNaviは月¥550から始められます。必要なアプリだけを選んでご契約いただけます。",
   },
   {
     q: "初期費用はかかりますか？",
@@ -107,10 +107,6 @@ const FAQS = [
     a: "不要です。LINEだけで完結します。お客様に新しいアプリを入れてもらう必要はありません。",
   },
   {
-    q: "ShiftNaviにフリープランがあるのはなぜ？",
-    a: "シフト管理は全店舗の基本機能だと考えています。まず使っていただき、価値を実感していただくためにフリープラン（スタッフ5名まで）を提供しています。AI機能はスタンダード（¥550/月）からご利用いただけます。",
-  },
-  {
     q: "支払い方法は？",
     a: "クレジットカード決済です。月額¥3,000以上のプランは銀行振込にも対応しています。",
   },
@@ -131,26 +127,26 @@ const PRICING_PLANS = [
   },
   {
     name: "スタンダードパッケージ",
-    price: "4,630",
+    price: "3,580",
     bonus: "200",
     bonusValue: "660",
     recommended: true,
     services: [
-      "ReserveNavi スタンダード（¥2,980/月）",
+      "ReserveNavi スタンダード（¥2,480/月）",
       "AskNavi スタンダード（¥1,100/月）",
-      "ShiftNavi スタンダード（¥550/月）",
+      "ShiftNavi（バンドル無料同梱）",
     ],
   },
   {
     name: "プロパッケージ",
-    price: "7,730",
+    price: "6,180",
     bonus: "500",
     bonusValue: "1,650",
     recommended: false,
     services: [
-      "ReserveNavi プロ（¥4,980/月）",
+      "ReserveNavi プロ（¥3,980/月）",
       "AskNavi プロ（¥2,200/月）",
-      "ShiftNavi スタンダード（¥550/月）",
+      "ShiftNavi（バンドル無料同梱）",
     ],
   },
 ];
@@ -160,8 +156,8 @@ const SINGLE_PRICES = [
     name: "ReserveNavi",
     plans: [
       { name: "ライト", price: "¥980/月" },
-      { name: "スタンダード", price: "¥2,980/月" },
-      { name: "プロ", price: "¥4,980/月" },
+      { name: "スタンダード", price: "¥2,480/月" },
+      { name: "プロ", price: "¥3,980/月" },
     ],
   },
   {
@@ -175,7 +171,7 @@ const SINGLE_PRICES = [
   },
   {
     name: "ShiftNavi",
-    plans: [{ name: "フリー", price: "¥0" }, { name: "スタンダード", price: "¥550/月" }],
+    plans: [{ name: "スタンダード", price: "¥550/月" }, { name: "バンドル", price: "¥0 (RN Std/Pro契約時に自動付帯)" }],
   },
 ];
 
@@ -531,7 +527,7 @@ export default function SalonPageClient() {
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-6 text-xs text-gray-400">月額¥0 ｜ AI機能のみポイント消費</p>
+                  <p className="mt-6 text-xs text-gray-400">月額¥550 ｜ AI機能はポイント消費</p>
                 </div>
               </FadeIn>
             </div>
@@ -692,7 +688,7 @@ export default function SalonPageClient() {
                       {
                         feature: "予約管理",
                         general: "¥9,790/月",
-                        ours: "ReserveNavi ¥980\u301C¥4,980",
+                        ours: "ReserveNavi ¥980\u301C¥3,980",
                       },
                       {
                         feature: "LINE対応",
@@ -1005,7 +1001,7 @@ export default function SalonPageClient() {
               operatingSystem: "Web",
               offers: {
                 "@type": "AggregateOffer",
-                lowPrice: "0",
+                lowPrice: "550",
                 highPrice: "7700",
                 priceCurrency: "JPY",
                 offerCount: "3",

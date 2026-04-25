@@ -22,7 +22,7 @@ export default function FinalCTASection() {
             ツールを探しましょう。
           </h2>
           <p className="mt-6 font-medium text-orange-100">
-            どのツールから始めればいいか迷ったら、まずは無料プランでお試しください。
+            予約管理は月¥980から、AI応答・シフト管理・社内規則検索は月¥550から。必要なツールだけ選んで始められます。
           </p>
         </FadeIn>
 

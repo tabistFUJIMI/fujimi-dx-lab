@@ -113,16 +113,16 @@ export default function ReserveNaviSpotlightSection() {
                 </p>
                 <ul className="mt-3 space-y-2 text-sm text-[#52483F]">
                   <li className="flex items-center gap-2">
-                    <span className="font-bold text-[#5A67D8]">無料</span>
-                    <span className="text-xs text-[#8A7F74]">月50件まで・1人運営に</span>
+                    <span className="font-bold text-[#F97316]">¥980</span>
+                    <span className="text-xs text-[#8A7F74]">ライト：LINE予約・リマインド</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="font-bold text-[#F97316]">¥980〜</span>
-                    <span className="text-xs text-[#8A7F74]">予約件数無制限</span>
+                    <span className="font-bold text-[#F97316]">¥2,480</span>
+                    <span className="text-xs text-[#8A7F74]">スタンダード：AI自動整理・月800pt</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="font-bold text-[#F97316]">¥2,980〜</span>
-                    <span className="text-xs text-[#8A7F74]">AIレポートで経営見える化</span>
+                    <span className="font-bold text-[#F97316]">¥3,980</span>
+                    <span className="text-xs text-[#8A7F74]">プロ：月1,600pt・分析機能</span>
                   </li>
                 </ul>
                 <Link

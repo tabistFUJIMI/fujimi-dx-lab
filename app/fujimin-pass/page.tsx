@@ -10,7 +10,7 @@ const PRODUCTS = [
     tagline: "LINE予約管理",
     description:
       "LINE経由の予約を自動管理。電話対応を減らし、予約の取りこぼしをゼロに。顧客管理・AI分析機能付き。",
-    price: "¥980〜¥4,980/月",
+    price: "¥980〜¥3,980/月",
     href: "/products/reserve-navi",
     color: "#f97316",
     featured: true,
@@ -54,7 +54,7 @@ export default function FujiminPassPage() {
     name: "FUJIMIN PASS",
     applicationCategory: "BusinessApplication",
     description:
-      "FUJIMIN PASSは小規模店舗向けDXシリーズ。LINE予約管理（ReserveNavi）、AI自動応答（AskNavi）、シフト管理（ShiftNavi）、社内規則検索（RuleNavi）を月額¥0から提供。施術院・サロン・美容室など予約制の小規模店舗に最適。",
+      "FUJIMIN PASSは小規模店舗向けDXシリーズ。LINE予約管理（ReserveNavi）、AI自動応答（AskNavi）、シフト管理（ShiftNavi）、社内規則検索（RuleNavi）を月額¥980から提供。施術院・サロン・美容室など予約制の小規模店舗に最適。",
     url: "https://www.fujimi-dx-lab.com/fujimin-pass",
     provider: {
       "@type": "Organization",
@@ -63,7 +63,7 @@ export default function FujiminPassPage() {
     },
     offers: {
       "@type": "AggregateOffer",
-      lowPrice: "0",
+      lowPrice: "550",
       highPrice: "3980",
       priceCurrency: "JPY",
       offerCount: "4",
@@ -79,7 +79,7 @@ export default function FujiminPassPage() {
         name: "FUJIMIN PASSとは何ですか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "FUJIMIN PASSは施術院・サロンなど小規模店舗向けのDXツールシリーズです。LINE予約管理（ReserveNavi）、AI自動応答（AskNavi）、シフト管理（ShiftNavi・無料）、社内規則AI検索（RuleNavi）の4つを、必要なものだけ選んで月額¥0から始められます。",
+          text: "FUJIMIN PASSは施術院・サロンなど小規模店舗向けのDXツールシリーズです。LINE予約管理（ReserveNavi）、AI自動応答（AskNavi）、シフト管理（ShiftNavi）、社内規則AI検索（RuleNavi）の4つを、必要なものだけ選んで月額¥980から始められます。",
         },
       },
       {
@@ -87,7 +87,7 @@ export default function FujiminPassPage() {
         name: "共創パートナーとは何ですか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "ReserveNaviのスタンダードプラン（通常¥2,980/月）を2027年11月30日まで無料でご利用いただき、月2回のヒアリングとLINEでの随時フィードバックにご協力いただくプログラムです。2026年5月1日〜7月31日の期間に、各業種3社・合計9社を募集しています。",
+          text: "ReserveNaviのスタンダードプラン（通常¥2,480/月）を2027年11月30日まで無料でご利用いただき、月2回のヒアリングとLINEでの随時フィードバックにご協力いただくプログラムです。2026年5月1日〜7月31日の期間に、各業種3社・合計9社を募集しています。",
         },
       },
       {
@@ -103,7 +103,7 @@ export default function FujiminPassPage() {
         name: "初期費用はかかりますか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "初期費用は一切かかりません。月額料金のみで、いつでも解約できます。ShiftNaviのフリープランは永久無料です。",
+          text: "初期費用は一切かかりません。月額料金のみで、いつでも解約できます。いずれのアプリも最低¥550/月から始められます。",
         },
       },
       {
@@ -111,7 +111,7 @@ export default function FujiminPassPage() {
         name: "パートナー期間終了後はどうなりますか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "2027年12月1日以降、スタンダードプラン（¥2,980/月）を継続するか、ライトプラン（¥980/月）にダウングレードするかを選択できます。いつでも辞退も可能です。",
+          text: "2027年12月1日以降、スタンダードプラン（¥2,480/月）を継続するか、ライトプラン（¥980/月）にダウングレードするかを選択できます。いつでも辞退も可能です。",
         },
       },
     ],
@@ -198,8 +198,8 @@ export default function FujiminPassPage() {
               <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-300">
                 FUJIMIN
                 PASSは施術院・サロン・美容室など小規模店舗向けのDXツールシリーズです。
-                LINE予約管理（ReserveNavi）、AI自動応答（AskNavi）、シフト管理（ShiftNavi・無料）の3つを中心に、
-                月額¥0から必要なものだけ選んで始められます。
+                LINE予約管理（ReserveNavi）、AI自動応答（AskNavi）、シフト管理（ShiftNavi）の3つを中心に、
+                月額¥980から必要なものだけ選んで始められます。
               </p>
             </FadeIn>
             <FadeIn delay={0.3}>
@@ -332,7 +332,7 @@ export default function FujiminPassPage() {
                     <span className="text-orange-400"> 1年無料</span>
                   </p>
                   <p className="mt-1 text-sm text-slate-400">
-                    通常 ¥2,980/月相当 → 2027/11/30 まで無料
+                    通常 ¥2,480/月相当 → 2027/11/30 まで無料
                   </p>
                   <ul className="mt-4 space-y-2 text-sm text-slate-300">
                     <li className="flex items-start gap-2">
@@ -345,7 +345,7 @@ export default function FujiminPassPage() {
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="mt-0.5 text-orange-400">✓</span>
-                      2027/12/1 以降はスタンダード（¥2,980）で継続 or ライト¥980に変更可
+                      2027/12/1 以降はスタンダード（¥2,480）で継続 or ライト¥980に変更可
                     </li>
                   </ul>
                 </div>
@@ -422,11 +422,11 @@ export default function FujiminPassPage() {
                 },
                 {
                   q: "初期費用はかかりますか？",
-                  a: "初期費用は一切かかりません。月額料金のみで、いつでも解約できます。ShiftNaviのフリープランは永久無料です。",
+                  a: "初期費用は一切かかりません。月額料金のみで、いつでも解約できます。いずれのアプリも最低¥550/月から始められます。",
                 },
                 {
                   q: "パートナー期間終了後はどうなりますか？",
-                  a: "2027年12月1日以降、スタンダードプラン（¥2,980/月）を継続するか、ライトプラン（¥980/月）にダウングレードするかを選択できます。いつでも辞退も可能です。",
+                  a: "2027年12月1日以降、スタンダードプラン（¥2,480/月）を継続するか、ライトプラン（¥980/月）にダウングレードするかを選択できます。いつでも辞退も可能です。",
                 },
                 {
                   q: "対象業種は決まっていますか？",

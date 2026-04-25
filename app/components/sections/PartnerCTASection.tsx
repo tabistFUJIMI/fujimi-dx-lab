@@ -51,7 +51,7 @@ export default function PartnerCTASection() {
                 <span className="ml-1 text-[#F97316]">無料</span>
               </p>
               <p className="mt-1 text-sm text-[#8A7F74]">
-                通常 ¥2,980/月相当 → 2027/11/30まで無料
+                通常 ¥2,480/月相当 → 2027/11/30まで無料
               </p>
               <ul className="mt-5 space-y-2.5 text-sm text-[#52483F]">
                 <li className="flex items-start gap-2">

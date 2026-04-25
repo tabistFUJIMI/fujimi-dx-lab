@@ -192,7 +192,7 @@ export default function ProductSeriesSection() {
               <strong className="text-[#3E362E]">FUJIMIN PASS</strong>
               は、小さなお店・小さなチームに必要な道具をひとまとめにしたシリーズです。
               <br className="hidden md:block" />
-              予約・問い合わせ・シフト・社内ルール…必要なものから1つずつ、月額¥0からはじめられます。
+              予約・問い合わせ・シフト・社内ルール…必要なものから1つずつ、月額¥550からはじめられます。
             </p>
           </div>
         </FadeIn>

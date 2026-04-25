@@ -9,13 +9,13 @@ import EarlyBirdBanner from "../components/EarlyBirdBanner";
 export const metadata: Metadata = {
   title: "料金プラン | FUJIMI DX Lab",
   description:
-    "ReserveNavi（ライト¥980/スタンダード¥2,980/プロ¥4,980）・AskNavi・ShiftNavi・RuleNaviの料金プラン。5/1〜7/31の早期メンバー登録でウェルカムpt1,500進呈。業種別パッケージもご用意。",
+    "ReserveNavi（ライト¥980/スタンダード¥2,480/プロ¥3,980）・AskNavi・ShiftNavi・RuleNaviの料金プラン。5/1〜7/31の早期メンバー登録でウェルカムpt1,500進呈。業種別パッケージもご用意。",
   alternates: {
     canonical: "https://www.fujimi-dx-lab.com/pricing",
   },
   openGraph: {
     title: "料金プラン | FUJIMI DX Lab",
-    description: "ShiftNaviフリー¥0〜、ReserveNavi月額¥980〜。1ツールから始められる小規模事業者向けDXプラットフォーム。",
+    description: "ReserveNavi月額¥980〜、AskNavi・RuleNavi・ShiftNaviは月額¥550〜。1ツールから始められる小規模事業者向けDXプラットフォーム。",
     url: "https://www.fujimi-dx-lab.com/pricing",
     siteName: "FUJIMI DX Lab",
     locale: "ja_JP",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "料金プラン | FUJIMI DX Lab",
-    description: "ShiftNaviフリー¥0〜、ReserveNavi月額¥980〜。1ツールから始められるDXプラットフォーム。",
+    description: "ReserveNavi月額¥980〜、他アプリは月額¥550〜。1ツールから始められるDXプラットフォーム。",
   },
 };
 
@@ -42,16 +42,16 @@ const RESERVE_PLANS = [
   },
   {
     name: "スタンダード",
-    price: "¥2,980",
+    price: "¥2,480",
     period: "/月",
-    features: ["予約枠5つまで（同時稼働5名相当）", "予約件数無制限", "週次・月次AIレポート", "月800pt付き", "LINE拡張あり"],
+    features: ["予約枠5つまで（同時稼働5名相当）", "予約件数無制限", "週次・月次AIレポート", "月800pt付き", "LINE拡張あり", "ShiftNaviバンドル無料同梱（5名まで）"],
     recommended: true,
   },
   {
     name: "プロ",
-    price: "¥4,980",
+    price: "¥3,980",
     period: "/月",
-    features: ["予約枠15まで", "予約件数無制限", "週次・月次AIレポート", "月1,600pt付き", "LINE拡張あり"],
+    features: ["予約枠15まで", "予約件数無制限", "週次・月次AIレポート", "月1,600pt付き", "LINE拡張あり", "ShiftNaviバンドル無料同梱（15名まで）"],
     recommended: false,
   },
 ];
@@ -115,11 +115,12 @@ const AI_PLANS = [
 
 const SHIFT_PLANS = [
   {
-    name: "フリー",
+    name: "バンドル",
     price: "¥0",
     period: "/月",
-    features: ["スタッフ5名まで", "休み希望のスマホ収集", "シフト共有・通知", "AI機能なし"],
-    recommended: false,
+    features: ["ReserveNaviスタンダード/プロ契約者は無料同梱", "スタッフ数はReserveNavi契約に連動（Std=5名/Pro=15名）", "ReserveNavi管理画面から一括操作", "AIシフト自動作成", "シフト共有・通知"],
+    recommended: true,
+    note: "ReserveNaviスタンダード以上が必要",
   },
   {
     name: "スタンダード",
@@ -168,8 +169,8 @@ const FAQS = [
     a: "はい、いつでもアップグレード・ダウングレードが可能です。アップグレードは即時反映、ダウングレードは次の更新日から適用されます。",
   },
   {
-    q: "無料で試せますか？",
-    a: "ShiftNaviはフリープラン（スタッフ5名まで）が永久無料でご利用いただけます。ReserveNaviは2026年5月1日〜7月31日の早期メンバー期間中にご登録いただくと、登録時に1,500ptのAIクレジットを進呈し、AI機能をじっくりお試しいただけます（通常期間は500pt）。AskNavi・RuleNaviは有料プラン（月額¥550〜）となりますが、お申込み前のデモやヒアリングはお気軽にご相談ください。",
+    q: "お試しで使えますか？",
+    a: "ReserveNaviは2026年5月1日〜7月31日の早期メンバー期間中にご登録いただくと、登録時に1,500ptのAIクレジットを進呈し、AI機能をじっくりお試しいただけます（通常期間は500pt）。AskNavi・RuleNavi・ShiftNaviは月額¥550からの有料プランですが、お申込み前のデモやヒアリングはお気軽にご相談ください。",
   },
   {
     q: "FUJIMINポイントとは何ですか？",
@@ -273,7 +274,8 @@ export default function PricingPage() {
                 ShiftNavi
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-center text-gray-600">
-                ShiftNaviは、AIがシフト表をワンタッチで自動作成するシフト管理ツールです。フリープランは無料。AI自動作成機能にはスタンダードプランが必要です。
+                ShiftNaviは、AIがシフト表をワンタッチで自動作成するシフト管理ツールです。<br />
+                単独契約は月¥550（スタンダード）。<strong className="text-blue-600">ReserveNaviスタンダード／プロ契約時はバンドル無料同梱</strong>でお使いいただけます。
               </p>
             </FadeIn>
             <div className="mt-12 grid gap-6 sm:grid-cols-2 mx-auto max-w-2xl">
@@ -336,7 +338,7 @@ export default function PricingPage() {
                 ReserveNavi
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-center text-gray-500">
-                ReserveNaviは、LINEから24時間予約を受け付けられる小規模店舗向け予約管理システムです。無料プランから始められます。
+                ReserveNaviは、LINEから24時間予約を受け付けられる小規模店舗向け予約管理システムです。月¥980のライトプランから始められます。
               </p>
             </FadeIn>
             <FadeIn delay={0.1}>

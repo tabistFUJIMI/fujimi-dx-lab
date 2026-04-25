@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title:
     "整体・マッサージ院の予約管理+AI応答+シフト管理｜施術プラン | FUJIMI DX Lab",
   description:
-    "施術の手を止めるたび、お客様は離れていく。LINE予約受付・AI自動応答・シフト管理をひとまとめに。ShiftNavi無料。月額550円〜。",
+    "施術の手を止めるたび、お客様は離れていく。LINE予約受付・AI自動応答・シフト管理をひとまとめに。月額¥550〜。",
   alternates: {
     canonical: "https://www.fujimi-dx-lab.com/plan/sejutsu",
   },
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title:
       "整体・マッサージ院の予約管理+AI応答+シフト管理｜施術プラン | FUJIMI DX Lab",
     description:
-      "LINE予約受付・AI自動応答・シフト管理をひとまとめに。ShiftNavi無料。月額550円〜。",
+      "LINE予約受付・AI自動応答・シフト管理をひとまとめに。月額¥550〜。",
     images: [
       {
         url: "/images/plan/sejutsu-hero.jpg",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "施術プラン | FUJIMI DX Lab",
     description:
-      "LINE予約受付・AI自動応答・シフト管理をひとまとめに。ShiftNavi無料。月額550円〜。",
+      "LINE予約受付・AI自動応答・シフト管理をひとまとめに。月額¥550〜。",
     images: ["/images/plan/sejutsu-hero.jpg"],
   },
 };
@@ -39,7 +39,7 @@ export default function SejutsuPlanPage() {
       <PlanServiceJsonLd
         slug="sejutsu"
         name="施術プラン（整体・マッサージ院向けDXツール導入支援）"
-        description="整体・マッサージ院向けのLINE予約受付・AI自動応答・シフト管理をひとまとめに導入。ShiftNavi無料。月額550円〜。"
+        description="整体・マッサージ院向けのLINE予約受付・AI自動応答・シフト管理をひとまとめに導入。月額¥550〜。"
         serviceType="DXツール導入支援"
       />
       <SejutsuPageClient />

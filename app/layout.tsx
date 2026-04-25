@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s - FUJIMI DX Lab",
   },
   description:
-    "FUJIMI DX Labは静岡県富士市発のDX事業部。施術院・サロン向けFUJIMIN PASS（予約管理・AI応答・シフト管理）、個人向けForProject等、小さな組織が必要なツールを月額¥0から提供。共創パートナー募集中。",
+    "FUJIMI DX Labは静岡県富士市発のDX事業部。施術院・サロン向けFUJIMIN PASS（予約管理・AI応答・シフト管理）、個人向けForProject等、小さな組織が必要なツールを月額¥980から提供。共創パートナー募集中。",
   keywords: [
     // ブランド名のバリエーション（検索時の打鍵ゆらぎ対策）
     "FUJIMI DX Lab", "fujimidxlab", "fujimi-dx-lab", "fujimi dx lab",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "FUJIMI DX Lab | 小さな組織の困ったをテクノロジーで解決する",
     description:
-      "静岡県富士市発のDX事業部。施術院・サロン向けFUJIMIN PASS、個人向けForProject等、小さな組織が必要なツールを月額¥0から提供。",
+      "静岡県富士市発のDX事業部。施術院・サロン向けFUJIMIN PASS、個人向けForProject等、小さな組織が必要なツールを月額¥980から提供。",
     type: "website",
     locale: "ja_JP",
     siteName: "FUJIMI DX Lab",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "FUJIMI DX Lab | 小さな組織の困ったをテクノロジーで解決する",
-    description: "静岡県富士市発のDX事業部。施術院・サロン向けFUJIMIN PASS、個人向けForProject等、小さな組織が必要なツールを月額¥0から提供。",
+    description: "静岡県富士市発のDX事業部。施術院・サロン向けFUJIMIN PASS、個人向けForProject等、小さな組織が必要なツールを月額¥980から提供。",
     images: ["/images/ogp-main.jpg"],
   },
   robots: {

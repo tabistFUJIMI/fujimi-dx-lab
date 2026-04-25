@@ -428,7 +428,7 @@ export default function MassageLPPage() {
                   月額¥980からはじめる
                 </h2>
                 <p className="mx-auto mt-4 max-w-md text-gray-500">
-                  ライトプランは月額¥980、スタンダードは¥2,980でAI機能も使えます。
+                  ライトプランは月額¥980、スタンダードは¥2,480でAI機能も使えます。
                   <br />
                   <strong className="text-gray-700">契約期間の縛りなし。いつでも解約できます。</strong>
                 </p>
@@ -462,7 +462,7 @@ export default function MassageLPPage() {
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold text-white" style={{ backgroundColor: "#f97316" }}>おすすめ</span>
                   <div className="text-center">
                     <p className="text-sm font-semibold" style={{ color: "#f97316" }}>スタンダードプラン</p>
-                    <p className="mt-2 text-4xl font-extrabold text-gray-900">¥2,980<span className="text-base font-normal text-gray-500">/月</span></p>
+                    <p className="mt-2 text-4xl font-extrabold text-gray-900">¥2,480<span className="text-base font-normal text-gray-500">/月</span></p>
                     <p className="mt-1 text-xs text-gray-500">LINE予約 + AI応答 + 月800pt付き</p>
                     <p className="mt-2 text-[11px] leading-relaxed text-gray-600">施術単価5,000〜8,000円のお店なら、<br />月1件の予約で元が取れる計算です。</p>
                   </div>
@@ -483,8 +483,8 @@ export default function MassageLPPage() {
                     <tr className="border-b border-gray-100">
                       <th className="px-5 py-4 text-left font-semibold text-gray-700">機能</th>
                       <th className="px-5 py-4 text-center font-semibold text-gray-500">ライト<br /><span className="text-xs font-normal">¥980/月</span></th>
-                      <th className="px-5 py-4 text-center font-semibold" style={{ color: "#f97316" }}>スタンダード<br /><span className="text-xs font-normal">¥2,980/月</span></th>
-                      <th className="px-5 py-4 text-center font-semibold text-gray-500">プロ<br /><span className="text-xs font-normal">¥4,980/月</span></th>
+                      <th className="px-5 py-4 text-center font-semibold" style={{ color: "#f97316" }}>スタンダード<br /><span className="text-xs font-normal">¥2,480/月</span></th>
+                      <th className="px-5 py-4 text-center font-semibold text-gray-500">プロ<br /><span className="text-xs font-normal">¥3,980/月</span></th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-50">
@@ -687,7 +687,7 @@ export default function MassageLPPage() {
                 "@type": "Offer",
                 price: "0",
                 priceCurrency: "JPY",
-                description: "月額¥980〜。AI機能はスタンダード¥2,980から",
+                description: "月額¥980〜。AI機能はスタンダード¥2,480から",
               },
               provider: {
                 "@type": "Organization",
