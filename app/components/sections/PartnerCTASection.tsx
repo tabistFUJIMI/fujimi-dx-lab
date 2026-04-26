@@ -117,7 +117,7 @@ export default function PartnerCTASection() {
             <p className="mb-6 text-center text-sm font-bold text-[#3E362E]">
               ✉️ パートナー応募・ご質問はこちらから
             </p>
-            <ContactForm />
+            <ContactForm variant="light" />
           </div>
         </FadeIn>
       </div>
